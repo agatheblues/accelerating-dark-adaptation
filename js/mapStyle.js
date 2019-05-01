@@ -62,9 +62,19 @@ var mapStyle = {
       "urls": ["./data/test.MOV"],
       "coordinates": [
         [4.867143, 52.367445], // Top left corner
-        [4.886343, 52.367445], // Top right corner
-        [4.886343, 52.356565], // Bottom right corner
+        [4.896343, 52.367445], // Top right corner
+        [4.896343, 52.356565], // Bottom right corner
         [4.867143, 52.356565], // Bottom left corner
+      ]
+    },
+    "video2": {
+      "type": "video",
+      "urls": ["./data/test.MOV"],
+      "coordinates": [
+        [4.837143, 52.367445], // Top left corner
+        [4.866343, 52.367445], // Top right corner
+        [4.866343, 52.356565], // Bottom right corner
+        [4.837143, 52.356565], // Bottom left corner
       ]
     }
   },
@@ -194,9 +204,17 @@ var mapStyle = {
       }
     },
     {
-      "id": "video",
+      "id": "video1",
       "type": "raster",
       "source": "video1"
+    },
+    {
+      "id": "video2",
+      "type": "raster",
+      "source": "video2",
+      "paint": {
+        'raster-opacity': 0.8
+      }
     }
   ],
   "created": "2019-05-01T20:20:51.093Z",
