@@ -12,6 +12,15 @@ var map = new mapboxgl.Map({
 );
 
 map.on('mousemove', function (e) {
+  // Update lat / long
   $('#info-long').html(getCoordinate(e, 'lng'));
   $('#info-lat').html(getCoordinate(e, 'lat'));
+});
+
+$(document).mousemove(function (e) {
+  // Move torchlight
+  windowWidth = $(window).width();
+  windowHeight = $(window).height();
+
+  $('.radial-gradient').css('background', 'radial-gradient(300px 300px at ' + e.pageX + 'px ' + e.pageY + 'px,  transparent 25%, black 25.5%)');
 });

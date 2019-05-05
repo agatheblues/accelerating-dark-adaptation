@@ -23,11 +23,23 @@ p {
   color: #fff;
 }
 
-#map {
+.container {
   position: absolute;
   top: 0;
   bottom: 0;
   width: 100%;
+}
+
+.radial-gradient {
+  pointer-events: none;
+  height: 100vh;
+  background-size: 100% 100%;
+  background-position: 50% 50%;
+  transition: all 2s ease;
+  background: 
+    radial-gradient(
+      300px 300px at center, transparent 25%, black 25.5%
+    );
 }
 
 .footer {
@@ -39,6 +51,6 @@ p {
   width: 100%;
   padding: 10px;
   background: #000;
-  border: none;
+  border-top: dotted 1px #555;
   z-index: 2;
   }
