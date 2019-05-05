@@ -1,4 +1,4 @@
-var mapStyle = {
+const mapStyle = {
   "version": 8,
   "name": "Street Lighting in Amsterdam &Utrecht-copy",
   "metadata": {

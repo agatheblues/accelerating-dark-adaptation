@@ -12,9 +12,6 @@ var map = new mapboxgl.Map({
 );
 
 map.on('mousemove', function (e) {
-  const lng = e.lngLat.lng;
-  const lat = e.lngLat.lat;
-
-  document.getElementById('infoLong').innerHTML = lng;
-  document.getElementById('infoLat').innerHTML = lat;
+  $('#info-long').html(getCoordinate(e, 'lng'));
+  $('#info-lat').html(getCoordinate(e, 'lat'));
 });

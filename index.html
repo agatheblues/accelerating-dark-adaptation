@@ -5,6 +5,7 @@
   <meta charset='utf-8' />
   <title>Add a video</title>
   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
   <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.54.0/mapbox-gl.js'></script>
   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.54.0/mapbox-gl.css' rel='stylesheet' />
   <link rel="stylesheet" type="text/css" href="style.css">
@@ -14,8 +15,16 @@
 
   <div id='map'>
   </div>
-  <div id="info">LONG: <span id="infoLong">4.8939090868191215</span> / LAT: <span id="infoLat">52.36163000690422</span>
+  <footer class="footer">
+    <div>
+      <p class="info info--inverted">
+        LONG: <span id="info-long">4.8939090868191215</span> /
+        LAT: <span id="info-lat">52.36163000690422</span>
+      </p>
+    </div>
+  </footer>
   </div>
+  <script src='js/utils.js'></script>
   <script src='js/mapStyle.js'></script>
   <script src='js/script.js'>
   </script>
