@@ -57,26 +57,26 @@ var mapStyle = {
       "url": "mapbox://agatheblues.71znpuwr",
       "type": "vector"
     },
-    "video1": {
-      "type": "video",
-      "urls": ["./data/test.MOV"],
-      "coordinates": [
-        [4.867143, 52.367445], // Top left corner
-        [4.896343, 52.367445], // Top right corner
-        [4.896343, 52.356565], // Bottom right corner
-        [4.867143, 52.356565], // Bottom left corner
-      ]
-    },
-    "video2": {
-      "type": "video",
-      "urls": ["./data/test.MOV"],
-      "coordinates": [
-        [4.837143, 52.367445], // Top left corner
-        [4.866343, 52.367445], // Top right corner
-        [4.866343, 52.356565], // Bottom right corner
-        [4.837143, 52.356565], // Bottom left corner
-      ]
-    }
+    // "video1": {
+    //   "type": "video",
+    //   "urls": ["./data/test.MOV"],
+    //   "coordinates": [
+    //     [4.867143, 52.367445], // Top left corner
+    //     [4.896343, 52.367445], // Top right corner
+    //     [4.896343, 52.356565], // Bottom right corner
+    //     [4.867143, 52.356565], // Bottom left corner
+    //   ]
+    // },
+    // "video2": {
+    //   "type": "video",
+    //   "urls": ["./data/test.MOV"],
+    //   "coordinates": [
+    //     [4.837143, 52.367445], // Top left corner
+    //     [4.866343, 52.367445], // Top right corner
+    //     [4.866343, 52.356565], // Bottom right corner
+    //     [4.837143, 52.356565], // Bottom left corner
+    //   ]
+    // }
   },
   "sprite": "mapbox://sprites/agatheblues/cjv5o0u814e5k1fmfos0nqiez/8419b3clsjyq6xdbsdmiowfig",
   "glyphs": "mapbox://fonts/agatheblues/{fontstack}/{range}.pbf",
@@ -203,19 +203,19 @@ var mapStyle = {
         "circle-color": "hsl(56, 91%, 59%)"
       }
     },
-    {
-      "id": "video1",
-      "type": "raster",
-      "source": "video1"
-    },
-    {
-      "id": "video2",
-      "type": "raster",
-      "source": "video2",
-      "paint": {
-        'raster-opacity': 0.8
-      }
-    }
+    // {
+    //   "id": "video1",
+    //   "type": "raster",
+    //   "source": "video1"
+    // },
+    // {
+    //   "id": "video2",
+    //   "type": "raster",
+    //   "source": "video2",
+    //   "paint": {
+    //     'raster-opacity': 0.8
+    //   }
+    // }
   ],
   "created": "2019-05-01T20:20:51.093Z",
   "id": "cjv5o0u814e5k1fmfos0nqiez",
