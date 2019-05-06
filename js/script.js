@@ -28,5 +28,5 @@ $(document).mousemove(function (e) {
   // windowWidth = $(window).width();
   // windowHeight = $(window).height();
 
-  $('.radial-gradient').css('background', 'radial-gradient(300px 300px at ' + e.pageX + 'px ' + e.pageY + 'px,  transparent 25%, black 25.5%)');
+  $('.radial-gradient').css('background', 'radial-gradient(300px 300px at ' + e.pageX + 'px ' + e.pageY + 'px,  rgba(255, 255, 255, 0) 0%, black 50.5%)');
 });

@@ -39,7 +39,7 @@ p {
   transition: all 2s ease;
   background: 
     radial-gradient(
-      300px 300px at center, transparent 25%, black 25.5%
+      300px 300px at center, rgba(255, 255, 255, 0) 0%, black 50.5%
     );
 }
 
