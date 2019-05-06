@@ -14,11 +14,14 @@ var map = new mapboxgl.Map({
 }
 );
 
-map.on('mousemove', function (e) {
-  // Update lat / long
+const updateCoordinates = (e) => {
   $('#info-long').html(getCoordinate(e, 'lng'));
   $('#info-lat').html(getCoordinate(e, 'lat'));
-});
+}
+
+console.log(map.loaded());
+
+map.on('mousemove', e => updateCoordinates(e));
 
 $(document).mousemove(function (e) {
   // Move torchlight
