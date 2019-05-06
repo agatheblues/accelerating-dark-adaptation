@@ -1,14 +1,14 @@
 import { mapStyle } from './mapStyle.js'
 import { getCoordinate } from './utils.js'
 
-mapboxgl.accessToken = 'pk.eyJ1IjoiYWdhdGhlYmx1ZXMiLCJhIjoiY2p2NW5mdGhjMHIyZTN5cG1wdTU5a2ppZiJ9.mGUzsVIk2x1XDXy3Zgp9eA';
+mapboxgl.accessToken = 'pk.eyJ1IjoibWFub25mZXZhbCIsImEiOiJjanZjdXFzeGExbTFkM3lwODV3MWRqZ2VwIn0.-JNe-7KSzOG_2Pr0g0MgEw';
 
 var map = new mapboxgl.Map({
   container: 'map',
-  minZoom: 11,
-  maxZoom: 13,
+  minZoom: 10,
+  maxZoom: 22,
   center: [4.8939090868191215, 52.36163000690422],
-  zoom: 12,
+  zoom: 10,
   bearing: 0,
   style: mapStyle
 }

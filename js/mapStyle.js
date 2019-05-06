@@ -1,136 +1,70 @@
 export const mapStyle = {
   "version": 8,
-  "name": "Street Lighting in Amsterdam &Utrecht-copy",
+  "name": "Dark - Dev",
   "metadata": {
-    "mapbox:autocomposite": false,
     "mapbox:type": "default",
-    "mapbox:origin": "dark-v9",
+    "mapbox:origin": "dark-v10",
+    "mapbox:autocomposite": true,
     "mapbox:groups": {
-      "1444934828655.3389": { "name": "Aeroways", "collapsed": true },
-      "1444933322393.2852": {
-        "name": "POI labels  (scalerank 1)",
-        "collapsed": true
-      },
-      "1444855786460.0557": { "name": "Roads", "collapsed": true },
-      "1444856071629.7817": { "name": "Place labels", "collapsed": true },
+      "1444855786460.0557": { "name": "Roads", "collapsed": false },
       "1444934295202.7542": {
         "name": "Admin boundaries",
         "collapsed": true
       },
-      "1444856151690.9143": { "name": "State labels", "collapsed": true },
-      "1444933721429.3076": { "name": "Road labels", "collapsed": true },
-      "1444933358918.2366": {
-        "name": "POI labels (scalerank 2)",
-        "collapsed": true
-      },
-      "1444933808272.805": { "name": "Water labels", "collapsed": true },
-      "1444933372896.5967": {
-        "name": "POI labels (scalerank 3)",
-        "collapsed": true
-      },
       "1444855799204.86": { "name": "Bridges", "collapsed": true },
-      "1444856087950.3635": { "name": "Marine labels", "collapsed": true },
-      "1456969573402.7817": { "name": "Hillshading", "collapsed": true },
-      "1444856869758.2375": { "name": "Wetlands", "collapsed": true },
-      "1444862510685.128": { "name": "City labels", "collapsed": true },
-      "1444855769305.6016": { "name": "Tunnels", "collapsed": true },
-      "1456970288113.8113": { "name": "Landcover", "collapsed": false },
-      "1444856144497.7825": { "name": "Country labels", "collapsed": true }
+      "1444855769305.6016": { "name": "Tunnels", "collapsed": true }
     },
     "mapbox:sdk-support": {
-      "js": "0.49.0",
-      "android": "6.5.0",
-      "ios": "4.4.0"
+      "js": "0.50.0",
+      "android": "6.7.0",
+      "ios": "4.6.0"
     },
     "mapbox:trackposition": false
   },
   "center": [4.8939090868191215, 52.36163000690422],
-  "zoom": 12.033467569041422,
+  "zoom": 10,
   "bearing": 0,
   "pitch": 0,
   "sources": {
     "composite": {
-      "url": "mapbox://agatheblues.1gomfdhv,mapbox.mapbox-streets-v7",
+      "url": "mapbox://manonfeval.4hkm5cev,manonfeval.cjux1c0t406g92wo9gaxed4yk-4kwe3,mapbox.mapbox-streets-v8",
       "type": "vector"
-    },
-    "mapbox://agatheblues.71znpuwr": {
-      "url": "mapbox://agatheblues.71znpuwr",
-      "type": "vector"
-    },
-    // "video1": {
-    //   "type": "video",
-    //   "urls": ["./data/test.MOV"],
-    //   "coordinates": [
-    //     [4.867143, 52.367445], // Top left corner
-    //     [4.896343, 52.367445], // Top right corner
-    //     [4.896343, 52.356565], // Bottom right corner
-    //     [4.867143, 52.356565], // Bottom left corner
-    //   ]
-    // },
-    // "video2": {
-    //   "type": "video",
-    //   "urls": ["./data/test.MOV"],
-    //   "coordinates": [
-    //     [4.837143, 52.367445], // Top left corner
-    //     [4.866343, 52.367445], // Top right corner
-    //     [4.866343, 52.356565], // Bottom right corner
-    //     [4.837143, 52.356565], // Bottom left corner
-    //   ]
-    // }
+    }
   },
-  "sprite": "mapbox://sprites/agatheblues/cjv5o0u814e5k1fmfos0nqiez/8419b3clsjyq6xdbsdmiowfig",
-  "glyphs": "mapbox://fonts/agatheblues/{fontstack}/{range}.pbf",
+  "sprite": "mapbox://sprites/manonfeval/cjvcuv3ro4ljp1fpnqu44sb24/cj530pqtvmepv7xox0ujq2mef",
+  "glyphs": "mapbox://fonts/manonfeval/{fontstack}/{range}.pbf",
   "layers": [
     {
-      "id": "background",
+      "id": "land",
       "type": "background",
       "layout": {},
-      "paint": { "background-color": "hsl(30, 2%, 20%)" }
+      "paint": { "background-color": "hsl(241, 0%, 0%)" }
     },
     {
-      "id": "national_park",
+      "id": "landuse",
       "type": "fill",
       "source": "composite",
-      "source-layer": "landuse_overlay",
-      "filter": ["==", "class", "national_park"],
-      "layout": {},
-      "paint": { "fill-color": "#112811" }
-    },
-    {
-      "id": "waterway-river-canal",
-      "type": "line",
-      "source": "composite",
-      "source-layer": "waterway",
-      "minzoom": 8,
+      "source-layer": "landuse",
+      "minzoom": 5,
       "filter": [
-        "any",
-        ["==", "class", "canal"],
-        ["==", "class", "river"]
+        "match",
+        ["get", "class"],
+        ["park", "airport", "glacier", "pitch", "sand"],
+        true,
+        false
       ],
-      "layout": {
-        "line-cap": { "base": 1, "stops": [[0, "butt"], [11, "round"]] },
-        "line-join": "round"
-      },
-      "paint": {
-        "line-color": "hsl(185, 2%, 10%)",
-        "line-width": { "base": 1.3, "stops": [[8.5, 0.1], [20, 8]] },
-        "line-opacity": { "base": 1, "stops": [[8, 0], [8.5, 1]] }
-      }
-    },
-    {
-      "id": "water shadow",
-      "type": "fill",
-      "source": "composite",
-      "source-layer": "water",
       "layout": {},
       "paint": {
-        "fill-color": "#140f48",
-        "fill-translate": {
-          "base": 1.2,
-          "stops": [[7, [0, 0]], [16, [-1, -1]]]
-        },
-        "fill-translate-anchor": "viewport",
-        "fill-opacity": 1
+        "fill-opacity": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          5,
+          0,
+          6,
+          ["match", ["get", "class"], "glacier", 0.5, 1]
+        ],
+        "fill-color": "hsl(132, 0%, 0%)"
       }
     },
     {
@@ -139,88 +73,172 @@ export const mapStyle = {
       "source": "composite",
       "source-layer": "water",
       "layout": {},
-      "paint": { "fill-color": "#140f48" }
+      "paint": { "fill-color": "hsl(236, 0%, 0%)" }
     },
     {
-      "id": "barrier_line-land-polygon",
-      "type": "fill",
+      "id": "road-secondary-tertiary",
+      "type": "line",
+      "metadata": { "mapbox:group": "1444855786460.0557" },
       "source": "composite",
-      "source-layer": "barrier_line",
+      "source-layer": "road",
       "filter": [
         "all",
-        ["==", "$type", "Polygon"],
-        ["==", "class", "land"]
+        [
+          "match",
+          ["get", "class"],
+          ["secondary", "tertiary"],
+          true,
+          false
+        ],
+        ["match", ["get", "structure"], ["none", "ford"], true, false],
+        ["==", ["geometry-type"], "LineString"]
       ],
-      "layout": {},
+      "layout": { "line-cap": "round", "line-join": "round" },
       "paint": {
-        "fill-color": "hsl(55, 1%, 20%)",
-        "fill-outline-color": "hsl(55, 1%, 20%)"
+        "line-width": 0.1,
+        "line-color": "hsl(55, 93%, 69%)",
+        "line-opacity": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          0,
+          1,
+          11.99,
+          1,
+          12.1,
+          0
+        ]
       }
     },
     {
-      "id": "lichtmasten-utrecht-57u837",
+      "id": "road-primary",
+      "type": "line",
+      "metadata": { "mapbox:group": "1444855786460.0557" },
+      "source": "composite",
+      "source-layer": "road",
+      "filter": [
+        "all",
+        ["==", ["get", "class"], "primary"],
+        ["match", ["get", "structure"], ["none", "ford"], true, false],
+        ["==", ["geometry-type"], "LineString"]
+      ],
+      "layout": { "line-cap": "round", "line-join": "round" },
+      "paint": {
+        "line-width": 0.5,
+        "line-color": "hsl(54, 73%, 85%)",
+        "line-opacity": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          0,
+          1,
+          11.65,
+          1,
+          12.1,
+          0,
+          22,
+          1
+        ]
+      }
+    },
+    {
+      "id": "road-motorway-trunk",
+      "type": "line",
+      "metadata": { "mapbox:group": "1444855786460.0557" },
+      "source": "composite",
+      "source-layer": "road",
+      "filter": [
+        "all",
+        ["match", ["get", "class"], ["motorway", "trunk"], true, false],
+        ["match", ["get", "structure"], ["none", "ford"], true, false],
+        ["==", ["geometry-type"], "LineString"]
+      ],
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round",
+        "visibility": "none"
+      },
+      "paint": { "line-width": 0.5, "line-color": "hsl(56, 82%, 81%)" }
+    },
+    {
+      "id": "road-rail",
+      "type": "line",
+      "metadata": { "mapbox:group": "1444855786460.0557" },
+      "source": "composite",
+      "source-layer": "road",
+      "minzoom": 13,
+      "filter": [
+        "all",
+        [
+          "match",
+          ["get", "class"],
+          ["major_rail", "minor_rail"],
+          true,
+          false
+        ],
+        ["match", ["get", "structure"], ["none", "ford"], true, false]
+      ],
+      "layout": { "line-join": "round", "visibility": "none" },
+      "paint": {
+        "line-width": [
+          "interpolate",
+          ["exponential", 1.5],
+          ["zoom"],
+          14,
+          0.5,
+          20,
+          1
+        ],
+        "line-color": "hsl(0, 0%, 17%)"
+      }
+    },
+    {
+      "id": "Measurment Points",
+      "type": "symbol",
+      "source": "composite",
+      "source-layer": "data_v2",
+      "layout": {
+        "icon-image": ["step", ["zoom"], "rocket-15", 22, "rocket-15"],
+        "icon-size": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          0,
+          0,
+          10,
+          1,
+          22,
+          3
+        ]
+      },
+      "paint": {}
+    },
+    {
+      "id": "amsterdam-publiclight-057i4x",
       "type": "circle",
       "source": "composite",
-      "source-layer": "lichtmasten-utrecht-57u837",
+      "source-layer": "amsterdam-publicLight-057i4x",
       "layout": {},
       "paint": {
+        "circle-color": "hsl(57, 88%, 95%)",
         "circle-radius": [
           "interpolate",
           ["linear"],
           ["zoom"],
           0,
-          1,
-          10,
-          1,
+          0.5,
+          12.66,
+          0.7,
           22,
-          3
-        ],
-        "circle-stroke-width": 0,
-        "circle-opacity": 0.44,
-        "circle-color": "hsl(56, 91%, 59%)"
+          7
+        ]
       }
-    },
-    {
-      "id": "ovl-amsterdam-wgs84-cs8m3r",
-      "type": "circle",
-      "source": "mapbox://agatheblues.71znpuwr",
-      "source-layer": "ovl-amsterdam-wgs84-cs8m3r",
-      "layout": {},
-      "paint": {
-        "circle-radius": [
-          "interpolate",
-          ["linear"],
-          ["zoom"],
-          0,
-          1,
-          10,
-          1,
-          22,
-          3
-        ],
-        "circle-stroke-width": 0,
-        "circle-opacity": 0.44,
-        "circle-color": "hsl(56, 91%, 59%)"
-      }
-    },
-    // {
-    //   "id": "video1",
-    //   "type": "raster",
-    //   "source": "video1"
-    // },
-    // {
-    //   "id": "video2",
-    //   "type": "raster",
-    //   "source": "video2",
-    //   "paint": {
-    //     'raster-opacity': 0.8
-    //   }
-    // }
+    }
   ],
-  "created": "2019-05-01T20:20:51.093Z",
-  "id": "cjv5o0u814e5k1fmfos0nqiez",
-  "modified": "2019-05-01T20:20:51.093Z",
-  "owner": "agatheblues",
+  "created": "2019-05-06T21:06:44.077Z",
+  "id": "cjvcuv3ro4ljp1fpnqu44sb24",
+  "modified": "2019-05-06T21:11:17.288Z",
+  "owner": "manonfeval",
   "visibility": "private",
   "draft": false
 }
