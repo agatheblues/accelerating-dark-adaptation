@@ -9,6 +9,7 @@ function resolve(dir) {
 module.exports = {
   entry: ['./js/script.js'],
   output: {
+    path: path.resolve(__dirname, './dist'),
     filename: 'bundle.js'
   },
   resolveLoader: {
@@ -16,15 +17,6 @@ module.exports = {
   },
   module: {
     rules: [
-      {
-        test: /\.js$/,
-        enforce: 'pre',
-        exclude: [/node_modules/],
-        loader: 'eslint-loader',
-        options: {
-          // eslint options (if necessary)
-        }
-      },
       {
         test: /\.js$/,
         use: {
@@ -45,6 +37,15 @@ module.exports = {
           }
         }
       },
+      // {
+      //   test: /\.js$/,
+      //   enforce: 'pre',
+      //   exclude: [/node_modules/],
+      //   loader: 'eslint-loader',
+      //   options: {
+      //     // eslint options (if necessary)
+      //   }
+      // },
     ],
   },
   plugins: [],

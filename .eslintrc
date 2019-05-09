@@ -5,10 +5,7 @@
   },
   "extends": "standard",
   "parserOptions": {
-    "ecmaFeatures": {
-      "experimentalObjectRestSpread": true,
-      "jsx": true
-    },
+    "ecmaVersion": 6,
     "sourceType": "module"
   },
   "plugins": [],
