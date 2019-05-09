@@ -23,8 +23,8 @@ const updateCoordinates = (e) => {
 
 const setDefaultValue = (value) => (value.length > 0) ? value : '/';
 
-const renderPopUpContent = (lux, nqm) => {
-  return `<div class='popup-left'><p>Lux</p><p>Night quality</p></div><div class='popup-right'><p>${setDefaultValue(lux)}</p><p>${setDefaultValue(nqm)}</p></div>`
+const renderPopUpContent = (lux, nqm, conditions) => {
+  return `<div class='popup-left'><p>Lux</p><p>Night quality</p><p>Conditions</p></div><div class='popup-right'><p>${setDefaultValue(lux)}</p><p>${setDefaultValue(nqm)}</p><p>${setDefaultValue(conditions)}</p></div>`
 }
 
 let popup = new mapboxgl.Popup({
@@ -42,14 +42,14 @@ map.on('mouseenter', 'markers', function (e) {
 
   // Set pop up location and content
   let coordinates = e.features[0].geometry.coordinates.slice();
-  let { lux, nqm } = e.features[0].properties;
+  let { lux, nqm, conditions } = e.features[0].properties;
 
   while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
     coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
   }
 
   popup.setLngLat(coordinates)
-    .setHTML(renderPopUpContent(lux, nqm))
+    .setHTML(renderPopUpContent(lux, nqm, conditions))
     .addTo(map);
 });
 
