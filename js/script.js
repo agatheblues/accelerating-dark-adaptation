@@ -3,6 +3,7 @@ import { getCoordinate } from './utils.js'
 
 mapboxgl.accessToken = 'pk.eyJ1IjoibWFub25mZXZhbCIsImEiOiJjanZjdXFzeGExbTFkM3lwODV3MWRqZ2VwIn0.-JNe-7KSzOG_2Pr0g0MgEw';
 
+/* Style */
 var map = new mapboxgl.Map({
   container: 'map',
   minZoom: 13,
@@ -20,32 +21,41 @@ const updateCoordinates = (e) => {
   $('#info-lat').html(getCoordinate(e, 'lat'));
 }
 
+const setDefaultValue = (value) => (value.length > 0) ? value : '/';
+
+const renderPopUpContent = (lux, nqm) => {
+  return `<div class='popup-left'><p>Lux</p><p>Night quality</p></div><div class='popup-right'><p>${setDefaultValue(lux)}</p><p>${setDefaultValue(nqm)}</p></div>`
+}
+
+let popup = new mapboxgl.Popup({
+  closeButton: false,
+  closeOnClick: false
+});
+
+
+/* Events */
 map.on('mousemove', e => updateCoordinates(e));
 
 map.on('mouseenter', 'markers', function (e) {
   // Change the cursor style as a UI indicator.
   map.getCanvas().style.cursor = 'pointer';
 
-  // var coordinates = e.features[0].geometry.coordinates.slice();
-  // var description = e.features[0].properties.description;
+  // Set pop up location and content
+  let coordinates = e.features[0].geometry.coordinates.slice();
+  let { lux, nqm } = e.features[0].properties;
 
-  // // Ensure that if the map is zoomed out such that multiple
-  // // copies of the feature are visible, the popup appears
-  // // over the copy being pointed to.
-  // while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-  //   coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-  // }
+  while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+    coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+  }
 
-  // // Populate the popup and set its coordinates
-  // // based on the feature found.
-  // popup.setLngLat(coordinates)
-  //   .setHTML(description)
-  //   .addTo(map);
+  popup.setLngLat(coordinates)
+    .setHTML(renderPopUpContent(lux, nqm))
+    .addTo(map);
 });
 
 map.on('mouseleave', 'markers', function () {
   map.getCanvas().style.cursor = 'crosshair';
-  // popup.remove();
+  popup.remove();
 });
 
 $(document).mousemove(function (e) {

@@ -27,7 +27,7 @@ export const mapStyle = {
   "pitch": 0,
   "sources": {
     "composite": {
-      "url": "mapbox://manonfeval.4hkm5cev,manonfeval.cjux1c0t406g92wo9gaxed4yk-4kwe3,mapbox.mapbox-streets-v8",
+      "url": "mapbox://manonfeval.cjvggfi2820tn2xo78ohk9pu3-9y2lv,mapbox.mapbox-streets-v8,manonfeval.4hkm5cev",
       "type": "vector"
     }
   },
@@ -197,7 +197,7 @@ export const mapStyle = {
       "interactive": true,
       "type": "symbol",
       "source": "composite",
-      "source-layer": "data_v2",
+      "source-layer": "data_v3",
       "layout": {
         "icon-image": ["step", ["zoom"], "rocket-15", 22, "rocket-15"],
         "icon-size": [
