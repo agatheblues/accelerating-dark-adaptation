@@ -22,7 +22,7 @@ export const mapStyle = {
     "mapbox:trackposition": false
   },
   "center": [4.8939090868191215, 52.36163000690422],
-  "zoom": 10,
+  "zoom": 12,
   "bearing": 0,
   "pitch": 0,
   "sources": {
@@ -193,7 +193,8 @@ export const mapStyle = {
       }
     },
     {
-      "id": "Measurment Points",
+      "id": "markers",
+      "interactive": true,
       "type": "symbol",
       "source": "composite",
       "source-layer": "data_v2",
