@@ -34,6 +34,25 @@ let popup = new mapboxgl.Popup({
 
 
 /* Events */
+
+map.on('load', function () {
+  console.log('coucou')
+  map.addLayer({
+    "id": "video2",
+    "type": "raster",
+    "source": {
+      "type": "video",
+      "urls": ["./data/test.MOV"],
+      "coordinates": [
+        [4.779565, 52.360793], // Top left corner
+        [4.781485, 52.360793], // Top right corner
+        [4.781485, 52.360133], // Bottom right corner
+        [4.779565, 52.360133], // Bottom left corner
+      ]
+    }
+  });
+});
+
 map.on('mousemove', e => updateCoordinates(e));
 
 map.on('mouseenter', 'markers', function (e) {

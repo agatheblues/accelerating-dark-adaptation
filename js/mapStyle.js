@@ -30,16 +30,16 @@ export const mapStyle = {
       "url": "mapbox://manonfeval.cjvggfi2820tn2xo78ohk9pu3-9y2lv,mapbox.mapbox-streets-v8,manonfeval.4hkm5cev",
       "type": "vector"
     },
-    "video1": {
-      "type": "video",
-      "urls": ["./data/test.MOV"],
-      "coordinates": [
-        [4.786708, 52.380492], // Top left corner
-        [4.788628, 52.380492], // Top right corner
-        [4.788628, 52.379832], // Bottom right corner
-        [4.786708, 52.379832], // Bottom left corner
-      ]
-    }
+    // "video1": {
+    //   "type": "video",
+    //   "urls": ["./data/video1.mp4"],
+    //   "coordinates": [
+    //     [4.786708, 52.380492], // Top left corner
+    //     [4.788628, 52.380492], // Top right corner
+    //     [4.788628, 52.379832], // Bottom right corner
+    //     [4.786708, 52.379832], // Bottom left corner
+    //   ]
+    // }
   },
   "sprite": "mapbox://sprites/manonfeval/cjvcuv3ro4ljp1fpnqu44sb24/cj530pqtvmepv7xox0ujq2mef",
   "glyphs": "mapbox://fonts/manonfeval/{fontstack}/{range}.pbf",
@@ -245,14 +245,14 @@ export const mapStyle = {
         ]
       }
     },
-    {
-      "id": "video1",
-      "type": "raster",
-      "source": "video1",
-      "paint": {
-        'raster-opacity': 1
-      }
-    }
+    // {
+    //   "id": "video1",
+    //   "type": "raster",
+    //   "source": "video1",
+    //   "paint": {
+    //     'raster-opacity': 1
+    //   }
+    // }
   ],
   "created": "2019-05-06T21:06:44.077Z",
   "id": "cjvcuv3ro4ljp1fpnqu44sb24",
