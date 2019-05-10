@@ -1,67 +1,190 @@
-import { mapStyle } from './mapStyle.js'
-import { getCoordinate } from './utils.js'
 
-mapboxgl.accessToken = 'pk.eyJ1IjoibWFub25mZXZhbCIsImEiOiJjanZjdXFzeGExbTFkM3lwODV3MWRqZ2VwIn0.-JNe-7KSzOG_2Pr0g0MgEw';
+// import { DayNight } from './dome.js';
 
-/* Style */
-var map = new mapboxgl.Map({
-  container: 'map',
-  minZoom: 13,
-  maxZoom: 22,
-  center: [4.8939090868191215, 52.36163000690422],
-  zoom: 10,
-  bearing: 0,
-  style: mapStyle
-});
+// var renderer = new THREE.WebGLRenderer();
+// renderer.setSize(window.innerWidth, window.innerHeight);
+// document.body.appendChild(renderer.domElement);
+// var onRenderFcts = [];
+// var scene = new THREE.Scene();
+// var camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.5, 3000);
+// camera.position.z = 3;
+// //////////////////////////////////////////////////////////////////////////////////
+// //		comment								//
+// //////////////////////////////////////////////////////////////////////////////////
+// var sunAngle = -1 / 6 * Math.PI * 2;
+// var sunAngle = -3 / 6 * Math.PI * 2;
+// onRenderFcts.push(function (delta, now) {
+//   var dayDuration = 10	// nb seconds for a full day cycle
+//   sunAngle += delta / dayDuration * Math.PI * 2
+// })
 
-$('.mapboxgl-canvas').css('cursor', 'crosshair');
+// //////////////////////////////////////////////////////////////////////////////////
+// //		starfield							//
+// //////////////////////////////////////////////////////////////////////////////////
 
-const updateCoordinates = (e) => {
-  $('#info-long').html(getCoordinate(e, 'lng'));
-  $('#info-lat').html(getCoordinate(e, 'lat'));
-}
+// var starField = new DayNight.StarField()
+// scene.add(starField.object3d)
+// onRenderFcts.push(function (delta, now) {
+//   starField.update(sunAngle)
+// })
 
-const setDefaultValue = (value) => (value.length > 0) ? value : '/';
+// //////////////////////////////////////////////////////////////////////////////////
+// //		skydom								//
+// //////////////////////////////////////////////////////////////////////////////////
 
-const renderPopUpContent = (lux, nqm, conditions) => {
-  return `<div class='popup-left'><p>Lux</p><p>Night quality</p><p>Conditions</p></div><div class='popup-right'><p>${setDefaultValue(lux)}</p><p>${setDefaultValue(nqm)}</p><p>${setDefaultValue(conditions)}</p></div>`
-}
+// var skydom = new DayNight.Skydom()
+// scene.add(skydom.object3d)
+// onRenderFcts.push(function (delta, now) {
+//   skydom.update(sunAngle)
+// })
 
-let popup = new mapboxgl.Popup({
-  closeButton: false,
-  closeOnClick: false
-});
+// //////////////////////////////////////////////////////////////////////////////////
+// //		comment								//
+// //////////////////////////////////////////////////////////////////////////////////
+
+// var geometry = new THREE.TorusKnotGeometry(0.5 - 0.15, 0.15)
+// var material = new THREE.MeshPhongMaterial({
+//   shading: THREE.SmoothShading,
+// });
+// var mesh = new THREE.Mesh(geometry, material)
+// scene.add(mesh)
+// onRenderFcts.push(function (delta) {
+//   mesh.rotateY(delta * Math.PI * 2 * 0.2)
+//   mesh.rotateX(delta * Math.PI * 2 * 0.1)
+// })
+// //////////////////////////////////////////////////////////////////////////////////
+// //		Camera Controls							//
+// //////////////////////////////////////////////////////////////////////////////////
+// var mouse = { x: 0, y: 0 }
+// document.addEventListener('mousemove', function (event) {
+//   mouse.x = (event.clientX / window.innerWidth) - 0.5
+//   mouse.y = (event.clientY / window.innerHeight) - 0.5
+// }, false)
+// onRenderFcts.push(function (delta, now) {
+//   camera.position.x += (mouse.x * 5 - camera.position.x) * (delta * 3)
+//   camera.position.y += (mouse.y * 5 - camera.position.y) * (delta * 3)
+//   camera.lookAt(scene.position)
+// })
+// //////////////////////////////////////////////////////////////////////////////////
+// //		render the scene						//
+// //////////////////////////////////////////////////////////////////////////////////
+// onRenderFcts.push(function () {
+//   renderer.render(scene, camera);
+// })
+
+// //////////////////////////////////////////////////////////////////////////////////
+// //		loop runner							//
+// //////////////////////////////////////////////////////////////////////////////////
+// var lastTimeMsec = null
+// requestAnimationFrame(function animate(nowMsec) {
+//   // keep looping
+//   requestAnimationFrame(animate);
+//   // measure time
+//   lastTimeMsec = lastTimeMsec || nowMsec - 1000 / 60
+//   var deltaMsec = Math.min(200, nowMsec - lastTimeMsec)
+//   lastTimeMsec = nowMsec
+//   // call each update function
+//   onRenderFcts.forEach(function (onRenderFct) {
+//     onRenderFct(deltaMsec / 1000, nowMsec / 1000)
+//   })
+// })
 
 
-/* Events */
-map.on('mousemove', e => updateCoordinates(e));
+var camera, scene, renderer, controls;
 
-map.on('mouseenter', 'markers', function (e) {
-  // Change the cursor style as a UI indicator.
-  map.getCanvas().style.cursor = 'pointer';
+var initLights = function () {
 
-  // Set pop up location and content
-  let coordinates = e.features[0].geometry.coordinates.slice();
-  let { lux, nqm, conditions } = e.features[0].properties;
+  var light = new THREE.DirectionalLight(0xffffff);
+  light.position.set(0, 0, 0);
+  scene.add(light);
+  var light = new THREE.AmbientLight(0xffffff);
+  scene.add(light);
+};
 
-  while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-    coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-  }
 
-  popup.setLngLat(coordinates)
-    .setHTML(renderPopUpContent(lux, nqm, conditions))
-    .addTo(map);
-});
+var init = function () {
+  renderer = new THREE.WebGLRenderer({ antialias: false });
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 1, 1000);
+  camera.position.x = 0;
+  camera.position.y = 0;
+  camera.position.z = 0;
 
-map.on('mouseleave', 'markers', function () {
-  map.getCanvas().style.cursor = 'crosshair';
-  popup.remove();
-});
+  scene = new THREE.Scene();
+  scene.background = new THREE.Color(0xffffff);
+  controls = new THREE.TrackballControls(camera);
+  controls.target.set(-50, 10, 0);
+  controls.rotateSpeed = 2;
 
-$(document).mousemove(function (e) {
-  // Move torchlight
-  // windowWidth = $(window).width();
-  // windowHeight = $(window).height();
+  document.body.appendChild(renderer.domElement);
 
-  $('.radial-gradient').css('background', 'radial-gradient(200px 200px at ' + e.pageX + 'px ' + e.pageY + 'px,  rgba(255, 255, 255, 0) 0%, black 50.5%)');
-});
+  var loader = new THREE.TextureLoader(),
+    texture = loader.load("../data/galaxy_starfield.png");
+  var geometry = new THREE.SphereGeometry(300, 50, 50, 0, Math.PI * 2, 0, Math.PI * 2);
+  var material = new THREE.MeshPhongMaterial({
+    color: 0xffffff,
+    map: texture
+  });
+  var sphere = new THREE.Mesh(geometry, material);
+  sphere.position.set(0, 0, 0);
+  sphere.material.side = THREE.BackSide;
+  scene.add(sphere);
+
+  initLights();
+};
+
+var render = function () {
+  renderer.render(scene, camera);
+};
+
+var animate = function () {
+  requestAnimationFrame(animate);
+  controls.update();
+  render();
+};
+
+
+init();
+animate()
+
+// // SCENE SETUP
+// var scene = new THREE.Scene();
+// scene.background = new THREE.Color(0xffffff);
+// var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+
+
+
+// var controls = new TrackballControls(camera);
+// controls.target.set(0, 0, 0);
+// controls.rotateSpeed = 2;
+
+// var renderer = new THREE.WebGLRenderer();
+// renderer.setSize(window.innerWidth, window.innerHeight);
+// document.body.appendChild(renderer.domElement);
+
+
+// var geometry = new THREE.SphereGeometry(3, 50, 50, 0, Math.PI * 2, 0, Math.PI * 2);
+// var material = new THREE.MeshNormalMaterial();
+// var sphere = new THREE.Mesh(geometry, material);
+// sphere.position.set(0, 0, 0);
+// scene.add(sphere);
+
+// var render = function () {
+//   requestAnimationFrame(render);
+//   controls.update();
+//   renderer.render(scene, camera);
+// };
+
+// render();
+// var skyGeo = new THREE.SphereGeometry(100000, 25, 25);
+
+// var loader = new THREE.TextureLoader(),
+//   texture = loader.load("../data/galaxy_starfield.jpg");
+
+// var material = new THREE.MeshPhongMaterial({
+//   map: texture,
+// });
+// var sky = new THREE.Mesh(skyGeo, material);
+// sky.material.side = THREE.BackSide;
+// console.log(sky)
+// scene.add(sky);
