@@ -1,4 +1,5 @@
 import { mapStyle } from './mapStyle.js'
+import { videoCoord } from './videoCoord.js'
 import { getCoordinate } from './utils.js'
 
 mapboxgl.accessToken = 'pk.eyJ1IjoibWFub25mZXZhbCIsImEiOiJjanZjdXFzeGExbTFkM3lwODV3MWRqZ2VwIn0.-JNe-7KSzOG_2Pr0g0MgEw';
@@ -34,22 +35,56 @@ let popup = new mapboxgl.Popup({
 
 
 /* Events */
+// @TODO :
+var frameCount = 58;
+var currentImage = 8;
+
+function getPath() {
+  return "../data/video1/(" + currentImage + ").gif";
+}
 
 map.on('load', function () {
-  console.log('coucou')
-  map.addLayer({
-    "id": "video2",
-    "type": "raster",
-    "source": {
-      "type": "video",
-      "urls": ["./data/test.MOV"],
+  videoCoord.forEach(({ name = "", lat_bottom = 0, lat_top = 0, lon_right = 0, lon_left = 0 }, index) => {
+
+    map.addSource(name + index, {
+      type: "image",
+      url: getPath(),
       "coordinates": [
-        [4.779565, 52.360793], // Top left corner
-        [4.781485, 52.360793], // Top right corner
-        [4.781485, 52.360133], // Bottom right corner
-        [4.779565, 52.360133], // Bottom left corner
+        [lon_left, lat_top], // Top left corner
+        [lon_right, lat_top], // Top right corner
+        [lon_right, lat_bottom], // Bottom right corner
+        [lon_left, lat_bottom], // Bottom left corner
       ]
-    }
+    });
+
+    map.addLayer({
+      id: name + index,
+      "type": "raster",
+      "source": name + index,
+      "paint": {
+        "raster-fade-duration": 0
+      }
+    });
+
+    setInterval(function () {
+      currentImage = (currentImage + 1 > frameCount) ? 8 : currentImage + 1;
+      map.getSource(name + index).updateImage({ url: getPath() });
+    }, 60);
+
+    // map.addLayer({
+    //   "id": name + index,
+    //   "type": "raster",
+    //   "source": {
+    //     "type": "video",
+    //     "urls": ['./data/drone.mp4'],
+    //     "coordinates": [
+    //       [lon_left, lat_top], // Top left corner
+    //       [lon_right, lat_top], // Top right corner
+    //       [lon_right, lat_bottom], // Bottom right corner
+    //       [lon_left, lat_bottom], // Bottom left corner
+    //     ]
+    //   }
+    // });
   });
 });
 
