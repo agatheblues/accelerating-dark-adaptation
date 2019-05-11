@@ -216,11 +216,9 @@ export const mapStyle = {
           ["zoom"],
           0,
           0,
-          10,
-          1,
           22,
-          3
-        ]
+          1
+        ],
       },
       "paint": {}
     },

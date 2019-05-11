@@ -28,27 +28,42 @@ const renderPopUpContent = (lux, nqm, conditions) => {
   return `<div class='popup-left'><p>Lux</p><p>Night quality</p><p>Conditions</p></div><div class='popup-right'><p>${setDefaultValue(lux)}</p><p>${setDefaultValue(nqm)}</p><p>${setDefaultValue(conditions)}</p></div>`
 }
 
+const getPath = (name, currentImage) => {
+  return `../data/${name}/(${currentImage}).gif`;
+}
+
+const showVideo = () => {
+  runGifs = false;
+  $('#map').addClass('hidden');
+  $('#video-player').removeClass('hidden');
+}
+
+const hideVideo = () => {
+  runGifs = true;
+  $('#map').removeClass('hidden');
+  $('#video-player').addClass('hidden');
+}
+
+const moveTorch = (e) => $('.radial-gradient').css('background', 'radial-gradient(200px 200px at ' + e.pageX + 'px ' + e.pageY + 'px,  rgba(255, 255, 255, 0) 0%, black 50.5%)');
+
 let popup = new mapboxgl.Popup({
   closeButton: false,
   closeOnClick: false
 });
 
 
-/* Events */
-// @TODO :
+let currentImage = 8;
 var frameCount = 58;
-var currentImage = 8;
+let runGifs = false;
 
-function getPath() {
-  return "../data/video1/(" + currentImage + ").gif";
-}
+/* Events */
 
 map.on('load', function () {
   videoCoord.forEach(({ name = "", lat_bottom = 0, lat_top = 0, lon_right = 0, lon_left = 0 }, index) => {
 
     map.addSource(name + index, {
       type: "image",
-      url: getPath(),
+      url: getPath(name, currentImage),
       "coordinates": [
         [lon_left, lat_top], // Top left corner
         [lon_right, lat_top], // Top right corner
@@ -65,27 +80,19 @@ map.on('load', function () {
         "raster-fade-duration": 0
       }
     });
-
-    setInterval(function () {
-      currentImage = (currentImage + 1 > frameCount) ? 8 : currentImage + 1;
-      map.getSource(name + index).updateImage({ url: getPath() });
-    }, 60);
-
-    // map.addLayer({
-    //   "id": name + index,
-    //   "type": "raster",
-    //   "source": {
-    //     "type": "video",
-    //     "urls": ['./data/drone.mp4'],
-    //     "coordinates": [
-    //       [lon_left, lat_top], // Top left corner
-    //       [lon_right, lat_top], // Top right corner
-    //       [lon_right, lat_bottom], // Bottom right corner
-    //       [lon_left, lat_bottom], // Bottom left corner
-    //     ]
-    //   }
-    // });
   });
+
+  runGifs = true;
+
+  setInterval(function () {
+    console.log(runGifs);
+    if (!runGifs) return;
+    currentImage = (currentImage + 1 > frameCount) ? 8 : currentImage + 1;
+    videoCoord.forEach(({ name }, index) => {
+      map.getSource(name + index).updateImage({ url: getPath(name, currentImage) });
+    });
+  }, 250);
+
 });
 
 map.on('mousemove', e => updateCoordinates(e));
@@ -107,15 +114,20 @@ map.on('mouseenter', 'markers', function (e) {
     .addTo(map);
 });
 
+map.on('click', 'markers', function (e) {
+  // let { video } = e.features[0].properties;
+  let video = "video1";
+  showVideo();
+});
+
 map.on('mouseleave', 'markers', function () {
   map.getCanvas().style.cursor = 'crosshair';
   popup.remove();
 });
 
-$(document).mousemove(function (e) {
-  // Move torchlight
-  // windowWidth = $(window).width();
-  // windowHeight = $(window).height();
-
-  $('.radial-gradient').css('background', 'radial-gradient(200px 200px at ' + e.pageX + 'px ' + e.pageY + 'px,  rgba(255, 255, 255, 0) 0%, black 50.5%)');
+$('#close-video').on('click', (e) => {
+  hideVideo();
 });
+
+$(document).mousemove((e) => moveTorch(e));
+
