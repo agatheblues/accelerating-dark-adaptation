@@ -7,7 +7,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoibWFub25mZXZhbCIsImEiOiJjanZjdXFzeGExbTFkM3lwO
 let popups = [];
 const map = new mapboxgl.Map({
   container: 'map',
-  minZoom: 16,
+  minZoom: 13,
   maxZoom: 19,
   center: [4.780525,
     52.360463],
@@ -20,10 +20,11 @@ const map = new mapboxgl.Map({
 /* MAP */
 $('.mapboxgl-canvas').css('cursor', 'crosshair');
 
-const addVideoToMap = (name, lat_bottom, lat_top, lon_right, lon_left, index) => {
-  map.addSource(name + index, {
+const addVideoToMap = (properties) => {
+  let { name, url_short_video, lat_bottom, lat_top, lon_right, lon_left } = properties;
+  map.addSource(name, {
     "type": "video",
-    "urls": ["https://res.cloudinary.com/dsrzfxhmy/video/upload/v1557660500/north-onthedigue_1_tthihf.mp4"],
+    "urls": [url_short_video],
     "coordinates": [
       [lon_left, lat_top], // Top left corner
       [lon_right, lat_top], // Top right corner
@@ -33,9 +34,9 @@ const addVideoToMap = (name, lat_bottom, lat_top, lon_right, lon_left, index) =>
   });
 
   map.addLayer({
-    "id": name + index,
+    "id": name,
     "type": "raster",
-    "source": name + index,
+    "source": name,
     "paint": {}
   });
 }
@@ -89,10 +90,8 @@ map.on('load', function () {
   markers.features.forEach((feature) => {
     addMarkerToMap(feature);
     addMarkerPopupToMap(feature);
+    addVideoToMap(feature.properties);
   });
-
-  // VIDEO
-  videoCoord.forEach(({ name = "", lat_bottom = 0, lat_top = 0, lon_right = 0, lon_left = 0 }, index) => addVideoToMap(name, lat_bottom, lat_top, lon_right, lon_left, index));
 });
 
 map.on('zoom', function () {

@@ -12,10 +12,10 @@ export const markers = {
         "name": "video1",
         "url_short_video": "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         "url_long_video": "north-onthedigue.mp4",
-        "lat_top": "52.360463",
-        "lat_bottom": "52.360463",
-        "lon_left": "4.780525",
-        "lon_right": "4.780525"
+        "lat_top": 52.360793,
+        "lat_bottom": 52.360133,
+        "lon_left": 4.779565,
+        "lon_right": 4.781485
       },
       "geometry": {
         "type": "Point",
@@ -36,10 +36,10 @@ export const markers = {
         "name": "video2",
         "url_short_video": "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         "url_long_video": "north-onthedigue.mp4",
-        "lat_top": "52.380492",
-        "lat_bottom": "52.380492",
-        "lon_left": "4.786708",
-        "lon_right": "4.786708"
+        "lat_top": 52.380822,
+        "lat_bottom": 52.380162,
+        "lon_left": 4.785748,
+        "lon_right": 4.787668
       },
       "geometry": {
         "type": "Point",
@@ -60,10 +60,10 @@ export const markers = {
         "name": "video3",
         "url_short_video": "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         "url_long_video": "north-onthedigue.mp4",
-        "lat_top": "52.345329",
-        "lat_bottom": "52.345329",
-        "lon_left": "4.811521",
-        "lon_right": "4.811521"
+        "lat_top": 52.345659,
+        "lat_bottom": 52.344999,
+        "lon_left": 4.810561,
+        "lon_right": 4.812481
       },
       "geometry": {
         "type": "Point",
@@ -84,10 +84,10 @@ export const markers = {
         "name": "video4",
         "url_short_video": "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         "url_long_video": "north-onthedigue.mp4",
-        "lat_top": "52.318876",
-        "lat_bottom": "52.318876",
-        "lon_left": "4.830228",
-        "lon_right": "4.830228"
+        "lat_top": 52.319206,
+        "lat_bottom": 52.318546,
+        "lon_left": 4.829268,
+        "lon_right": 4.831188
       },
       "geometry": {
         "type": "Point",
@@ -108,10 +108,10 @@ export const markers = {
         "name": "video5",
         "url_short_video": "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         "url_long_video": "north-onthedigue.mp4",
-        "lat_top": "52.341077",
-        "lat_bottom": "52.341077",
-        "lon_left": "4.874418",
-        "lon_right": "4.874418"
+        "lat_top": 52.341407,
+        "lat_bottom": 52.340747,
+        "lon_left": 4.873458,
+        "lon_right": 4.875378
       },
       "geometry": {
         "type": "Point",
@@ -132,10 +132,10 @@ export const markers = {
         "name": "video6",
         "url_short_video": "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         "url_long_video": "north-onthedigue.mp4",
-        "lat_top": "52.340365",
-        "lat_bottom": "52.340365",
-        "lon_left": "4.917081",
-        "lon_right": "4.917081"
+        "lat_top": 52.340695,
+        "lat_bottom": 52.340035,
+        "lon_left": 4.916121,
+        "lon_right": 4.918041
       },
       "geometry": {
         "type": "Point",
@@ -156,10 +156,10 @@ export const markers = {
         "name": "video7",
         "url_short_video": "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         "url_long_video": "north-onthedigue.mp4",
-        "lat_top": "52.35629",
-        "lat_bottom": "52.35629",
-        "lon_left": "4.95554",
-        "lon_right": "4.95554"
+        "lat_top": 52.35662,
+        "lat_bottom": 52.35596,
+        "lon_left": 4.95458,
+        "lon_right": 4.9565
       },
       "geometry": {
         "type": "Point",
@@ -180,10 +180,10 @@ export const markers = {
         "name": "video8",
         "url_short_video": "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         "url_long_video": "north-onthedigue.mp4",
-        "lat_top": "52.359723",
-        "lat_bottom": "52.359723",
-        "lon_left": "4.9204",
-        "lon_right": "4.9204"
+        "lat_top": 52.360053,
+        "lat_bottom": 52.359393,
+        "lon_left": 4.91944,
+        "lon_right": 4.92136
       },
       "geometry": {
         "type": "Point",
@@ -204,10 +204,10 @@ export const markers = {
         "name": "video9",
         "url_short_video": "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         "url_long_video": "north-onthedigue.mp4",
-        "lat_top": "52.355976",
-        "lat_bottom": "52.355976",
-        "lon_left": "4.892886",
-        "lon_right": "4.892886"
+        "lat_top": 52.356306,
+        "lat_bottom": 52.355646,
+        "lon_left": 4.891926,
+        "lon_right": 4.893846
       },
       "geometry": {
         "type": "Point",
@@ -228,10 +228,10 @@ export const markers = {
         "name": "video10",
         "url_short_video": "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         "url_long_video": "north-onthedigue.mp4",
-        "lat_top": "52.343267",
-        "lat_bottom": "52.343267",
-        "lon_left": "4.854127",
-        "lon_right": "4.854127"
+        "lat_top": 52.343597,
+        "lat_bottom": 52.342937,
+        "lon_left": 4.853167,
+        "lon_right": 4.855087
       },
       "geometry": {
         "type": "Point",
@@ -252,10 +252,10 @@ export const markers = {
         "name": "video11",
         "url_short_video": "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         "url_long_video": "north-onthedigue.mp4",
-        "lat_top": "52.357628",
-        "lat_bottom": "52.357628",
-        "lon_left": "4.867481",
-        "lon_right": "4.867481"
+        "lat_top": 52.357958,
+        "lat_bottom": 52.357298,
+        "lon_left": 4.866521,
+        "lon_right": 4.868441
       },
       "geometry": {
         "type": "Point",
@@ -276,10 +276,10 @@ export const markers = {
         "name": "video12",
         "url_short_video": "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         "url_long_video": "north-onthedigue.mp4",
-        "lat_top": "52.364169",
-        "lat_bottom": "52.364169",
-        "lon_left": "4.844095",
-        "lon_right": "4.844095"
+        "lat_top": 52.364499,
+        "lat_bottom": 52.363839,
+        "lon_left": 4.843135,
+        "lon_right": 4.845055
       },
       "geometry": {
         "type": "Point",
@@ -300,10 +300,10 @@ export const markers = {
         "name": "video13",
         "url_short_video": "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         "url_long_video": "north-onthedigue.mp4",
-        "lat_top": "52.380207",
-        "lat_bottom": "52.380207",
-        "lon_left": "4.850123",
-        "lon_right": "4.850123"
+        "lat_top": 52.380537,
+        "lat_bottom": 52.379877,
+        "lon_left": 4.849163,
+        "lon_right": 4.851083
       },
       "geometry": {
         "type": "Point",
@@ -324,10 +324,10 @@ export const markers = {
         "name": "video14",
         "url_short_video": "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         "url_long_video": "north-onthedigue.mp4",
-        "lat_top": "52.386329",
-        "lat_bottom": "52.386329",
-        "lon_left": "4.872499",
-        "lon_right": "4.872499"
+        "lat_top": 52.386659,
+        "lat_bottom": 52.385999,
+        "lon_left": 4.871539,
+        "lon_right": 4.873459
       },
       "geometry": {
         "type": "Point",
@@ -348,10 +348,10 @@ export const markers = {
         "name": "video15",
         "url_short_video": "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         "url_long_video": "north-onthedigue.mp4",
-        "lat_top": "52.398521",
-        "lat_bottom": "52.398521",
-        "lon_left": "4.884024",
-        "lon_right": "4.884024"
+        "lat_top": 52.398851,
+        "lat_bottom": 52.398191,
+        "lon_left": 4.883064,
+        "lon_right": 4.884984
       },
       "geometry": {
         "type": "Point",
@@ -372,10 +372,10 @@ export const markers = {
         "name": "video16",
         "url_short_video": "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         "url_long_video": "north-onthedigue.mp4",
-        "lat_top": "52.367337",
-        "lat_bottom": "52.367337",
-        "lon_left": "4.86817",
-        "lon_right": "4.86817"
+        "lat_top": 52.367667,
+        "lat_bottom": 52.367007,
+        "lon_left": 4.86721,
+        "lon_right": 4.86913
       },
       "geometry": {
         "type": "Point",
@@ -396,10 +396,10 @@ export const markers = {
         "name": "video17",
         "url_short_video": "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         "url_long_video": "north-onthedigue.mp4",
-        "lat_top": "52.375298",
-        "lat_bottom": "52.375298",
-        "lon_left": "4.883293",
-        "lon_right": "4.883293"
+        "lat_top": 52.375628,
+        "lat_bottom": 52.374968,
+        "lon_left": 4.882333,
+        "lon_right": 4.884253
       },
       "geometry": {
         "type": "Point",
@@ -420,10 +420,10 @@ export const markers = {
         "name": "video18",
         "url_short_video": "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         "url_long_video": "north-onthedigue.mp4",
-        "lat_top": "52.373062",
-        "lat_bottom": "52.373062",
-        "lon_left": "4.892651",
-        "lon_right": "4.892651"
+        "lat_top": 52.373392,
+        "lat_bottom": 52.372732,
+        "lon_left": 4.891691,
+        "lon_right": 4.893611
       },
       "geometry": {
         "type": "Point",
@@ -444,10 +444,10 @@ export const markers = {
         "name": "video19",
         "url_short_video": "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         "url_long_video": "north-onthedigue.mp4",
-        "lat_top": "52.363569",
-        "lat_bottom": "52.363569",
-        "lon_left": "4.902374",
-        "lon_right": "4.902374"
+        "lat_top": 52.363899,
+        "lat_bottom": 52.363239,
+        "lon_left": 4.901414,
+        "lon_right": 4.903334
       },
       "geometry": {
         "type": "Point",
@@ -468,10 +468,10 @@ export const markers = {
         "name": "video20",
         "url_short_video": "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         "url_long_video": "north-onthedigue.mp4",
-        "lat_top": "52.372063",
-        "lat_bottom": "52.372063",
-        "lon_left": "4.898245",
-        "lon_right": "4.898245"
+        "lat_top": 52.372393,
+        "lat_bottom": 52.371733,
+        "lon_left": 4.897285,
+        "lon_right": 4.899205
       },
       "geometry": {
         "type": "Point",
@@ -492,10 +492,10 @@ export const markers = {
         "name": "video21",
         "url_short_video": "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         "url_long_video": "north-onthedigue.mp4",
-        "lat_top": "52.377984",
-        "lat_bottom": "52.377984",
-        "lon_left": "4.899987",
-        "lon_right": "4.899987"
+        "lat_top": 52.378314,
+        "lat_bottom": 52.377654,
+        "lon_left": 4.899027,
+        "lon_right": 4.900947
       },
       "geometry": {
         "type": "Point",
@@ -516,10 +516,10 @@ export const markers = {
         "name": "video22",
         "url_short_video": "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         "url_long_video": "north-onthedigue.mp4",
-        "lat_top": "52.378021",
-        "lat_bottom": "52.378021",
-        "lon_left": "4.934814",
-        "lon_right": "4.934814"
+        "lat_top": 52.378351,
+        "lat_bottom": 52.377691,
+        "lon_left": 4.933854,
+        "lon_right": 4.935774
       },
       "geometry": {
         "type": "Point",
@@ -540,10 +540,10 @@ export const markers = {
         "name": "video23",
         "url_short_video": "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         "url_long_video": "north-onthedigue.mp4",
-        "lat_top": "52.368591",
-        "lat_bottom": "52.368591",
-        "lon_left": "4.948042",
-        "lon_right": "4.948042"
+        "lat_top": 52.368921,
+        "lat_bottom": 52.368261,
+        "lon_left": 4.947082,
+        "lon_right": 4.949002
       },
       "geometry": {
         "type": "Point",
@@ -564,10 +564,10 @@ export const markers = {
         "name": "video24",
         "url_short_video": "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         "url_long_video": "north-onthedigue.mp4",
-        "lat_top": "52.365307",
-        "lat_bottom": "52.365307",
-        "lon_left": "4.95951",
-        "lon_right": "4.95951"
+        "lat_top": 52.365637,
+        "lat_bottom": 52.364977,
+        "lon_left": 4.95855,
+        "lon_right": 4.96047
       },
       "geometry": {
         "type": "Point",
@@ -588,10 +588,10 @@ export const markers = {
         "name": "video25",
         "url_short_video": "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         "url_long_video": "north-onthedigue.mp4",
-        "lat_top": "52.347922",
-        "lat_bottom": "52.347922",
-        "lon_left": "5.028289",
-        "lon_right": "5.028289"
+        "lat_top": 52.348252,
+        "lat_bottom": 52.347592,
+        "lon_left": 5.027329,
+        "lon_right": 5.029249
       },
       "geometry": {
         "type": "Point",
@@ -612,10 +612,10 @@ export const markers = {
         "name": "video26",
         "url_short_video": "https://res.cloudinary.com/dkylbarf5/video/upload/v1557676966/miniVideos/ziggoDome_mini_ivn2ei.mp4",
         "url_long_video": "ziggoDome.mp4",
-        "lat_top": "52.313411",
-        "lat_bottom": "52.313411",
-        "lon_left": "4.937216",
-        "lon_right": "4.937216"
+        "lat_top": 52.313741,
+        "lat_bottom": 52.313081,
+        "lon_left": 4.936256,
+        "lon_right": 4.938176
       },
       "geometry": {
         "type": "Point",
@@ -636,10 +636,10 @@ export const markers = {
         "name": "video27",
         "url_short_video": "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         "url_long_video": "north-onthedigue.mp4",
-        "lat_top": "52.312733",
-        "lat_bottom": "52.312733",
-        "lon_left": "4.94407",
-        "lon_right": "4.94407"
+        "lat_top": 52.313063,
+        "lat_bottom": 52.312403,
+        "lon_left": 4.94311,
+        "lon_right": 4.94503
       },
       "geometry": {
         "type": "Point",
@@ -660,10 +660,10 @@ export const markers = {
         "name": "video28",
         "url_short_video": "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         "url_long_video": "north-onthedigue.mp4",
-        "lat_top": "52.304095",
-        "lat_bottom": "52.304095",
-        "lon_left": "4.982892",
-        "lon_right": "4.982892"
+        "lat_top": 52.304425,
+        "lat_bottom": 52.303765,
+        "lon_left": 4.981932,
+        "lon_right": 4.983852
       },
       "geometry": {
         "type": "Point",
@@ -684,10 +684,10 @@ export const markers = {
         "name": "video29",
         "url_short_video": "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         "url_long_video": "north-onthedigue.mp4",
-        "lat_top": "52.399379",
-        "lat_bottom": "52.399379",
-        "lon_left": "4.894693",
-        "lon_right": "4.894693"
+        "lat_top": 52.399709,
+        "lat_bottom": 52.399049,
+        "lon_left": 4.893733,
+        "lon_right": 4.895653
       },
       "geometry": {
         "type": "Point",
@@ -708,10 +708,10 @@ export const markers = {
         "name": "video30",
         "url_short_video": "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         "url_long_video": "north-onthedigue.mp4",
-        "lat_top": "52.384119",
-        "lat_bottom": "52.384119",
-        "lon_left": "4.900546",
-        "lon_right": "4.900546"
+        "lat_top": 52.384449,
+        "lat_bottom": 52.383789,
+        "lon_left": 4.899586,
+        "lon_right": 4.901506
       },
       "geometry": {
         "type": "Point",
@@ -732,10 +732,10 @@ export const markers = {
         "name": "video31",
         "url_short_video": "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         "url_long_video": "north-onthedigue.mp4",
-        "lat_top": "52.383438",
-        "lat_bottom": "52.383438",
-        "lon_left": "4.929288",
-        "lon_right": "4.929288"
+        "lat_top": 52.383768,
+        "lat_bottom": 52.383108,
+        "lon_left": 4.928328,
+        "lon_right": 4.930248
       },
       "geometry": {
         "type": "Point",
@@ -756,10 +756,10 @@ export const markers = {
         "name": "video32",
         "url_short_video": "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         "url_long_video": "north-onthedigue.mp4",
-        "lat_top": "52.393127",
-        "lat_bottom": "52.393127",
-        "lon_left": "5.026689",
-        "lon_right": "5.026689"
+        "lat_top": 52.393457,
+        "lat_bottom": 52.392797,
+        "lon_left": 5.025729,
+        "lon_right": 5.027649
       },
       "geometry": {
         "type": "Point",
@@ -780,10 +780,10 @@ export const markers = {
         "name": "video33",
         "url_short_video": "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         "url_long_video": "north-onthedigue.mp4",
-        "lat_top": "52.407073",
-        "lat_bottom": "52.407073",
-        "lon_left": "4.966835",
-        "lon_right": "4.966835"
+        "lat_top": 52.407403,
+        "lat_bottom": 52.406743,
+        "lon_left": 4.965875,
+        "lon_right": 4.967795
       },
       "geometry": {
         "type": "Point",
@@ -804,10 +804,10 @@ export const markers = {
         "name": "video34",
         "url_short_video": "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         "url_long_video": "north-onthedigue.mp4",
-        "lat_top": "52.423608",
-        "lat_bottom": "52.423608",
-        "lon_left": "5.005721",
-        "lon_right": "5.005721"
+        "lat_top": 52.423938,
+        "lat_bottom": 52.423278,
+        "lon_left": 5.004761,
+        "lon_right": 5.006681
       },
       "geometry": {
         "type": "Point",
@@ -828,10 +828,10 @@ export const markers = {
         "name": "video35",
         "url_short_video": "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         "url_long_video": "north-onthedigue.mp4",
-        "lat_top": "52.417279",
-        "lat_bottom": "52.417279",
-        "lon_left": "4.85775",
-        "lon_right": "4.85775"
+        "lat_top": 52.417609,
+        "lat_bottom": 52.416949,
+        "lon_left": 4.85679,
+        "lon_right": 4.85871
       },
       "geometry": {
         "type": "Point",
@@ -852,10 +852,10 @@ export const markers = {
         "name": "video36",
         "url_short_video": "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         "url_long_video": "north-Ijhallen.mp4",
-        "lat_top": "52.400981",
-        "lat_bottom": "52.400981",
-        "lon_left": "4.893301",
-        "lon_right": "4.893301"
+        "lat_top": 52.401311,
+        "lat_bottom": 52.400651,
+        "lon_left": 4.892341,
+        "lon_right": 4.894261
       },
       "geometry": {
         "type": "Point",
@@ -876,10 +876,10 @@ export const markers = {
         "name": "video37",
         "url_short_video": "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         "url_long_video": "north-onthedigue.mp4",
-        "lat_top": "52.417688",
-        "lat_bottom": "52.417688",
-        "lon_left": "4.893956",
-        "lon_right": "4.893956"
+        "lat_top": 52.418018,
+        "lat_bottom": 52.417358,
+        "lon_left": 4.892996,
+        "lon_right": 4.894916
       },
       "geometry": {
         "type": "Point",
@@ -900,10 +900,10 @@ export const markers = {
         "name": "video38",
         "url_short_video": "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         "url_long_video": "north-onthedigue.mp4",
-        "lat_top": "52.401416",
-        "lat_bottom": "52.401416",
-        "lon_left": "4.932292",
-        "lon_right": "4.932292"
+        "lat_top": 52.401746,
+        "lat_bottom": 52.401086,
+        "lon_left": 4.931332,
+        "lon_right": 4.933252
       },
       "geometry": {
         "type": "Point",
