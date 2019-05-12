@@ -14,7 +14,7 @@ const getCoordinate = (e, field) => e.lngLat[field].toFixed(19);
 const setDefaultValue = (value) => (value.length > 0) ? value : '/';
 
 const renderPopupLabels = () => "<div class='popup-left'><p>Lux</p><p>Night quality</p><p>Conditions</p><p>Latitude</p><p>Longitude</p></div>"
-const renderPopupValues = (lux, nqm, conditions, latitude, longitude) => `<div class='popup-right'><p>${setDefaultValue(lux)}</p><p>${setDefaultValue(nqm)}</p><p>${setDefaultValue(conditions)}</p><p>${setDefaultValue(latitude)}</p><p>${setDefaultValue(longitude)}</p></div>`
+const renderPopupValues = (lux, nqm, conditions, latitude, longitude) => `<div class='popup-right'><p>${setDefaultValue(lux)}</p><p>${setDefaultValue(nqm)}</p><p>${setDefaultValue(conditions)}</p><p>${latitude}</p><p>${longitude}</p></div>`
 const renderPopUpContent = (lux, nqm, conditions, latitude, longitude) => {
   return renderPopupLabels() + renderPopupValues(lux, nqm, conditions, latitude, longitude);
 }

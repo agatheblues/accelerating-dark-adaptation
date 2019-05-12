@@ -1,6 +1,6 @@
 import { updateCoordinates, renderPopUpContent, mapStyle, showMap } from './map.js'
 import { playVideo, hideVideo, showVideo, stopVideo, videoCoord } from './video.js'
-import { markers } from './markers.js'
+import { markers, mapOffset } from './markers.js'
 
 mapboxgl.accessToken = 'pk.eyJ1IjoibWFub25mZXZhbCIsImEiOiJjanZjdXFzeGExbTFkM3lwODV3MWRqZ2VwIn0.-JNe-7KSzOG_2Pr0g0MgEw';
 
@@ -52,7 +52,12 @@ const addMarkerToMap = (feature) => {
 
   el.addEventListener('click', () => {
     showVideo();
-    playVideo(feature.properties.url_long_video);
+    playVideo(`../videos/${feature.properties.url_long_video}`);
+  });
+
+  el.addEventListener('touchstart', () => {
+    showVideo();
+    playVideo(`../videos/${feature.properties.url_long_video}`);
   });
 }
 
@@ -73,11 +78,6 @@ const addMarkerPopupToMap = (feature) => {
   popups.push(popup);
 }
 
-const inMin = 16;
-const inMax = 19;
-const outMin = -200;
-const outMax = -500;
-const mapOffset = (value) => (value - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
 
 /* Events */
 map.on('load', function () {
@@ -87,24 +87,24 @@ map.on('load', function () {
     "data": markers
   });
 
-  markers.features.forEach((feature) => {
-    addMarkerToMap(feature);
-    addMarkerPopupToMap(feature);
-    addVideoToMap(feature.properties);
+  //   markers.features.forEach((feature) => {
+  //     addMarkerToMap(feature);
+  //     addMarkerPopupToMap(feature);
+  //     addVideoToMap(feature.properties);
+  //   });
+  // });
+
+  // map.on('zoom', function () {
+  //   for (let i = 0; i < popups.length; i++) {
+  //     popups[i].options.offset = mapOffset(map.getZoom());
+  //   }
+  // });
+
+  map.on('mousemove', e => updateCoordinates(e));
+
+  $('#btn-start').on('click', (e) => showMap());
+
+  $('#close-video').on('click', (e) => {
+    stopVideo();
+    hideVideo();
   });
-});
-
-map.on('zoom', function () {
-  for (let i = 0; i < popups.length; i++) {
-    popups[i].options.offset = mapOffset(map.getZoom());
-  }
-});
-
-map.on('mousemove', e => updateCoordinates(e));
-
-$('#btn-start').on('click', (e) => showMap());
-
-$('#close-video').on('click', (e) => {
-  stopVideo();
-  hideVideo();
-});

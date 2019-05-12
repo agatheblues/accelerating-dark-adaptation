@@ -1,4 +1,11 @@
-export const markers = {
+
+const inMin = 16;
+const inMax = 19;
+const outMin = -200;
+const outMax = -500;
+const mapOffset = (value) => (value - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
+
+const markers = {
   "type": "FeatureCollection",
   "features": [
     {
@@ -915,3 +922,6 @@ export const markers = {
     }
   ]
 }
+
+
+export { mapOffset, markers }
