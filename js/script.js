@@ -1,4 +1,4 @@
-import { updateCoordinates, getPath, renderPopUpContent, mapStyle } from './map.js'
+import { updateCoordinates, renderPopUpContent, mapStyle } from './map.js'
 import { playVideo, hideVideo, showVideo, stopVideo, videoCoord } from './video.js'
 
 mapboxgl.accessToken = 'pk.eyJ1IjoibWFub25mZXZhbCIsImEiOiJjanZjdXFzeGExbTFkM3lwODV3MWRqZ2VwIn0.-JNe-7KSzOG_2Pr0g0MgEw';
@@ -23,48 +23,28 @@ let popup = new mapboxgl.Popup({
   closeOnClick: false
 });
 
-
-let currentImage = 8;
-var frameCount = 58;
-window.runGifs = false;
-
 /* Events */
 
 map.on('load', function () {
-  // videoCoord.forEach(({ name = "", lat_bottom = 0, lat_top = 0, lon_right = 0, lon_left = 0 }, index) => {
+  videoCoord.forEach(({ name = "", lat_bottom = 0, lat_top = 0, lon_right = 0, lon_left = 0 }, index) => {
+    map.addSource(name + index, {
+      "type": "video",
+      "urls": ["https://res.cloudinary.com/dsrzfxhmy/video/upload/v1557660500/north-onthedigue_1_tthihf.mp4"],
+      "coordinates": [
+        [lon_left, lat_top], // Top left corner
+        [lon_right, lat_top], // Top right corner
+        [lon_right, lat_bottom], // Bottom right corner
+        [lon_left, lat_bottom], // Bottom left corner
+      ]
+    });
 
-  //   map.addSource(name + index, {
-  //     type: "image",
-  //     url: getPath(name, currentImage),
-  //     "coordinates": [
-  //       [lon_left, lat_top], // Top left corner
-  //       [lon_right, lat_top], // Top right corner
-  //       [lon_right, lat_bottom], // Bottom right corner
-  //       [lon_left, lat_bottom], // Bottom left corner
-  //     ]
-  //   });
-
-  //   map.addLayer({
-  //     id: name + index,
-  //     "type": "raster",
-  //     "source": name + index,
-  //     "paint": {
-  //       "raster-fade-duration": 0
-  //     }
-  //   });
-  // });
-
-  // runGifs = true;
-
-  // setInterval(function () {
-  //   console.log(runGifs);
-  //   if (!runGifs) return;
-  //   currentImage = (currentImage + 1 > frameCount) ? 8 : currentImage + 1;
-  //   videoCoord.forEach(({ name }, index) => {
-  //     map.getSource(name + index).updateImage({ url: getPath(name, currentImage) });
-  //   });
-  // }, 250);
-
+    map.addLayer({
+      "id": name + index,
+      "type": "raster",
+      "source": name + index,
+      "paint": {}
+    });
+  });
 });
 
 map.on('mousemove', e => updateCoordinates(e));

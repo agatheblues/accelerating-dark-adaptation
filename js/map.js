@@ -11,10 +11,6 @@ const renderPopUpContent = (lux, nqm, conditions) => {
   return `<div class='popup-left'><p>Lux</p><p>Night quality</p><p>Conditions</p></div><div class='popup-right'><p>${setDefaultValue(lux)}</p><p>${setDefaultValue(nqm)}</p><p>${setDefaultValue(conditions)}</p></div>`
 }
 
-const getPath = (name, currentImage) => {
-  return `../data/${name}/(${currentImage}).gif`;
-}
-
 const mapStyle = {
   "version": 8,
   "name": "Dark - Dev",
@@ -237,7 +233,7 @@ const mapStyle = {
           1
         ],
       },
-      "paint": {}
+      "paint": { "fill-color": "#627BC1", }
     },
     {
       "id": "amsterdam-publiclight-057i4x",
@@ -277,4 +273,4 @@ const mapStyle = {
   "draft": false
 }
 
-export { updateCoordinates, getPath, renderPopUpContent, mapStyle };
+export { updateCoordinates, renderPopUpContent, mapStyle };
