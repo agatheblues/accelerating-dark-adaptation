@@ -24,12 +24,20 @@ h1 {
   display: none;
 }
 
+.invisible {
+  visibility: hidden;
+}
+
 /* intro */
 .intro-container {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
+}
+
+.intro-container.hidden {
+  display: none;
 }
 
 .intro-wrapper {
@@ -148,7 +156,6 @@ h1 {
 }
 
 .footer {
-  display: block;
   position: fixed;
   bottom: 0;
   left: 0;

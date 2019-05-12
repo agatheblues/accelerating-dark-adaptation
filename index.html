@@ -2,17 +2,17 @@
 <html>
 
 <head>
-  <meta charset='utf-8' />
+  <meta charset="utf-8" />
   <title>Darken cities</title>
-  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.54.0/mapbox-gl.js'></script>
-  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.54.0/mapbox-gl.css' rel='stylesheet' />
+  <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.54.0/mapbox-gl.js"></script>
+  <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.54.0/mapbox-gl.css" rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
-  <div class="intro-container">
+  <div id="intro" class="intro-container">
     <div class="intro-wrapper">
       <h1>Darkening Cities</h1>
       <div class="intro-description">
@@ -24,28 +24,11 @@
           Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
         </p>
       </div>
-      <button class="btn">Start</button>
+      <button id="btn-start" class="btn">Start</button>
     </div>
   </div>
-  <!-- <div id="map" class="container"></div>
-  <div class='header'>
-    <div class='header-wrapper'>
-      <div class='header-left'>
-        <h1>Darkening cities</h1>
-      </div>
-      <div class='header-right'>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur.
-          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <footer class="footer">
+  <div id="map" class="container invisible"></div>
+  <footer id="#footer" class="footer hidden">
     <div>
       <p class="info info--inverted">
         LONG: <span id="info-long">4.8939090868191215</span> /
@@ -55,12 +38,12 @@
   </footer>
   <div id="video-wrapper" class="video-container hidden">
     <video id="video-player-sel" class="video-player" controls loop>
-      <source id="video-player-source" src='' type='video/mp4' />
+      <source id="video-player-source" src="" type="video/mp4" />
     </video>
-    <span id='close-video' class="close"></span>
-  </div> -->
+    <span id="close-video" class="close"></span>
+  </div>
 
-  <script src='dist/bundle.js'>
+  <script src="dist/bundle.js">
   </script>
 </body>
 
