@@ -1,6 +1,5 @@
-import { mapStyle } from './mapStyle.js'
-import { videoCoord } from './videoCoord.js'
-import { getCoordinate } from './utils.js'
+import { updateCoordinates, getPath, renderPopUpContent, mapStyle } from './map.js'
+import { playVideo, hideVideo, showVideo, stopVideo, videoCoord } from './video.js'
 
 mapboxgl.accessToken = 'pk.eyJ1IjoibWFub25mZXZhbCIsImEiOiJjanZjdXFzeGExbTFkM3lwODV3MWRqZ2VwIn0.-JNe-7KSzOG_2Pr0g0MgEw';
 
@@ -17,45 +16,6 @@ var map = new mapboxgl.Map({
 
 $('.mapboxgl-canvas').css('cursor', 'crosshair');
 
-const updateCoordinates = (e) => {
-  $('#info-long').html(getCoordinate(e, 'lng'));
-  $('#info-lat').html(getCoordinate(e, 'lat'));
-}
-
-const setDefaultValue = (value) => (value.length > 0) ? value : '/';
-
-const renderPopUpContent = (lux, nqm, conditions) => {
-  return `<div class='popup-left'><p>Lux</p><p>Night quality</p><p>Conditions</p></div><div class='popup-right'><p>${setDefaultValue(lux)}</p><p>${setDefaultValue(nqm)}</p><p>${setDefaultValue(conditions)}</p></div>`
-}
-
-const getPath = (name, currentImage) => {
-  return `../data/${name}/(${currentImage}).gif`;
-}
-
-const playVideo = (url) => {
-  $('#video-player-source').attr('src', url);
-  $('#video-player-sel')[0].load();
-  $('#video-player-sel')[0].play();
-}
-
-const stopVideo = () => {
-  $('#video-player-sel')[0].pause();
-  $('#video-player-sel')[0].currentTime = 0;
-}
-
-
-const showVideo = () => {
-  runGifs = false;
-  $('#map').addClass('hidden');
-  $('#video-wrapper').removeClass('hidden');
-}
-
-const hideVideo = () => {
-  $('#map').removeClass('hidden');
-  $('#video-wrapper').addClass('hidden');
-  runGifs = true;
-}
-
 const moveTorch = (e) => $('.radial-gradient').css('background', 'radial-gradient(200px 200px at ' + e.pageX + 'px ' + e.pageY + 'px,  rgba(255, 255, 255, 0) 0%, black 50.5%)');
 
 let popup = new mapboxgl.Popup({
@@ -66,7 +26,7 @@ let popup = new mapboxgl.Popup({
 
 let currentImage = 8;
 var frameCount = 58;
-let runGifs = false;
+window.runGifs = false;
 
 /* Events */
 

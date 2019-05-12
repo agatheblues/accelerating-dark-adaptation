@@ -1,4 +1,28 @@
-export const videoCoord = [
+const playVideo = (url) => {
+  $('#video-player-source').attr('src', url);
+  $('#video-player-sel')[0].load();
+  $('#video-player-sel')[0].play();
+}
+
+const stopVideo = () => {
+  $('#video-player-sel')[0].pause();
+  $('#video-player-sel')[0].currentTime = 0;
+}
+
+
+const showVideo = () => {
+  window.runGifs = false;
+  $('#map').addClass('hidden');
+  $('#video-wrapper').removeClass('hidden');
+}
+
+const hideVideo = () => {
+  $('#map').removeClass('hidden');
+  $('#video-wrapper').addClass('hidden');
+  window.runGifs = true;
+}
+
+const videoCoord = [
   {
     "name": "video1",
     "url": "https://res.cloudinary.com/dsrzfxhmy/video/upload/v1557523838/video1_t1uile.mp4",
@@ -304,3 +328,5 @@ export const videoCoord = [
   //   "lon_right": 4.933252
   // }
 ];
+
+export { playVideo, hideVideo, showVideo, stopVideo, videoCoord }

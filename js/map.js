@@ -1,4 +1,21 @@
-export const mapStyle = {
+const updateCoordinates = (e) => {
+  $('#info-long').html(getCoordinate(e, 'lng'));
+  $('#info-lat').html(getCoordinate(e, 'lat'));
+}
+
+const getCoordinate = (e, field) => e.lngLat[field].toFixed(19);
+
+const setDefaultValue = (value) => (value.length > 0) ? value : '/';
+
+const renderPopUpContent = (lux, nqm, conditions) => {
+  return `<div class='popup-left'><p>Lux</p><p>Night quality</p><p>Conditions</p></div><div class='popup-right'><p>${setDefaultValue(lux)}</p><p>${setDefaultValue(nqm)}</p><p>${setDefaultValue(conditions)}</p></div>`
+}
+
+const getPath = (name, currentImage) => {
+  return `../data/${name}/(${currentImage}).gif`;
+}
+
+const mapStyle = {
   "version": 8,
   "name": "Dark - Dev",
   "metadata": {
@@ -259,3 +276,5 @@ export const mapStyle = {
   "visibility": "private",
   "draft": false
 }
+
+export { updateCoordinates, getPath, renderPopUpContent, mapStyle };

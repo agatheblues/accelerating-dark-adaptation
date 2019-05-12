@@ -1,1 +1,0 @@
-export const getCoordinate = (e, field) => e.lngLat[field].toFixed(19);
