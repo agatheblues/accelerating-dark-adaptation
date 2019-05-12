@@ -32,16 +32,28 @@ const getPath = (name, currentImage) => {
   return `../data/${name}/(${currentImage}).gif`;
 }
 
+const playVideo = (url) => {
+  $('#video-player-source').attr('src', url);
+  $('#video-player-sel')[0].load();
+  $('#video-player-sel')[0].play();
+}
+
+const stopVideo = () => {
+  $('#video-player-sel')[0].pause();
+  $('#video-player-sel')[0].currentTime = 0;
+}
+
+
 const showVideo = () => {
   runGifs = false;
   $('#map').addClass('hidden');
-  $('#video-player').removeClass('hidden');
+  $('#video-wrapper').removeClass('hidden');
 }
 
 const hideVideo = () => {
-  runGifs = true;
   $('#map').removeClass('hidden');
-  $('#video-player').addClass('hidden');
+  $('#video-wrapper').addClass('hidden');
+  runGifs = true;
 }
 
 const moveTorch = (e) => $('.radial-gradient').css('background', 'radial-gradient(200px 200px at ' + e.pageX + 'px ' + e.pageY + 'px,  rgba(255, 255, 255, 0) 0%, black 50.5%)');
@@ -59,39 +71,39 @@ let runGifs = false;
 /* Events */
 
 map.on('load', function () {
-  videoCoord.forEach(({ name = "", lat_bottom = 0, lat_top = 0, lon_right = 0, lon_left = 0 }, index) => {
+  // videoCoord.forEach(({ name = "", lat_bottom = 0, lat_top = 0, lon_right = 0, lon_left = 0 }, index) => {
 
-    map.addSource(name + index, {
-      type: "image",
-      url: getPath(name, currentImage),
-      "coordinates": [
-        [lon_left, lat_top], // Top left corner
-        [lon_right, lat_top], // Top right corner
-        [lon_right, lat_bottom], // Bottom right corner
-        [lon_left, lat_bottom], // Bottom left corner
-      ]
-    });
+  //   map.addSource(name + index, {
+  //     type: "image",
+  //     url: getPath(name, currentImage),
+  //     "coordinates": [
+  //       [lon_left, lat_top], // Top left corner
+  //       [lon_right, lat_top], // Top right corner
+  //       [lon_right, lat_bottom], // Bottom right corner
+  //       [lon_left, lat_bottom], // Bottom left corner
+  //     ]
+  //   });
 
-    map.addLayer({
-      id: name + index,
-      "type": "raster",
-      "source": name + index,
-      "paint": {
-        "raster-fade-duration": 0
-      }
-    });
-  });
+  //   map.addLayer({
+  //     id: name + index,
+  //     "type": "raster",
+  //     "source": name + index,
+  //     "paint": {
+  //       "raster-fade-duration": 0
+  //     }
+  //   });
+  // });
 
-  runGifs = true;
+  // runGifs = true;
 
-  setInterval(function () {
-    console.log(runGifs);
-    if (!runGifs) return;
-    currentImage = (currentImage + 1 > frameCount) ? 8 : currentImage + 1;
-    videoCoord.forEach(({ name }, index) => {
-      map.getSource(name + index).updateImage({ url: getPath(name, currentImage) });
-    });
-  }, 250);
+  // setInterval(function () {
+  //   console.log(runGifs);
+  //   if (!runGifs) return;
+  //   currentImage = (currentImage + 1 > frameCount) ? 8 : currentImage + 1;
+  //   videoCoord.forEach(({ name }, index) => {
+  //     map.getSource(name + index).updateImage({ url: getPath(name, currentImage) });
+  //   });
+  // }, 250);
 
 });
 
@@ -115,9 +127,10 @@ map.on('mouseenter', 'markers', function (e) {
 });
 
 map.on('click', 'markers', function (e) {
-  // let { video } = e.features[0].properties;
+  let { url } = e.features[0].properties;
   let video = "video1";
   showVideo();
+  playVideo('https://res.cloudinary.com/dsrzfxhmy/video/upload/v1557523838/video1_t1uile.mp4');
 });
 
 map.on('mouseleave', 'markers', function () {
@@ -126,6 +139,7 @@ map.on('mouseleave', 'markers', function () {
 });
 
 $('#close-video').on('click', (e) => {
+  stopVideo();
   hideVideo();
 });
 
