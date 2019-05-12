@@ -20,6 +20,12 @@ const hideVideo = () => {
   $('#video-wrapper').addClass('hidden');
 }
 
+$('#close-video').on('click', (e) => {
+  stopVideo();
+  hideVideo();
+});
+
+
 const videoCoord = [
   {
     "name": "video1",
