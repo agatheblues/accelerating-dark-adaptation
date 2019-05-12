@@ -40,30 +40,22 @@ const addVideoToMap = (name, lat_bottom, lat_top, lon_right, lon_left, index) =>
   });
 }
 
-const addMarkerToMap = (feature, index) => {
-  map.addLayer({
-    "id": `marker-${index}`,
-    "type": "symbol",
-    "source": "markers",
-    "layout": {
-      "icon-image": "rocket-15",
-      "icon-allow-overlap": true,
-      "icon-size": [
-        "interpolate",
-        ["linear"],
-        ["zoom"],
-        0,
-        0,
-        22,
-        1
-      ]
-    }
-  });
+const addMarkerToMap = (feature) => {
+  let el = document.createElement('div');
+  el.className = 'marker';
 
-  addMarkerLabelToMap(feature);
+  // make a marker for each feature and add to the map
+  new mapboxgl.Marker(el)
+    .setLngLat(feature.geometry.coordinates)
+    .addTo(map);
+
+  el.addEventListener('click', () => {
+    showVideo();
+    playVideo(feature.properties.url_long_video);
+  });
 }
 
-const addMarkerLabelToMap = (feature) => {
+const addMarkerPopupToMap = (feature) => {
   let popup = new mapboxgl.Popup({
     "closeButton": false,
     "closeOnClick": false,
@@ -94,7 +86,10 @@ map.on('load', function () {
     "data": markers
   });
 
-  markers.features.forEach((feature, index) => addMarkerToMap(feature, index));
+  markers.features.forEach((feature) => {
+    addMarkerToMap(feature);
+    addMarkerPopupToMap(feature);
+  });
 
   // VIDEO
   videoCoord.forEach(({ name = "", lat_bottom = 0, lat_top = 0, lon_right = 0, lon_left = 0 }, index) => addVideoToMap(name, lat_bottom, lat_top, lon_right, lon_left, index));
@@ -107,13 +102,6 @@ map.on('zoom', function () {
 });
 
 map.on('mousemove', e => updateCoordinates(e));
-
-map.on('click', 'markers', function (e) {
-  let { url } = e.features[0].properties;
-  let video = "video1";
-  showVideo();
-  playVideo('https://res.cloudinary.com/dsrzfxhmy/video/upload/v1557523838/video1_t1uile.mp4');
-});
 
 $('#btn-start').on('click', (e) => showMap());
 
