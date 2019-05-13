@@ -9,7 +9,7 @@ const map = new mapboxgl.Map({
   container: 'map',
   minZoom: 13,
   maxZoom: 19,
-  center: [4.780525, 52.360463],
+  center: [4.892891, 52.370088],
   zoom: 10,
   bearing: 0,
   pitch: 60,
@@ -114,7 +114,7 @@ $('#close-video').on('click', (e) => {
 });
 
 // parameters to ensure the model is georeferenced correctly on the map
-var modelOrigin = [4.780525, 52.360463];
+var modelOrigin = [4.892891, 52.370088];
 var modelAltitude = -50;
 var modelRotate = [Math.PI / 2, 0, 0];
 var modelScale = 5.41843220338983e-8;
@@ -144,19 +144,20 @@ var customLayer = {
     directionalLight.position.set(0, -70, 100).normalize();
     this.scene.add(directionalLight);
 
-    var directionalLight2 = new THREE.DirectionalLight(0xffffff);
+    var directionalLight2 = new THREE.AmbientLight(0xffffff);
     directionalLight2.position.set(0, 70, 100).normalize();
     this.scene.add(directionalLight2);
 
-    // use the three.js GLTF loader to add the 3D model to the three.js scene
-    var sphereGeom = new THREE.SphereGeometry(100, 32, 32);
-    var sphereMat = new THREE.MeshPhongMaterial({
+    var loader = new THREE.TextureLoader(),
+      texture = loader.load("../data/galaxy_starfield.png");
+    var geometry = new THREE.SphereGeometry(500, 50, 50, 0, 2 * Math.PI, -0.5 * Math.PI, 0.5 * Math.PI);
+    var material = new THREE.MeshPhongMaterial({
       color: 0xfb3550,
       flatShading: true
     });
-    var sphereMesh = new THREE.Mesh(sphereGeom, sphereMat);
-    // sphereMesh.position.set(4.780525, 52.360463, 0)
-    this.scene.add(sphereMesh);
+    var sphere = new THREE.Mesh(geometry, material);
+    sphere.material.side = THREE.BackSide;
+    this.scene.add(sphere);
 
     this.map = map;
 
