@@ -98,7 +98,7 @@ map.on('load', function () {
   markers.features.forEach((feature) => {
     addMarkerToMap(feature);
     addMarkerPopupToMap(feature);
-    // addVideoToMap(feature.properties);
+    addVideoToMap(feature.properties);
   });
 });
 
