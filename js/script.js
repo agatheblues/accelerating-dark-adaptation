@@ -13,8 +13,11 @@ const map = new mapboxgl.Map({
     52.360463],
   zoom: 10,
   bearing: 0,
+  pitch: 60,
   style: mapStyle
 });
+
+var THREE = window.THREE;
 
 
 /* MAP */
@@ -89,8 +92,8 @@ map.on('load', function () {
 
   markers.features.forEach((feature) => {
     addMarkerToMap(feature);
-    addMarkerPopupToMap(feature);
-    addVideoToMap(feature.properties);
+    // addMarkerPopupToMap(feature);
+    // addVideoToMap(feature.properties);
   });
 });
 
