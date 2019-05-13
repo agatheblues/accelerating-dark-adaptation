@@ -16,7 +16,8 @@ const map = new mapboxgl.Map({
   style: mapStyle
 });
 
-var THREE = window.THREE;
+const THREE = window.THREE;
+let STATUS = 'down';
 
 /* MAP */
 $('.mapboxgl-canvas').css('cursor', 'crosshair');
@@ -193,11 +194,30 @@ map.on('style.load', function () {
   map.addLayer(customLayer);
 });
 
+// degrees the map rotates when the left or right arrow is clicked
+var deltaDegrees = 1;
+
+function easing(t) {
+  return t * (2 - t);
+}
+
+function rotateCamera() {
+  map.easeTo({
+    bearing: map.getBearing() - deltaDegrees,
+    easing: easing,
+    pitch: 80
+  });
+
+  // Request the next frame of the animation.
+  if (STATUS == 'up') requestAnimationFrame(rotateCamera);
+}
+
 $('#lookup').on('click', function () {
+  STATUS = 'up';
   map.flyTo({
     center: [4.892891, 52.370088],
     zoom: 10,
-    pitch: 85,
+    pitch: 80,
     bearing: 0,
     speed: 5,
     curve: 10,
@@ -205,11 +225,16 @@ $('#lookup').on('click', function () {
       return t;
     }
   });
-
   $('#audio-player')[0].play();
 });
 
+map.on('pitchend', () => {
+  if (STATUS === 'down') return;
+  rotateCamera();
+});
+
 $('#lookdown').on('click', function () {
+  STATUS = 'down';
   map.flyTo({
     center: [4.892891, 52.370088],
     zoom: 10,
@@ -221,6 +246,5 @@ $('#lookdown').on('click', function () {
       return t;
     }
   });
-
   $('#audio-player')[0].pause();
 });
