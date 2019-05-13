@@ -14,6 +14,7 @@ const map = new mapboxgl.Map({
   container: 'map',
   minZoom: 13,
   maxZoom: 19,
+  zoom: 15,
   center: [4.892891, 52.370088],
   bearing: 0,
   pitch: 0,
@@ -96,7 +97,7 @@ map.on('load', function () {
 
   markers.features.forEach((feature) => {
     addMarkerToMap(feature);
-    // addMarkerPopupToMap(feature);
+    addMarkerPopupToMap(feature);
     // addVideoToMap(feature.properties);
   });
 });
@@ -128,6 +129,14 @@ map.on('pitchend', () => {
   rotateCamera();
 });
 
+map.on('zoom', () => {
+  if (map.getZoom() < 15) {
+    $('.mapboxgl-popup').addClass('hidden');
+  } else {
+    $('.mapboxgl-popup').removeClass('hidden');
+  }
+});
+
 
 // degrees the map rotates when the left or right arrow is clicked
 var deltaDegrees = 1;
@@ -154,7 +163,7 @@ function rotateCamera() {
 
     map.easeTo({
       center: [4.892891, 52.370088],
-      zoom: 10,
+      zoom: 15,
       pitch: 0,
       bearing: 0,
       speed: 5,
@@ -172,7 +181,7 @@ $('#lookup').on('click', function () {
 
   map.easeTo({
     center: [4.892891, 52.370088],
-    zoom: 10,
+    zoom: 13,
     pitch: 80,
     bearing: 0,
     speed: 5,
