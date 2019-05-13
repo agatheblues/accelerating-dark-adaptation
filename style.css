@@ -242,7 +242,7 @@ h1 {
 }
 
 .mapboxgl-popup-tip {
-  border-top-color: #000 !important;
+  display: none;
 }
 
 .popup-left {

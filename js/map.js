@@ -1,6 +1,6 @@
-const updateCoordinates = (e) => {
-  $('#info-long').html(getCoordinate(e, 'lng'));
-  $('#info-lat').html(getCoordinate(e, 'lat'));
+const updateCoordinates = (lat, long) => {
+  $('#info-long').html(long.toFixed(6));
+  $('#info-lat').html(lat.toFixed(6));
 }
 
 const showMap = () => {
@@ -8,8 +8,6 @@ const showMap = () => {
   $('#map').removeClass('invisible');
   $('#footer').removeClass('hidden');
 }
-
-const getCoordinate = (e, field) => e.lngLat[field].toFixed(19);
 
 const setDefaultValue = (value) => (value.length > 0) ? value : '/';
 

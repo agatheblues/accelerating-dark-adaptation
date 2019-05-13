@@ -7,7 +7,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoibWFub25mZXZhbCIsImEiOiJjanZjdXFzeGExbTFkM3lwO
 let popups = [];
 const map = new mapboxgl.Map({
   container: 'map',
-  minZoom: 13,
+  minZoom: 19,
   maxZoom: 19,
   center: [4.780525,
     52.360463],
@@ -52,12 +52,12 @@ const addMarkerToMap = (feature) => {
 
   el.addEventListener('click', () => {
     showVideo();
-    playVideo(`../videos/${feature.properties.url_long_video}`);
+    playVideo(feature.properties.url_long_video);
   });
 
   el.addEventListener('touchstart', () => {
     showVideo();
-    playVideo(`../videos/${feature.properties.url_long_video}`);
+    playVideo(feature.properties.url_long_video);
   });
 }
 
@@ -87,24 +87,27 @@ map.on('load', function () {
     "data": markers
   });
 
-  //   markers.features.forEach((feature) => {
-  //     addMarkerToMap(feature);
-  //     addMarkerPopupToMap(feature);
-  //     addVideoToMap(feature.properties);
-  //   });
-  // });
-
-  // map.on('zoom', function () {
-  //   for (let i = 0; i < popups.length; i++) {
-  //     popups[i].options.offset = mapOffset(map.getZoom());
-  //   }
-  // });
-
-  map.on('mousemove', e => updateCoordinates(e));
-
-  $('#btn-start').on('click', (e) => showMap());
-
-  $('#close-video').on('click', (e) => {
-    stopVideo();
-    hideVideo();
+  markers.features.forEach((feature) => {
+    addMarkerToMap(feature);
+    addMarkerPopupToMap(feature);
+    addVideoToMap(feature.properties);
   });
+});
+
+// map.on('zoom', function () {
+//   for (let i = 0; i < popups.length; i++) {
+//     popups[i].options.offset = mapOffset(map.getZoom());
+//   }
+// });
+
+map.on('drag', () => {
+  let { lng, lat } = map.getCenter();
+  updateCoordinates(lat, lng);
+});
+
+$('#btn-start').on('click', (e) => showMap());
+
+$('#close-video').on('click', (e) => {
+  stopVideo();
+  hideVideo();
+});
