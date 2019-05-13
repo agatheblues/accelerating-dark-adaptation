@@ -7,7 +7,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoibWFub25mZXZhbCIsImEiOiJjanZjdXFzeGExbTFkM3lwO
 let popups = [];
 const map = new mapboxgl.Map({
   container: 'map',
-  minZoom: 19,
+  minZoom: 13,
   maxZoom: 19,
   center: [4.780525,
     52.360463],
