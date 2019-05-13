@@ -115,7 +115,7 @@ $('#close-video').on('click', (e) => {
 
 // parameters to ensure the model is georeferenced correctly on the map
 var modelOrigin = [4.892891, 52.370088];
-var modelAltitude = -50;
+var modelAltitude = 0;
 var modelRotate = [Math.PI / 2, 0, 0];
 var modelScale = 5.41843220338983e-8;
 
@@ -183,6 +183,7 @@ var customLayer = {
 
     this.camera.projectionMatrix.elements = matrix;
     this.camera.projectionMatrix = m.multiply(l);
+
     this.renderer.state.reset();
     this.renderer.render(this.scene, this.camera);
     this.map.triggerRepaint();
@@ -191,4 +192,14 @@ var customLayer = {
 
 map.on('style.load', function () {
   map.addLayer(customLayer);
+});
+
+$('#rotate').on('click', function () {
+  // Fly to a random location by offsetting the point -74.50, 40
+  // by up to 5 degrees.
+  map.flyTo({
+    center: [
+      -74.50 + (Math.random() - 0.5) * 10,
+      40 + (Math.random() - 0.5) * 10]
+  });
 });
