@@ -6,14 +6,18 @@ import { customLayer } from './dome.js'
 mapboxgl.accessToken = 'pk.eyJ1IjoibWFub25mZXZhbCIsImEiOiJjanZjdXFzeGExbTFkM3lwODV3MWRqZ2VwIn0.-JNe-7KSzOG_2Pr0g0MgEw';
 
 let popups = [];
+let bounds = [
+  [4.717755, 52.278175], // Southwest coordinates
+  [5.075060, 52.431021]  // Northeast coordinates
+];
 const map = new mapboxgl.Map({
   container: 'map',
   minZoom: 13,
   maxZoom: 19,
   center: [4.892891, 52.370088],
-  zoom: 10,
   bearing: 0,
   pitch: 0,
+  maxBounds: bounds,
   style: mapStyle
 });
 
