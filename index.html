@@ -31,8 +31,8 @@
   </div>
   <div id="map" class="container"></div>
   <footer id="footer" class="footer">
-    <p>Press control to rotate</p>
-    <button id='rotate'>Rotate</button>
+    <button class="btn" id='lookup'>Look up</button>
+    <button class="btn" id='lookdown'>Look down</button>
     <div>
       <p class="info info--inverted">
         LONG: <span id="info-long">4.893909</span> /
@@ -45,6 +45,12 @@
       <source id="video-player-source" src="" type="video/mp4" />
     </video>
     <span id="close-video" class="close"></span>
+  </div>
+  <div id="audio-wrapper invisible">
+    <audio id="audio-player">
+      <source src="../audio/podcast_poeticSkyView.sesx_Stereo.mp3" type="audio/mpeg">
+      Your browser does not support the audio tag.
+    </audio>
   </div>
 
   <script src="dist/bundle.js">

@@ -12,7 +12,7 @@ const map = new mapboxgl.Map({
   center: [4.892891, 52.370088],
   zoom: 10,
   bearing: 0,
-  pitch: 60,
+  pitch: 0,
   style: mapStyle
 });
 
@@ -130,7 +130,6 @@ var modelTransform = {
   scale: modelScale
 };
 
-
 var customLayer = {
   id: '3d-model',
   type: 'custom',
@@ -141,22 +140,22 @@ var customLayer = {
 
     // create two three.js lights to illuminate the model
     var directionalLight = new THREE.DirectionalLight(0xffffff);
-    directionalLight.position.set(0, -70, 100).normalize();
+    directionalLight.position.set(0, 0, 0).normalize();
     this.scene.add(directionalLight);
 
     var directionalLight2 = new THREE.AmbientLight(0xffffff);
-    directionalLight2.position.set(0, 70, 100).normalize();
+    directionalLight2.position.set(4.892891, 52.370088, 0).normalize();
     this.scene.add(directionalLight2);
 
     var loader = new THREE.TextureLoader(),
       texture = loader.load("../data/galaxy_starfield.png");
-    var geometry = new THREE.SphereGeometry(500, 50, 50, 0, 2 * Math.PI, -0.5 * Math.PI, 0.5 * Math.PI);
+    var geometry = new THREE.SphereGeometry(8000, 500, 500, 0, 2 * Math.PI, -0.5 * Math.PI, 0.5 * Math.PI);
     var material = new THREE.MeshPhongMaterial({
-      color: 0xfb3550,
-      flatShading: true
+      color: 0xffffff,
+      map: texture
     });
     var sphere = new THREE.Mesh(geometry, material);
-    sphere.material.side = THREE.BackSide;
+    sphere.material.side = THREE.DoubleSide;
     this.scene.add(sphere);
 
     this.map = map;
@@ -194,12 +193,34 @@ map.on('style.load', function () {
   map.addLayer(customLayer);
 });
 
-$('#rotate').on('click', function () {
-  // Fly to a random location by offsetting the point -74.50, 40
-  // by up to 5 degrees.
+$('#lookup').on('click', function () {
   map.flyTo({
-    center: [
-      -74.50 + (Math.random() - 0.5) * 10,
-      40 + (Math.random() - 0.5) * 10]
+    center: [4.892891, 52.370088],
+    zoom: 10,
+    pitch: 85,
+    bearing: 0,
+    speed: 5,
+    curve: 10,
+    easing(t) {
+      return t;
+    }
   });
+
+  $('#audio-player')[0].play();
+});
+
+$('#lookdown').on('click', function () {
+  map.flyTo({
+    center: [4.892891, 52.370088],
+    zoom: 10,
+    pitch: 0,
+    bearing: 0,
+    speed: 5,
+    curve: 10,
+    easing(t) {
+      return t;
+    }
+  });
+
+  $('#audio-player')[0].pause();
 });
