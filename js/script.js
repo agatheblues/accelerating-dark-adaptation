@@ -49,6 +49,20 @@ const addVideoToMap = (properties) => {
   });
 }
 
+const pauseVideos = () => {
+  markers.features.forEach((feature) => {
+    let name = feature.properties.name;
+    map.getSource(name).getVideo().pause();
+  });
+}
+
+const playVideos = () => {
+  markers.features.forEach((feature) => {
+    let name = feature.properties.name;
+    map.getSource(name).getVideo().play();
+  });
+}
+
 const addMarkerToMap = (feature) => {
   let el = document.createElement('div');
   el.className = 'marker';
@@ -59,11 +73,13 @@ const addMarkerToMap = (feature) => {
     .addTo(map);
 
   el.addEventListener('click', () => {
+    pauseVideos();
     showVideo();
     playVideo(feature.properties.url_long_video);
   });
 
   el.addEventListener('touchstart', () => {
+    pauseVideos();
     showVideo();
     playVideo(feature.properties.url_long_video);
   });
@@ -113,11 +129,15 @@ map.on('drag', () => {
   updateCoordinates(lat, lng);
 });
 
-$('#btn-start').on('click', (e) => showMap());
+$('#btn-start').on('click', (e) => {
+  showMap();
+  playVideos();
+});
 
 $('#close-video').on('click', (e) => {
   stopVideo();
   hideVideo();
+  playVideos();
 });
 
 map.on('style.load', function () {
@@ -136,7 +156,6 @@ map.on('zoom', () => {
     $('.mapboxgl-popup').removeClass('hidden');
   }
 });
-
 
 // degrees the map rotates when the left or right arrow is clicked
 var deltaDegrees = 1;
@@ -174,6 +193,7 @@ function rotateCamera() {
 }
 
 $('#lookup').on('click', function () {
+  pauseVideos();
   $('#lookdown').removeClass('hidden');
   $('#lookup').addClass('hidden');
 
@@ -199,4 +219,5 @@ $('#lookdown').on('click', function () {
   STATUS = 'down';
 
   $('#audio-player')[0].pause();
+  playVideos();
 });

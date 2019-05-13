@@ -173,6 +173,10 @@ h1 {
   align-items: center;
   }
 
+  .footer.hidden {
+    display: none;
+  }
+  
 .footer-wrapper {
   padding: 10px;
 }
