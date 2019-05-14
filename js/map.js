@@ -1,54 +1,64 @@
 const updateCoordinates = (lat, long) => {
-  $('#info-long').html(long.toFixed(6));
-  $('#info-lat').html(lat.toFixed(6));
-}
+  $("#info-long").html(long.toFixed(6));
+  $("#info-lat").html(lat.toFixed(6));
+};
 
 const showMap = () => {
-  $('#intro').addClass('hidden');
-  $('#map').removeClass('invisible');
-  $('#footer').removeClass('hidden');
-}
+  $("#intro").addClass("hidden");
+  $("#map").removeClass("invisible");
+  $("#footer").removeClass("hidden");
+};
 
-const setDefaultValue = (value) => (value.length > 0) ? value : '/';
+const setDefaultValue = value => (value.length > 0 ? value : "~");
 
-const renderPopupLabels = () => "<div class='popup-left'><p>Lux</p><p>Night quality</p><p>Conditions</p><p>Latitude</p><p>Longitude</p></div>"
-const renderPopupValues = (lux, nqm, conditions, latitude, longitude) => `<div class='popup-right'><p>${setDefaultValue(lux)}</p><p>${setDefaultValue(nqm)}</p><p>${setDefaultValue(conditions)}</p><p>${latitude}</p><p>${longitude}</p></div>`
+const renderPopupLabels = () =>
+  "<div class='popup-left'><p>Lux</p><p>Night quality</p><p>Conditions</p><p>Latitude</p><p>Longitude</p></div>";
+const renderPopupValues = (lux, nqm, conditions, latitude, longitude) =>
+  `<div class='popup-right'><p>${setDefaultValue(lux)}</p><p>${setDefaultValue(
+    nqm
+  )}</p><p>${setDefaultValue(
+    conditions
+  )}</p><p>${latitude}</p><p>${longitude}</p></div>`;
 const renderPopUpContent = (lux, nqm, conditions, latitude, longitude) => {
-  return renderPopupLabels() + renderPopupValues(lux, nqm, conditions, latitude, longitude);
-}
+  return (
+    renderPopupLabels() +
+    renderPopupValues(lux, nqm, conditions, latitude, longitude)
+  );
+};
 
 const mapStyle = {
-  "version": 8,
-  "name": "Dark - Dev",
-  "metadata": {
+  version: 8,
+  name: "Dark - Dev",
+  metadata: {
     "mapbox:type": "default",
     "mapbox:origin": "dark-v10",
     "mapbox:autocomposite": true,
     "mapbox:groups": {
-      "1444855786460.0557": { "name": "Roads", "collapsed": false },
+      "1444855786460.0557": { name: "Roads", collapsed: false },
       "1444934295202.7542": {
-        "name": "Admin boundaries",
-        "collapsed": true
+        name: "Admin boundaries",
+        collapsed: true
       },
-      "1444855799204.86": { "name": "Bridges", "collapsed": true },
-      "1444855769305.6016": { "name": "Tunnels", "collapsed": true }
+      "1444855799204.86": { name: "Bridges", collapsed: true },
+      "1444855769305.6016": { name: "Tunnels", collapsed: true }
     },
     "mapbox:sdk-support": {
-      "js": "0.50.0",
-      "android": "6.7.0",
-      "ios": "4.6.0"
+      js: "0.50.0",
+      android: "6.7.0",
+      ios: "4.6.0"
     },
     "mapbox:trackposition": false
   },
-  "center": [4.8939090868191215, 52.36163000690422],
-  "zoom": 12,
-  "bearing": 0,
-  "pitch": 0,
-  "sources": {
-    "composite": {
-      "url": "mapbox://manonfeval.cjvggfi2820tn2xo78ohk9pu3-9y2lv,mapbox.mapbox-streets-v8,manonfeval.4hkm5cev",
-      "type": "vector"
-    },
+  center: [4.8939090868191215, 52.36163000690422],
+  zoom: 12,
+  bearing: 0,
+  pitch: 0,
+  sources: {
+    composite: {
+      url:
+        "mapbox://manonfeval.cjvggfi2820tn2xo78ohk9pu3-9y2lv,mapbox.mapbox-streets-v8,manonfeval.4hkm5cev",
+      type: "vector"
+    }
     // "video1": {
     //   "type": "video",
     //   "urls": ["./data/video1.mp4"],
@@ -60,30 +70,31 @@ const mapStyle = {
     //   ]
     // }
   },
-  "sprite": "mapbox://sprites/manonfeval/cjvcuv3ro4ljp1fpnqu44sb24/cj530pqtvmepv7xox0ujq2mef",
-  "glyphs": "mapbox://fonts/manonfeval/{fontstack}/{range}.pbf",
-  "layers": [
+  sprite:
+    "mapbox://sprites/manonfeval/cjvcuv3ro4ljp1fpnqu44sb24/cj530pqtvmepv7xox0ujq2mef",
+  glyphs: "mapbox://fonts/manonfeval/{fontstack}/{range}.pbf",
+  layers: [
     {
-      "id": "land",
-      "type": "background",
-      "layout": {},
-      "paint": { "background-color": "hsl(241, 0%, 0%)" }
+      id: "land",
+      type: "background",
+      layout: {},
+      paint: { "background-color": "hsl(241, 0%, 0%)" }
     },
     {
-      "id": "landuse",
-      "type": "fill",
-      "source": "composite",
+      id: "landuse",
+      type: "fill",
+      source: "composite",
       "source-layer": "landuse",
-      "minzoom": 5,
-      "filter": [
+      minzoom: 5,
+      filter: [
         "match",
         ["get", "class"],
         ["park", "airport", "glacier", "pitch", "sand"],
         true,
         false
       ],
-      "layout": {},
-      "paint": {
+      layout: {},
+      paint: {
         "fill-opacity": [
           "interpolate",
           ["linear"],
@@ -97,33 +108,27 @@ const mapStyle = {
       }
     },
     {
-      "id": "water",
-      "type": "fill",
-      "source": "composite",
+      id: "water",
+      type: "fill",
+      source: "composite",
       "source-layer": "water",
-      "layout": {},
-      "paint": { "fill-color": "hsl(236, 0%, 0%)" }
+      layout: {},
+      paint: { "fill-color": "hsl(236, 0%, 0%)" }
     },
     {
-      "id": "road-secondary-tertiary",
-      "type": "line",
-      "metadata": { "mapbox:group": "1444855786460.0557" },
-      "source": "composite",
+      id: "road-secondary-tertiary",
+      type: "line",
+      metadata: { "mapbox:group": "1444855786460.0557" },
+      source: "composite",
       "source-layer": "road",
-      "filter": [
+      filter: [
         "all",
-        [
-          "match",
-          ["get", "class"],
-          ["secondary", "tertiary"],
-          true,
-          false
-        ],
+        ["match", ["get", "class"], ["secondary", "tertiary"], true, false],
         ["match", ["get", "structure"], ["none", "ford"], true, false],
         ["==", ["geometry-type"], "LineString"]
       ],
-      "layout": { "line-cap": "round", "line-join": "round" },
-      "paint": {
+      layout: { "line-cap": "round", "line-join": "round" },
+      paint: {
         "line-width": 0.1,
         "line-color": "hsl(55, 93%, 69%)",
         "line-opacity": [
@@ -140,19 +145,19 @@ const mapStyle = {
       }
     },
     {
-      "id": "road-primary",
-      "type": "line",
-      "metadata": { "mapbox:group": "1444855786460.0557" },
-      "source": "composite",
+      id: "road-primary",
+      type: "line",
+      metadata: { "mapbox:group": "1444855786460.0557" },
+      source: "composite",
       "source-layer": "road",
-      "filter": [
+      filter: [
         "all",
         ["==", ["get", "class"], "primary"],
         ["match", ["get", "structure"], ["none", "ford"], true, false],
         ["==", ["geometry-type"], "LineString"]
       ],
-      "layout": { "line-cap": "round", "line-join": "round" },
-      "paint": {
+      layout: { "line-cap": "round", "line-join": "round" },
+      paint: {
         "line-width": 0.5,
         "line-color": "hsl(54, 73%, 85%)",
         "line-opacity": [
@@ -171,44 +176,38 @@ const mapStyle = {
       }
     },
     {
-      "id": "road-motorway-trunk",
-      "type": "line",
-      "metadata": { "mapbox:group": "1444855786460.0557" },
-      "source": "composite",
+      id: "road-motorway-trunk",
+      type: "line",
+      metadata: { "mapbox:group": "1444855786460.0557" },
+      source: "composite",
       "source-layer": "road",
-      "filter": [
+      filter: [
         "all",
         ["match", ["get", "class"], ["motorway", "trunk"], true, false],
         ["match", ["get", "structure"], ["none", "ford"], true, false],
         ["==", ["geometry-type"], "LineString"]
       ],
-      "layout": {
+      layout: {
         "line-cap": "round",
         "line-join": "round",
-        "visibility": "none"
+        visibility: "none"
       },
-      "paint": { "line-width": 0.5, "line-color": "hsl(56, 82%, 81%)" }
+      paint: { "line-width": 0.5, "line-color": "hsl(56, 82%, 81%)" }
     },
     {
-      "id": "road-rail",
-      "type": "line",
-      "metadata": { "mapbox:group": "1444855786460.0557" },
-      "source": "composite",
+      id: "road-rail",
+      type: "line",
+      metadata: { "mapbox:group": "1444855786460.0557" },
+      source: "composite",
       "source-layer": "road",
-      "minzoom": 13,
-      "filter": [
+      minzoom: 13,
+      filter: [
         "all",
-        [
-          "match",
-          ["get", "class"],
-          ["major_rail", "minor_rail"],
-          true,
-          false
-        ],
+        ["match", ["get", "class"], ["major_rail", "minor_rail"], true, false],
         ["match", ["get", "structure"], ["none", "ford"], true, false]
       ],
-      "layout": { "line-join": "round", "visibility": "none" },
-      "paint": {
+      layout: { "line-join": "round", visibility: "none" },
+      paint: {
         "line-width": [
           "interpolate",
           ["exponential", 1.5],
@@ -242,12 +241,12 @@ const mapStyle = {
     //   "paint": {}
     // },
     {
-      "id": "amsterdam-publiclight-057i4x",
-      "type": "circle",
-      "source": "composite",
+      id: "amsterdam-publiclight-057i4x",
+      type: "circle",
+      source: "composite",
       "source-layer": "amsterdam-publicLight-057i4x",
-      "layout": {},
-      "paint": {
+      layout: {},
+      paint: {
         "circle-color": "hsl(57, 88%, 95%)",
         "circle-radius": [
           "interpolate",
@@ -261,7 +260,7 @@ const mapStyle = {
           7
         ]
       }
-    },
+    }
     // {
     //   "id": "video1",
     //   "type": "raster",
@@ -271,12 +270,12 @@ const mapStyle = {
     //   }
     // }
   ],
-  "created": "2019-05-06T21:06:44.077Z",
-  "id": "cjvcuv3ro4ljp1fpnqu44sb24",
-  "modified": "2019-05-06T21:11:17.288Z",
-  "owner": "manonfeval",
-  "visibility": "private",
-  "draft": false
-}
+  created: "2019-05-06T21:06:44.077Z",
+  id: "cjvcuv3ro4ljp1fpnqu44sb24",
+  modified: "2019-05-06T21:11:17.288Z",
+  owner: "manonfeval",
+  visibility: "private",
+  draft: false
+};
 
 export { updateCoordinates, renderPopUpContent, mapStyle, showMap };
