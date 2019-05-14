@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,700');
+@import url("https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,700");
 
 body {
   margin: 0;
   padding: 0;
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: "IBM Plex Sans", sans-serif;
   font-size: 12px;
   background: #000;
   color: #fff;
@@ -51,7 +51,6 @@ h1 {
 
 /* Buttons */
 
-
 .btn {
   overflow: hidden;
 
@@ -71,8 +70,8 @@ h1 {
   line-height: 1.3;
 
   -webkit-appearance: none;
-  -moz-appearance:    none;
-  appearance:         none;
+  -moz-appearance: none;
+  appearance: none;
 
   justify-content: center;
   align-items: center;
@@ -84,20 +83,19 @@ h1 {
 
 .btn:hover {
   transition: all 150ms linear;
-  opacity: .85;
+  opacity: 0.85;
   background: #fff;
   color: #000;
 }
 
 .btn:active {
   transition: all 150ms linear;
-  opacity: .75;
+  opacity: 0.75;
 }
 
 .btn:focus {
   outline: 1px dotted #fff;
 }
-
 
 /* video */
 .video-container {
@@ -106,12 +104,20 @@ h1 {
   overflow: hidden;
 }
 
-.video-player { 
+.video-player {
   width: 100vw;
   height: 100vh;
   max-width: 100%;
   overflow: hidden;
   max-height: 100%;
+}
+
+.minivideo-player {
+  width: 100%;
+  max-width: 100px;
+  height: auto;
+  margin-bottom: 10px;
+  cursor: pointer;
 }
 
 .close {
@@ -126,10 +132,11 @@ h1 {
   opacity: 1;
   cursor: pointer;
 }
-.close:before, .close:after {
+.close:before,
+.close:after {
   position: absolute;
   left: 15px;
-  content: ' ';
+  content: " ";
   height: 33px;
   width: 2px;
   background-color: #fff;
@@ -140,7 +147,6 @@ h1 {
 .close:after {
   transform: rotate(-45deg);
 }
-
 
 /* content */
 .marker {
@@ -171,12 +177,12 @@ h1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  }
+}
 
-  .footer.hidden {
-    display: none;
-  }
-  
+.footer.hidden {
+  display: none;
+}
+
 .footer-wrapper {
   padding: 10px;
 }
@@ -208,7 +214,7 @@ h1 {
   width: 75%;
   margin: 20px 0 20px 0;
 }
-  
+
 /* MAP */
 .container {
   position: absolute;
@@ -227,16 +233,18 @@ h1 {
   background-size: 100% 100%;
   background-position: 50% 50%;
   transition: all 2s ease;
-  background: 
-    radial-gradient(
-      0px 0px at center, rgba(255, 255, 255, 0) 0%, black 50.5%
-    );
+  background: radial-gradient(
+    0px 0px at center,
+    rgba(255, 255, 255, 0) 0%,
+    black 50.5%
+  );
 }
 
 /* Pop up*/
 .mapboxgl-popup {
-  max-width: 400px;
-  font: 12px/20px 'IBM Plex Sans', sans-serif;
+  max-width: 160px;
+  pointer-events: auto;
+  font: 8px/14px "IBM Plex Sans", sans-serif;
   color: #fff;
 }
 

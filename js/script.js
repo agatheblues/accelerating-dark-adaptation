@@ -4,14 +4,8 @@ import {
   mapStyle,
   showMap
 } from "./map.js";
-import {
-  playVideo,
-  hideVideo,
-  showVideo,
-  stopVideo,
-  videoCoord
-} from "./video.js";
-import { markers, mapOffset } from "./markers.js";
+import { playVideo, hideVideo, showVideo, stopVideo } from "./video.js";
+import { markers } from "./markers.js";
 import { customLayer } from "./dome.js";
 
 mapboxgl.accessToken =
@@ -40,53 +34,53 @@ let STATUS = "down";
 /* MAP */
 $(".mapboxgl-canvas").css("cursor", "crosshair");
 
-const addVideoToMap = properties => {
-  let {
-    name,
-    url_short_video,
-    lat_bottom,
-    lat_top,
-    lon_right,
-    lon_left
-  } = properties;
-  map.addSource(name, {
-    type: "video",
-    urls: [url_short_video],
-    coordinates: [
-      [lon_left, lat_top], // Top left corner
-      [lon_right, lat_top], // Top right corner
-      [lon_right, lat_bottom], // Bottom right corner
-      [lon_left, lat_bottom] // Bottom left corner
-    ]
-  });
+// const addVideoToMap = properties => {
+//   let {
+//     name,
+//     url_short_video,
+//     lat_bottom,
+//     lat_top,
+//     lon_right,
+//     lon_left
+//   } = properties;
+//   map.addSource(name, {
+//     type: "video",
+//     urls: [url_short_video],
+//     coordinates: [
+//       [lon_left, lat_top], // Top left corner
+//       [lon_right, lat_top], // Top right corner
+//       [lon_right, lat_bottom], // Bottom right corner
+//       [lon_left, lat_bottom] // Bottom left corner
+//     ]
+//   });
 
-  map.addLayer({
-    id: name,
-    type: "raster",
-    source: name,
-    paint: {}
-  });
-};
+//   map.addLayer({
+//     id: name,
+//     type: "raster",
+//     source: name,
+//     paint: {}
+//   });
+// };
 
-const pauseVideos = () => {
-  markers.features.forEach(feature => {
-    let name = feature.properties.name;
-    map
-      .getSource(name)
-      .getVideo()
-      .pause();
-  });
-};
+// const pauseVideos = () => {
+//   markers.features.forEach(feature => {
+//     let name = feature.properties.name;
+//     map
+//       .getSource(name)
+//       .getVideo()
+//       .pause();
+//   });
+// };
 
-const playVideos = () => {
-  markers.features.forEach(feature => {
-    let name = feature.properties.name;
-    map
-      .getSource(name)
-      .getVideo()
-      .play();
-  });
-};
+// const playVideos = () => {
+//   markers.features.forEach(feature => {
+//     let name = feature.properties.name;
+//     map
+//       .getSource(name)
+//       .getVideo()
+//       .play();
+//   });
+// };
 
 const addMarkerToMap = feature => {
   let el = document.createElement("div");
@@ -95,17 +89,17 @@ const addMarkerToMap = feature => {
   // make a marker for each feature and add to the map
   new mapboxgl.Marker(el).setLngLat(feature.geometry.coordinates).addTo(map);
 
-  el.addEventListener("click", () => {
-    pauseVideos();
-    showVideo();
-    playVideo(feature.properties.url_long_video);
-  });
+  // el.addEventListener("click", () => {
+  //   pauseVideos();
+  //   showVideo();
+  //   playVideo(feature.properties.url_long_video);
+  // });
 
-  el.addEventListener("touchstart", () => {
-    pauseVideos();
-    showVideo();
-    playVideo(feature.properties.url_long_video);
-  });
+  // el.addEventListener("touchstart", () => {
+  //   pauseVideos();
+  //   showVideo();
+  //   playVideo(feature.properties.url_long_video);
+  // });
 };
 
 const addMarkerPopupToMap = feature => {
@@ -116,12 +110,28 @@ const addMarkerPopupToMap = feature => {
   });
 
   let coordinates = feature.geometry.coordinates.slice();
-  let { lux, nqm, conditions } = feature.properties;
+  let {
+    name,
+    lux,
+    nqm,
+    conditions,
+    url_long_video,
+    url_short_video
+  } = feature.properties;
 
   popup
     .setLngLat(coordinates)
     .setHTML(
-      renderPopUpContent(lux, nqm, conditions, coordinates[0], coordinates[1])
+      renderPopUpContent(
+        lux,
+        nqm,
+        conditions,
+        coordinates[0],
+        coordinates[1],
+        name,
+        url_short_video,
+        url_long_video
+      )
     )
     .addTo(map);
 
@@ -139,7 +149,7 @@ map.on("load", function() {
   markers.features.forEach(feature => {
     addMarkerToMap(feature);
     addMarkerPopupToMap(feature);
-    addVideoToMap(feature.properties);
+    // addVideoToMap(feature.properties);
   });
 });
 
@@ -156,21 +166,15 @@ map.on("drag", () => {
 
 $("#btn-start").on("click", e => {
   showMap();
-  playVideos();
 });
 
 $("#close-video").on("click", e => {
   stopVideo();
   hideVideo();
-  playVideos();
 });
 
 map.on("style.load", function() {
   map.addLayer(customLayer);
-});
-
-map.on("idle", function() {
-  pauseVideos();
 });
 
 map.on("pitchend", () => {
@@ -223,7 +227,6 @@ function rotateCamera() {
 }
 
 $("#lookup").on("click", function() {
-  pauseVideos();
   $("#lookdown").removeClass("hidden");
   $("#lookup").addClass("hidden");
 
@@ -249,5 +252,9 @@ $("#lookdown").on("click", function() {
   STATUS = "down";
 
   $("#audio-player")[0].pause();
-  playVideos();
+});
+
+$("#map").on("click", ".minivideo-player", e => {
+  showVideo();
+  playVideo(e.target.dataset.url + "");
 });
