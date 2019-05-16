@@ -1,5 +1,4 @@
 const playVideo = url => {
-  console.log(url);
   $("#video-player-source").attr("src", url);
   $("#video-player-sel")[0].load();
   $("#video-player-sel")[0].play();

@@ -16,7 +16,7 @@ const renderPopupLabels = () =>
 
 const renderVideo = (name, url_short_video, url_long_video) =>
   `<video id='${name}-player-sel' class='minivideo-player' data-url='${url_long_video}' loop autoplay muted>
-  <source id='video-player-source' src='${url_short_video}' type='video/mp4' />
+  <source src='${url_short_video}' type='video/mp4' />
 </video>`;
 
 const renderPopupValues = (lux, nqm, conditions, latitude, longitude) =>
