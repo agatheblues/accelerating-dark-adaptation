@@ -41,4 +41,42 @@ const renderPopUpContent = (
   );
 };
 
-export { renderPopUpContent }
+const addMarkerPopupToMap = (feature, map) => {
+  let popup = new mapboxgl.Popup({
+    closeButton: false,
+    closeOnClick: false,
+    offset: -200
+  });
+
+  let coordinates = feature.geometry.coordinates.slice();
+  let {
+    quartier,
+    lieu,
+    name,
+    lux,
+    nqm,
+    conditions,
+    url_long_video,
+    url_short_video
+  } = feature.properties;
+
+  popup
+    .setLngLat(coordinates)
+    .setHTML(
+      renderPopUpContent(
+        quartier,
+        lieu,
+        lux,
+        nqm,
+        conditions,
+        coordinates[0],
+        coordinates[1],
+        name,
+        url_short_video,
+        url_long_video
+      )
+    )
+    .addTo(map);
+};
+
+export { addMarkerPopupToMap }

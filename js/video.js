@@ -19,4 +19,24 @@ const hideVideo = () => {
   $("#video-wrapper").addClass("hidden");
 };
 
+// const pauseVideos = () => {
+//   markers.features.forEach(feature => {
+//     let name = feature.properties.name;
+//     map
+//       .getSource(name)
+//       .getVideo()
+//       .pause();
+//   });
+// };
+
+// const playVideos = () => {
+//   markers.features.forEach(feature => {
+//     let name = feature.properties.name;
+//     map
+//       .getSource(name)
+//       .getVideo()
+//       .play();
+//   });
+// };
+
 export { playVideo, hideVideo, showVideo, stopVideo };

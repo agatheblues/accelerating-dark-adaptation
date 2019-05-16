@@ -1,9 +1,10 @@
-const inMin = 16;
-const inMax = 19;
-const outMin = -200;
-const outMax = -500;
-const mapOffset = value =>
-  ((value - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin;
+const addMarkerToMap = (feature, map) => {
+  let el = document.createElement("div");
+  el.className = "marker";
+
+  // make a marker for each feature and add to the map
+  new mapboxgl.Marker(el).setLngLat(feature.geometry.coordinates).addTo(map);
+};
 
 const markers = {
   type: "FeatureCollection",
@@ -977,4 +978,4 @@ const markers = {
   ]
 };
 
-export { mapOffset, markers };
+export { addMarkerToMap, markers };
