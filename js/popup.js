@@ -1,5 +1,7 @@
 const setDefaultValue = value => (value.length > 0 ? value : "~");
 
+const renderPopupLocation = (quartier, lieu) => `<div class='popup-location'><p>${quartier}, ${lieu}</p></div>`;
+
 const renderPopupLabels = () =>
   "<div class='popup-left'><p>Lux</p><p>Night quality</p><p>Conditions</p><p>Latitude</p><p>Longitude</p></div>";
 
@@ -31,6 +33,7 @@ const renderPopUpContent = (
   longitude = longitude.toFixed(5);
   return (
     renderVideo(name, url_short_video, url_long_video) +
+    renderPopupLocation(quartier, lieu) +
     "<div>" +
     renderPopupLabels() +
     renderPopupValues(lux, nqm, conditions, latitude, longitude) +

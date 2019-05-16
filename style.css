@@ -265,3 +265,7 @@ h1 {
   float: right;
   margin-left: 10px;
 }
+
+.popup-location {
+  font-weight: 600;
+}
