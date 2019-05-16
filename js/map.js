@@ -1,48 +1,12 @@
 const updateCoordinates = (lat, long) => {
-  $("#info-long").html(long.toFixed(6));
-  $("#info-lat").html(lat.toFixed(6));
+  $("#info-long").html(long.toFixed(5));
+  $("#info-lat").html(lat.toFixed(5));
 };
 
 const showMap = () => {
   $("#intro").addClass("hidden");
   $("#map").removeClass("invisible");
   $("#footer").removeClass("hidden");
-};
-
-const setDefaultValue = value => (value.length > 0 ? value : "~");
-
-const renderPopupLabels = () =>
-  "<div class='popup-left'><p>Lux</p><p>Night quality</p><p>Conditions</p><p>Latitude</p><p>Longitude</p></div>";
-
-const renderVideo = (name, url_short_video, url_long_video) =>
-  `<video id='${name}-player-sel' class='minivideo-player' data-url='${url_long_video}' loop autoplay muted>
-  <source src='${url_short_video}' type='video/mp4' />
-</video>`;
-
-const renderPopupValues = (lux, nqm, conditions, latitude, longitude) =>
-  `<div class='popup-right'><p>${setDefaultValue(lux)}</p><p>${setDefaultValue(
-    nqm
-  )}</p><p>${setDefaultValue(
-    conditions
-  )}</p><p>${latitude}</p><p>${longitude}</p></div>`;
-
-const renderPopUpContent = (
-  lux,
-  nqm,
-  conditions,
-  latitude,
-  longitude,
-  name,
-  url_short_video,
-  url_long_video
-) => {
-  return (
-    renderVideo(name, url_short_video, url_long_video) +
-    "<div>" +
-    renderPopupLabels() +
-    renderPopupValues(lux, nqm, conditions, latitude, longitude) +
-    "</div>"
-  );
 };
 
 const mapStyle = {
@@ -239,26 +203,6 @@ const mapStyle = {
         "line-color": "hsl(0, 0%, 17%)"
       }
     },
-    // {
-    //   "id": "markers",
-    //   "interactive": true,
-    //   "type": "symbol",
-    //   "source": "composite",
-    //   "source-layer": "data_v3",
-    //   "layout": {
-    //     "icon-image": ["step", ["zoom"], "rocket-15", 22, "rocket-15"],
-    //     "icon-size": [
-    //       "interpolate",
-    //       ["linear"],
-    //       ["zoom"],
-    //       0,
-    //       0,
-    //       22,
-    //       1
-    //     ],
-    //   },
-    //   "paint": {}
-    // },
     {
       id: "amsterdam-publiclight-057i4x",
       type: "circle",
@@ -280,14 +224,6 @@ const mapStyle = {
         ]
       }
     }
-    // {
-    //   "id": "video1",
-    //   "type": "raster",
-    //   "source": "video1",
-    //   "paint": {
-    //     'raster-opacity': 1
-    //   }
-    // }
   ],
   created: "2019-05-06T21:06:44.077Z",
   id: "cjvcuv3ro4ljp1fpnqu44sb24",
@@ -297,4 +233,4 @@ const mapStyle = {
   draft: false
 };
 
-export { updateCoordinates, renderPopUpContent, mapStyle, showMap };
+export { updateCoordinates, mapStyle, showMap };

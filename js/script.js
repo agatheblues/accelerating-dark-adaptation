@@ -1,9 +1,9 @@
 import {
   updateCoordinates,
-  renderPopUpContent,
   mapStyle,
   showMap
 } from "./map.js";
+import { renderPopUpContent } from "./popup.js";
 import { playVideo, hideVideo, showVideo, stopVideo } from "./video.js";
 import { markers } from "./markers.js";
 import { customLayer } from "./dome.js";
@@ -11,7 +11,6 @@ import { customLayer } from "./dome.js";
 mapboxgl.accessToken =
   "pk.eyJ1IjoibWFub25mZXZhbCIsImEiOiJjanZjdXFzeGExbTFkM3lwODV3MWRqZ2VwIn0.-JNe-7KSzOG_2Pr0g0MgEw";
 
-let popups = [];
 let bounds = [
   [4.717755, 52.278175], // Southwest coordinates
   [5.07506, 52.431021] // Northeast coordinates
@@ -88,18 +87,6 @@ const addMarkerToMap = feature => {
 
   // make a marker for each feature and add to the map
   new mapboxgl.Marker(el).setLngLat(feature.geometry.coordinates).addTo(map);
-
-  // el.addEventListener("click", () => {
-  //   pauseVideos();
-  //   showVideo();
-  //   playVideo(feature.properties.url_long_video);
-  // });
-
-  // el.addEventListener("touchstart", () => {
-  //   pauseVideos();
-  //   showVideo();
-  //   playVideo(feature.properties.url_long_video);
-  // });
 };
 
 const addMarkerPopupToMap = feature => {
@@ -111,6 +98,8 @@ const addMarkerPopupToMap = feature => {
 
   let coordinates = feature.geometry.coordinates.slice();
   let {
+    quartier,
+    lieu,
     name,
     lux,
     nqm,
@@ -123,6 +112,8 @@ const addMarkerPopupToMap = feature => {
     .setLngLat(coordinates)
     .setHTML(
       renderPopUpContent(
+        quartier,
+        lieu,
         lux,
         nqm,
         conditions,
@@ -134,12 +125,10 @@ const addMarkerPopupToMap = feature => {
       )
     )
     .addTo(map);
-
-  popups.push(popup);
 };
 
 /* Events */
-map.on("load", function() {
+map.on("load", function () {
   // MARKERS
   map.addSource("markers", {
     type: "geojson",
@@ -152,12 +141,6 @@ map.on("load", function() {
     // addVideoToMap(feature.properties);
   });
 });
-
-// map.on('zoom', function () {
-//   for (let i = 0; i < popups.length; i++) {
-//     popups[i].options.offset = mapOffset(map.getZoom());
-//   }
-// });
 
 map.on("drag", () => {
   let { lng, lat } = map.getCenter();
@@ -173,7 +156,7 @@ $("#close-video").on("click", e => {
   hideVideo();
 });
 
-map.on("style.load", function() {
+map.on("style.load", function () {
   map.addLayer(customLayer);
 });
 
@@ -226,7 +209,7 @@ function rotateCamera() {
   }
 }
 
-$("#lookup").on("click", function() {
+$("#lookup").on("click", function () {
   $("#lookdown").removeClass("hidden");
   $("#lookup").addClass("hidden");
 
@@ -245,7 +228,7 @@ $("#lookup").on("click", function() {
   $("#audio-player")[0].play();
 });
 
-$("#lookdown").on("click", function() {
+$("#lookdown").on("click", function () {
   $("#lookup").removeClass("hidden");
   $("#lookdown").addClass("hidden");
 
