@@ -1,11 +1,3 @@
-const addMarkerToMap = (feature, map) => {
-  let el = document.createElement("div");
-  el.className = "marker";
-
-  // make a marker for each feature and add to the map
-  new mapboxgl.Marker(el).setLngLat(feature.geometry.coordinates).addTo(map);
-};
-
 const markers = {
   type: "FeatureCollection",
   features: [
@@ -978,4 +970,4 @@ const markers = {
   ]
 };
 
-export { addMarkerToMap, markers };
+export { markers };

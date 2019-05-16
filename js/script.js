@@ -4,8 +4,8 @@ import {
   showMap
 } from "./map.js";
 import { addMarkerPopupToMap } from "./popup.js";
-import { playVideo, hideVideo, showVideo, stopVideo } from "./video.js";
-import { markers, addMarkerToMap } from "./markers.js";
+import { playLargeVideo, hideLargeVideo, showLargeVideo, stopLargeVideo, playMiniVideos, pauseMiniVideos } from "./video.js";
+import { markers } from "./markers.js";
 import { customLayer } from "./dome.js";
 
 mapboxgl.accessToken =
@@ -38,8 +38,8 @@ $("#btn-start").on("click", e => {
 });
 
 $("#close-video").on("click", e => {
-  stopVideo();
-  hideVideo();
+  stopLargeVideo();
+  hideLargeVideo();
 });
 
 $("#lookup").on("click", function () {
@@ -71,22 +71,27 @@ $("#lookdown").on("click", function () {
 });
 
 $("#map").on("click", ".minivideo-player", e => {
-  showVideo();
-  playVideo(e.target.dataset.url + "");
+  showLargeVideo();
+  playLargeVideo(e.target.dataset.url + "");
 });
 
 
 /* Map events */
 map.on("load", function () {
-  map.addSource("markers", {
-    type: "geojson",
-    data: markers
+  map.addLayer({
+    "id": "markers",
+    "type": "circle",
+    "source": {
+      "type": "geojson",
+      "data": markers
+    },
+    'paint': {
+      'circle-radius': 1,
+      'circle-color': "#000"
+    }
   });
 
-  markers.features.forEach(feature => {
-    addMarkerToMap(feature, map);
-    addMarkerPopupToMap(feature, map);
-  });
+  markers.features.forEach(feature => addMarkerPopupToMap(feature, map));
 });
 
 map.on("drag", () => {
@@ -109,6 +114,14 @@ map.on("zoom", () => {
   } else {
     $(".mapboxgl-popup").removeClass("hidden");
   }
+});
+
+map.on('moveend', function () {
+  var features = map.queryRenderedFeatures({ layers: ['markers'] });
+  console.log(features);
+  playMiniVideos(features);
+  const names = features.map((f) => f.properties.name);
+  pauseMiniVideos(markers.features.filter((f) => names.indexOf(f.properties.name) < 0));
 });
 
 // degrees the map rotates when the left or right arrow is clicked

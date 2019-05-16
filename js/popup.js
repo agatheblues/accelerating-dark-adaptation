@@ -45,7 +45,7 @@ const addMarkerPopupToMap = (feature, map) => {
   let popup = new mapboxgl.Popup({
     closeButton: false,
     closeOnClick: false,
-    offset: -200
+    anchor: 'bottom',
   });
 
   let coordinates = feature.geometry.coordinates.slice();
