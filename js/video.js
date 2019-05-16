@@ -20,7 +20,6 @@ const hideLargeVideo = () => {
 };
 
 const playMiniVideos = (features) => {
-  console.log(features, 'play')
   features.forEach(feature => {
     let name = feature.properties.name;
     $(`#${name}-player-sel`)[0].play();
@@ -28,7 +27,6 @@ const playMiniVideos = (features) => {
 };
 
 const pauseMiniVideos = (features) => {
-  console.log(features, 'pause')
   features.forEach(feature => {
     let name = feature.properties.name;
     $(`#${name}-player-sel`)[0].pause();

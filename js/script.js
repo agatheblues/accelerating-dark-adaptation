@@ -118,7 +118,6 @@ map.on("zoom", () => {
 
 map.on('moveend', function () {
   var features = map.queryRenderedFeatures({ layers: ['markers'] });
-  console.log(features);
   playMiniVideos(features);
   const names = features.map((f) => f.properties.name);
   pauseMiniVideos(markers.features.filter((f) => names.indexOf(f.properties.name) < 0));
