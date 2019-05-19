@@ -34,8 +34,13 @@ let STATUS = "down";
 /* Events */
 $(".mapboxgl-canvas").css("cursor", "crosshair");
 
-$("#btn-start").on("click", e => {
+$("#btn-explore").on("click", e => {
   showMap();
+});
+
+$("#btn-story").on("click", e => {
+  /* @TODO */
+  console.log('create view story mode');
 });
 
 $("#close-video").on("click", e => {
