@@ -1,6 +1,6 @@
 import {
   updateCoordinates,
-  mapStyle,
+  mapConfig,
   showMap
 } from "./map.js";
 import { addMarkerPopupToMap } from "./popup.js";
@@ -11,25 +11,9 @@ import { config } from "../config.js";
 
 mapboxgl.accessToken = config.MAPBOX_ACCESS_TOKEN;
 
-let bounds = [
-  [4.717755, 52.278175], // Southwest coordinates
-  [5.07506, 52.431021] // Northeast coordinates
-];
+const map = new mapboxgl.Map({ ...mapConfig.default, ...mapConfig.up });
 
-const map = new mapboxgl.Map({
-  container: "map",
-  // minZoom: 13,
-  maxZoom: 19,
-  zoom: 15,
-  center: [4.892891, 52.370088],
-  bearing: 0,
-  pitch: 0,
-  maxBounds: bounds,
-  style: mapStyle
-});
-
-const THREE = window.THREE;
-let STATUS = "down";
+let STATUS = "up";
 
 /* Events */
 $(".mapboxgl-canvas").css("cursor", "crosshair");
@@ -55,10 +39,7 @@ $("#lookup").on("click", function () {
   STATUS = "up";
 
   map.easeTo({
-    center: [4.892891, 52.370088],
-    zoom: 13,
-    pitch: 80,
-    bearing: 0,
+    ...mapConfig.up,
     speed: 5,
     curve: 10,
     easing: easing
@@ -72,6 +53,13 @@ $("#lookdown").on("click", function () {
   $("#lookdown").addClass("hidden");
 
   STATUS = "down";
+
+  map.easeTo({
+    ...mapConfig.down,
+    speed: 5,
+    curve: 10,
+    easing: easing
+  });
 
   $("#audio-player")[0].pause();
 });
@@ -100,18 +88,16 @@ map.on("load", function () {
   markers.features.forEach(feature => addMarkerPopupToMap(feature, map));
 });
 
+map.on("style.load", () => map.addLayer(customLayer));
+
 map.on("drag", () => {
   let { lng, lat } = map.getCenter();
   updateCoordinates(lat, lng);
 });
 
-map.on("style.load", function () {
-  map.addLayer(customLayer);
-});
-
 map.on("pitchend", () => {
   if (STATUS === "down") return;
-  rotateCamera();
+  // rotateCamera();
 });
 
 map.on("zoomend", () => handleMiniVideos(map, markers));
@@ -143,10 +129,7 @@ function rotateCamera() {
     });
 
     map.easeTo({
-      center: [4.892891, 52.370088],
-      zoom: 15,
-      pitch: 0,
-      bearing: 0,
+      ...mapConfig.down,
       speed: 5,
       curve: 10,
       easing: easing

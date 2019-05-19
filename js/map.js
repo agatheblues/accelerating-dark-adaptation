@@ -9,6 +9,11 @@ const showMap = () => {
   $("#footer").removeClass("hidden");
 };
 
+const bounds = [
+  [4.717755, 52.278175], // Southwest coordinates
+  [5.07506, 52.431021] // Northeast coordinates
+];
+
 const mapStyle = {
   version: 8,
   name: "Dark - Dev",
@@ -81,4 +86,26 @@ const mapStyle = {
   "draft": false
 };
 
-export { updateCoordinates, mapStyle, showMap };
+const mapConfig = {
+  default: {
+    container: "map",
+    // minZoom: 13,
+    maxZoom: 19,
+    maxBounds: bounds,
+    style: mapStyle
+  },
+  down: {
+    zoom: 15,
+    center: [4.892891, 52.370088],
+    bearing: 0,
+    pitch: 0
+  },
+  up: {
+    center: [4.892891, 52.370088],
+    zoom: 13,
+    pitch: 80,
+    bearing: 0,
+  }
+}
+
+export { updateCoordinates, mapConfig, mapStyle, showMap };
