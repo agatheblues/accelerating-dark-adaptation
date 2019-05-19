@@ -4,7 +4,7 @@ import {
   showMap
 } from "./map.js";
 import { addMarkerPopupToMap } from "./popup.js";
-import { playLargeVideo, hideLargeVideo, showLargeVideo, stopLargeVideo, playMiniVideos, pauseMiniVideos } from "./video.js";
+import { playLargeVideo, hideLargeVideo, showLargeVideo, stopLargeVideo, handleMiniVideos } from "./video.js";
 import { markers } from "./markers.js";
 import { customLayer } from "./dome.js";
 import { config } from "../config.js";
@@ -18,7 +18,7 @@ let bounds = [
 
 const map = new mapboxgl.Map({
   container: "map",
-  minZoom: 13,
+  // minZoom: 13,
   maxZoom: 19,
   zoom: 15,
   center: [4.892891, 52.370088],
@@ -114,20 +114,9 @@ map.on("pitchend", () => {
   rotateCamera();
 });
 
-map.on("zoom", () => {
-  if (map.getZoom() < 15) {
-    $(".mapboxgl-popup").addClass("hidden");
-  } else {
-    $(".mapboxgl-popup").removeClass("hidden");
-  }
-});
+map.on("zoomend", () => handleMiniVideos(map, markers));
 
-map.on('moveend', function () {
-  var features = map.queryRenderedFeatures({ layers: ['markers'] });
-  playMiniVideos(features);
-  const names = features.map((f) => f.properties.name);
-  pauseMiniVideos(markers.features.filter((f) => names.indexOf(f.properties.name) < 0));
-});
+map.on('moveend', () => handleMiniVideos(map, markers));
 
 // degrees the map rotates when the left or right arrow is clicked
 var deltaDegrees = 1;

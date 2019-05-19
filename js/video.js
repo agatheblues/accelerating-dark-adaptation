@@ -33,4 +33,16 @@ const pauseMiniVideos = (features) => {
   });
 };
 
-export { playLargeVideo, hideLargeVideo, showLargeVideo, stopLargeVideo, playMiniVideos, pauseMiniVideos };
+const handleMiniVideos = (map, markers) => {
+  if (map.getZoom() < 14.5) {
+    pauseMiniVideos(markers.features);
+    return;
+  }
+
+  var features = map.queryRenderedFeatures({ layers: ['markers'] });
+  playMiniVideos(features);
+  const names = features.map((f) => f.properties.name);
+  pauseMiniVideos(markers.features.filter((f) => names.indexOf(f.properties.name) < 0));
+};
+
+export { playLargeVideo, hideLargeVideo, showLargeVideo, stopLargeVideo, handleMiniVideos };
