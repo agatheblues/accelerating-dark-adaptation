@@ -7,14 +7,15 @@ import { addMarkerPopupToMap } from "./popup.js";
 import { playLargeVideo, hideLargeVideo, showLargeVideo, stopLargeVideo, playMiniVideos, pauseMiniVideos } from "./video.js";
 import { markers } from "./markers.js";
 import { customLayer } from "./dome.js";
+import { config } from "../config.js";
 
-mapboxgl.accessToken =
-  "pk.eyJ1IjoibWFub25mZXZhbCIsImEiOiJjanZjdXFzeGExbTFkM3lwODV3MWRqZ2VwIn0.-JNe-7KSzOG_2Pr0g0MgEw";
+mapboxgl.accessToken = config.MAPBOX_ACCESS_TOKEN;
 
 let bounds = [
   [4.717755, 52.278175], // Southwest coordinates
   [5.07506, 52.431021] // Northeast coordinates
 ];
+
 const map = new mapboxgl.Map({
   container: "map",
   minZoom: 13,
