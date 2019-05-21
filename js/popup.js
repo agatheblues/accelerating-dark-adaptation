@@ -1,17 +1,14 @@
 import { handleMiniVideos } from "./video.js";
-import { markers } from "./markers.js";
-
-let popups = [];
 
 const setDefaultValue = value => (value.length > 0 ? value : "~");
 
-const renderPopupLocation = (quartier, lieu, latitude, longitude) => `<div class='popup-location'><p>${quartier}, ${lieu}</p></div><div><p>${longitude}&nbsp;&nbsp;${latitude}</p></div>`;
+const renderPopupLocation = (quartier, lieu, latitude, longitude) => `<div class='popup-location hidden'><div class='popup-quartier'><p>${quartier}, ${lieu}</p></div><div><p>${longitude}&nbsp;&nbsp;${latitude}</p></div></div>`;
 
 const renderPopupLabels = () =>
   "<div class='popup-left'><p>Lux</p><p>Night quality</p><p>Conditions</p></div>";
 
 const renderVideo = (name, url_short_video, url_long_video) =>
-  `<video id='${name}-player-sel' class='minivideo-player' data-url='${url_long_video}' loop autoplay muted>
+  `<video id='${name}-player-sel' class='minivideo-player hidden' data-url='${url_long_video}' loop muted>
   <source src='${url_short_video}' type='video/mp4' />
 </video>`;
 
@@ -22,13 +19,7 @@ const renderPopupValues = (lux, nqm, conditions) =>
     conditions
   )}</p></div>`;
 
-const renderPopUpContent = ({ quartier = "", lieu = "", latitude = 0, longitude = 0 }) => {
-  latitude = latitude.toFixed(5);
-  longitude = longitude.toFixed(5);
-  return renderPopupLocation(quartier, lieu, latitude, longitude);
-};
-
-const renderPopUpExtendedContent = ({
+const renderPopUpContent = ({
   quartier = "",
   lieu = "",
   lux = "",
@@ -42,15 +33,37 @@ const renderPopUpExtendedContent = ({
 }) => {
   latitude = latitude.toFixed(5);
   longitude = longitude.toFixed(5);
+
   return (
     renderVideo(name, url_short_video, url_long_video) +
-    renderPopupLocation(quartier, lieu) +
-    "<div class='popup-data'>" +
+    renderPopupLocation(quartier, lieu, latitude, longitude) +
+    "<div class='popup-data hidden'>" +
     renderPopupLabels() +
-    renderPopupValues(lux, nqm, conditions, latitude, longitude) +
+    renderPopupValues(lux, nqm, conditions) +
     "</div>"
   );
 };
+
+const showExtendedPopups = () => {
+  $('.minivideo-player').removeClass('hidden');
+  $('.popup-data').removeClass('hidden');
+  $('.popup-location').removeClass('hidden');
+  $('.mapboxgl-popup-content').removeClass('hidden');
+}
+
+const showLocationPopups = () => {
+  $('.minivideo-player').addClass('hidden');
+  $('.popup-data').addClass('hidden');
+  $('.popup-location').removeClass('hidden');
+  $('.mapboxgl-popup-content').removeClass('hidden');
+}
+
+const showMarkerPopups = () => {
+  $('.minivideo-player').addClass('hidden');
+  $('.popup-data').addClass('hidden');
+  $('.popup-location').addClass('hidden');
+  $('.mapboxgl-popup-content').addClass('hidden');
+}
 
 const addMarkerPopupToMap = (feature, map) => {
   let popup = new mapboxgl.Popup({
@@ -60,42 +73,33 @@ const addMarkerPopupToMap = (feature, map) => {
     maxWidth: '140px'
   });
 
-  popups.push(popup);
-
   let coordinates = feature.geometry.coordinates.slice();
-
-  popup.data = {
-    ...feature.properties,
-    latitude: coordinates[1],
-    longitude: coordinates[0]
-  }
 
   popup
     .setLngLat(coordinates)
-    .addTo(map);
+    .addTo(map)
+    .setHTML(renderPopUpContent({
+      ...feature.properties,
+      latitude: coordinates[1],
+      longitude: coordinates[0]
+    }));
 
   handlePopups(map);
 };
 
 const handlePopups = (map) => {
-  // handleMiniVideos
   const zoom = map.getZoom()
   const pitch = map.getPitch();
 
-  console.log(zoom, pitch)
-
   if (pitch > 60) {
-    popups.forEach(popup => popup.setHTML(""));
-    return;
-  }
-
-  if (pitch <= 60) {
-    if (zoom < 16) {
-      popups.forEach(popup => popup.setHTML(renderPopUpExtendedContent(popup.data)))
-      handleMiniVideos(map, markers);
-      return;
+    showMarkerPopups();
+  } else {
+    if (zoom >= 14) {
+      showExtendedPopups();
+      handleMiniVideos(map);
+    } else {
+      showLocationPopups();
     }
-    popups.forEach(popup => popup.setHTML(renderPopUpContent(popup.data)))
   }
 }
 

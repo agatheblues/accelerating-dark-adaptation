@@ -1,3 +1,5 @@
+import { markers } from "./markers.js";
+
 const playLargeVideo = url => {
   $("#video-player-source").attr("src", url);
   $("#video-player-sel")[0].load();
@@ -33,8 +35,8 @@ const pauseMiniVideos = (features) => {
   });
 };
 
-const handleMiniVideos = (map, markers) => {
-  if (map.getZoom() < 14.5) {
+const handleMiniVideos = (map) => {
+  if (map.getZoom() < 14 || map.getPitch() > 60) {
     pauseMiniVideos(markers.features);
     return;
   }
