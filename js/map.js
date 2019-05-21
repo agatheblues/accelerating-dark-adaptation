@@ -89,22 +89,32 @@ const mapStyle = {
 const mapConfig = {
   default: {
     container: "map",
-    // minZoom: 13,
-    maxZoom: 19,
     maxBounds: bounds,
     style: mapStyle
   },
-  down: {
-    zoom: 15,
-    center: [4.892891, 52.370088],
-    bearing: 0,
-    pitch: 0
+  top_zoomed: {
+    position: {
+      zoom: 14,
+      center: [4.892891, 52.370088],
+      bearing: 0,
+      pitch: 0
+    },
+    limits: {
+      maxZoom: 19,
+      minZoom: 13
+    }
   },
-  up: {
-    center: [4.892891, 52.370088],
-    zoom: 13,
-    pitch: 80,
-    bearing: 0,
+  side_rotate: {
+    position: {
+      center: [4.892891, 52.370088],
+      zoom: 13,
+      pitch: 80,
+      bearing: 0,
+    },
+    limits: {
+      maxZoom: 16,
+      minZoom: 13
+    }
   }
 }
 

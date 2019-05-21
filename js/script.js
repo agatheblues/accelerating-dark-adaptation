@@ -3,15 +3,15 @@ import {
   mapConfig,
   showMap
 } from "./map.js";
-import { addMarkerPopupToMap } from "./popup.js";
-import { playLargeVideo, hideLargeVideo, showLargeVideo, stopLargeVideo, handleMiniVideos } from "./video.js";
+import { addMarkerPopupToMap, handlePopups } from "./popup.js";
+import { playLargeVideo, hideLargeVideo, showLargeVideo, stopLargeVideo } from "./video.js";
 import { markers } from "./markers.js";
 import { customLayer } from "./dome.js";
 import { config } from "../config.js";
 
 mapboxgl.accessToken = config.MAPBOX_ACCESS_TOKEN;
 
-const map = new mapboxgl.Map({ ...mapConfig.default, ...mapConfig.up });
+const map = new mapboxgl.Map({ ...mapConfig.default, ...mapConfig.side_rotate.position, ...mapConfig.side_rotate.limits });
 
 let STATUS = "up";
 
@@ -37,13 +37,7 @@ $("#lookup").on("click", function () {
   $("#lookup").addClass("hidden");
 
   STATUS = "up";
-
-  map.easeTo({
-    ...mapConfig.up,
-    speed: 5,
-    curve: 10,
-    easing: easing
-  });
+  moveTo('side_rotate');
 
   $("#audio-player")[0].play();
 });
@@ -54,12 +48,7 @@ $("#lookdown").on("click", function () {
 
   STATUS = "down";
 
-  map.easeTo({
-    ...mapConfig.down,
-    speed: 5,
-    curve: 10,
-    easing: easing
-  });
+  moveTo('top_zoomed');
 
   $("#audio-player")[0].pause();
 });
@@ -100,9 +89,9 @@ map.on("pitchend", () => {
   // rotateCamera();
 });
 
-map.on("zoomend", () => handleMiniVideos(map, markers));
+map.on("zoomend", () => handlePopups(map));
 
-map.on('moveend', () => handleMiniVideos(map, markers));
+map.on('moveend', () => handlePopups(map));
 
 // degrees the map rotates when the left or right arrow is clicked
 var deltaDegrees = 1;
@@ -135,4 +124,16 @@ function rotateCamera() {
       easing: easing
     });
   }
+}
+
+const moveTo = (config) => {
+  map.easeTo({
+    ...mapConfig[config].position,
+    speed: 5,
+    curve: 10,
+    easing: easing
+  });
+
+  map.setMinZoom(mapConfig[config].limits.minZoom);
+  map.setMaxZoom(mapConfig[config].limits.maxZoom);
 }
