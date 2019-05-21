@@ -9,6 +9,21 @@ const showMap = () => {
   $("#footer").removeClass("hidden");
 };
 
+const handleLayerVisibility = (map, layerName) => {
+  var visibility = map.getLayoutProperty(layerName, 'visibility');
+  if (visibility === 'visible') {
+    map.setLayoutProperty(layerName, 'visibility', 'none');
+  } else {
+    map.setLayoutProperty(layerName, 'visibility', 'visible');
+  }
+}
+
+const toggleLayer = (map, name, status) => {
+  // handleLayerVisibility(map, 'ovl-amsterdam-wgs84-cs8m3r');
+  handleLayerVisibility(map, name);
+}
+
+
 const bounds = [
   [4.717755, 52.278175], // Southwest coordinates
   [5.07506, 52.431021] // Northeast coordinates
@@ -57,7 +72,6 @@ const mapStyle = {
     {
       id: "land",
       type: "background",
-      layout: {},
       paint: { "background-color": "hsl(241, 0%, 0%)" }
     },
     {
@@ -65,7 +79,9 @@ const mapStyle = {
       "type": "circle",
       "source": "mapbox://agatheblues.71znpuwr",
       "source-layer": "ovl-amsterdam-wgs84-cs8m3r",
-      "layout": {},
+      layout: {
+        "visibility": "visible"
+      },
       paint: {
         "circle-color": "hsl(57, 88%, 95%)",
         "circle-radius": [
@@ -87,7 +103,7 @@ const mapStyle = {
       "source": "mapbox://agatheblues.6xsw3odm",
       "source-layer": "public_lighting_with_night_da-1z4eo8",
       "layout": {
-        "visibility": "visible"
+        "visibility": "none"
       },
       "paint": {
         "circle-color": [
@@ -155,4 +171,4 @@ const mapConfig = {
   }
 }
 
-export { updateCoordinates, mapConfig, mapStyle, showMap };
+export { updateCoordinates, mapConfig, mapStyle, showMap, toggleLayer };

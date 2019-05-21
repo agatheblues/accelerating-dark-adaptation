@@ -1,7 +1,8 @@
 import {
   updateCoordinates,
   mapConfig,
-  showMap
+  showMap,
+  toggleLayer
 } from "./map.js";
 import { addMarkerPopupToMap, handlePopups } from "./popup.js";
 import { playLargeVideo, hideLargeVideo, showLargeVideo, stopLargeVideo } from "./video.js";
@@ -12,6 +13,11 @@ import { config } from "../config.js";
 mapboxgl.accessToken = config.MAPBOX_ACCESS_TOKEN;
 
 const map = new mapboxgl.Map({ ...mapConfig.default, ...mapConfig.side_rotate.position, ...mapConfig.side_rotate.limits });
+
+const showHide = (show, hide) => {
+  $(show).removeClass("hidden");
+  $(hide).addClass("hidden");
+}
 
 let STATUS = "up";
 
@@ -33,8 +39,7 @@ $("#close-video").on("click", e => {
 });
 
 $("#lookup").on("click", function () {
-  $("#lookdown").removeClass("hidden");
-  $("#lookup").addClass("hidden");
+  showHide("#lookdown", "#lookup");
 
   STATUS = "up";
   moveTo('side_rotate');
@@ -43,8 +48,7 @@ $("#lookup").on("click", function () {
 });
 
 $("#lookdown").on("click", function () {
-  $("#lookup").removeClass("hidden");
-  $("#lookdown").addClass("hidden");
+  showHide("#lookup", "#lookdown")
 
   STATUS = "down";
 
@@ -58,6 +62,16 @@ $("#map").on("click", ".minivideo-player", e => {
   playLargeVideo(e.target.dataset.url + "");
 });
 
+$("#view-lux").on("click", () => {
+  toggleLayer(map, 'heatmap_lux');
+  showHide("#hide-lux", "#view-lux");
+});
+
+$("#hide-lux").on("click", () => {
+  console.log('coucou')
+  toggleLayer(map, 'heatmap_lux');
+  showHide("#view-lux", "#hide-lux");
+});
 
 /* Map events */
 map.on("load", function () {

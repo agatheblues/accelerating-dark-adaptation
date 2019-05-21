@@ -4,3 +4,4 @@ node_modules
 /videos
 /audio
 config.js
+npm-debug.log
