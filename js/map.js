@@ -45,6 +45,10 @@ const mapStyle = {
     "mapbox://agatheblues.71znpuwr": {
       "url": "mapbox://agatheblues.71znpuwr",
       "type": "vector"
+    },
+    "mapbox://agatheblues.6xsw3odm": {
+      "url": "mapbox://agatheblues.6xsw3odm",
+      "type": "vector"
     }
   },
   "sprite": "mapbox://sprites/agatheblues/cjvv4z3cg2j9q1cq5pkojz8h2/8419b3clsjyq6xdbsdmiowfig",
@@ -64,6 +68,39 @@ const mapStyle = {
       "layout": {},
       paint: {
         "circle-color": "hsl(57, 88%, 95%)",
+        "circle-radius": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          0,
+          0.5,
+          12.66,
+          0.7,
+          22,
+          7
+        ]
+      }
+    },
+    {
+      "id": "heatmap_lux",
+      "type": "circle",
+      "source": "mapbox://agatheblues.6xsw3odm",
+      "source-layer": "public_lighting_with_night_da-1z4eo8",
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "circle-color": [
+          "interpolate",
+          ["exponential", 0.96],
+          ["get", "markers_lux"],
+          0,
+          "hsl(0, 0%, 25%)",
+          0.22,
+          "hsl(0, 0%, 25%)",
+          123.6,
+          "hsl(0, 0%, 100%)"
+        ],
         "circle-radius": [
           "interpolate",
           ["linear"],
