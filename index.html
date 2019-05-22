@@ -13,7 +13,7 @@
 </head>
 
 <body>
-  <div id="intro" class="intro-container">
+  <div id="intro" class="intro-container hidden">
     <div class="intro-wrapper">
       <h1>Real darkness does not exist</h1>
       <div class="intro-description">
@@ -31,8 +31,8 @@
       <button id="btn-explore" class="btn">Explore</button>
     </div>
   </div>
-  <div id="map" class="container invisible"></div>
-  <footer id="footer" class="footer hidden">
+  <div id="map" class="container"></div>
+  <footer id="footer" class="footer">
     <div class="footer-wrapper">
       <button class="btn hidden" id="lookup">Look up</button>
       <button class="btn" id="lookdown">Look down</button>
@@ -44,8 +44,22 @@
       </p>
     </div>
     <div class="footer-wrapper">
-      <button class="btn" id="view-lux">View lux</button>
-      <button class="btn hidden" id="hide-lux">Hide lux</button>
+      <div class="footer-toggle-container">
+        <div class="footer-toggle-wrapper">
+          <p class="switch-label">Lux</p>
+          <div>
+            <input type="checkbox" name="toggle-lux" id="toggle-lux" class="switch-toggle" />
+            <label for="toggle-lux" class="checkbox-label" data-off="off" data-on="on" disabled></label>
+          </div>
+        </div>
+        <div class="footer-toggle-wrapper">
+          <p class="switch-label">Night quality</p>
+          <div>
+            <input type="checkbox" name="toggle-nqm" id="toggle-nqm" class="switch-toggle" />
+            <label for="toggle-nqm" class="checkbox-label" data-off="off" data-on="on"></label>
+          </div>
+        </div>
+      </div>
     </div>
   </footer>
   <div id="video-wrapper" class="video-container hidden">

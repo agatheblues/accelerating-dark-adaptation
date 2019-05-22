@@ -9,18 +9,18 @@ const showMap = () => {
   $("#footer").removeClass("hidden");
 };
 
-const handleLayerVisibility = (map, layerName) => {
+const handleLayerVisibility = (map, layerName, status) => {
   var visibility = map.getLayoutProperty(layerName, 'visibility');
-  if (visibility === 'visible') {
+  if (visibility === 'visible' && !status) {
     map.setLayoutProperty(layerName, 'visibility', 'none');
-  } else {
+  } else if (status) {
     map.setLayoutProperty(layerName, 'visibility', 'visible');
   }
 }
 
 const toggleLayer = (map, name, status) => {
   // handleLayerVisibility(map, 'ovl-amsterdam-wgs84-cs8m3r');
-  handleLayerVisibility(map, name);
+  handleLayerVisibility(map, name, status);
 }
 
 
@@ -83,15 +83,15 @@ const mapStyle = {
         "visibility": "visible"
       },
       paint: {
-        "circle-color": "hsl(57, 88%, 95%)",
+        "circle-color": "hsl(0, 0, 100%)",
         "circle-radius": [
           "interpolate",
           ["linear"],
           ["zoom"],
           0,
           0.5,
-          12.66,
-          0.7,
+          12,
+          1,
           22,
           7
         ]
@@ -123,8 +123,42 @@ const mapStyle = {
           ["zoom"],
           0,
           0.5,
-          12.66,
-          0.7,
+          12,
+          1,
+          22,
+          7
+        ]
+      }
+    },
+    {
+      "id": "heatmap_nqm",
+      "type": "circle",
+      "source": "mapbox://agatheblues.6xsw3odm",
+      "source-layer": "public_lighting_with_night_da-1z4eo8",
+      "layout": {
+        "visibility": "none"
+      },
+      "paint": {
+        "circle-radius": 1,
+        "circle-color": [
+          "interpolate",
+          ["exponential", 0.96],
+          ["get", "markers_nqm"],
+          0,
+          "hsl(0, 0%, 25%)",
+          11.31,
+          "hsl(0, 0%, 25%)",
+          19.38,
+          "hsl(0, 0%, 100%)"
+        ],
+        "circle-radius": [
+          "interpolate",
+          ["linear"],
+          ["zoom"],
+          0,
+          0.5,
+          12,
+          1,
           22,
           7
         ]

@@ -19,6 +19,16 @@ const showHide = (show, hide) => {
   $(hide).addClass("hidden");
 }
 
+const handleSwitch = (checked, switchId) => {
+  if (checked) {
+    $(`#${switchId}`).prop('disabled', true);
+    $(`label[for='${switchId}']`).addClass('switch-disabled');
+  } else {
+    $(`#${switchId}`).prop('disabled', false);
+    $(`label[for='${switchId}']`).removeClass('switch-disabled');
+  }
+}
+
 let STATUS = "up";
 
 /* Events */
@@ -62,15 +72,14 @@ $("#map").on("click", ".minivideo-player", e => {
   playLargeVideo(e.target.dataset.url + "");
 });
 
-$("#view-lux").on("click", () => {
-  toggleLayer(map, 'heatmap_lux');
-  showHide("#hide-lux", "#view-lux");
+$("#toggle-lux").change(function () {
+  toggleLayer(map, 'heatmap_lux', this.checked);
+  handleSwitch(this.checked, 'toggle-nqm');
 });
 
-$("#hide-lux").on("click", () => {
-  console.log('coucou')
-  toggleLayer(map, 'heatmap_lux');
-  showHide("#view-lux", "#hide-lux");
+$("#toggle-nqm").change(function () {
+  toggleLayer(map, 'heatmap_nqm', this.checked);
+  handleSwitch(this.checked, 'toggle-lux');
 });
 
 /* Map events */
