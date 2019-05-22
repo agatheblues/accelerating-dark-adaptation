@@ -13,11 +13,7 @@ const markers = {
         url_short_video:
           "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         url_long_video:
-          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4",
-        lat_top: 52.360793,
-        lat_bottom: 52.360133,
-        lon_left: 4.779565,
-        lon_right: 4.781485
+          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4"
       },
       geometry: {
         type: "Point",
@@ -36,11 +32,7 @@ const markers = {
         url_short_video:
           "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         url_long_video:
-          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4",
-        lat_top: 52.380822,
-        lat_bottom: 52.380162,
-        lon_left: 4.785748,
-        lon_right: 4.787668
+          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4"
       },
       geometry: {
         type: "Point",
@@ -59,11 +51,7 @@ const markers = {
         url_short_video:
           "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         url_long_video:
-          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4",
-        lat_top: 52.345659,
-        lat_bottom: 52.344999,
-        lon_left: 4.810561,
-        lon_right: 4.812481
+          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4"
       },
       geometry: {
         type: "Point",
@@ -82,11 +70,7 @@ const markers = {
         url_short_video:
           "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         url_long_video:
-          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4",
-        lat_top: 52.319206,
-        lat_bottom: 52.318546,
-        lon_left: 4.829268,
-        lon_right: 4.831188
+          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4"
       },
       geometry: {
         type: "Point",
@@ -105,11 +89,7 @@ const markers = {
         url_short_video:
           "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         url_long_video:
-          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4",
-        lat_top: 52.341407,
-        lat_bottom: 52.340747,
-        lon_left: 4.873458,
-        lon_right: 4.875378
+          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4"
       },
       geometry: {
         type: "Point",
@@ -128,11 +108,7 @@ const markers = {
         url_short_video:
           "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         url_long_video:
-          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4",
-        lat_top: 52.340695,
-        lat_bottom: 52.340035,
-        lon_left: 4.916121,
-        lon_right: 4.918041
+          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4"
       },
       geometry: {
         type: "Point",
@@ -151,11 +127,7 @@ const markers = {
         url_short_video:
           "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         url_long_video:
-          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4",
-        lat_top: 52.35662,
-        lat_bottom: 52.35596,
-        lon_left: 4.95458,
-        lon_right: 4.9565
+          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4"
       },
       geometry: {
         type: "Point",
@@ -174,11 +146,7 @@ const markers = {
         url_short_video:
           "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         url_long_video:
-          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4",
-        lat_top: 52.360053,
-        lat_bottom: 52.359393,
-        lon_left: 4.91944,
-        lon_right: 4.92136
+          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4"
       },
       geometry: {
         type: "Point",
@@ -197,11 +165,7 @@ const markers = {
         url_short_video:
           "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         url_long_video:
-          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4",
-        lat_top: 52.356306,
-        lat_bottom: 52.355646,
-        lon_left: 4.891926,
-        lon_right: 4.893846
+          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4"
       },
       geometry: {
         type: "Point",
@@ -220,11 +184,7 @@ const markers = {
         url_short_video:
           "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         url_long_video:
-          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4",
-        lat_top: 52.343597,
-        lat_bottom: 52.342937,
-        lon_left: 4.853167,
-        lon_right: 4.855087
+          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4"
       },
       geometry: {
         type: "Point",
@@ -243,11 +203,7 @@ const markers = {
         url_short_video:
           "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         url_long_video:
-          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4",
-        lat_top: 52.357958,
-        lat_bottom: 52.357298,
-        lon_left: 4.866521,
-        lon_right: 4.868441
+          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4"
       },
       geometry: {
         type: "Point",
@@ -266,11 +222,7 @@ const markers = {
         url_short_video:
           "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         url_long_video:
-          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4",
-        lat_top: 52.364499,
-        lat_bottom: 52.363839,
-        lon_left: 4.843135,
-        lon_right: 4.845055
+          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4"
       },
       geometry: {
         type: "Point",
@@ -289,11 +241,7 @@ const markers = {
         url_short_video:
           "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         url_long_video:
-          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4",
-        lat_top: 52.380537,
-        lat_bottom: 52.379877,
-        lon_left: 4.849163,
-        lon_right: 4.851083
+          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4"
       },
       geometry: {
         type: "Point",
@@ -312,11 +260,7 @@ const markers = {
         url_short_video:
           "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         url_long_video:
-          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4",
-        lat_top: 52.386659,
-        lat_bottom: 52.385999,
-        lon_left: 4.871539,
-        lon_right: 4.873459
+          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4"
       },
       geometry: {
         type: "Point",
@@ -335,11 +279,7 @@ const markers = {
         url_short_video:
           "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         url_long_video:
-          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4",
-        lat_top: 52.398851,
-        lat_bottom: 52.398191,
-        lon_left: 4.883064,
-        lon_right: 4.884984
+          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4"
       },
       geometry: {
         type: "Point",
@@ -358,11 +298,7 @@ const markers = {
         url_short_video:
           "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         url_long_video:
-          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4",
-        lat_top: 52.367667,
-        lat_bottom: 52.367007,
-        lon_left: 4.86721,
-        lon_right: 4.86913
+          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4"
       },
       geometry: {
         type: "Point",
@@ -381,11 +317,7 @@ const markers = {
         url_short_video:
           "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         url_long_video:
-          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4",
-        lat_top: 52.375628,
-        lat_bottom: 52.374968,
-        lon_left: 4.882333,
-        lon_right: 4.884253
+          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4"
       },
       geometry: {
         type: "Point",
@@ -404,11 +336,7 @@ const markers = {
         url_short_video:
           "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         url_long_video:
-          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4",
-        lat_top: 52.373392,
-        lat_bottom: 52.372732,
-        lon_left: 4.891691,
-        lon_right: 4.893611
+          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4"
       },
       geometry: {
         type: "Point",
@@ -427,11 +355,7 @@ const markers = {
         url_short_video:
           "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         url_long_video:
-          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4",
-        lat_top: 52.363899,
-        lat_bottom: 52.363239,
-        lon_left: 4.901414,
-        lon_right: 4.903334
+          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4"
       },
       geometry: {
         type: "Point",
@@ -450,11 +374,7 @@ const markers = {
         url_short_video:
           "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         url_long_video:
-          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4",
-        lat_top: 52.372393,
-        lat_bottom: 52.371733,
-        lon_left: 4.897285,
-        lon_right: 4.899205
+          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4"
       },
       geometry: {
         type: "Point",
@@ -473,11 +393,7 @@ const markers = {
         url_short_video:
           "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         url_long_video:
-          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4",
-        lat_top: 52.378314,
-        lat_bottom: 52.377654,
-        lon_left: 4.899027,
-        lon_right: 4.900947
+          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4"
       },
       geometry: {
         type: "Point",
@@ -496,11 +412,7 @@ const markers = {
         url_short_video:
           "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         url_long_video:
-          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4",
-        lat_top: 52.378351,
-        lat_bottom: 52.377691,
-        lon_left: 4.933854,
-        lon_right: 4.935774
+          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4"
       },
       geometry: {
         type: "Point",
@@ -519,11 +431,7 @@ const markers = {
         url_short_video:
           "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         url_long_video:
-          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4",
-        lat_top: 52.368921,
-        lat_bottom: 52.368261,
-        lon_left: 4.947082,
-        lon_right: 4.949002
+          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4"
       },
       geometry: {
         type: "Point",
@@ -542,11 +450,7 @@ const markers = {
         url_short_video:
           "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         url_long_video:
-          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4",
-        lat_top: 52.365637,
-        lat_bottom: 52.364977,
-        lon_left: 4.95855,
-        lon_right: 4.96047
+          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4"
       },
       geometry: {
         type: "Point",
@@ -565,11 +469,7 @@ const markers = {
         url_short_video:
           "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         url_long_video:
-          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4",
-        lat_top: 52.348252,
-        lat_bottom: 52.347592,
-        lon_left: 5.027329,
-        lon_right: 5.029249
+          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4"
       },
       geometry: {
         type: "Point",
@@ -588,11 +488,7 @@ const markers = {
         url_short_video:
           "https://res.cloudinary.com/dkylbarf5/video/upload/v1557752079/miniVideos/ziggoDome_mini_n1nts3.mp4",
         url_long_video:
-          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767213/FullVideos/ziggoDome_nvfy8c.mp4",
-        lat_top: 52.313741,
-        lat_bottom: 52.313081,
-        lon_left: 4.936256,
-        lon_right: 4.938176
+          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767213/FullVideos/ziggoDome_nvfy8c.mp4"
       },
       geometry: {
         type: "Point",
@@ -611,11 +507,7 @@ const markers = {
         url_short_video:
           "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         url_long_video:
-          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4",
-        lat_top: 52.313063,
-        lat_bottom: 52.312403,
-        lon_left: 4.94311,
-        lon_right: 4.94503
+          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4"
       },
       geometry: {
         type: "Point",
@@ -634,11 +526,7 @@ const markers = {
         url_short_video:
           "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         url_long_video:
-          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4",
-        lat_top: 52.304425,
-        lat_bottom: 52.303765,
-        lon_left: 4.981932,
-        lon_right: 4.983852
+          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4"
       },
       geometry: {
         type: "Point",
@@ -657,11 +545,7 @@ const markers = {
         url_short_video:
           "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         url_long_video:
-          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4",
-        lat_top: 52.399709,
-        lat_bottom: 52.399049,
-        lon_left: 4.893733,
-        lon_right: 4.895653
+          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4"
       },
       geometry: {
         type: "Point",
@@ -680,11 +564,7 @@ const markers = {
         url_short_video:
           "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         url_long_video:
-          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4",
-        lat_top: 52.384449,
-        lat_bottom: 52.383789,
-        lon_left: 4.899586,
-        lon_right: 4.901506
+          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4"
       },
       geometry: {
         type: "Point",
@@ -703,11 +583,7 @@ const markers = {
         url_short_video:
           "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         url_long_video:
-          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4",
-        lat_top: 52.383768,
-        lat_bottom: 52.383108,
-        lon_left: 4.928328,
-        lon_right: 4.930248
+          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4"
       },
       geometry: {
         type: "Point",
@@ -726,11 +602,7 @@ const markers = {
         url_short_video:
           "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675769/miniVideos/north-onthedigue_mini_qula7e.mp4",
         url_long_video:
-          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767176/FullVideos/Uitdammerdijk_ydp2e8.mp4",
-        lat_top: 52.393457,
-        lat_bottom: 52.392797,
-        lon_left: 5.025729,
-        lon_right: 5.027649
+          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767176/FullVideos/Uitdammerdijk_ydp2e8.mp4"
       },
       geometry: {
         type: "Point",
@@ -749,11 +621,7 @@ const markers = {
         url_short_video:
           "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         url_long_video:
-          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4",
-        lat_top: 52.407403,
-        lat_bottom: 52.406743,
-        lon_left: 4.965875,
-        lon_right: 4.967795
+          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4"
       },
       geometry: {
         type: "Point",
@@ -772,11 +640,7 @@ const markers = {
         url_short_video:
           "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         url_long_video:
-          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4",
-        lat_top: 52.423938,
-        lat_bottom: 52.423278,
-        lon_left: 5.004761,
-        lon_right: 5.006681
+          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4"
       },
       geometry: {
         type: "Point",
@@ -795,11 +659,7 @@ const markers = {
         url_short_video:
           "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         url_long_video:
-          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4",
-        lat_top: 52.417609,
-        lat_bottom: 52.416949,
-        lon_left: 4.85679,
-        lon_right: 4.85871
+          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4"
       },
       geometry: {
         type: "Point",
@@ -818,11 +678,7 @@ const markers = {
         url_short_video:
           "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         url_long_video:
-          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4",
-        lat_top: 52.401311,
-        lat_bottom: 52.400651,
-        lon_left: 4.892341,
-        lon_right: 4.894261
+          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4"
       },
       geometry: {
         type: "Point",
@@ -841,11 +697,7 @@ const markers = {
         url_short_video:
           "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         url_long_video:
-          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4",
-        lat_top: 52.418018,
-        lat_bottom: 52.417358,
-        lon_left: 4.892996,
-        lon_right: 4.894916
+          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4"
       },
       geometry: {
         type: "Point",
@@ -864,11 +716,7 @@ const markers = {
         url_short_video:
           "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         url_long_video:
-          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4",
-        lat_top: 52.401746,
-        lat_bottom: 52.401086,
-        lon_left: 4.931332,
-        lon_right: 4.933252
+          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4"
       },
       geometry: {
         type: "Point",
@@ -887,11 +735,7 @@ const markers = {
         url_short_video:
           "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         url_long_video:
-          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4",
-        lat_top: 52.363191,
-        lat_bottom: 52.362531,
-        lon_left: 4.897686,
-        lon_right: 4.899606
+          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4"
       },
       geometry: {
         type: "Point",
@@ -910,11 +754,7 @@ const markers = {
         url_short_video:
           "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         url_long_video:
-          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4",
-        lat_top: 52.366497,
-        lat_bottom: 52.365837,
-        lon_left: 4.895611,
-        lon_right: 4.897531
+          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4"
       },
       geometry: {
         type: "Point",
@@ -933,11 +773,7 @@ const markers = {
         url_short_video:
           "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         url_long_video:
-          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4",
-        lat_top: 52.372872,
-        lat_bottom: 52.372212,
-        lon_left: 4.899269,
-        lon_right: 4.901189
+          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4"
       },
       geometry: {
         type: "Point",
@@ -956,11 +792,7 @@ const markers = {
         url_short_video:
           "https://res.cloudinary.com/dkylbarf5/video/upload/v1557675002/miniVideos/north-ijHallen_ymxxxz.mp4",
         url_long_video:
-          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4",
-        lat_top: 52.357483,
-        lat_bottom: 52.356823,
-        lon_left: 4.880106,
-        lon_right: 4.882026
+          "https://res.cloudinary.com/dkylbarf5/video/upload/v1557767197/FullVideos/NDSMhallenplein_c8hgsl.mp4"
       },
       geometry: {
         type: "Point",
