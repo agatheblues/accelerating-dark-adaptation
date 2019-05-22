@@ -12,6 +12,8 @@ import { config } from "../config.js";
 
 mapboxgl.accessToken = config.MAPBOX_ACCESS_TOKEN;
 
+$("#audio-player")[0].play();
+
 const map = new mapboxgl.Map({ ...mapConfig.default, ...mapConfig.side_rotate.position, ...mapConfig.side_rotate.limits });
 
 const showHide = (show, hide) => {
@@ -46,6 +48,8 @@ $("#btn-story").on("click", e => {
 $("#close-video").on("click", e => {
   stopLargeVideo();
   hideLargeVideo();
+
+  $("#audio-player")[0].play();
 });
 
 $("#lookup").on("click", function () {
@@ -53,8 +57,6 @@ $("#lookup").on("click", function () {
 
   STATUS = "up";
   moveTo('side_rotate');
-
-  $("#audio-player")[0].play();
 });
 
 $("#lookdown").on("click", function () {
@@ -63,11 +65,10 @@ $("#lookdown").on("click", function () {
   STATUS = "down";
 
   moveTo('top_zoomed');
-
-  $("#audio-player")[0].pause();
 });
 
 $("#map").on("click", ".minivideo-player", e => {
+  $("#audio-player")[0].pause();
   showLargeVideo();
   playLargeVideo(e.target.dataset.url + "");
 });
