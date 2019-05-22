@@ -83,15 +83,15 @@ const mapStyle = {
         "visibility": "visible"
       },
       paint: {
-        "circle-color": "hsl(0, 0, 100%)",
+        "circle-color": "hsl(57, 88%, 95%)",
         "circle-radius": [
           "interpolate",
           ["linear"],
           ["zoom"],
           0,
           0.5,
-          12,
-          1,
+          12.66,
+          0.7,
           22,
           7
         ]
@@ -123,8 +123,8 @@ const mapStyle = {
           ["zoom"],
           0,
           0.5,
-          12,
-          1,
+          12.66,
+          0.7,
           22,
           7
         ]
@@ -157,8 +157,8 @@ const mapStyle = {
           ["zoom"],
           0,
           0.5,
-          12,
-          1,
+          12.66,
+          0.7,
           22,
           7
         ]
