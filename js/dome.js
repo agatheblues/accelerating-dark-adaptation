@@ -35,7 +35,7 @@ export const customLayer = {
 
     var loader = new THREE.TextureLoader(),
       texture = loader.load("../data/galaxy_starfield.png");
-    var geometry = new THREE.SphereGeometry(11000, 500, 500, 0, 2 * Math.PI, -0.5 * Math.PI, 0.5 * Math.PI);
+    var geometry = new THREE.SphereGeometry(15000, 500, 500, 0, 2 * Math.PI, -0.5 * Math.PI, 0.5 * Math.PI);
     var material = new THREE.MeshPhongMaterial({
       color: 0xffffff,
       map: texture

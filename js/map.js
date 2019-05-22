@@ -188,7 +188,19 @@ const mapConfig = {
     },
     limits: {
       maxZoom: 19,
-      minZoom: 13
+      minZoom: 12
+    }
+  },
+  top_distanced: {
+    position: {
+      zoom: 12,
+      center: [4.892891, 52.370088],
+      bearing: 0,
+      pitch: 0
+    },
+    limits: {
+      maxZoom: 19,
+      minZoom: 12
     }
   },
   side_rotate: {

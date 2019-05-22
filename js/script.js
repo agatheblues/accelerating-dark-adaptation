@@ -16,10 +16,8 @@ $("#audio-player")[0].play();
 
 const map = new mapboxgl.Map({ ...mapConfig.default, ...mapConfig.side_rotate.position, ...mapConfig.side_rotate.limits });
 
-const showHide = (show, hide) => {
-  $(show).removeClass("hidden");
-  $(hide).addClass("hidden");
-}
+const show = (show) => $(show).removeClass("hidden");
+const hide = (hide) => $(hide).addClass("hidden");
 
 const handleSwitch = (checked, switchId) => {
   if (checked) {
@@ -53,19 +51,34 @@ $("#close-video").on("click", e => {
 });
 
 $("#lookup").on("click", function () {
-  showHide("#lookdown", "#lookup");
+  show("#lookdown");
+  show('#lookwhole');
+  hide("#lookup");
 
   STATUS = "up";
   moveTo('side_rotate');
 });
 
 $("#lookdown").on("click", function () {
-  showHide("#lookup", "#lookdown")
+  hide("#lookdown");
+  show('#lookwhole');
+  show("#lookup");
 
   STATUS = "down";
 
   moveTo('top_zoomed');
 });
+
+
+$("#lookwhole").on("click", function () {
+  show("#lookdown");
+  hide('#lookwhole');
+  show("#lookup");
+
+  STATUS = "up";
+  moveTo('top_distanced');
+});
+
 
 $("#map").on("click", ".minivideo-player", e => {
   $("#audio-player")[0].pause();
