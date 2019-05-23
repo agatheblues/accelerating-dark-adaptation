@@ -51,10 +51,10 @@ const showExtendedPopups = () => {
   $('.mapboxgl-popup-content').removeClass('hidden');
 }
 
-const showLocationPopups = () => {
+const showShortPopups = () => {
   $('.minivideo-player').addClass('hidden');
-  $('.popup-data').addClass('hidden');
-  $('.popup-location').removeClass('hidden');
+  $('.popup-data').removeClass('hidden');
+  $('.popup-location').addClass('hidden');
   $('.mapboxgl-popup-content').removeClass('hidden');
 }
 
@@ -98,7 +98,7 @@ const handlePopups = (map) => {
       showExtendedPopups();
       handleMiniVideos(map);
     } else {
-      showLocationPopups();
+      showShortPopups();
     }
   }
 }
