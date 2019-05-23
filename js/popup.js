@@ -5,26 +5,22 @@ const setDefaultValue = value => (value.length > 0 ? value : "~");
 const renderPopupLocation = (quartier, lieu, latitude, longitude) => `<div class='popup-location hidden'><div class='popup-quartier'><p>${quartier}, ${lieu}</p></div><div><p>${longitude}&nbsp;&nbsp;${latitude}</p></div></div>`;
 
 const renderPopupLabels = () =>
-  "<div class='popup-left'><p>Lux</p><p>Night quality</p><p>Conditions</p></div>";
+  "<div class='popup-left'><p>Lux</p><p>Night quality</p></div>";
 
 const renderVideo = (name, url_short_video, url_long_video) =>
   `<video id='${name}-player-sel' class='minivideo-player hidden' data-url='${url_long_video}' loop muted>
   <source src='${url_short_video}' type='video/mp4' />
 </video>`;
 
-const renderPopupValues = (lux, nqm, conditions) =>
-  `<div class='popup-right'><p>${setDefaultValue(lux)}</p><p>${setDefaultValue(
-    nqm
-  )}</p><p>${setDefaultValue(
-    conditions
-  )}</p></div>`;
+const renderPopupValues = (lux, nqm) =>
+  `<div class='popup-right'><p>${setDefaultValue(lux)}</p>
+  <p>${setDefaultValue(nqm)}</p></div>`;
 
 const renderPopUpContent = ({
   quartier = "",
   lieu = "",
   lux = "",
   nqm = "",
-  conditions = "",
   latitude = 0,
   longitude = 0,
   name,
@@ -37,32 +33,29 @@ const renderPopUpContent = ({
   return (
     renderVideo(name, url_short_video, url_long_video) +
     renderPopupLocation(quartier, lieu, latitude, longitude) +
-    "<div class='popup-data hidden'>" +
+    "<div class='popup-data'>" +
     renderPopupLabels() +
-    renderPopupValues(lux, nqm, conditions) +
+    renderPopupValues(lux, nqm) +
     "</div>"
   );
 };
 
 const showExtendedPopups = () => {
   $('.minivideo-player').removeClass('hidden');
-  $('.popup-data').removeClass('hidden');
+  $('.popup-left').removeClass('hidden');
   $('.popup-location').removeClass('hidden');
-  $('.mapboxgl-popup-content').removeClass('hidden');
 }
 
 const showShortPopups = () => {
   $('.minivideo-player').addClass('hidden');
-  $('.popup-data').removeClass('hidden');
+  $('.popup-left').removeClass('hidden');
   $('.popup-location').addClass('hidden');
-  $('.mapboxgl-popup-content').removeClass('hidden');
 }
 
 const showMarkerPopups = () => {
   $('.minivideo-player').addClass('hidden');
-  $('.popup-data').addClass('hidden');
+  $('.popup-left').addClass('hidden');
   $('.popup-location').addClass('hidden');
-  $('.mapboxgl-popup-content').addClass('hidden');
 }
 
 const addMarkerPopupToMap = (feature, map) => {
@@ -91,7 +84,7 @@ const handlePopups = (map) => {
   const zoom = map.getZoom()
   const pitch = map.getPitch();
 
-  if (pitch > 60) {
+  if (pitch > 60 || zoom <= 12) {
     showMarkerPopups();
   } else {
     if (zoom >= 14) {
