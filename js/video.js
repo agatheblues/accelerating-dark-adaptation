@@ -12,12 +12,12 @@ const stopLargeVideo = () => {
 };
 
 const showLargeVideo = () => {
-  $("#map").addClass("hidden");
+  // $("#map").addClass("hidden");
   $("#video-wrapper").removeClass("hidden");
 };
 
 const hideLargeVideo = () => {
-  $("#map").removeClass("hidden");
+  // $("#map").removeClass("hidden");
   $("#video-wrapper").addClass("hidden");
 };
 
@@ -36,15 +36,15 @@ const pauseMiniVideos = (features) => {
 };
 
 const handleMiniVideos = (map) => {
-  if (map.getZoom() < 14 || map.getPitch() > 60) {
-    pauseMiniVideos(markers.features);
-    return;
-  }
+  // if (map.getZoom() < 14 || map.getPitch() > 60) {
+  //   pauseMiniVideos(markers.features);
+  //   return;
+  // }
 
-  var features = map.queryRenderedFeatures({ layers: ['markers'] });
-  playMiniVideos(features);
-  const names = features.map((f) => f.properties.name);
-  pauseMiniVideos(markers.features.filter((f) => names.indexOf(f.properties.name) < 0));
+  // var features = map.queryRenderedFeatures({ layers: ['markers'] });
+  // playMiniVideos(features);
+  // const names = features.map((f) => f.properties.name);
+  // pauseMiniVideos(markers.features.filter((f) => names.indexOf(f.properties.name) < 0));
 };
 
 export { playLargeVideo, hideLargeVideo, showLargeVideo, stopLargeVideo, handleMiniVideos };

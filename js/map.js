@@ -72,7 +72,7 @@ const mapStyle = {
     {
       id: "land",
       type: "background",
-      paint: { "background-color": "hsl(241, 0%, 0%)" }
+      paint: { "background-color": "hsla(241, 0%, 0%, 0%)" }
     },
     {
       "id": "ovl-amsterdam-wgs84-cs8m3r",

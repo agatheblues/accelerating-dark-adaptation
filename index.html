@@ -31,6 +31,12 @@
       <button id="btn-explore" class="btn">Explore</button>
     </div>
   </div>
+  <div id="video-wrapper" class="video-container">
+    <video id="video-player-sel" class="video-player" loop>
+      <source id="video-player-source" src="" type="video/mp4" />
+    </video>
+    <span id="close-video" class="close"></span>
+  </div>
   <div id="map" class="container"></div>
   <footer id="footer" class="footer">
     <div class="footer-wrapper">
@@ -63,12 +69,7 @@
       </div>
     </div>
   </footer>
-  <div id="video-wrapper" class="video-container hidden">
-    <video id="video-player-sel" class="video-player" loop>
-      <source id="video-player-source" src="" type="video/mp4" />
-    </video>
-    <span id="close-video" class="close"></span>
-  </div>
+
   <div id="audio-wrapper invisible">
     <audio id="audio-player" loop>
       <source

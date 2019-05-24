@@ -1,7 +1,7 @@
 
 // parameters to ensure the model is georeferenced correctly on the map
 var modelOrigin = [4.892891, 52.370088];
-var modelAltitude = 0;
+var modelAltitude = -500;
 var modelRotate = [Math.PI / 2, 0, 0];
 var modelScale = 5.41843220338983e-8;
 

@@ -80,21 +80,25 @@ $("#lookwhole").on("click", function () {
 });
 
 
-$("#map").on("click", ".minivideo-player", e => {
-  $("#audio-player")[0].pause();
-  showLargeVideo();
-  playLargeVideo(e.target.dataset.url + "");
-});
+// $("#map").on("click", ".minivideo-player", e => {
+//   $("#audio-player")[0].pause();
+//   showLargeVideo();
+//   playLargeVideo(e.target.dataset.url + "");
+// });
 
 $("#map").on("click", '.mapboxgl-popup-content', function (e) {
-  const coordinates = $(this).children('.popup-wrapper');
+  const popupData = $(this).children('.popup-wrapper');
 
   map.easeTo({
     zoom: 14,
-    center: [coordinates.data('lon'), coordinates.data('lat')],
+    center: [popupData.data('lon'), popupData.data('lat')],
     bearing: 0,
     pitch: 0
-  })
+  });
+
+  $("#audio-player")[0].pause();
+  showLargeVideo();
+  playLargeVideo(popupData.data('url') + "");
 });
 
 $("#toggle-lux").change(function () {
