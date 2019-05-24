@@ -31,12 +31,13 @@ const renderPopUpContent = ({
   longitude = longitude.toFixed(5);
 
   return (
+    `<div class='popup-wrapper' data-lat=${latitude} data-lon=${longitude}>` +
     renderVideo(name, url_short_video, url_long_video) +
     renderPopupLocation(quartier, lieu, latitude, longitude) +
     "<div class='popup-data'>" +
     renderPopupLabels() +
     renderPopupValues(lux, nqm) +
-    "</div>"
+    "</div></div>"
   );
 };
 

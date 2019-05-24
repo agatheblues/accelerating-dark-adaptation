@@ -86,6 +86,17 @@ $("#map").on("click", ".minivideo-player", e => {
   playLargeVideo(e.target.dataset.url + "");
 });
 
+$("#map").on("click", '.mapboxgl-popup-content', function (e) {
+  const coordinates = $(this).children('.popup-wrapper');
+
+  map.easeTo({
+    zoom: 14,
+    center: [coordinates.data('lon'), coordinates.data('lat')],
+    bearing: 0,
+    pitch: 0
+  })
+});
+
 $("#toggle-lux").change(function () {
   toggleLayer(map, 'heatmap_lux', this.checked);
   handleSwitch(this.checked, 'toggle-nqm');
