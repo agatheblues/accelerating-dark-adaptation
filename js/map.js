@@ -24,13 +24,17 @@ const toggleLayer = (map, name, status) => {
   handleLayerVisibility(map, name, status);
 }
 
-const handleSwitch = (checked, switchId) => {
+const handleSwitch = (checked, switchId, popupShow, popupHide) => {
   if (checked) {
     $(`#${switchId}`).prop('disabled', true);
     $(`label[for='${switchId}']`).addClass('switch-disabled');
+    show(`.popup-${popupShow}`);
+    hide(`.popup-${popupHide}`);
   } else {
     $(`#${switchId}`).prop('disabled', false);
     $(`label[for='${switchId}']`).removeClass('switch-disabled');
+    show(`.popup-${popupShow}`);
+    show(`.popup-${popupHide}`);
   }
 }
 
