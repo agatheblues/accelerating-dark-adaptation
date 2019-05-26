@@ -2,12 +2,14 @@ import {
   updateCoordinates,
   mapConfig,
   showMap,
-  toggleLayer
+  toggleLayer,
+  handleSwitch
 } from "./map.js";
 import { addMarkerPopupToMap, handlePopups } from "./popup.js";
-import { playLargeVideo, hideLargeVideo, showLargeVideo, stopLargeVideo } from "./video.js";
+import { playLargeVideo, stopLargeVideo } from "./video.js";
 import { markers } from "./markers.js";
 import { customLayer } from "./dome.js";
+import { show, hide } from "./utils.js";
 import { config } from "../config.js";
 
 mapboxgl.accessToken = config.MAPBOX_ACCESS_TOKEN;
@@ -15,19 +17,6 @@ mapboxgl.accessToken = config.MAPBOX_ACCESS_TOKEN;
 $("#audio-player")[0].play();
 
 const map = new mapboxgl.Map({ ...mapConfig.default, ...mapConfig.side_rotate.position, ...mapConfig.side_rotate.limits });
-
-const show = (show) => $(show).removeClass("hidden");
-const hide = (hide) => $(hide).addClass("hidden");
-
-const handleSwitch = (checked, switchId) => {
-  if (checked) {
-    $(`#${switchId}`).prop('disabled', true);
-    $(`label[for='${switchId}']`).addClass('switch-disabled');
-  } else {
-    $(`#${switchId}`).prop('disabled', false);
-    $(`label[for='${switchId}']`).removeClass('switch-disabled');
-  }
-}
 
 let STATUS = "up";
 
@@ -45,7 +34,8 @@ $("#btn-story").on("click", e => {
 
 $("#close-video").on("click", e => {
   stopLargeVideo();
-  hideLargeVideo();
+  hide("#video-wrapper");
+  hide("#close-video");
 
   $("#audio-player")[0].play();
 });
@@ -79,13 +69,6 @@ $("#lookwhole").on("click", function () {
   moveTo('top_distanced');
 });
 
-
-// $("#map").on("click", ".minivideo-player", e => {
-//   $("#audio-player")[0].pause();
-//   showLargeVideo();
-//   playLargeVideo(e.target.dataset.url + "");
-// });
-
 $("#map").on("click", '.mapboxgl-popup-content', function (e) {
   const popupData = $(this).children('.popup-wrapper');
 
@@ -97,7 +80,9 @@ $("#map").on("click", '.mapboxgl-popup-content', function (e) {
   });
 
   $("#audio-player")[0].pause();
-  showLargeVideo();
+
+  show("#video-wrapper");
+  show("#close-video");
   playLargeVideo(popupData.data('url') + "");
 });
 

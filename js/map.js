@@ -1,12 +1,14 @@
+import { show, hide } from "./utils.js";
+
 const updateCoordinates = (lat, long) => {
   $("#info-long").html(long.toFixed(5));
   $("#info-lat").html(lat.toFixed(5));
 };
 
 const showMap = () => {
-  $("#intro").addClass("hidden");
+  hide("#intro");
   $("#map").removeClass("invisible");
-  $("#footer").removeClass("hidden");
+  show("#footer");
 };
 
 const handleLayerVisibility = (map, layerName, status) => {
@@ -19,10 +21,18 @@ const handleLayerVisibility = (map, layerName, status) => {
 }
 
 const toggleLayer = (map, name, status) => {
-  // handleLayerVisibility(map, 'ovl-amsterdam-wgs84-cs8m3r');
   handleLayerVisibility(map, name, status);
 }
 
+const handleSwitch = (checked, switchId) => {
+  if (checked) {
+    $(`#${switchId}`).prop('disabled', true);
+    $(`label[for='${switchId}']`).addClass('switch-disabled');
+  } else {
+    $(`#${switchId}`).prop('disabled', false);
+    $(`label[for='${switchId}']`).removeClass('switch-disabled');
+  }
+}
 
 const bounds = [
   [4.717755, 52.278175], // Southwest coordinates
@@ -217,4 +227,4 @@ const mapConfig = {
   }
 }
 
-export { updateCoordinates, mapConfig, mapStyle, showMap, toggleLayer };
+export { updateCoordinates, mapConfig, mapStyle, showMap, toggleLayer, handleSwitch };

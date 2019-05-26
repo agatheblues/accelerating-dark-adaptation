@@ -1,4 +1,4 @@
-import { handleMiniVideos } from "./video.js";
+import { show, hide } from "./utils.js";
 
 const setDefaultValue = value => (value.length > 0 ? value : "~");
 
@@ -6,11 +6,6 @@ const renderPopupLocation = (quartier, lieu, latitude, longitude) => `<div class
 
 const renderPopupLabels = () =>
   "<div class='popup-left'><p>Lux</p><p>Night quality</p></div>";
-
-const renderVideo = (name, url_short_video, url_long_video) =>
-  `<video id='${name}-player-sel' class='minivideo-player hidden' data-url='${url_long_video}' loop muted>
-  <source src='${url_short_video}' type='video/mp4' />
-</video>`;
 
 const renderPopupValues = (lux, nqm) =>
   `<div class='popup-right'><p>${setDefaultValue(lux)}</p>
@@ -23,8 +18,6 @@ const renderPopUpContent = ({
   nqm = "",
   latitude = 0,
   longitude = 0,
-  name,
-  url_short_video = "",
   url_long_video = ""
 }) => {
   latitude = latitude.toFixed(5);
@@ -32,7 +25,6 @@ const renderPopUpContent = ({
 
   return (
     `<div class='popup-wrapper' data-lat=${latitude} data-lon=${longitude} data-url=${url_long_video}>` +
-    // renderVideo(name, url_short_video, url_long_video) +
     renderPopupLocation(quartier, lieu, latitude, longitude) +
     "<div class='popup-data'>" +
     renderPopupLabels() +
@@ -42,21 +34,18 @@ const renderPopUpContent = ({
 };
 
 const showExtendedPopups = () => {
-  $('.minivideo-player').removeClass('hidden');
-  $('.popup-left').removeClass('hidden');
-  $('.popup-location').removeClass('hidden');
+  show('.popup-left');
+  show('.popup-location');
 }
 
 const showShortPopups = () => {
-  $('.minivideo-player').addClass('hidden');
-  $('.popup-left').removeClass('hidden');
-  $('.popup-location').addClass('hidden');
+  show('.popup-left');
+  hide('.popup-location');
 }
 
 const showMarkerPopups = () => {
-  $('.minivideo-player').addClass('hidden');
-  $('.popup-left').addClass('hidden');
-  $('.popup-location').addClass('hidden');
+  hide('.popup-left');
+  hide('.popup-location');
 }
 
 const addMarkerPopupToMap = (feature, map) => {
@@ -90,7 +79,6 @@ const handlePopups = (map) => {
   } else {
     if (zoom >= 14) {
       showExtendedPopups();
-      handleMiniVideos(map);
     } else {
       showShortPopups();
     }
