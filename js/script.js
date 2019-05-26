@@ -41,19 +41,11 @@ $("#close-video").on("click", e => {
 });
 
 $("#lookup").on("click", function () {
-  show("#lookdown");
-  show('#lookwhole');
-  hide("#lookup");
-
   STATUS = "up";
   moveTo('side_rotate');
 });
 
 $("#lookdown").on("click", function () {
-  hide("#lookdown");
-  show('#lookwhole');
-  show("#lookup");
-
   STATUS = "down";
 
   moveTo('top_zoomed');
@@ -61,10 +53,6 @@ $("#lookdown").on("click", function () {
 
 
 $("#lookwhole").on("click", function () {
-  show("#lookdown");
-  hide('#lookwhole');
-  show("#lookup");
-
   STATUS = "up";
   moveTo('top_distanced');
 });
@@ -128,7 +116,11 @@ map.on("pitchend", () => {
 
 map.on("zoomend", () => handlePopups(map));
 
-map.on('moveend', () => handlePopups(map));
+map.on('moveend', () => {
+  handlePopups(map);
+  let { lng, lat } = map.getCenter();
+  updateCoordinates(lat, lng);
+});
 
 // degrees the map rotates when the left or right arrow is clicked
 var deltaDegrees = 1;
