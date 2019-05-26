@@ -75,12 +75,12 @@ $("#map").on("click", '.mapboxgl-popup-content', function (e) {
 });
 
 $("#toggle-lux").change(function () {
-  toggleLayer(map, 'heatmap_lux', this.checked);
+  toggleLayer(map, 'lux', this.checked);
   handleSwitch(this.checked, 'toggle-nqm', 'lux', 'nqm');
 });
 
 $("#toggle-nqm").change(function () {
-  toggleLayer(map, 'heatmap_nqm', this.checked);
+  toggleLayer(map, 'nqm', this.checked);
   handleSwitch(this.checked, 'toggle-lux', 'nqm', 'lux');
 });
 

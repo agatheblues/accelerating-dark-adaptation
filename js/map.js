@@ -11,17 +11,42 @@ const showMap = () => {
   show("#footer");
 };
 
-const handleLayerVisibility = (map, layerName, status) => {
-  var visibility = map.getLayoutProperty(layerName, 'visibility');
-  if (visibility === 'visible' && !status) {
-    map.setLayoutProperty(layerName, 'visibility', 'none');
-  } else if (status) {
-    map.setLayoutProperty(layerName, 'visibility', 'visible');
-  }
+const toggleLux = (map) => {
+  map.setPaintProperty("public_lighting", "circle-color", [
+    "interpolate",
+    ["exponential", 0.96],
+    ["get", "markers_lux"],
+    0,
+    "hsl(0, 0%, 25%)",
+    0.22,
+    "hsl(0, 0%, 25%)",
+    123.6,
+    "hsl(0, 0%, 100%)"
+  ]);
 }
 
-const toggleLayer = (map, name, status) => {
-  handleLayerVisibility(map, name, status);
+const toggleNqm = (map) => {
+  map.setPaintProperty("public_lighting", "circle-color", [
+    "interpolate",
+    ["exponential", 0.96],
+    ["get", "markers_nqm"],
+    0,
+    "hsl(0, 0%, 25%)",
+    11.31,
+    "hsl(0, 0%, 25%)",
+    19.38,
+    "hsl(0, 0%, 100%)"
+  ]);
+}
+
+const toggleLayer = (map, layer, status) => {
+  if (status) {
+    if (layer === 'lux') toggleLux(map);
+    else if (layer === 'nqm') toggleNqm(map);
+  }
+  else {
+    map.setPaintProperty("public_lighting", "circle-color", "hsl(57, 88%, 95%)");
+  }
 }
 
 const handleSwitch = (checked, switchId, popupShow, popupHide) => {
@@ -71,10 +96,6 @@ const mapStyle = {
   bearing: 0,
   pitch: 0,
   sources: {
-    "mapbox://agatheblues.71znpuwr": {
-      "url": "mapbox://agatheblues.71znpuwr",
-      "type": "vector"
-    },
     "mapbox://agatheblues.6xsw3odm": {
       "url": "mapbox://agatheblues.6xsw3odm",
       "type": "vector"
@@ -89,82 +110,12 @@ const mapStyle = {
       paint: { "background-color": "hsla(241, 0%, 0%, 0%)" }
     },
     {
-      "id": "ovl-amsterdam-wgs84-cs8m3r",
+      "id": "public_lighting",
       "type": "circle",
-      "source": "mapbox://agatheblues.71znpuwr",
-      "source-layer": "ovl-amsterdam-wgs84-cs8m3r",
-      layout: {
-        "visibility": "visible"
-      },
-      paint: {
+      "source": "mapbox://agatheblues.6xsw3odm",
+      "source-layer": "public_lighting_with_night_da-1z4eo8",
+      "paint": {
         "circle-color": "hsl(57, 88%, 95%)",
-        "circle-radius": [
-          "interpolate",
-          ["linear"],
-          ["zoom"],
-          0,
-          0.5,
-          12.66,
-          0.7,
-          22,
-          7
-        ]
-      }
-    },
-    {
-      "id": "heatmap_lux",
-      "type": "circle",
-      "source": "mapbox://agatheblues.6xsw3odm",
-      "source-layer": "public_lighting_with_night_da-1z4eo8",
-      "layout": {
-        "visibility": "none"
-      },
-      "paint": {
-        "circle-color": [
-          "interpolate",
-          ["exponential", 0.96],
-          ["get", "markers_lux"],
-          0,
-          "hsl(0, 0%, 25%)",
-          0.22,
-          "hsl(0, 0%, 25%)",
-          123.6,
-          "hsl(0, 0%, 100%)"
-        ],
-        "circle-radius": [
-          "interpolate",
-          ["linear"],
-          ["zoom"],
-          0,
-          0.5,
-          12.66,
-          0.7,
-          22,
-          7
-        ]
-      }
-    },
-    {
-      "id": "heatmap_nqm",
-      "type": "circle",
-      "source": "mapbox://agatheblues.6xsw3odm",
-      "source-layer": "public_lighting_with_night_da-1z4eo8",
-      "layout": {
-        "visibility": "none"
-      },
-      "paint": {
-        "circle-radius": 1,
-        "circle-color": [
-          "interpolate",
-          ["exponential", 0.96],
-          ["get", "markers_nqm"],
-          0,
-          "hsl(0, 0%, 25%)",
-          11.31,
-          "hsl(0, 0%, 25%)",
-          19.38,
-          "hsl(0, 0%, 100%)"
-        ],
         "circle-radius": [
           "interpolate",
           ["linear"],
@@ -231,4 +182,4 @@ const mapConfig = {
   }
 }
 
-export { updateCoordinates, mapConfig, mapStyle, showMap, toggleLayer, handleSwitch };
+export { updateCoordinates, mapConfig, showMap, toggleLayer, handleSwitch };
