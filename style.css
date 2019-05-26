@@ -16,8 +16,22 @@ p {
 
 h1 {
   margin: 0;
-  font-size: 16px;
+  font-size: 50px;
   font-weight: 600;
+}
+
+a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+a:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+a.not-underlined {
+  text-decoration: none;
 }
 
 .hidden {
@@ -52,6 +66,7 @@ h1 {
 /* Buttons */
 
 .btn {
+  display: inline-block;
   overflow: hidden;
 
   padding: 10px 12px;
@@ -343,4 +358,52 @@ h1 {
 
 .switch-label {
   padding: 0 10px;
+}
+
+/* Content */
+.content-container {
+  width: 90%;
+  margin: 10% auto 10% auto;
+}
+
+.content-container video {
+  width: 100%;
+  height: auto;
+}
+
+.section-container {
+  margin: 50px 0 50px 0;
+}
+
+.content-container p {
+  margin: 10px 0 10px;
+}
+
+/* Medium mobile*/
+@media only screen and (min-width : 480px) {
+  .content-container {
+    width: 80%;
+  }
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-width : 768px) {
+  .content-container {
+    width: 60%;
+  }
+}
+
+/* desktops ----------- */
+@media only screen and (min-width : 1080px) {
+  .content-container {
+    width: 50%;
+    margin: 5% auto 5% auto;
+  }
+}
+
+/* desktops ----------- */
+@media only screen and (min-width : 1280px) {
+  .content-container {
+    width: 700px;
+  }
 }
