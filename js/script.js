@@ -11,7 +11,7 @@ import {
 import { addMarkerPopupToMap, handlePopups } from "./popup.js";
 import { playLargeVideo, stopLargeVideo } from "./video.js";
 import { markers } from "./markers.js";
-import { customLayer } from "./dome.js";
+import { customLayer, hideDome, showDome } from "./dome.js";
 import { show, hide } from "./utils.js";
 import { config } from "../config.js";
 
@@ -40,7 +40,7 @@ $("#close-video").on("click", e => {
   stopLargeVideo();
   hide("#video-wrapper");
   hide("#close-video");
-
+  showDome(map);
   $("#audio-player")[0].play();
 });
 
@@ -79,6 +79,7 @@ $("#map").on("click", '.mapboxgl-popup-content', function (e) {
   show("#close-video");
   playLargeVideo(popupData.data('url') + "");
   dimMap();
+  hideDome(map);
 });
 
 $(document).mousemove(() => handleDimmedMap());

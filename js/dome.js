@@ -16,8 +16,8 @@ var modelTransform = {
   scale: modelScale
 };
 
-export const customLayer = {
-  id: '3d-model',
+const customLayer = {
+  id: 'dome',
   type: 'custom',
   renderingMode: '3d',
   onAdd: function (map, gl) {
@@ -74,3 +74,8 @@ export const customLayer = {
     this.map.triggerRepaint();
   }
 };
+
+const hideDome = (map) => map.setLayoutProperty('dome', 'visibility', 'none');
+const showDome = (map) => map.setLayoutProperty('dome', 'visibility', 'visible');
+
+export { customLayer, hideDome, showDome }
