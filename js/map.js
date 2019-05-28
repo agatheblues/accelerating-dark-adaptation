@@ -14,30 +14,28 @@ const showMap = () => {
 };
 
 const toggleLux = (map) => {
-  map.setPaintProperty("public_lighting", "circle-color", [
+  map.setPaintProperty("public_lighting", "circle-radius", [
     "interpolate",
-    ["exponential", 0.96],
+    ["linear"],
     ["get", "markers_lux"],
-    0,
-    "hsl(0, 0%, 25%)",
     0.22,
-    "hsl(0, 0%, 25%)",
+    0.5,
     123.6,
-    "hsl(0, 0%, 100%)"
+    5
   ]);
 }
 
 const toggleNqm = (map) => {
-  map.setPaintProperty("public_lighting", "circle-color", [
+  map.setPaintProperty("public_lighting", "circle-radius", [
     "interpolate",
-    ["exponential", 0.96],
+    ["linear"],
     ["get", "markers_nqm"],
     0,
-    "hsl(0, 0%, 25%)",
+    0.5,
     11.31,
-    "hsl(0, 0%, 25%)",
+    5,
     19.38,
-    "hsl(0, 0%, 100%)"
+    0.5
   ]);
 }
 
@@ -47,7 +45,17 @@ const toggleLayer = (map, layer, status) => {
     else if (layer === 'nqm') toggleNqm(map);
   }
   else {
-    map.setPaintProperty("public_lighting", "circle-color", "hsl(57, 88%, 95%)");
+    map.setPaintProperty("public_lighting", "circle-radius", [
+      "interpolate",
+      ["linear"],
+      ["zoom"],
+      0,
+      0.5,
+      12.66,
+      0.7,
+      22,
+      7
+    ]);
   }
 }
 
