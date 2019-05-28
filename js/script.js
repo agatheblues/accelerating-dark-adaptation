@@ -3,7 +3,10 @@ import {
   mapConfig,
   showMap,
   toggleLayer,
-  handleSwitch
+  handleSwitch,
+  handleDimmedMap,
+  dimMap,
+  undimMap
 } from "./map.js";
 import { addMarkerPopupToMap, handlePopups } from "./popup.js";
 import { playLargeVideo, stopLargeVideo } from "./video.js";
@@ -33,6 +36,7 @@ $("#btn-story").on("click", e => {
 });
 
 $("#close-video").on("click", e => {
+  undimMap();
   stopLargeVideo();
   hide("#video-wrapper");
   hide("#close-video");
@@ -41,18 +45,20 @@ $("#close-video").on("click", e => {
 });
 
 $("#lookup").on("click", function () {
+  handleDimmedMap();
   STATUS = "up";
   moveTo('side_rotate');
 });
 
 $("#lookdown").on("click", function () {
+  handleDimmedMap();
   STATUS = "down";
 
   moveTo('top_zoomed');
 });
 
-
 $("#lookwhole").on("click", function () {
+  handleDimmedMap();
   STATUS = "up";
   moveTo('top_distanced');
 });
@@ -72,14 +78,21 @@ $("#map").on("click", '.mapboxgl-popup-content', function (e) {
   show("#video-wrapper");
   show("#close-video");
   playLargeVideo(popupData.data('url') + "");
+  dimMap();
 });
 
+$(document).mousemove(() => handleDimmedMap());
+
+$(document).on('touchmove', () => handleDimmedMap());
+
 $("#toggle-lux").change(function () {
+  handleDimmedMap();
   toggleLayer(map, 'lux', this.checked);
   handleSwitch(this.checked, 'toggle-nqm', 'lux', 'nqm');
 });
 
 $("#toggle-nqm").change(function () {
+  handleDimmedMap();
   toggleLayer(map, 'nqm', this.checked);
   handleSwitch(this.checked, 'toggle-lux', 'nqm', 'lux');
 });

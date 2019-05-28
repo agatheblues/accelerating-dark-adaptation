@@ -194,6 +194,7 @@ a.not-underlined {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition: none;
 }
 
 .footer.hidden {
@@ -248,6 +249,10 @@ a.not-underlined {
   width: 100%;
 }
 
+.mapboxgl-map {
+  transition: none;
+}
+
 .mapboxgl-control-container {
   display: none;
 }
@@ -263,6 +268,12 @@ a.not-underlined {
     rgba(255, 255, 255, 0) 0%,
     black 50.5%
   );
+}
+
+.opacity-off {
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0s linear 6s, opacity 6s linear;
 }
 
 /* Pop up*/

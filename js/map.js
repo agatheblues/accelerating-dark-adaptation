@@ -1,5 +1,7 @@
 import { show, hide } from "./utils.js";
 
+let timer;
+
 const updateCoordinates = (lat, long) => {
   $("#info-long").html(long.toFixed(5));
   $("#info-lat").html(lat.toFixed(5));
@@ -61,6 +63,25 @@ const handleSwitch = (checked, switchId, popupShow, popupHide) => {
     show(`.popup-${popupShow}`);
     show(`.popup-${popupHide}`);
   }
+}
+
+const undimMap = () => {
+  clearTimeout(timer);
+  $('.mapboxgl-map').removeClass('opacity-off');
+}
+
+const dimMapAfterDelay = () => {
+  timer = setTimeout(() => dimMap(), 4000);
+}
+
+const dimMap = () => {
+  $('.mapboxgl-map').addClass('opacity-off');
+}
+
+const handleDimmedMap = () => {
+  if (!$('.mapboxgl-map').hasClass('opacity-off')) return;
+  undimMap();
+  dimMapAfterDelay();
 }
 
 const bounds = [
@@ -182,4 +203,4 @@ const mapConfig = {
   }
 }
 
-export { updateCoordinates, mapConfig, showMap, toggleLayer, handleSwitch };
+export { updateCoordinates, mapConfig, showMap, toggleLayer, handleSwitch, handleDimmedMap, dimMap, undimMap };
