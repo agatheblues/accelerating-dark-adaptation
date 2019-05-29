@@ -66,8 +66,6 @@ const addMarkerPopupToMap = (feature, map) => {
       latitude: coordinates[1],
       longitude: coordinates[0]
     }));
-
-  handlePopups(map);
 };
 
 const handlePopups = (map) => {
