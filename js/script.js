@@ -7,13 +7,13 @@ import {
   handleDimmedMap,
   dimMap,
   undimMap,
-  moveTo
+  moveTo, rotateCamera
 } from "./map.js";
 import { addMarkerPopupToMap, handlePopups } from "./popup.js";
 import { playLargeVideo, stopLargeVideo } from "./video.js";
 import { markers } from "./markers.js";
 import { customLayer, hideDome, showDome } from "./dome.js";
-import { show, hide, easing } from "./utils.js";
+import { show, hide } from "./utils.js";
 import { config } from "../config.js";
 
 mapboxgl.accessToken = config.MAPBOX_ACCESS_TOKEN;
@@ -22,7 +22,7 @@ $("#audio-player")[0].play();
 
 const map = new mapboxgl.Map({ ...mapConfig.default, ...mapConfig.side_rotate.position, ...mapConfig.side_rotate.limits });
 
-let STATUS = "up";
+window.STATUS = "up";
 
 /* Events */
 $(".mapboxgl-canvas").css("cursor", "crosshair");
@@ -47,24 +47,24 @@ $("#close-video").on("click", e => {
 
 $("#lookup").on("click", function () {
   handleDimmedMap();
-  STATUS = "up";
   moveTo(map, mapConfig.side_rotate.position, mapConfig.side_rotate.limits);
+  window.STATUS = "up";
 });
 
 $("#lookdown").on("click", function () {
   handleDimmedMap();
-  STATUS = "down";
+  window.STATUS = "down";
 
   moveTo(map, mapConfig.top_zoomed.position, mapConfig.top_zoomed.limits);
 });
 
 $("#lookwhole").on("click", function () {
   handleDimmedMap();
-  STATUS = "up";
   moveTo(map, mapConfig.top_distanced.position, mapConfig.top_distanced.limits);
 });
 
 $("#map").on("click", '.mapboxgl-popup-content', function (e) {
+  window.STATUS = "down";
   const popupData = $(this).children('.popup-wrapper');
 
   moveTo(map, {
@@ -118,7 +118,7 @@ map.on("load", function () {
   markers.features.forEach(feature => addMarkerPopupToMap(feature, map));
   handlePopups(map);
 
-  // rotateCamera();
+  rotateCamera(map, 1);
 });
 
 map.on("style.load", () => map.addLayer(customLayer));
@@ -129,8 +129,11 @@ map.on("drag", () => {
 });
 
 map.on("pitchend", () => {
-  if (STATUS === "down") return;
-  // rotateCamera();
+  if (map.getPitch() == 80 && window.STATUS == "up") {
+    rotateCamera(map, 1);
+    return;
+  }
+  if (map.getPitch() < 80) window.STATUS = "down";
 });
 
 map.on("zoomend", () => handlePopups(map));
@@ -140,33 +143,3 @@ map.on('moveend', () => {
   let { lng, lat } = map.getCenter();
   updateCoordinates(lat, lng);
 });
-
-// degrees the map rotates when the left or right arrow is clicked
-var deltaDegrees = 1;
-
-
-function rotateCamera() {
-  map.easeTo({
-    bearing: map.getBearing() - deltaDegrees,
-    easing: easing,
-    pitch: 80
-  });
-
-  // Request the next frame of the animation.
-  if (STATUS == "up") {
-    requestAnimationFrame(rotateCamera);
-  } else {
-    map.easeTo({
-      bearing: map.getBearing(),
-      easing: easing,
-      pitch: 80
-    });
-
-    map.easeTo({
-      ...mapConfig.down,
-      speed: 5,
-      curve: 10,
-      easing: easing
-    });
-  }
-}

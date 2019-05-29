@@ -106,6 +106,20 @@ const moveTo = (map, position, limits) => {
   }
 }
 
+const rotateCamera = (map, deltaDegrees) => {
+  if (window.STATUS != "up") return;
+
+  // Request the next frame of the animation.
+  map.easeTo({
+    bearing: map.getBearing() - deltaDegrees,
+    easing: easing,
+    pitch: 80
+  });
+
+  requestAnimationFrame(() => rotateCamera(map, deltaDegrees++));
+}
+
+
 const bounds = [
   [4.717755, 52.278175], // Southwest coordinates
   [5.07506, 52.431021] // Northeast coordinates
@@ -225,4 +239,4 @@ const mapConfig = {
   }
 }
 
-export { updateCoordinates, mapConfig, showMap, toggleLayer, handleSwitch, handleDimmedMap, dimMap, undimMap, moveTo };
+export { updateCoordinates, mapConfig, showMap, toggleLayer, handleSwitch, handleDimmedMap, dimMap, undimMap, moveTo, rotateCamera };
