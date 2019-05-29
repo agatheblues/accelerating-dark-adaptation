@@ -48,20 +48,20 @@ $("#close-video").on("click", e => {
 $("#lookup").on("click", function () {
   handleDimmedMap();
   STATUS = "up";
-  moveTo(map, 'side_rotate');
+  moveTo(map, mapConfig.side_rotate.position, mapConfig.side_rotate.limits);
 });
 
 $("#lookdown").on("click", function () {
   handleDimmedMap();
   STATUS = "down";
 
-  moveTo(map, 'top_zoomed');
+  moveTo(map, mapConfig.top_zoomed.position, mapConfig.top_zoomed.limits);
 });
 
 $("#lookwhole").on("click", function () {
   handleDimmedMap();
   STATUS = "up";
-  moveTo(map, 'top_distanced');
+  moveTo(map, mapConfig.top_distanced.position, mapConfig.top_distanced.limits);
 });
 
 $("#map").on("click", '.mapboxgl-popup-content', function (e) {
@@ -72,7 +72,7 @@ $("#map").on("click", '.mapboxgl-popup-content', function (e) {
     center: [popupData.data('lon'), popupData.data('lat')],
     bearing: 0,
     pitch: 0
-  });
+  }, null);
 
   $("#audio-player")[0].pause();
 
@@ -117,6 +117,8 @@ map.on("load", function () {
 
   markers.features.forEach(feature => addMarkerPopupToMap(feature, map));
   handlePopups(map);
+
+  // rotateCamera();
 });
 
 map.on("style.load", () => map.addLayer(customLayer));

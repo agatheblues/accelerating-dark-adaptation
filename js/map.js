@@ -92,16 +92,18 @@ const handleDimmedMap = () => {
   dimMapAfterDelay();
 }
 
-const moveTo = (map, config) => {
+const moveTo = (map, position, limits) => {
   map.easeTo({
-    ...mapConfig[config].position,
+    ...position,
     speed: 5,
     curve: 10,
     easing: easing
   });
 
-  map.setMinZoom(mapConfig[config].limits.minZoom);
-  map.setMaxZoom(mapConfig[config].limits.maxZoom);
+  if (limits !== null) {
+    map.setMinZoom(limits.minZoom);
+    map.setMaxZoom(limits.maxZoom);
+  }
 }
 
 const bounds = [
