@@ -6,7 +6,8 @@ import {
   handleSwitch,
   handleDimmedMap,
   dimMap,
-  undimMap
+  undimMap,
+  moveTo
 } from "./map.js";
 import { addMarkerPopupToMap, handlePopups } from "./popup.js";
 import { playLargeVideo, stopLargeVideo } from "./video.js";
@@ -167,16 +168,4 @@ function rotateCamera() {
       easing: easing
     });
   }
-}
-
-const moveTo = (config) => {
-  map.easeTo({
-    ...mapConfig[config].position,
-    speed: 5,
-    curve: 10,
-    easing: easing
-  });
-
-  map.setMinZoom(mapConfig[config].limits.minZoom);
-  map.setMaxZoom(mapConfig[config].limits.maxZoom);
 }

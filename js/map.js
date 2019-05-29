@@ -92,6 +92,18 @@ const handleDimmedMap = () => {
   dimMapAfterDelay();
 }
 
+const moveTo = (map, config) => {
+  map.easeTo({
+    ...mapConfig[config].position,
+    speed: 5,
+    curve: 10,
+    easing: easing
+  });
+
+  map.setMinZoom(mapConfig[config].limits.minZoom);
+  map.setMaxZoom(mapConfig[config].limits.maxZoom);
+}
+
 const bounds = [
   [4.717755, 52.278175], // Southwest coordinates
   [5.07506, 52.431021] // Northeast coordinates
@@ -211,4 +223,4 @@ const mapConfig = {
   }
 }
 
-export { updateCoordinates, mapConfig, showMap, toggleLayer, handleSwitch, handleDimmedMap, dimMap, undimMap };
+export { updateCoordinates, mapConfig, showMap, toggleLayer, handleSwitch, handleDimmedMap, dimMap, undimMap, moveTo };
