@@ -1,4 +1,4 @@
 const show = (show) => $(show).removeClass("hidden");
 const hide = (hide) => $(hide).addClass("hidden");
-
-export { show, hide };
+const easing = (t) => t * (2 - t);
+export { show, hide, easing };

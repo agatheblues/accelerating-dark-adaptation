@@ -1,4 +1,4 @@
-import { show, hide } from "./utils.js";
+import { show, hide, easing } from "./utils.js";
 
 let timer;
 

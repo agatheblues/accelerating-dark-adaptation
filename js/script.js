@@ -13,7 +13,7 @@ import { addMarkerPopupToMap, handlePopups } from "./popup.js";
 import { playLargeVideo, stopLargeVideo } from "./video.js";
 import { markers } from "./markers.js";
 import { customLayer, hideDome, showDome } from "./dome.js";
-import { show, hide } from "./utils.js";
+import { show, hide, easing } from "./utils.js";
 import { config } from "../config.js";
 
 mapboxgl.accessToken = config.MAPBOX_ACCESS_TOKEN;
@@ -48,26 +48,26 @@ $("#close-video").on("click", e => {
 $("#lookup").on("click", function () {
   handleDimmedMap();
   STATUS = "up";
-  moveTo('side_rotate');
+  moveTo(map, 'side_rotate');
 });
 
 $("#lookdown").on("click", function () {
   handleDimmedMap();
   STATUS = "down";
 
-  moveTo('top_zoomed');
+  moveTo(map, 'top_zoomed');
 });
 
 $("#lookwhole").on("click", function () {
   handleDimmedMap();
   STATUS = "up";
-  moveTo('top_distanced');
+  moveTo(map, 'top_distanced');
 });
 
 $("#map").on("click", '.mapboxgl-popup-content', function (e) {
   const popupData = $(this).children('.popup-wrapper');
 
-  map.easeTo({
+  moveTo(map, {
     zoom: 14,
     center: [popupData.data('lon'), popupData.data('lat')],
     bearing: 0,
@@ -79,6 +79,7 @@ $("#map").on("click", '.mapboxgl-popup-content', function (e) {
   show("#video-wrapper");
   show("#close-video");
   playLargeVideo(popupData.data('url') + "");
+
   dimMap();
   hideDome(map);
 });
@@ -140,9 +141,6 @@ map.on('moveend', () => {
 // degrees the map rotates when the left or right arrow is clicked
 var deltaDegrees = 1;
 
-function easing(t) {
-  return t * (2 - t);
-}
 
 function rotateCamera() {
   map.easeTo({
