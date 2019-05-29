@@ -114,6 +114,7 @@ map.on("load", function () {
   });
 
   markers.features.forEach(feature => addMarkerPopupToMap(feature, map));
+  handlePopups(map);
 });
 
 map.on("style.load", () => map.addLayer(customLayer));
