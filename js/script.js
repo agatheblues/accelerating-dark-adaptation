@@ -42,13 +42,13 @@ $("#close-video").on("click", e => {
   hide("#video-wrapper");
   hide("#close-video");
   showDome(map);
-  $("#audio-player")[0].play();
 });
 
 $("#lookup").on("click", function () {
   handleDimmedMap();
   moveTo(map, mapConfig.side_rotate.position, mapConfig.side_rotate.limits);
   window.STATUS = "up";
+  playAudio();
 });
 
 $("#lookdown").on("click", function () {
@@ -74,7 +74,7 @@ $("#map").on("click", '.mapboxgl-popup-content', function (e) {
     pitch: 0
   }, null);
 
-  $("#audio-player")[0].pause();
+  pauseAudio();
 
   show("#video-wrapper");
   show("#close-video");
@@ -82,6 +82,27 @@ $("#map").on("click", '.mapboxgl-popup-content', function (e) {
 
   dimMap();
   hideDome(map);
+});
+
+const playAudio = () => {
+  $('#toggle-audio').html(`\u275A\u275A`);
+  $('#toggle-audio').data('status', 'play');
+  $("#audio-player")[0].play();
+}
+
+const pauseAudio = () => {
+  $('#toggle-audio').html(`\u25B6`);
+  $('#toggle-audio').data('status', 'pause');
+  $("#audio-player")[0].pause();
+}
+$('#toggle-audio').on('click', function () {
+  let status = $(this).data('status');
+
+  if (status === 'play') {
+    pauseAudio();
+  } else {
+    playAudio();
+  }
 });
 
 $(document).mousemove(() => handleDimmedMap());
