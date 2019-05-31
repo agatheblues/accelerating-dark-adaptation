@@ -41,6 +41,7 @@ $("#close-video").on("click", e => {
   stopLargeVideo();
   hide("#video-wrapper");
   hide("#close-video");
+  $('#toggle-audio').prop('disabled', false);
   showDome(map);
 });
 
@@ -60,6 +61,7 @@ $("#lookdown").on("click", function () {
 
 $("#lookwhole").on("click", function () {
   handleDimmedMap();
+  window.STATUS = "down";
   moveTo(map, mapConfig.top_distanced.position, mapConfig.top_distanced.limits);
 });
 
@@ -74,7 +76,7 @@ $("#map").on("click", '.mapboxgl-popup-content', function (e) {
     pitch: 0
   }, null);
 
-  pauseAudio();
+  pauseAudio(true);
 
   show("#video-wrapper");
   show("#close-video");
@@ -85,12 +87,14 @@ $("#map").on("click", '.mapboxgl-popup-content', function (e) {
 });
 
 const playAudio = () => {
+  $('#toggle-audio').prop('disabled', false);
   $('#toggle-audio').html(`\u275A\u275A`);
   $('#toggle-audio').data('status', 'play');
   $("#audio-player")[0].play();
 }
 
-const pauseAudio = () => {
+const pauseAudio = (disabled) => {
+  $('#toggle-audio').prop('disabled', disabled);
   $('#toggle-audio').html(`\u25B6`);
   $('#toggle-audio').data('status', 'pause');
   $("#audio-player")[0].pause();
@@ -99,7 +103,7 @@ $('#toggle-audio').on('click', function () {
   let status = $(this).data('status');
 
   if (status === 'play') {
-    pauseAudio();
+    pauseAudio(false);
   } else {
     playAudio();
   }

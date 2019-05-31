@@ -96,20 +96,25 @@ a.not-underlined {
   font-size: inherit;
 }
 
-.btn:hover {
+.btn:hover:enabled {
   transition: all 150ms linear;
   opacity: 0.85;
   background: #fff;
   color: #000;
 }
 
-.btn:active {
+.btn:active:enabled {
   transition: all 150ms linear;
   opacity: 0.75;
 }
 
-.btn:focus {
+.btn:focus:enabled {
   outline: 1px dotted #fff;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: default;
 }
 
 /* video */
