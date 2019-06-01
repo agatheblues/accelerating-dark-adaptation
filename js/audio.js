@@ -21,4 +21,4 @@ const toggleAudio = (status) => {
   }
 }
 
-export { toggleAudio, pauseAudio }
+export { toggleAudio, pauseAudio, playAudio }

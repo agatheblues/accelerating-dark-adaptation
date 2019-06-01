@@ -1,14 +1,13 @@
 import {
-  updateCoordinates,
   showMap,
   handleDimmedMap,
   dimMap,
   moveTo, rotateCamera,
   map
 } from "./map.js";
-import { toggleDropdownMenu, handleDropdownMenu, toggleLux, toggleNqm } from "./footer.js";
+import { toggleDropdownMenu, handleDropdownMenu, toggleLux, toggleNqm, updateCoordinates } from "./footer.js";
 import { pauseAudio, toggleAudio } from "./audio.js";
-import { addMarkerPopupToMap, handlePopups } from "./popup.js";
+import { addMarkerPopupToMap, updatePopupContent } from "./popup.js";
 import { playLargeVideo, closeVideo } from "./video.js";
 import { markers } from "./markers.js";
 import { customLayer, hideDome } from "./dome.js";
@@ -81,8 +80,8 @@ map.on("load", function () {
     }
   });
 
-  markers.features.forEach(feature => addMarkerPopupToMap(feature, map));
-  handlePopups(map);
+  markers.features.forEach(feature => addMarkerPopupToMap(feature));
+  updatePopupContent();
 
   rotateCamera();
 });
@@ -95,17 +94,18 @@ map.on("drag", () => {
 });
 
 map.on("pitchend", () => {
-  if (map.getPitch() == 80 && window.STATUS == "up") {
+  if (map.getPitch() == 80) {
+    window.STATUS == "up";
     rotateCamera();
     return;
   }
   if (map.getPitch() < 80) window.STATUS = "down";
 });
 
-map.on("zoomend", () => handlePopups(map));
+map.on("zoomend", () => updatePopupContent());
 
 map.on('moveend', () => {
-  handlePopups(map);
+  updatePopupContent();
   let { lng, lat } = map.getCenter();
   updateCoordinates(lat, lng);
 });
@@ -114,7 +114,6 @@ map.on('moveend', () => {
 $('#navigate-menu').on('click', () => toggleDropdownMenu());
 
 $('.dropdown-menu').on('click', (e) => {
-  // Show map if hidden
   handleDimmedMap();
   handleDropdownMenu(e.target);
 });

@@ -7,6 +7,11 @@ import {
 import { playAudio } from "./audio.js";
 import { show, hide } from "./utils.js";
 
+const updateCoordinates = (lat, long) => {
+  $("#info-long").html(long.toFixed(5));
+  $("#info-lat").html(lat.toFixed(5));
+};
+
 const handleSwitch = (checked, switchId, popupShow, popupHide) => {
   if (checked) {
     $(`#${switchId}`).prop('disabled', true);
@@ -61,4 +66,4 @@ const handleDropdownMenu = (target) => {
   }
 }
 
-export { toggleDropdownMenu, handleDropdownMenu, toggleLux, toggleNqm }
+export { toggleDropdownMenu, handleDropdownMenu, toggleLux, toggleNqm, updateCoordinates }

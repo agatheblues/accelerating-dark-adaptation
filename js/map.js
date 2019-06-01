@@ -2,11 +2,6 @@ import { show, hide, easing } from "./utils.js";
 
 let timer;
 
-const updateCoordinates = (lat, long) => {
-  $("#info-long").html(long.toFixed(5));
-  $("#info-lat").html(lat.toFixed(5));
-};
-
 const showMap = () => {
   hide("#intro");
   $("#map").removeClass("invisible");
@@ -226,4 +221,4 @@ const mapConfig = {
 
 const map = new mapboxgl.Map({ ...mapConfig.default, ...mapConfig.side_rotate.position, ...mapConfig.side_rotate.limits });
 
-export { updateCoordinates, mapConfig, showMap, toggleLayer, handleDimmedMap, dimMap, undimMap, moveTo, rotateCamera, map };
+export { mapConfig, showMap, toggleLayer, handleDimmedMap, dimMap, undimMap, moveTo, rotateCamera, map };

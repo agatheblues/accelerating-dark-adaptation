@@ -1,4 +1,5 @@
 import { show, hide } from "./utils.js";
+import { map } from "./map.js";
 
 const setDefaultValue = value => (value.length > 0 ? value : "~");
 
@@ -48,7 +49,7 @@ const showMarkerPopups = () => {
   hide('.popup-location');
 }
 
-const addMarkerPopupToMap = (feature, map) => {
+const addMarkerPopupToMap = (feature) => {
   let popup = new mapboxgl.Popup({
     closeButton: false,
     closeOnClick: false,
@@ -68,7 +69,7 @@ const addMarkerPopupToMap = (feature, map) => {
     }));
 };
 
-const handlePopups = (map) => {
+const updatePopupContent = () => {
   const zoom = map.getZoom()
   const pitch = map.getPitch();
 
@@ -83,4 +84,4 @@ const handlePopups = (map) => {
   }
 }
 
-export { addMarkerPopupToMap, handlePopups }
+export { addMarkerPopupToMap, updatePopupContent }
