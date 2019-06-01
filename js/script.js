@@ -18,8 +18,6 @@ import { config } from "../config.js";
 
 mapboxgl.accessToken = config.MAPBOX_ACCESS_TOKEN;
 
-$("#audio-player")[0].play();
-
 const map = new mapboxgl.Map({ ...mapConfig.default, ...mapConfig.side_rotate.position, ...mapConfig.side_rotate.limits });
 
 window.STATUS = "up";
@@ -29,6 +27,7 @@ $(".mapboxgl-canvas").css("cursor", "crosshair");
 
 $("#btn-explore").on("click", e => {
   showMap();
+  $("#audio-player")[0].play();
 });
 
 $("#btn-story").on("click", e => {
