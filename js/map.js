@@ -79,7 +79,7 @@ const undimMap = () => {
 }
 
 const dimMapAfterDelay = () => {
-  timer = setTimeout(() => dimMap(), 4000);
+  timer = setTimeout(() => dimMap(), 2000);
 }
 
 const dimMap = () => {

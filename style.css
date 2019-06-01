@@ -278,7 +278,7 @@ a.not-underlined {
 .opacity-off {
   opacity: 0;
   visibility: hidden;
-  transition: visibility 0s linear 6s, opacity 6s linear;
+  transition: visibility 0s linear 3s, opacity 3s linear;
 }
 
 /* Pop up*/
