@@ -142,7 +142,7 @@ map.on("load", function () {
   markers.features.forEach(feature => addMarkerPopupToMap(feature, map));
   handlePopups(map);
 
-  rotateCamera(map, 1);
+  rotateCamera(map);
 });
 
 map.on("style.load", () => map.addLayer(customLayer));
@@ -154,7 +154,7 @@ map.on("drag", () => {
 
 map.on("pitchend", () => {
   if (map.getPitch() == 80 && window.STATUS == "up") {
-    rotateCamera(map, 1);
+    rotateCamera(map);
     return;
   }
   if (map.getPitch() < 80) window.STATUS = "down";

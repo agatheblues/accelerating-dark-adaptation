@@ -106,17 +106,16 @@ const moveTo = (map, position, limits) => {
   }
 }
 
-const rotateCamera = (map, deltaDegrees) => {
+const rotateCamera = (map) => {
   if (window.STATUS != "up") return;
 
   // Request the next frame of the animation.
   map.easeTo({
-    bearing: map.getBearing() - deltaDegrees,
+    bearing: map.getBearing() - 0.5,
     easing: easing,
     pitch: 80
   });
-
-  requestAnimationFrame(() => rotateCamera(map, deltaDegrees++));
+  requestAnimationFrame(() => rotateCamera(map));
 }
 
 
