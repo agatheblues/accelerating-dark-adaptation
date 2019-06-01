@@ -1,14 +1,12 @@
 import {
   updateCoordinates,
   showMap,
-  toggleLayer,
-  handleSwitch,
   handleDimmedMap,
   dimMap,
   moveTo, rotateCamera,
   map
 } from "./map.js";
-import { toggleDropdownMenu, handleDropdownMenu } from "./footer.js";
+import { toggleDropdownMenu, handleDropdownMenu, toggleLux, toggleNqm } from "./footer.js";
 import { pauseAudio, toggleAudio } from "./audio.js";
 import { addMarkerPopupToMap, handlePopups } from "./popup.js";
 import { playLargeVideo, closeVideo } from "./video.js";
@@ -64,17 +62,9 @@ $(document).mousemove(() => handleDimmedMap());
 
 $(document).on('touchmove', () => handleDimmedMap());
 
-$("#toggle-lux").change(function () {
-  handleDimmedMap();
-  toggleLayer(map, 'lux', this.checked);
-  handleSwitch(this.checked, 'toggle-nqm', 'lux', 'nqm');
-});
+$("#toggle-lux").change(function () { return toggleLux(this.checked); });
 
-$("#toggle-nqm").change(function () {
-  handleDimmedMap();
-  toggleLayer(map, 'nqm', this.checked);
-  handleSwitch(this.checked, 'toggle-lux', 'nqm', 'lux');
-});
+$("#toggle-nqm").change(function () { return toggleNqm(this.checked); });
 
 /* Map events */
 map.on("load", function () {

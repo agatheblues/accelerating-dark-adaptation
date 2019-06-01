@@ -39,7 +39,7 @@ const toggleNqm = (map) => {
   ]);
 }
 
-const toggleLayer = (map, layer, status) => {
+const toggleLayer = (layer, status) => {
   if (status) {
     if (layer === 'lux') toggleLux(map);
     else if (layer === 'nqm') toggleNqm(map);
@@ -56,20 +56,6 @@ const toggleLayer = (map, layer, status) => {
       22,
       7
     ]);
-  }
-}
-
-const handleSwitch = (checked, switchId, popupShow, popupHide) => {
-  if (checked) {
-    $(`#${switchId}`).prop('disabled', true);
-    $(`label[for='${switchId}']`).addClass('switch-disabled');
-    show(`.popup-${popupShow}`);
-    hide(`.popup-${popupHide}`);
-  } else {
-    $(`#${switchId}`).prop('disabled', false);
-    $(`label[for='${switchId}']`).removeClass('switch-disabled');
-    show(`.popup-${popupShow}`);
-    show(`.popup-${popupHide}`);
   }
 }
 
@@ -240,4 +226,4 @@ const mapConfig = {
 
 const map = new mapboxgl.Map({ ...mapConfig.default, ...mapConfig.side_rotate.position, ...mapConfig.side_rotate.limits });
 
-export { updateCoordinates, mapConfig, showMap, toggleLayer, handleSwitch, handleDimmedMap, dimMap, undimMap, moveTo, rotateCamera, map };
+export { updateCoordinates, mapConfig, showMap, toggleLayer, handleDimmedMap, dimMap, undimMap, moveTo, rotateCamera, map };

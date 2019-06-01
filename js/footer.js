@@ -1,9 +1,37 @@
 import {
   mapConfig,
   moveTo,
-  map
+  toggleLayer,
+  handleDimmedMap
 } from "./map.js";
 import { playAudio } from "./audio.js";
+import { show, hide } from "./utils.js";
+
+const handleSwitch = (checked, switchId, popupShow, popupHide) => {
+  if (checked) {
+    $(`#${switchId}`).prop('disabled', true);
+    $(`label[for='${switchId}']`).addClass('switch-disabled');
+    show(`.popup-${popupShow}`);
+    hide(`.popup-${popupHide}`);
+  } else {
+    $(`#${switchId}`).prop('disabled', false);
+    $(`label[for='${switchId}']`).removeClass('switch-disabled');
+    show(`.popup-${popupShow}`);
+    show(`.popup-${popupHide}`);
+  }
+}
+
+const toggleLux = (checked) => {
+  handleDimmedMap();
+  toggleLayer('lux', checked);
+  handleSwitch(checked, 'toggle-nqm', 'lux', 'nqm');
+}
+
+const toggleNqm = (checked) => {
+  handleDimmedMap();
+  toggleLayer('nqm', checked);
+  handleSwitch(checked, 'toggle-lux', 'nqm', 'lux');
+}
 
 const toggleDropdownMenu = () => $('.dropdown-menu').toggle(300);
 
@@ -33,4 +61,4 @@ const handleDropdownMenu = (target) => {
   }
 }
 
-export { toggleDropdownMenu, handleDropdownMenu }
+export { toggleDropdownMenu, handleDropdownMenu, toggleLux, toggleNqm }
