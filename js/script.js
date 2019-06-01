@@ -114,7 +114,17 @@ map.on('moveend', () => {
 $('#navigate-menu').on('click', () => $('#navigate-menu-list').toggle(300));
 $('#site-menu').on('click', () => $('#site-menu-list').toggle(300));
 
-$('#navigate-menu > .dropdown-menu').on('click', (e) => {
+$('#navigate-menu-list').on('click', (e) => {
   handleDimmedMap();
   handleDropdownMenu(e.target);
+});
+
+$(document).on('click', function (e) {
+  const $menu = $('.dropdown-container');
+
+  if (!$menu.is(e.target) // if the target of the click isn't the container...
+    && $menu.has(e.target).length === 0) // ... nor a descendant of the container
+  {
+    $('.dropdown-menu').hide(300)
+  }
 });
