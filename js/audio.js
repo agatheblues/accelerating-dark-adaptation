@@ -13,4 +13,12 @@ const pauseAudio = (disabled) => {
   $("#audio-player")[0].pause();
 }
 
-export { pauseAudio, playAudio }
+const toggleAudio = (status) => {
+  if (status === 'play') {
+    pauseAudio(false);
+  } else {
+    playAudio();
+  }
+}
+
+export { toggleAudio, pauseAudio }

@@ -5,22 +5,19 @@ import {
   handleSwitch,
   handleDimmedMap,
   dimMap,
-  undimMap,
   moveTo, rotateCamera,
   map
 } from "./map.js";
 import { toggleDropdownMenu, handleDropdownMenu } from "./footer.js";
-import { pauseAudio, playAudio } from "./audio.js";
+import { pauseAudio, toggleAudio } from "./audio.js";
 import { addMarkerPopupToMap, handlePopups } from "./popup.js";
-import { playLargeVideo, stopLargeVideo } from "./video.js";
+import { playLargeVideo, closeVideo } from "./video.js";
 import { markers } from "./markers.js";
-import { customLayer, hideDome, showDome } from "./dome.js";
-import { show, hide } from "./utils.js";
+import { customLayer, hideDome } from "./dome.js";
+import { show } from "./utils.js";
 import { config } from "../config.js";
 
 mapboxgl.accessToken = config.MAPBOX_ACCESS_TOKEN;
-
-// const map = new mapboxgl.Map({ ...mapConfig.default, ...mapConfig.side_rotate.position, ...mapConfig.side_rotate.limits });
 
 window.STATUS = "up";
 
@@ -37,14 +34,7 @@ $("#btn-story").on("click", e => {
   console.log('create view story mode');
 });
 
-$("#close-video").on("click", e => {
-  undimMap();
-  stopLargeVideo();
-  hide("#video-wrapper");
-  hide("#close-video");
-  $('#toggle-audio').prop('disabled', false);
-  showDome(map);
-});
+$("#close-video").on("click", e => closeVideo());
 
 
 $("#map").on("click", '.mapboxgl-popup-content', function (e) {
@@ -65,18 +55,10 @@ $("#map").on("click", '.mapboxgl-popup-content', function (e) {
   playLargeVideo(popupData.data('url') + "");
 
   dimMap();
-  hideDome(map);
+  hideDome();
 });
 
-$('#toggle-audio').on('click', function () {
-  let status = $(this).data('status');
-
-  if (status === 'play') {
-    pauseAudio(false);
-  } else {
-    playAudio();
-  }
-});
+$('#toggle-audio').on('click', function () { return toggleAudio($(this).data('status')); });
 
 $(document).mousemove(() => handleDimmedMap());
 

@@ -1,3 +1,4 @@
+import { map } from "./map.js";
 
 // parameters to ensure the model is georeferenced correctly on the map
 var modelOrigin = [4.892891, 52.370088];
@@ -75,7 +76,7 @@ const customLayer = {
   }
 };
 
-const hideDome = (map) => map.setLayoutProperty('dome', 'visibility', 'none');
-const showDome = (map) => map.setLayoutProperty('dome', 'visibility', 'visible');
+const hideDome = () => map.setLayoutProperty('dome', 'visibility', 'none');
+const showDome = () => map.setLayoutProperty('dome', 'visibility', 'visible');
 
 export { customLayer, hideDome, showDome }
