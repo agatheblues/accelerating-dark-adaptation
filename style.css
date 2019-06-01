@@ -94,14 +94,12 @@ a.not-underlined {
 
 .btn:hover:enabled {
   transition: all 150ms linear;
-  opacity: 0.85;
   background: #fff;
   color: #000;
 }
 
 .btn:active:enabled {
   transition: all 150ms linear;
-  opacity: 0.75;
 }
 
 .btn:focus:enabled {
@@ -208,6 +206,7 @@ a.not-underlined {
 
 .footer-toggle-container {
   display: flex;
+  align-items: baseline;
 }
 
 .footer-toggle-wrapper {
