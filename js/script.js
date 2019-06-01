@@ -44,24 +44,6 @@ $("#close-video").on("click", e => {
   showDome(map);
 });
 
-$("#lookup").on("click", function () {
-  handleDimmedMap();
-  moveTo(map, mapConfig.side_rotate.position, mapConfig.side_rotate.limits);
-  window.STATUS = "up";
-  playAudio();
-});
-
-$("#lookdown").on("click", function () {
-  handleDimmedMap();
-  window.STATUS = "down";
-  moveTo(map, mapConfig.top_zoomed.position, mapConfig.top_zoomed.limits);
-});
-
-$("#lookwhole").on("click", function () {
-  handleDimmedMap();
-  window.STATUS = "down";
-  moveTo(map, mapConfig.top_distanced.position, mapConfig.top_distanced.limits);
-});
 
 $("#map").on("click", '.mapboxgl-popup-content', function (e) {
   window.STATUS = "down";
@@ -167,18 +149,31 @@ map.on('moveend', () => {
   updateCoordinates(lat, lng);
 });
 
-$('#navigate-menu').on('click', function (event) {
+const toggleDropdownMenu = () => $('.dropdown-menu').toggle(300);
 
-  event.preventDefault()
+$('#navigate-menu').on('click', () => toggleDropdownMenu());
 
-  $('.dropdown-menu').toggle(300);
+$('.dropdown-menu').on('click', (e) => {
+  handleDimmedMap();
+  $('.dropdown-menu p').removeClass('active');
+  $(e.target).addClass('active');
 
-  //Hide menu when clicked outside
-  $(this).parent().find('ul').mouseleave(function () {
-    var thisUI = $(this);
-    $('html').click(function () {
-      thisUI.hide();
-      $('html').unbind('click');
-    });
-  });
+  const action = $(e.target).data('action');
+  switch (action) {
+    case 'center':
+      window.STATUS = "down";
+      moveTo(map, mapConfig.top_zoomed.position, mapConfig.top_zoomed.limits);
+      break;
+    case 'rotating':
+      moveTo(map, mapConfig.side_rotate.position, mapConfig.side_rotate.limits);
+      window.STATUS = "up";
+      playAudio();
+      break;
+    case 'top':
+      window.STATUS = "down";
+      moveTo(map, mapConfig.top_distanced.position, mapConfig.top_distanced.limits);
+      break;
+    default:
+      break;
+  }
 });
