@@ -54,7 +54,6 @@ $("#lookup").on("click", function () {
 $("#lookdown").on("click", function () {
   handleDimmedMap();
   window.STATUS = "down";
-
   moveTo(map, mapConfig.top_zoomed.position, mapConfig.top_zoomed.limits);
 });
 
@@ -166,4 +165,20 @@ map.on('moveend', () => {
   handlePopups(map);
   let { lng, lat } = map.getCenter();
   updateCoordinates(lat, lng);
+});
+
+$('#navigate-menu').on('click', function (event) {
+
+  event.preventDefault()
+
+  $('.dropdown-menu').toggle(300);
+
+  //Hide menu when clicked outside
+  $(this).parent().find('ul').mouseleave(function () {
+    var thisUI = $(this);
+    $('html').click(function () {
+      thisUI.hide();
+      $('html').unbind('click');
+    });
+  });
 });
