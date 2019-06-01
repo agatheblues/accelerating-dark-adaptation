@@ -214,34 +214,6 @@ a.not-underlined {
   display: flex;
 }
 
-.header {
-  display: block;
-  position: fixed;
-  top: 0;
-  left: 0;
-  margin: 0px auto;
-  width: 100%;
-  background: #000;
-}
-
-.header-wrapper {
-  width: 80%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin: auto;
-}
-
-.header-left {
-  width: 20%;
-  margin: 20px 0 20px 0;
-}
-
-.header-right {
-  width: 75%;
-  margin: 20px 0 20px 0;
-}
-
 /* MAP */
 .container {
   position: absolute;
@@ -396,30 +368,38 @@ a.not-underlined {
   position: relative;
 }
 
-.dropdown-container p {
+.dropdown-container p, a {
   display: block;
   cursor: pointer;
   white-space: nowrap;
-
   color: #fff;
   background: #000;
-
   padding: 10px 12px;
-
   line-height: 1.3;
 }
 
-.dropdown-container p:hover, .dropdown-container p.active {
+.dropdown-container a {
+  text-decoration: none;
+}
+
+.dropdown-container p:hover, .dropdown-container p.active, .dropdown-container a:hover {
   transition: all 150ms linear;
   opacity: 0.85;
   background: #fff;
   color: #000;
 }
 
-.dropdown-wrapper {
+.dropdown-wrapper-up {
   position: absolute;
   bottom: 0;
   margin-bottom: 47px;
+  left: 0;
+}
+
+.dropdown-wrapper-down {
+  position: absolute;
+  top: 0;
+  margin-top: 47px;
   left: 0;
 }
 
@@ -431,6 +411,10 @@ a.not-underlined {
   list-style: none;  
   padding: 0;
   margin: 0;
+}
+
+.header {
+  padding: 10px;
 }
 
 

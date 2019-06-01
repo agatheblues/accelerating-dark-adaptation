@@ -38,8 +38,6 @@ const toggleNqm = (checked) => {
   handleSwitch(checked, 'toggle-lux', 'nqm', 'lux');
 }
 
-const toggleDropdownMenu = () => $('.dropdown-menu').toggle(300);
-
 const handleDropdownMenu = (target) => {
   // Change current active view
   $('.dropdown-menu p').removeClass('active');
@@ -66,4 +64,4 @@ const handleDropdownMenu = (target) => {
   }
 }
 
-export { toggleDropdownMenu, handleDropdownMenu, toggleLux, toggleNqm, updateCoordinates }
+export { handleDropdownMenu, toggleLux, toggleNqm, updateCoordinates }

@@ -5,7 +5,7 @@ import {
   moveTo, rotateCamera,
   map
 } from "./map.js";
-import { toggleDropdownMenu, handleDropdownMenu, toggleLux, toggleNqm, updateCoordinates } from "./footer.js";
+import { handleDropdownMenu, toggleLux, toggleNqm, updateCoordinates } from "./footer.js";
 import { pauseAudio, toggleAudio } from "./audio.js";
 import { addMarkerPopupToMap, updatePopupContent } from "./popup.js";
 import { playLargeVideo, closeVideo } from "./video.js";
@@ -110,10 +110,11 @@ map.on('moveend', () => {
   updateCoordinates(lat, lng);
 });
 
+/* DROPDOWN MENU EVENTS */
+$('#navigate-menu').on('click', () => $('#navigate-menu-list').toggle(300));
+$('#site-menu').on('click', () => $('#site-menu-list').toggle(300));
 
-$('#navigate-menu').on('click', () => toggleDropdownMenu());
-
-$('.dropdown-menu').on('click', (e) => {
+$('#navigate-menu > .dropdown-menu').on('click', (e) => {
   handleDimmedMap();
   handleDropdownMenu(e.target);
 });

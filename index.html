@@ -36,16 +36,37 @@
       <source id="video-player-source" src="" type="video/mp4" />
     </video>
   </div>
+
   <div id="map" class="container"></div>
+
   <div id="close-video" class="hidden">
     <span class="close"></span>
   </div>
+
+  <header class='header'>
+    <div class='dropdown-container'>
+      <button id='site-menu' class='btn'>&#9776;</button>
+      <nav class="dropdown-wrapper-down">
+        <ul id='site-menu-list' class="dropdown-menu">
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li>
+            <a href="/about.html">About</a>
+          </li>
+          <li>
+            <a href="/">Help</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
   <footer id="footer" class="footer">
     <div class="footer-wrapper">
       <div class='dropdown-container'>
         <button id='navigate-menu' class='btn'>Navigate &#8605;</button>
-        <nav class="dropdown-wrapper">
-          <ul class="dropdown-menu">
+        <nav class="dropdown-wrapper-up">
+          <ul id='navigate-menu-list' class="dropdown-menu">
             <li>
               <p data-action='center'>Center view</p>
             </li>
@@ -85,10 +106,6 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="footer-wrapper">
-      <a href="/">Home</a>
-      <a href="/about.html">About</a>
     </div>
   </footer>
 
