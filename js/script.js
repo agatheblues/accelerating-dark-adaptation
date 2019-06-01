@@ -1,14 +1,16 @@
 import {
   updateCoordinates,
-  mapConfig,
   showMap,
   toggleLayer,
   handleSwitch,
   handleDimmedMap,
   dimMap,
   undimMap,
-  moveTo, rotateCamera
+  moveTo, rotateCamera,
+  map
 } from "./map.js";
+import { toggleDropdownMenu, handleDropdownMenu } from "./footer.js";
+import { pauseAudio, playAudio } from "./audio.js";
 import { addMarkerPopupToMap, handlePopups } from "./popup.js";
 import { playLargeVideo, stopLargeVideo } from "./video.js";
 import { markers } from "./markers.js";
@@ -18,7 +20,7 @@ import { config } from "../config.js";
 
 mapboxgl.accessToken = config.MAPBOX_ACCESS_TOKEN;
 
-const map = new mapboxgl.Map({ ...mapConfig.default, ...mapConfig.side_rotate.position, ...mapConfig.side_rotate.limits });
+// const map = new mapboxgl.Map({ ...mapConfig.default, ...mapConfig.side_rotate.position, ...mapConfig.side_rotate.limits });
 
 window.STATUS = "up";
 
@@ -49,7 +51,7 @@ $("#map").on("click", '.mapboxgl-popup-content', function (e) {
   window.STATUS = "down";
   const popupData = $(this).children('.popup-wrapper');
 
-  moveTo(map, {
+  moveTo({
     zoom: 14,
     center: [popupData.data('lon'), popupData.data('lat')],
     bearing: 0,
@@ -66,19 +68,6 @@ $("#map").on("click", '.mapboxgl-popup-content', function (e) {
   hideDome(map);
 });
 
-const playAudio = () => {
-  $('#toggle-audio').prop('disabled', false);
-  $('#toggle-audio').html(`\u275A\u275A`);
-  $('#toggle-audio').data('status', 'play');
-  $("#audio-player")[0].play();
-}
-
-const pauseAudio = (disabled) => {
-  $('#toggle-audio').prop('disabled', disabled);
-  $('#toggle-audio').html(`\u25B6`);
-  $('#toggle-audio').data('status', 'pause');
-  $("#audio-player")[0].pause();
-}
 $('#toggle-audio').on('click', function () {
   let status = $(this).data('status');
 
@@ -123,7 +112,7 @@ map.on("load", function () {
   markers.features.forEach(feature => addMarkerPopupToMap(feature, map));
   handlePopups(map);
 
-  rotateCamera(map);
+  rotateCamera();
 });
 
 map.on("style.load", () => map.addLayer(customLayer));
@@ -135,7 +124,7 @@ map.on("drag", () => {
 
 map.on("pitchend", () => {
   if (map.getPitch() == 80 && window.STATUS == "up") {
-    rotateCamera(map);
+    rotateCamera();
     return;
   }
   if (map.getPitch() < 80) window.STATUS = "down";
@@ -149,31 +138,11 @@ map.on('moveend', () => {
   updateCoordinates(lat, lng);
 });
 
-const toggleDropdownMenu = () => $('.dropdown-menu').toggle(300);
 
 $('#navigate-menu').on('click', () => toggleDropdownMenu());
 
 $('.dropdown-menu').on('click', (e) => {
+  // Show map if hidden
   handleDimmedMap();
-  $('.dropdown-menu p').removeClass('active');
-  $(e.target).addClass('active');
-
-  const action = $(e.target).data('action');
-  switch (action) {
-    case 'center':
-      window.STATUS = "down";
-      moveTo(map, mapConfig.top_zoomed.position, mapConfig.top_zoomed.limits);
-      break;
-    case 'rotating':
-      moveTo(map, mapConfig.side_rotate.position, mapConfig.side_rotate.limits);
-      window.STATUS = "up";
-      playAudio();
-      break;
-    case 'top':
-      window.STATUS = "down";
-      moveTo(map, mapConfig.top_distanced.position, mapConfig.top_distanced.limits);
-      break;
-    default:
-      break;
-  }
+  handleDropdownMenu(e.target);
 });

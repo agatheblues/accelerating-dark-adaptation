@@ -92,7 +92,7 @@ const handleDimmedMap = () => {
   dimMapAfterDelay();
 }
 
-const moveTo = (map, position, limits) => {
+const moveTo = (position, limits) => {
   map.easeTo({
     ...position,
     speed: 5,
@@ -106,7 +106,7 @@ const moveTo = (map, position, limits) => {
   }
 }
 
-const rotateCamera = (map) => {
+const rotateCamera = () => {
   if (window.STATUS != "up") return;
 
   // Request the next frame of the animation.
@@ -115,7 +115,7 @@ const rotateCamera = (map) => {
     easing: easing,
     pitch: 80
   });
-  requestAnimationFrame(() => rotateCamera(map));
+  requestAnimationFrame(() => rotateCamera());
 }
 
 
@@ -238,4 +238,6 @@ const mapConfig = {
   }
 }
 
-export { updateCoordinates, mapConfig, showMap, toggleLayer, handleSwitch, handleDimmedMap, dimMap, undimMap, moveTo, rotateCamera };
+const map = new mapboxgl.Map({ ...mapConfig.default, ...mapConfig.side_rotate.position, ...mapConfig.side_rotate.limits });
+
+export { updateCoordinates, mapConfig, showMap, toggleLayer, handleSwitch, handleDimmedMap, dimMap, undimMap, moveTo, rotateCamera, map };
