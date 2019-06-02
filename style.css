@@ -103,7 +103,7 @@ a.not-underlined {
 }
 
 .btn:focus:enabled {
-  outline: 1px dotted #fff;
+  outline: none;
 }
 
 .btn:disabled {
@@ -204,6 +204,17 @@ a.not-underlined {
 .footer-wrapper {
   padding: 10px;
   display: flex;
+  align-items: flex-end;
+}
+
+.footer-wrapper--column {
+  display: block;
+}
+
+.menu-label {
+  text-transform: uppercase;
+  font-size: 10px;
+  margin: 0 0 5px 2px;
 }
 
 /* MAP */
@@ -288,7 +299,7 @@ a.not-underlined {
   position: relative;
 }
 
-.dropdown-container p, a {
+.dropdown-wrapper p, a {
   display: block;
   cursor: pointer;
   white-space: nowrap;
@@ -298,17 +309,17 @@ a.not-underlined {
   line-height: 1.3;
 }
 
-.dropdown-container a {
+.dropdown-wrapper a {
   text-decoration: none;
 }
 
-.dropdown-container p:hover, .dropdown-container p.active, .dropdown-container a:hover {
+.dropdown-wrapper p:hover, .dropdown-wrapper p.active, .dropdown-wrapper a:hover {
   transition: all 150ms linear;
   background: #fff;
   color: #000;
 }
 
-.dropdown-wrapper-up {
+.dropdown-wrapper {
   position: absolute;
   bottom: 0;
   margin-bottom: 47px;
@@ -327,7 +338,7 @@ a.not-underlined {
 
 .control-container {
   padding: 0;
-  margin: 0 10px 0 10px;
+  margin: 0 20px 0 20px;
 }
 
 .header {
@@ -355,6 +366,10 @@ a.not-underlined {
     width: 50%;
     margin: 5% auto 5% auto;
   }
+  
+.control-container {
+  margin: 0 50px 0 50px;
+}
 }
 
 /* desktops ----------- */

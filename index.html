@@ -45,8 +45,8 @@
   <footer id="footer" class="footer hidden">
     <div class="footer-wrapper">
       <div class='dropdown-container'>
-        <button id='site-menu' class='btn'>&#9776;</button>
-        <nav class="dropdown-wrapper-up">
+        <button id='site-menu' class='btn'>&#63;</button>
+        <nav class="dropdown-wrapper">
           <ul id='site-menu-list' class="dropdown-menu">
             <li>
               <a href="/">Home</a>
@@ -61,13 +61,15 @@
         </nav>
       </div>
       <div id='navigate-list' class='control-container'>
-        <button class='btn' data-action='center'>Center view</button>
-        <button class='btn' data-action='top'>Top view</button>
-        <button class='btn' data-action='rotating'>Rotating view</button>
+        <p class='menu-label'>View</p>
+        <button class='btn' data-action='center'>Center</button>
+        <button class='btn' data-action='top'>Top</button>
+        <button class='btn' data-action='rotating'>Rotating</button>
       </div>
       <div class='dropdown-container'>
-        <button id='data-menu' class='btn'>Data &#10063;</button>
-        <nav class="dropdown-wrapper-up">
+        <p class='menu-label'>Visualize</p>
+        <button id='data-menu' class='btn'>Measures</button>
+        <nav class="dropdown-wrapper">
           <ul id='data-menu-list' class="dropdown-menu">
             <li>
               <p data-action='normal' class='active'>Normal</p>
@@ -82,12 +84,13 @@
         </nav>
       </div>
     </div>
-    <div class="footer-wrapper">
+    <div class="footer-wrapper footer-wrapper--column">
+      <p class='menu-label'>Listen</p>
       <button id='toggle-audio' class="btn" data-status="play">&#10074;&#10074;</button>
-      <p class="info info--inverted">
+      <!-- <p class="info info--inverted">
         <span id="info-long">4.893909</span> &nbsp;&nbsp;
         <span id="info-lat">52.361630</span>
-      </p>
+      </p> -->
     </div>
   </footer>
 
