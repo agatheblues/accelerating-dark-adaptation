@@ -1,5 +1,5 @@
 import {
-  showMap,
+  startExploreMode,
   handleDimmedMap,
   dimMap,
   moveTo, rotateCamera,
@@ -11,20 +11,17 @@ import { addMarkerPopupToMap, updatePopupContent } from "./popup.js";
 import { playLargeVideo, closeVideo } from "./video.js";
 import { markers } from "./markers.js";
 import { customLayer, hideDome } from "./dome.js";
-import { show, hideDropdownMenus } from "./utils.js";
+import { show, hideDropdownMenus, hide } from "./utils.js";
 import { config } from "../config.js";
 
 mapboxgl.accessToken = config.MAPBOX_ACCESS_TOKEN;
 
-window.STATUS = "up";
+window.STATUS = "down";
 
 /* Events */
 $(".mapboxgl-canvas").css("cursor", "crosshair");
 
-$("#btn-explore").on("click", e => {
-  showMap();
-  $("#audio-player")[0].play();
-});
+$("#btn-explore").on("click", e => startExploreMode());
 
 $("#btn-story").on("click", e => {
   /* @TODO */
@@ -81,9 +78,8 @@ map.on("load", function () {
   });
 
   markers.features.forEach(feature => addMarkerPopupToMap(feature));
+  hide('.mapboxgl-popup');
   updatePopupContent();
-
-  rotateCamera();
 });
 
 map.on("style.load", () => map.addLayer(customLayer));
@@ -92,7 +88,7 @@ map.on("drag", () => updateCoordinates());
 
 map.on("pitchend", () => {
   if (map.getPitch() == 80) {
-    window.STATUS == "up";
+    window.STATUS = "up";
     rotateCamera();
     return;
   }

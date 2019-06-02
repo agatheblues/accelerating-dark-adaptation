@@ -6,7 +6,23 @@ const showMap = () => {
   hide("#intro");
   $("#map").removeClass("invisible");
   show("#footer");
+  show("#header");
 };
+
+const startExploreMode = () => {
+  showMap();
+  $("#audio-player")[0].play();
+  setTimeout(() => {
+    map.easeTo({
+      ...mapConfig.side_rotate.position,
+      ...mapConfig.side_rotate.limits,
+      duration: 3000
+    });
+
+    map.once('moveend', () =>
+      show('.mapboxgl-popup'));
+  }, 1000);
+}
 
 const toggleLux = (map) => {
   map.setPaintProperty("public_lighting", "circle-radius", [
@@ -205,6 +221,18 @@ const mapConfig = {
       minZoom: 12
     }
   },
+  intro: {
+    position: {
+      zoom: 13,
+      center: [4.892891, 52.370088],
+      bearing: 0,
+      pitch: 0
+    },
+    limits: {
+      maxZoom: 19,
+      minZoom: 12
+    }
+  },
   side_rotate: {
     position: {
       center: [4.892891, 52.370088],
@@ -219,6 +247,6 @@ const mapConfig = {
   }
 }
 
-const map = new mapboxgl.Map({ ...mapConfig.default, ...mapConfig.side_rotate.position, ...mapConfig.side_rotate.limits });
+const map = new mapboxgl.Map({ ...mapConfig.default, ...mapConfig.intro.position, ...mapConfig.intro.limits });
 
-export { mapConfig, showMap, toggleLayer, handleDimmedMap, dimMap, undimMap, moveTo, rotateCamera, map };
+export { mapConfig, showMap, toggleLayer, handleDimmedMap, dimMap, undimMap, moveTo, rotateCamera, map, startExploreMode };
