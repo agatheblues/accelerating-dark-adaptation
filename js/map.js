@@ -21,7 +21,7 @@ const startExploreMode = () => {
 
     map.once('moveend', () =>
       show('.mapboxgl-popup'));
-  }, 1000);
+  }, 750);
 }
 
 const toggleLux = (map) => {
@@ -108,7 +108,7 @@ const rotateCamera = () => {
 
   // Request the next frame of the animation.
   map.easeTo({
-    bearing: map.getBearing() - 0.5,
+    bearing: map.getBearing() - 0.25,
     easing: easing,
     pitch: 80
   });
