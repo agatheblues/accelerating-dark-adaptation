@@ -1,12 +1,9 @@
 import {
   mapConfig,
   moveTo,
-  toggleLayer,
-  handleDimmedMap,
   map
 } from "./map.js";
 import { playAudio } from "./audio.js";
-import { show, hide } from "./utils.js";
 
 const updateCoordinates = () => {
   let { lng, lat } = map.getCenter();
@@ -14,38 +11,7 @@ const updateCoordinates = () => {
   $("#info-lat").html(lat.toFixed(5));
 };
 
-const handleSwitch = (checked, switchId, popupShow, popupHide) => {
-  if (checked) {
-    $(`#${switchId}`).prop('disabled', true);
-    $(`label[for='${switchId}']`).addClass('switch-disabled');
-    show(`.popup-${popupShow}`);
-    hide(`.popup-${popupHide}`);
-  } else {
-    $(`#${switchId}`).prop('disabled', false);
-    $(`label[for='${switchId}']`).removeClass('switch-disabled');
-    show(`.popup-${popupShow}`);
-    show(`.popup-${popupHide}`);
-  }
-}
-
-const toggleLux = (checked) => {
-  handleDimmedMap();
-  toggleLayer('lux', checked);
-  handleSwitch(checked, 'toggle-nqm', 'lux', 'nqm');
-}
-
-const toggleNqm = (checked) => {
-  handleDimmedMap();
-  toggleLayer('nqm', checked);
-  handleSwitch(checked, 'toggle-lux', 'nqm', 'lux');
-}
-
-const handleNavigateMenuClick = (target) => {
-  // Change current active view
-  $('.dropdown-menu p').removeClass('active');
-  $(target).addClass('active');
-
-  // Move to different areas on map
+const handleNavigateClick = (target) => {
   const action = $(target).data('action');
   switch (action) {
     case 'center':
@@ -66,4 +32,54 @@ const handleNavigateMenuClick = (target) => {
   }
 }
 
-export { handleNavigateMenuClick, toggleLux, toggleNqm, updateCoordinates }
+const handleDataLayer = (target) => {
+  // Change current active view
+  $('.dropdown-menu p').removeClass('active');
+  $(target).addClass('active');
+
+  // Move to different areas on map
+  const action = $(target).data('action');
+  switch (action) {
+    case 'normal':
+      map.setPaintProperty("public_lighting", "circle-radius", [
+        "interpolate",
+        ["linear"],
+        ["zoom"],
+        0,
+        0.5,
+        12.66,
+        0.7,
+        22,
+        7
+      ]);
+      break;
+    case 'lux':
+      map.setPaintProperty("public_lighting", "circle-radius", [
+        "interpolate",
+        ["linear"],
+        ["get", "markers_lux"],
+        0.22,
+        0.5,
+        123.6,
+        5
+      ]);
+      break;
+    case 'nqm':
+      map.setPaintProperty("public_lighting", "circle-radius", [
+        "interpolate",
+        ["linear"],
+        ["get", "markers_nqm"],
+        0,
+        0.5,
+        11.31,
+        5,
+        19.38,
+        0.5
+      ]);
+      break;
+    default:
+      break;
+  }
+}
+
+export { handleNavigateClick, updateCoordinates, handleDataLayer }

@@ -5,7 +5,7 @@ import {
   moveTo, rotateCamera,
   map
 } from "./map.js";
-import { handleNavigateMenuClick, toggleLux, toggleNqm, updateCoordinates } from "./footer.js";
+import { handleDataLayer, handleNavigateClick, toggleLux, toggleNqm, updateCoordinates } from "./footer.js";
 import { pauseAudio, toggleAudio } from "./audio.js";
 import { addMarkerPopupToMap, updatePopupContent } from "./popup.js";
 import { playLargeVideo, closeVideo } from "./video.js";
@@ -58,10 +58,6 @@ $(document).mousemove(() => handleDimmedMap());
 
 $(document).on('touchmove', () => handleDimmedMap());
 
-$("#toggle-lux").change(function () { return toggleLux(this.checked); });
-
-$("#toggle-nqm").change(function () { return toggleNqm(this.checked); });
-
 /* Map events */
 map.on("load", function () {
   map.addLayer({
@@ -102,13 +98,18 @@ map.on('moveend', () => {
   updateCoordinates();
 });
 
-/* DROPDOWN MENU EVENTS */
-$('#navigate-menu').on('click', () => $('#navigate-menu-list').toggle(300));
+/* FOOTER EVENTS */
+$('#data-menu').on('click', () => $('#data-menu-list').toggle(300));
 $('#site-menu').on('click', () => $('#site-menu-list').toggle(300));
 
-$('#navigate-menu-list').on('click', (e) => {
+$('#data-menu-list').on('click', (e) => {
   handleDimmedMap();
-  handleNavigateMenuClick(e.target);
+  handleDataLayer(e.target);
+});
+
+$('#navigate-list').on('click', (e) => {
+  handleDimmedMap();
+  handleNavigateClick(e.target);
 });
 
 $(document).on('click', (e) => hideDropdownMenus(e));

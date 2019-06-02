@@ -24,52 +24,6 @@ const startExploreMode = () => {
   }, 750);
 }
 
-const toggleLux = (map) => {
-  map.setPaintProperty("public_lighting", "circle-radius", [
-    "interpolate",
-    ["linear"],
-    ["get", "markers_lux"],
-    0.22,
-    0.5,
-    123.6,
-    5
-  ]);
-}
-
-const toggleNqm = (map) => {
-  map.setPaintProperty("public_lighting", "circle-radius", [
-    "interpolate",
-    ["linear"],
-    ["get", "markers_nqm"],
-    0,
-    0.5,
-    11.31,
-    5,
-    19.38,
-    0.5
-  ]);
-}
-
-const toggleLayer = (layer, status) => {
-  if (status) {
-    if (layer === 'lux') toggleLux(map);
-    else if (layer === 'nqm') toggleNqm(map);
-  }
-  else {
-    map.setPaintProperty("public_lighting", "circle-radius", [
-      "interpolate",
-      ["linear"],
-      ["zoom"],
-      0,
-      0.5,
-      12.66,
-      0.7,
-      22,
-      7
-    ]);
-  }
-}
-
 const undimMap = () => {
   clearTimeout(timer);
   $('.mapboxgl-map').removeClass('opacity-off');
@@ -154,8 +108,6 @@ const mapStyle = {
       "type": "vector"
     }
   },
-  "sprite": "mapbox://sprites/agatheblues/cjvv4z3cg2j9q1cq5pkojz8h2/8419b3clsjyq6xdbsdmiowfig",
-  "glyphs": "mapbox://fonts/agatheblues/{fontstack}/{range}.pbf",
   layers: [
     {
       id: "land",
@@ -249,4 +201,4 @@ const mapConfig = {
 
 const map = new mapboxgl.Map({ ...mapConfig.default, ...mapConfig.intro.position, ...mapConfig.intro.limits });
 
-export { mapConfig, showMap, toggleLayer, handleDimmedMap, dimMap, undimMap, moveTo, rotateCamera, map, startExploreMode };
+export { mapConfig, showMap, handleDimmedMap, dimMap, undimMap, moveTo, rotateCamera, map, startExploreMode };

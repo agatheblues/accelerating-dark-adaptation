@@ -42,65 +42,48 @@
   <div id="close-video" class="hidden">
     <span class="close"></span>
   </div>
-
-  <header id='header' class='header hidden'>
-    <div class='dropdown-container'>
-      <button id='site-menu' class='btn'>&#9776;</button>
-      <nav class="dropdown-wrapper-down">
-        <ul id='site-menu-list' class="dropdown-menu">
-          <li>
-            <a href="/">Home</a>
-          </li>
-          <li>
-            <a href="/about.html">About</a>
-          </li>
-          <li>
-            <a href="/">Help</a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </header>
   <footer id="footer" class="footer hidden">
     <div class="footer-wrapper">
-
-      <div class="footer-toggle-container">
-        <div class='dropdown-container'>
-          <button id='navigate-menu' class='btn'>Navigate &#8605;</button>
-          <nav class="dropdown-wrapper-up">
-            <ul id='navigate-menu-list' class="dropdown-menu">
-              <li>
-                <p data-action='center'>Center view</p>
-              </li>
-              <li>
-                <p data-action='top'>Top view</p>
-              </li>
-              <li>
-                <p data-action='rotating' class='active'>Rotating view</p>
-              </li>
-            </ul>
-          </nav>
-        </div>
-        <div class="footer-toggle-wrapper">
-          <p class="switch-label">Lux</p>
-          <div>
-            <input type="checkbox" name="toggle-lux" id="toggle-lux" class="switch-toggle" />
-            <label for="toggle-lux" class="checkbox-label" data-off="off" data-on="on" disabled></label>
-          </div>
-        </div>
-        <div class="footer-toggle-wrapper">
-          <p class="switch-label">Night quality</p>
-          <div>
-            <input type="checkbox" name="toggle-nqm" id="toggle-nqm" class="switch-toggle" />
-            <label for="toggle-nqm" class="checkbox-label" data-off="off" data-on="on"></label>
-          </div>
-        </div>
+      <div class='dropdown-container'>
+        <button id='site-menu' class='btn'>&#9776;</button>
+        <nav class="dropdown-wrapper-up">
+          <ul id='site-menu-list' class="dropdown-menu">
+            <li>
+              <a href="/">Home</a>
+            </li>
+            <li>
+              <a href="/about.html">About</a>
+            </li>
+            <li>
+              <a href="/">Help</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div id='navigate-list' class='control-container'>
+        <button class='btn' data-action='center'>Center view</button>
+        <button class='btn' data-action='top'>Top view</button>
+        <button class='btn' data-action='rotating'>Rotating view</button>
+      </div>
+      <div class='dropdown-container'>
+        <button id='data-menu' class='btn'>Data &#10063;</button>
+        <nav class="dropdown-wrapper-up">
+          <ul id='data-menu-list' class="dropdown-menu">
+            <li>
+              <p data-action='normal' class='active'>Normal</p>
+            </li>
+            <li>
+              <p data-action='lux'>Lux</p>
+            </li>
+            <li>
+              <p data-action='nqm'>Night Quality</p>
+            </li>
+          </ul>
+        </nav>
       </div>
     </div>
     <div class="footer-wrapper">
       <button id='toggle-audio' class="btn" data-status="play">&#10074;&#10074;</button>
-    </div>
-    <div class="footer-wrapper">
       <p class="info info--inverted">
         <span id="info-long">4.893909</span> &nbsp;&nbsp;
         <span id="info-lat">52.361630</span>
