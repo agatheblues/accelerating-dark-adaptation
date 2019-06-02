@@ -194,6 +194,7 @@ a.not-underlined {
   justify-content: space-between;
   align-items: center;
   transition: none;
+  flex-wrap: wrap;
 }
 
 .footer.hidden {
