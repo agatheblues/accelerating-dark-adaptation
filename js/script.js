@@ -5,13 +5,13 @@ import {
   moveTo, rotateCamera,
   map
 } from "./map.js";
-import { handleDropdownMenu, toggleLux, toggleNqm, updateCoordinates } from "./footer.js";
+import { handleNavigateMenuClick, toggleLux, toggleNqm, updateCoordinates } from "./footer.js";
 import { pauseAudio, toggleAudio } from "./audio.js";
 import { addMarkerPopupToMap, updatePopupContent } from "./popup.js";
 import { playLargeVideo, closeVideo } from "./video.js";
 import { markers } from "./markers.js";
 import { customLayer, hideDome } from "./dome.js";
-import { show } from "./utils.js";
+import { show, hideDropdownMenus } from "./utils.js";
 import { config } from "../config.js";
 
 mapboxgl.accessToken = config.MAPBOX_ACCESS_TOKEN;
@@ -88,10 +88,7 @@ map.on("load", function () {
 
 map.on("style.load", () => map.addLayer(customLayer));
 
-map.on("drag", () => {
-  let { lng, lat } = map.getCenter();
-  updateCoordinates(lat, lng);
-});
+map.on("drag", () => updateCoordinates());
 
 map.on("pitchend", () => {
   if (map.getPitch() == 80) {
@@ -106,8 +103,7 @@ map.on("zoomend", () => updatePopupContent());
 
 map.on('moveend', () => {
   updatePopupContent();
-  let { lng, lat } = map.getCenter();
-  updateCoordinates(lat, lng);
+  updateCoordinates();
 });
 
 /* DROPDOWN MENU EVENTS */
@@ -116,15 +112,7 @@ $('#site-menu').on('click', () => $('#site-menu-list').toggle(300));
 
 $('#navigate-menu-list').on('click', (e) => {
   handleDimmedMap();
-  handleDropdownMenu(e.target);
+  handleNavigateMenuClick(e.target);
 });
 
-$(document).on('click', function (e) {
-  const $menu = $('.dropdown-container');
-
-  if (!$menu.is(e.target) // if the target of the click isn't the container...
-    && $menu.has(e.target).length === 0) // ... nor a descendant of the container
-  {
-    $('.dropdown-menu').hide(300)
-  }
-});
+$(document).on('click', (e) => hideDropdownMenus(e));

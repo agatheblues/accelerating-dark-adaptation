@@ -2,13 +2,15 @@ import {
   mapConfig,
   moveTo,
   toggleLayer,
-  handleDimmedMap
+  handleDimmedMap,
+  map
 } from "./map.js";
 import { playAudio } from "./audio.js";
 import { show, hide } from "./utils.js";
 
-const updateCoordinates = (lat, long) => {
-  $("#info-long").html(long.toFixed(5));
+const updateCoordinates = () => {
+  let { lng, lat } = map.getCenter();
+  $("#info-long").html(lng.toFixed(5));
   $("#info-lat").html(lat.toFixed(5));
 };
 
@@ -38,7 +40,7 @@ const toggleNqm = (checked) => {
   handleSwitch(checked, 'toggle-lux', 'nqm', 'lux');
 }
 
-const handleDropdownMenu = (target) => {
+const handleNavigateMenuClick = (target) => {
   // Change current active view
   $('.dropdown-menu p').removeClass('active');
   $(target).addClass('active');
@@ -64,4 +66,4 @@ const handleDropdownMenu = (target) => {
   }
 }
 
-export { handleDropdownMenu, toggleLux, toggleNqm, updateCoordinates }
+export { handleNavigateMenuClick, toggleLux, toggleNqm, updateCoordinates }
