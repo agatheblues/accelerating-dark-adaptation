@@ -46,7 +46,7 @@ $("#map").on("click", '.mapboxgl-popup-content', function (e) {
 
   show("#video-wrapper");
   show("#close-video");
-  playLargeVideo(popupData.data('url') + "");
+  playLargeVideo(339824214); //popupData.data('url') + "");
 
   dimMap();
   hideDome();

@@ -1,16 +1,21 @@
 import { undimMap } from "./map.js";
 import { showDome } from "./dome.js";
 import { hide } from "./utils.js";
+import Player from '@vimeo/player';
 
-const playLargeVideo = url => {
-  $("#video-player-source").attr("src", url);
-  $("#video-player-sel")[0].load();
-  $("#video-player-sel")[0].play();
+
+let videoPlayer;
+
+const playLargeVideo = id => {
+  if (!videoPlayer) {
+    videoPlayer = new Player('player', { background: true, id });
+    videoPlayer.setVolume(1);
+  }
+  videoPlayer.loadVideo(id);
 };
 
 const stopLargeVideo = () => {
-  $("#video-player-sel")[0].pause();
-  $("#video-player-sel")[0].currentTime = 0;
+  videoPlayer.unload();
 };
 
 const closeVideo = () => {

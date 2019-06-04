@@ -127,11 +127,9 @@ a.not-underlined {
   max-height: 100%;
 }
 
-.minivideo-player {
+.video-player iframe {
   width: 100%;
-  height: auto;
-  cursor: pointer;
-  margin: 0 0 10px 0;
+  height: 100%;
 }
 
 .close {
