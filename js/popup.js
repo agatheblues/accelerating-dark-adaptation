@@ -6,7 +6,7 @@ const setDefaultValue = value => (value.length > 0 ? value : "~");
 const renderPopupLocation = (quartier, lieu, latitude, longitude) => `<div class='popup-location'><div class='popup-quartier'><p>${quartier}, ${lieu}</p></div><div><p>${longitude}&nbsp;&nbsp;${latitude}</p></div></div>`;
 
 const renderPopupLabels = () =>
-  "<div class='popup-left'><p class='popup-lux hidden'>Lux</p><p class='popup-nqm hidden'>Night quality</p></div>";
+  "<div class='popup-left'><p class='popup-lux hidden'>Lux</p><p class='popup-nqm hidden'>Sky quality</p></div>";
 
 const renderPopupValues = (lux, nqm) =>
   `<div class='popup-right'><p class='popup-lux hidden'>${setDefaultValue(lux)}</p>
