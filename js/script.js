@@ -100,11 +100,13 @@ $('#site-menu').on('click', () => $('#site-menu-list').toggle(300));
 $('#data-menu-list').on('click', (e) => {
   handleDimmedMap();
   handleDataLayer(e.target);
+  $('.dropdown-menu').hide(300);
 });
 
 $('#navigate-list').on('click', (e) => {
   handleDimmedMap();
   handleNavigateClick(e.target);
+  $('.dropdown-menu').hide(300);
 });
 
 $(document).on('click', (e) => hideDropdownMenus(e));
