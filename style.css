@@ -209,6 +209,10 @@ a.not-underlined {
   display: block;
 }
 
+.footer-data-tooltip {
+  padding: 10px 10px 0 10px;
+}
+
 .menu-label {
   text-transform: uppercase;
   font-size: 10px;

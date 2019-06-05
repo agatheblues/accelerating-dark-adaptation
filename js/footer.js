@@ -38,6 +38,8 @@ const handleDataLayer = (target) => {
     case 'normal':
       hide('.popup-lux');
       hide('.popup-nqm');
+      hide('#lux-definition');
+      hide('#nqm-definition');
 
       map.setPaintProperty("public_lighting", "circle-radius", [
         "interpolate",
@@ -54,6 +56,8 @@ const handleDataLayer = (target) => {
     case 'lux':
       hide('.popup-nqm');
       show('.popup-lux');
+      show('#lux-definition');
+      hide('#nqm-definition');
 
       map.setPaintProperty("public_lighting", "circle-radius", [
         "interpolate",
@@ -68,6 +72,8 @@ const handleDataLayer = (target) => {
     case 'nqm':
       hide('.popup-lux');
       show('.popup-nqm');
+      hide('#lux-definition');
+      show('#nqm-definition');
 
       map.setPaintProperty("public_lighting", "circle-radius", [
         "interpolate",
