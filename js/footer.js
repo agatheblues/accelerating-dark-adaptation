@@ -52,6 +52,9 @@ const handleDataLayer = (target) => {
         22,
         7
       ]);
+
+      map.setPaintProperty("public_lighting", "circle-opacity", 1);
+
       break;
     case 'lux':
       hide('.popup-nqm');
@@ -68,6 +71,9 @@ const handleDataLayer = (target) => {
         123.6,
         5
       ]);
+
+      map.setPaintProperty("public_lighting", "circle-opacity", 1);
+
       break;
     case 'nqm':
       hide('.popup-lux');
@@ -78,13 +84,25 @@ const handleDataLayer = (target) => {
       map.setPaintProperty("public_lighting", "circle-radius", [
         "interpolate",
         ["linear"],
-        ["get", "markers_nqm"],
+        ["get", "markers_lux"],
         0,
-        0.5,
+        1,
         11.31,
-        5,
+        1,
         19.38,
         0.5
+      ]);
+
+      map.setPaintProperty("public_lighting", "circle-opacity", [
+        "interpolate",
+        ["linear"],
+        ["get", "markers_nqm"],
+        0,
+        1,
+        11.31,
+        1,
+        19.38,
+        0
       ]);
       break;
     default:

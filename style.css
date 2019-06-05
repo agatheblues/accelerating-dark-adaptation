@@ -188,6 +188,9 @@ a.not-underlined {
   margin: 0px auto;
   width: 100%;
   background: #000;
+}
+
+.footer-container {
   display: flex;
   justify-content: space-between;
   align-items: center;

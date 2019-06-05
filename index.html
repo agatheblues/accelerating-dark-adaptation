@@ -55,50 +55,52 @@
         An illuminated road has a sky quality lower than 16 and a clear night sky is higher than 20.
       </p>
     </div>
-    <div class="footer-wrapper">
-      <div class='dropdown-container'>
-        <button id='site-menu' class='btn'>&#63;</button>
-        <nav class="dropdown-wrapper">
-          <ul id='site-menu-list' class="dropdown-menu">
-            <li>
-              <a href="/">Home</a>
-            </li>
-            <li>
-              <a href="/about.html">About</a>
-            </li>
-            <li>
-              <a href="/">Help</a>
-            </li>
-          </ul>
-        </nav>
+    <div class="footer-container">
+      <div class="footer-wrapper">
+        <div class='dropdown-container'>
+          <button id='site-menu' class='btn'>&#63;</button>
+          <nav class="dropdown-wrapper">
+            <ul id='site-menu-list' class="dropdown-menu">
+              <li>
+                <a href="/">Home</a>
+              </li>
+              <li>
+                <a href="/about.html">About</a>
+              </li>
+              <li>
+                <a href="/">Help</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div id='navigate-list' class='control-container'>
+          <p class='menu-label'>View</p>
+          <button class='btn' data-action='center'>Center</button>
+          <button class='btn' data-action='top'>Top</button>
+          <button class='btn' data-action='rotating'>Rotating</button>
+        </div>
+        <div class='dropdown-container'>
+          <p class='menu-label'>Visualize</p>
+          <button id='data-menu' class='btn'>Measures</button>
+          <nav class="dropdown-wrapper">
+            <ul id='data-menu-list' class="dropdown-menu">
+              <li>
+                <p data-action='normal' class='active'>Normal</p>
+              </li>
+              <li>
+                <p data-action='lux'>Lux</p>
+              </li>
+              <li>
+                <p data-action='nqm'>Sky Quality</p>
+              </li>
+            </ul>
+          </nav>
+        </div>
       </div>
-      <div id='navigate-list' class='control-container'>
-        <p class='menu-label'>View</p>
-        <button class='btn' data-action='center'>Center</button>
-        <button class='btn' data-action='top'>Top</button>
-        <button class='btn' data-action='rotating'>Rotating</button>
+      <div class="footer-wrapper footer-wrapper--column">
+        <p class='menu-label'>Listen</p>
+        <button id='toggle-audio' class="btn" data-status="play">&#10074;&#10074;</button>
       </div>
-      <div class='dropdown-container'>
-        <p class='menu-label'>Visualize</p>
-        <button id='data-menu' class='btn'>Measures</button>
-        <nav class="dropdown-wrapper">
-          <ul id='data-menu-list' class="dropdown-menu">
-            <li>
-              <p data-action='normal' class='active'>Normal</p>
-            </li>
-            <li>
-              <p data-action='lux'>Lux</p>
-            </li>
-            <li>
-              <p data-action='nqm'>Sky Quality</p>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-    <div class="footer-wrapper footer-wrapper--column">
-      <p class='menu-label'>Listen</p>
-      <button id='toggle-audio' class="btn" data-status="play">&#10074;&#10074;</button>
     </div>
   </footer>
 
