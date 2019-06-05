@@ -240,7 +240,7 @@ a.not-underlined {
 /* Pop up*/
 .mapboxgl-popup {
   pointer-events: auto;
-  font: 8px/14px "IBM Plex Sans", sans-serif;
+  font: 10px/14px "IBM Plex Sans", sans-serif;
   color: #fff;
   /* max-width: 120px; */
 }
@@ -268,8 +268,16 @@ a.not-underlined {
   font-weight: 600;
 }
 
-.popup-location {
-  margin: 0 0 10px 0;
+.popup-description {
+  margin: 10px 0 0 0;
+}
+
+.popup-lux {
+  margin: 10px 0 0 0;
+}
+
+.popup-nqm {
+  margin: 10px 0 0 0;
 }
 
 

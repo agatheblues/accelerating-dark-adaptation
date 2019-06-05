@@ -54,7 +54,7 @@ const markers = {
         "conditions": "Clear sky",
         "name": "video3",
         "video_id": 339823879,
-        "description": "The Netherlands have 3200 km of ΓÇÿRijkswegΓÇÖ, of which about 20% is lit. In Belgium, 90% was lit before 2011. That year, Flanders decided to switch off the lights on all highways in their region, except at intersections and ramps. \n\n"
+        "description": "The Netherlands have 3200 km of 'Rijksweg', of which about 20% is lit. In Belgium, 90% was lit before 2011. That year, Flanders decided to switch off the lights on all highways in their region, except at intersections and ramps. \n\n"
       },
       "geometry": {
         "type": "Point",
@@ -390,7 +390,7 @@ const markers = {
         "conditions": "Clear sky",
         "name": "video19",
         "video_id": 339824071,
-        "description": "The science of astronomy is the worldΓÇÖs oldest science, originating in a time when men first observed, wondered about and counted the stars with the naked eye. However, as our towns and cities have grown and light pollution has increased, we can no longer see most of the visible stars and other astronomical objects. \n"
+        "description": "The science of astronomy is the world's oldest science, originating in a time when men first observed, wondered about and counted the stars with the naked eye. However, as our towns and cities have grown and light pollution has increased, we can no longer see most of the visible stars and other astronomical objects. \n"
       },
       "geometry": {
         "type": "Point",
@@ -579,7 +579,7 @@ const markers = {
         "conditions": "Clear sky",
         "name": "video29",
         "video_id": 339823777,
-        "description": "Compared to space-based telescopes, ground-based telescopes have much to offer. They can be built bigger and for less money. TheyΓÇÖre easier to maintain and upgrade. Practically speaking, they also have a much lower risk of being damaged by one of the 500,000 pieces of debris flying through the cosmosΓÇöor space junk.\n"
+        "description": "Compared to space-based telescopes, ground-based telescopes have much to offer. They can be built bigger and for less money. They're easier to maintain and upgrade. Practically speaking, they also have a much lower risk of being damaged by one of the 500,000 pieces of debris flying through the cosmos'or space junk.\n"
       },
       "geometry": {
         "type": "Point",
@@ -642,7 +642,7 @@ const markers = {
         "conditions": "Clear sky",
         "name": "video32",
         "video_id": 339824141,
-        "description": "There may be an evolutionary explanation for why people feel less safe at night ΓÇô we canΓÇÖt see as well, and this may have exposed our ancestors to greater threat from predators. Nowadays, itΓÇÖs not so much the prospect of being eaten by a savage beast that concerns would-be pedestrians, but the fear of being mugged or victimised. \n"
+        "description": "There may be an evolutionary explanation for why people feel less safe at night ΓÇô we can't see as well, and this may have exposed our ancestors to greater threat from predators. Nowadays, it's not so much the prospect of being eaten by a savage beast that concerns would-be pedestrians, but the fear of being mugged or victimised. \n"
       },
       "geometry": {
         "type": "Point",
@@ -705,7 +705,7 @@ const markers = {
         "conditions": "Clear sky",
         "name": "video38",
         "video_id": 339823663,
-        "description": "Neuroscience researchers have been investigating the influence of light intensity and color temperature on humanΓÇÖs mood and behaviour. Scientists have shown that blue light stimulate and strengthen connections between brain areas involved in the process of emotions and language. Blue light improves alertness and mental performance and seems to primarily affect the mind, including mood. \n"
+        "description": "Neuroscience researchers have been investigating the influence of light intensity and color temperature on human's mood and behaviour. Scientists have shown that blue light stimulate and strengthen connections between brain areas involved in the process of emotions and language. Blue light improves alertness and mental performance and seems to primarily affect the mind, including mood. \n"
       },
       "geometry": {
         "type": "Point",
@@ -726,7 +726,7 @@ const markers = {
         "conditions": "Clear sky",
         "name": "video40",
         "video_id": 339824042,
-        "description": "Billboard lighting is a major source of light pollution and a new twist on billboards will to ΓÇÿratchet upΓÇÖ the light output. Digital electronic billboards, or as they are known in the industry, Commercial Electronic Variable Message Signs, are harmful to human health, visually distracting for drivers and deleterious for community esthetics. \n\n"
+        "description": "Billboard lighting is a major source of light pollution and a new twist on billboards will to 'ratchet up' the light output. Digital electronic billboards, or as they are known in the industry, Commercial Electronic Variable Message Signs, are harmful to human health, visually distracting for drivers and deleterious for community esthetics. \n\n"
       },
       "geometry": {
         "type": "Point",

@@ -4,8 +4,10 @@ import {
   map
 } from "./map.js";
 import { playAudio } from "./audio.js";
+import { show, hide } from "./utils.js";
 
 const handleNavigateClick = (target) => {
+  // Move to different areas on map
   const action = $(target).data('action');
   switch (action) {
     case 'center':
@@ -31,10 +33,12 @@ const handleDataLayer = (target) => {
   $('.dropdown-menu p').removeClass('active');
   $(target).addClass('active');
 
-  // Move to different areas on map
   const action = $(target).data('action');
   switch (action) {
     case 'normal':
+      hide('.popup-lux');
+      hide('.popup-nqm');
+
       map.setPaintProperty("public_lighting", "circle-radius", [
         "interpolate",
         ["linear"],
@@ -48,6 +52,9 @@ const handleDataLayer = (target) => {
       ]);
       break;
     case 'lux':
+      hide('.popup-nqm');
+      show('.popup-lux');
+
       map.setPaintProperty("public_lighting", "circle-radius", [
         "interpolate",
         ["linear"],
@@ -59,6 +66,9 @@ const handleDataLayer = (target) => {
       ]);
       break;
     case 'nqm':
+      hide('.popup-lux');
+      show('.popup-nqm');
+
       map.setPaintProperty("public_lighting", "circle-radius", [
         "interpolate",
         ["linear"],
