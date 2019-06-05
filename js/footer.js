@@ -5,12 +5,6 @@ import {
 } from "./map.js";
 import { playAudio } from "./audio.js";
 
-const updateCoordinates = () => {
-  let { lng, lat } = map.getCenter();
-  $("#info-long").html(lng.toFixed(5));
-  $("#info-lat").html(lat.toFixed(5));
-};
-
 const handleNavigateClick = (target) => {
   const action = $(target).data('action');
   switch (action) {
@@ -82,4 +76,4 @@ const handleDataLayer = (target) => {
   }
 }
 
-export { handleNavigateClick, updateCoordinates, handleDataLayer }
+export { handleNavigateClick, handleDataLayer }

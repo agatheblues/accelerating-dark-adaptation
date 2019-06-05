@@ -5,7 +5,7 @@ import {
   moveTo, rotateCamera,
   map
 } from "./map.js";
-import { handleDataLayer, handleNavigateClick, toggleLux, toggleNqm, updateCoordinates } from "./footer.js";
+import { handleDataLayer, handleNavigateClick } from "./footer.js";
 import { pauseAudio, toggleAudio } from "./audio.js";
 import { addMarkerPopupToMap, updatePopupContent } from "./popup.js";
 import { playLargeVideo, closeVideo } from "./video.js";
@@ -80,8 +80,6 @@ map.on("load", function () {
 
 map.on("style.load", () => map.addLayer(customLayer));
 
-map.on("drag", () => updateCoordinates());
-
 map.on("pitchend", () => {
   if (map.getPitch() == 80) {
     window.STATUS = "up";
@@ -93,10 +91,7 @@ map.on("pitchend", () => {
 
 map.on("zoomend", () => updatePopupContent());
 
-map.on('moveend', () => {
-  updatePopupContent();
-  updateCoordinates();
-});
+map.on('moveend', () => updatePopupContent());
 
 /* FOOTER EVENTS */
 $('#data-menu').on('click', () => $('#data-menu-list').toggle(300));
