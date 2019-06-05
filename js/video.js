@@ -6,7 +6,8 @@ import Player from '@vimeo/player';
 
 let videoPlayer;
 
-const playLargeVideo = id => {
+const playLargeVideo = stringId => {
+  let id = parseInt(stringId);
   if (!videoPlayer) {
     videoPlayer = new Player('player', { background: true, id });
     videoPlayer.setVolume(1);

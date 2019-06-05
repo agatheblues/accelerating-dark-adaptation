@@ -19,13 +19,13 @@ const renderPopUpContent = ({
   nqm = "",
   latitude = 0,
   longitude = 0,
-  url_long_video = ""
+  video_id = ""
 }) => {
   latitude = latitude.toFixed(5);
   longitude = longitude.toFixed(5);
 
   return (
-    `<div class='popup-wrapper' data-lat=${latitude} data-lon=${longitude} data-url=${url_long_video}>` +
+    `<div class='popup-wrapper' data-lat=${latitude} data-lon=${longitude} data-id=${video_id}>` +
     renderPopupLocation(quartier, lieu, latitude, longitude) +
     "<div class='popup-data'>" +
     renderPopupLabels() +
