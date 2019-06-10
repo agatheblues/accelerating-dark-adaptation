@@ -81,7 +81,7 @@ a.not-underlined {
 
   color: #fff;
   background: #000;
-  border: 1px #fff solid;
+  border: 1px #fff dotted;
 
   line-height: 1.3;
 
@@ -89,7 +89,7 @@ a.not-underlined {
   -moz-appearance: none;
   appearance: none;
 
-  font-size: inherit;
+  font-size: 14px;
   font-family: inherit;
 }
 
