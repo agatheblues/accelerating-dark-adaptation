@@ -206,11 +206,6 @@ a.not-underlined {
   padding: 10px 10px 0 10px;
 }
 
-.menu-label {
-  text-transform: uppercase;
-  margin: 0 0 5px 2px;
-}
-
 /* MAP */
 .container {
   position: absolute;
