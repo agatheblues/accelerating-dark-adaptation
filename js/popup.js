@@ -3,7 +3,7 @@ import { map } from "./map.js";
 
 const setDefaultValue = value => (value.length > 0 ? value : "~");
 
-const renderPopupLocation = (quartier, lieu, latitude, longitude) => `<div><div class='popup-quartier'><p>${quartier}, ${lieu}</p></div><div class='popup-location'><p>${longitude}&nbsp;&nbsp;${latitude}</p></div></div>`;
+const renderPopupLocation = (lieu, latitude, longitude) => `<div><div class='popup-quartier'><p>${lieu}</p></div><div class='popup-location'><p>${longitude}&nbsp;&nbsp;${latitude}</p></div></div>`;
 
 const renderPopupLabels = () =>
   "<div class='popup-left'><p class='popup-lux hidden'>Lux</p><p class='popup-nqm hidden'>Sky quality</p></div>";
@@ -15,7 +15,6 @@ const renderPopupValues = (lux, nqm) =>
 const renderPopupDescription = (description) => `<div class='popup-description'><p>${description}</p></div>`;
 
 const renderPopUpContent = ({
-  quartier = "",
   lieu = "",
   lux = "",
   nqm = "",
@@ -29,7 +28,7 @@ const renderPopUpContent = ({
 
   return (
     `<div class='popup-wrapper' data-lat=${latitude} data-lon=${longitude} data-id=${video_id}>` +
-    renderPopupLocation(quartier, lieu, latitude, longitude) +
+    renderPopupLocation(lieu, latitude, longitude) +
     renderPopupDescription(description) +
     "<div class='popup-data'>" +
     renderPopupLabels() +
