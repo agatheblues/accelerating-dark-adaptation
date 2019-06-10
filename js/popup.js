@@ -3,7 +3,7 @@ import { map } from "./map.js";
 
 const setDefaultValue = value => (value.length > 0 ? value : "~");
 
-const renderPopupLocation = (lieu, latitude, longitude) => `<div><div class='popup-quartier'><p>${lieu}</p></div><div class='popup-location'><p>${longitude}&nbsp;&nbsp;${latitude}</p></div></div>`;
+const renderPopupLocation = (lieu, latitude, longitude) => `<div><div class='popup-quartier'><h2>${lieu}</h2></div><div class='popup-location'><p>${longitude}&nbsp;&nbsp;${latitude}</p></div></div>`;
 
 const renderPopupLabels = () =>
   "<div class='popup-left'><p class='popup-lux hidden'>Lux</p><p class='popup-nqm hidden'>Sky quality</p></div>";

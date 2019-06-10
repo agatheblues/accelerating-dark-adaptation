@@ -95,7 +95,6 @@ map.on('moveend', () => updatePopupContent());
 
 /* FOOTER EVENTS */
 $('.dropdown-trigger').on('click', (e) => {
-  console.log(`#${e.target.id}-list`)
   $('.dropdown-menu').hide(300);
   $(`#${e.target.id}-list`).toggle(300);
 });

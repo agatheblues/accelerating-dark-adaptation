@@ -21,6 +21,14 @@ h1 {
   font-weight: 600;
 }
 
+h2 {
+  font-weight: 700;
+  line-height: 14px;
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+}
+
 a {
   color: #fff;
   text-decoration: underline;
@@ -164,13 +172,6 @@ a.not-underlined {
 }
 
 /* content */
-.marker {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
 .footer {
   position: fixed;
   bottom: 0;
@@ -185,7 +186,7 @@ a.not-underlined {
   justify-content: space-between;
   align-items: center;
   transition: none;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
 }
 
 .footer.hidden {
@@ -200,10 +201,6 @@ a.not-underlined {
 
 .footer-wrapper--column {
   display: block;
-}
-
-.footer-data-tooltip {
-  padding: 10px 10px 0 10px;
 }
 
 /* MAP */
@@ -252,11 +249,6 @@ a.not-underlined {
 
 .popup-right {
   float: right;
-}
-
-.popup-quartier {
-  font-weight: 700;
-  line-height: 14px;
 }
 
 .popup-description {
@@ -346,7 +338,7 @@ a.not-underlined {
 .control-container {
   display: flex;
   padding: 0;
-  margin: 0 20px 0 20px;
+  margin: 0 0 0 20px;
 }
 
 .header {
