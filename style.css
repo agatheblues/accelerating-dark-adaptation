@@ -266,6 +266,23 @@ a.not-underlined {
   cursor: pointer;
 }
 
+.mapboxgl-popup-tip.mapboxgl-popup-tip {
+  border: none;
+}
+
+.mapboxgl-popup-tip:after {
+  content: '';
+  border-bottom: 1px dotted #fff;
+  border-right: 1px dotted #fff;
+  background-color: #000;
+  position: absolute;
+  left: calc(50% - 10px);
+  bottom: -10px;
+  width: 20px;
+  height: 20px;
+  transform: rotate(45deg);
+}
+
 .popup-left {
   float: left;
   margin-right: 10px;
