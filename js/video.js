@@ -9,8 +9,11 @@ let videoPlayer;
 const playLargeVideo = stringId => {
   let id = parseInt(stringId);
   if (!videoPlayer) {
-    videoPlayer = new Player('player', { background: true, id });
+    videoPlayer = new Player('player', { autoplay: true, controls: false, id });
     videoPlayer.setVolume(1);
+    videoPlayer.on('ended', function (data) {
+      closeVideo();
+    });
   }
   videoPlayer.loadVideo(id);
 };
