@@ -781,7 +781,7 @@ const markers = {
     {
       "type": "Feature",
       "properties": {
-        "id": "",
+        "id": "43",
         "quartier": "nieuw sloten",
         "lieu": "1",
         "lux": "18.26",
@@ -801,4 +801,6 @@ const markers = {
   ]
 };
 
-export { markers };
+const findMarkerById = (id) => markers.features.find(m => m.properties.id === id);
+
+export { markers, findMarkerById };

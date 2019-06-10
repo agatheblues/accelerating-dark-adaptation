@@ -15,19 +15,19 @@ const renderPopupValues = (lux, nqm) =>
 const renderPopupDescription = (description) => `<div class='popup-description'><p>${description}</p></div>`;
 
 const renderPopUpContent = ({
+  id,
   lieu = "",
   lux = "",
   nqm = "",
   latitude = 0,
   longitude = 0,
-  description = "",
-  video_id = ""
+  description = ""
 }) => {
   latitude = latitude.toFixed(5);
   longitude = longitude.toFixed(5);
 
   return (
-    `<div class='popup-wrapper' data-lat=${latitude} data-lon=${longitude} data-id=${video_id}>` +
+    `<div class='popup-wrapper' data-id='${id}'>` +
     renderPopupLocation(lieu, latitude, longitude) +
     renderPopupDescription(description) +
     "<div class='popup-data'>" +

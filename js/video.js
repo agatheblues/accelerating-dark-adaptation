@@ -7,9 +7,10 @@ import Player from '@vimeo/player';
 let videoPlayer;
 
 const playLargeVideo = stringId => {
-  let id = parseInt(stringId);
+  let id = stringId;
+  console.log('vimeo', id)
   if (!videoPlayer) {
-    videoPlayer = new Player('player', { autoplay: true, controls: false, id });
+    videoPlayer = new Player('player', { autoplay: true, controls: false, id: id });
     videoPlayer.setVolume(1);
     videoPlayer.on('ended', function (data) {
       closeVideo();
@@ -27,6 +28,7 @@ const closeVideo = () => {
   stopLargeVideo();
   hide("#video-wrapper");
   hide("#close-video");
+  hide('#video-details');
   $('#toggle-audio').prop('disabled', false);
   showDome();
 }

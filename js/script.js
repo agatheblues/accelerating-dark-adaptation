@@ -5,11 +5,11 @@ import {
   moveTo, rotateCamera,
   map
 } from "./map.js";
-import { handleDataLayer, handleNavigateClick } from "./footer.js";
+import { handleDataLayer, handleNavigateClick, showVideoDetails } from "./footer.js";
 import { pauseAudio, toggleAudio } from "./audio.js";
 import { addMarkerPopupToMap, updatePopupContent } from "./popup.js";
 import { playLargeVideo, closeVideo } from "./video.js";
-import { markers } from "./markers.js";
+import { markers, findMarkerById } from "./markers.js";
 import { customLayer, hideDome } from "./dome.js";
 import { show, hideDropdownMenus, hide } from "./utils.js";
 import { config } from "../config.js";
@@ -33,11 +33,14 @@ $("#close-video").on("click", e => closeVideo());
 
 $("#map").on("click", '.mapboxgl-popup-content', function (e) {
   window.STATUS = "down";
-  const popupData = $(this).children('.popup-wrapper');
+  const popupId = $(this).children('.popup-wrapper').data('id');
+  const marker = findMarkerById(`${popupId}`);
+
+  const [longitude, latitude] = marker.geometry.coordinates;
 
   moveTo({
     zoom: 14,
-    center: [popupData.data('lon'), popupData.data('lat')],
+    center: [longitude, latitude],
     bearing: 0,
     pitch: 0
   }, null);
@@ -46,7 +49,11 @@ $("#map").on("click", '.mapboxgl-popup-content', function (e) {
 
   show("#video-wrapper");
   show("#close-video");
-  playLargeVideo(popupData.data('id'));
+  show("#video-details");
+  hide('#nqm-definition');
+  hide('#lux-definition');
+  playLargeVideo(marker.properties.video_id);
+  showVideoDetails({ ...marker.properties, longitude, latitude });
 
   dimMap();
   hideDome();

@@ -113,4 +113,17 @@ const handleDataLayer = (target) => {
   }
 }
 
-export { handleNavigateClick, handleDataLayer }
+const showVideoDetails = ({
+  lieu = "",
+  lux = "",
+  nqm = "",
+  latitude = 0,
+  longitude = 0,
+}) => {
+  $('#video-details-quartier').text(lieu);
+  $('#video-details-location').text(longitude + ' ' + latitude);
+  $('#video-details-sqm').text(nqm);
+  $('#video-details-lux').text(lux);
+}
+
+export { handleNavigateClick, handleDataLayer, showVideoDetails }
