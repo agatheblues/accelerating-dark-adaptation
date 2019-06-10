@@ -94,8 +94,11 @@ map.on("zoomend", () => updatePopupContent());
 map.on('moveend', () => updatePopupContent());
 
 /* FOOTER EVENTS */
-$('#data-menu').on('click', () => $('#data-menu-list').toggle(300));
-$('#site-menu').on('click', () => $('#site-menu-list').toggle(300));
+$('.dropdown-trigger').on('click', (e) => {
+  console.log(`#${e.target.id}-list`)
+  $('.dropdown-menu').hide(300);
+  $(`#${e.target.id}-list`).toggle(300);
+});
 
 $('#data-menu-list').on('click', (e) => {
   handleDimmedMap();
@@ -103,7 +106,7 @@ $('#data-menu-list').on('click', (e) => {
   $('.dropdown-menu').hide(300);
 });
 
-$('#navigate-list').on('click', (e) => {
+$('#navigate-menu-list').on('click', (e) => {
   handleDimmedMap();
   handleNavigateClick(e.target);
   $('.dropdown-menu').hide(300);

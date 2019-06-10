@@ -58,41 +58,54 @@
     <div class="footer-container">
       <div class="footer-wrapper">
         <div class='dropdown-container'>
-          <button id='site-menu' class='btn'>&#9776;</button>
+          <button id='site-menu' class='btn dropdown-trigger'>&#9776;</button>
           <nav class="dropdown-wrapper">
             <ul id='site-menu-list' class="dropdown-menu">
               <li>
                 <a href="/">Home</a>
               </li>
               <li>
-                <a href="/about.html">About</a>
+                <a href="/about.html">About the project</a>
               </li>
               <li>
-                <a href="/">Help</a>
+                <a href="/">How to navigate</a>
               </li>
             </ul>
           </nav>
         </div>
-        <div class='dropdown-container'>
-          <button class='btn' data-action='center'>Center</button>
-          <button class='btn' data-action='top'>Top</button>
-          <button class='btn' data-action='rotating'>Rotating</button>
-        </div>
-        <div class='dropdown-container'>
-          <button id='data-menu' class='btn'>Measures</button>
-          <nav class="dropdown-wrapper">
-            <ul id='data-menu-list' class="dropdown-menu">
-              <li>
-                <p data-action='normal' class='active'>Normal</p>
-              </li>
-              <li>
-                <p data-action='lux'>Lux</p>
-              </li>
-              <li>
-                <p data-action='nqm'>Sky Quality</p>
-              </li>
-            </ul>
-          </nav>
+        <div class='control-container'>
+          <div class='dropdown-container'>
+            <button id='navigate-menu' class='btn dropdown-trigger'>Map View</button>
+            <nav class="dropdown-wrapper">
+              <ul id='navigate-menu-list' class="dropdown-menu">
+                <li>
+                  <p data-action='center'>Center</p>
+                </li>
+                <li>
+                  <p data-action='top'>Top</p>
+                </li>
+                <li>
+                  <p data-action='rotating'>Rotating</p>
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <div class='dropdown-container'>
+            <button id='data-menu' class='btn dropdown-trigger'>Visualise Data</button>
+            <nav class="dropdown-wrapper">
+              <ul id='data-menu-list' class="dropdown-menu">
+                <li>
+                  <p data-action='normal' class='active'>No data activated</p>
+                </li>
+                <li>
+                  <p data-action='lux'>Luminous Emittance</p>
+                </li>
+                <li>
+                  <p data-action='nqm'>Sky Quality</p>
+                </li>
+              </ul>
+            </nav>
+          </div>
         </div>
       </div>
       <div class="footer-wrapper footer-wrapper--column">
