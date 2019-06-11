@@ -75,79 +75,11 @@ const bounds = [
   [5.07506, 52.431021] // Northeast coordinates
 ];
 
-const mapStyle = {
-  version: 8,
-  name: "Dark - Dev",
-  metadata: {
-    "mapbox:type": "default",
-    "mapbox:origin": "dark-v10",
-    "mapbox:autocomposite": true,
-    "mapbox:groups": {
-      "1444855786460.0557": { name: "Roads", collapsed: false },
-      "1444934295202.7542": {
-        name: "Admin boundaries",
-        collapsed: true
-      },
-      "1444855799204.86": { name: "Bridges", collapsed: true },
-      "1444855769305.6016": { name: "Tunnels", collapsed: true }
-    },
-    "mapbox:sdk-support": {
-      js: "0.50.0",
-      android: "6.7.0",
-      ios: "4.6.0"
-    },
-    "mapbox:trackposition": false
-  },
-  center: [4.8939090868191215, 52.36163000690422],
-  zoom: 12,
-  bearing: 0,
-  pitch: 0,
-  sources: {
-    "mapbox://agatheblues.6xsw3odm": {
-      "url": "mapbox://agatheblues.6xsw3odm",
-      "type": "vector"
-    }
-  },
-  layers: [
-    {
-      id: "land",
-      type: "background",
-      paint: { "background-color": "hsla(241, 0%, 0%, 0%)" }
-    },
-    {
-      "id": "public_lighting",
-      "type": "circle",
-      "source": "mapbox://agatheblues.6xsw3odm",
-      "source-layer": "public_lighting_with_night_da-1z4eo8",
-      "paint": {
-        "circle-color": "hsl(57, 88%, 95%)",
-        "circle-radius": [
-          "interpolate",
-          ["linear"],
-          ["zoom"],
-          0,
-          0.5,
-          12.66,
-          0.7,
-          22,
-          7
-        ]
-      }
-    }
-  ],
-  "created": "2019-05-19T16:09:37.474Z",
-  "id": "cjvv4z3cg2j9q1cq5pkojz8h2",
-  "modified": "2019-05-19T16:12:24.887Z",
-  "owner": "agatheblues",
-  "visibility": "private",
-  "draft": false
-};
-
 const mapConfig = {
   default: {
     container: "map",
     maxBounds: bounds,
-    style: mapStyle
+    style: 'mapbox://styles/agatheblues/cjwsb96fq9r211cmgdq36xulv?optimize=true'
   },
   top_zoomed: {
     position: {
