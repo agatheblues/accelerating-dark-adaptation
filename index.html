@@ -7,26 +7,19 @@
   <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
   <script src="https://unpkg.com/three@0.102.0/build/three.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-  <script src="js/mapbox.js"></script>
+  <script src="mapbox.js"></script>
   <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.54.0/mapbox-gl.css" rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 
 <body>
   <div id="intro" class="intro-container">
-    <div class="intro-wrapper">
-      <h1>Accelerating Dark Adaptation</h1>
-      <div class="intro-description">
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-          ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum
-        </p>
-      </div>
+    <div class="intro-title">
+      <h1>&nbsp;Accelerating</h1>
+      <h1>Dark</h1>
+      <h1>&nbsp;Adaptation</h1>
+    </div>
+    <div class='intro-actions'>
       <button id="btn-story" class="btn">View story</button>
       <button id="btn-explore" class="btn">Explore</button>
     </div>
@@ -59,70 +52,72 @@
             </ul>
           </nav>
         </div>
-        <div class='control-container'>
-          <div class='dropdown-container'>
-            <button id='navigate-menu' class='btn dropdown-trigger'>Map View</button>
-            <nav class="dropdown-wrapper">
-              <ul id='navigate-menu-list' class="dropdown-menu">
-                <li>
-                  <p data-action='center'>Center</p>
-                </li>
-                <li>
-                  <p data-action='top'>Top</p>
-                </li>
-                <li>
-                  <p data-action='rotating'>Rotating</p>
-                </li>
-              </ul>
-            </nav>
+        <div class="control-details-wrapper">
+          <div class='control-container'>
+            <div class='dropdown-container'>
+              <button id='navigate-menu' class='btn dropdown-trigger'>Map View</button>
+              <nav class="dropdown-wrapper">
+                <ul id='navigate-menu-list' class="dropdown-menu">
+                  <li>
+                    <p data-action='center'>Center</p>
+                  </li>
+                  <li>
+                    <p data-action='top'>Top</p>
+                  </li>
+                  <li>
+                    <p data-action='rotating'>Rotating</p>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+            <div class='dropdown-container'>
+              <button id='data-menu' class='btn dropdown-trigger'>Visualise Data</button>
+              <nav class="dropdown-wrapper">
+                <ul id='data-menu-list' class="dropdown-menu">
+                  <li>
+                    <p data-action='normal' class='active'>No data activated</p>
+                  </li>
+                  <li>
+                    <p data-action='lux'>Luminous Emittance</p>
+                  </li>
+                  <li>
+                    <p data-action='nqm'>Sky Quality</p>
+                  </li>
+                </ul>
+              </nav>
+            </div>
           </div>
-          <div class='dropdown-container'>
-            <button id='data-menu' class='btn dropdown-trigger'>Visualise Data</button>
-            <nav class="dropdown-wrapper">
-              <ul id='data-menu-list' class="dropdown-menu">
-                <li>
-                  <p data-action='normal' class='active'>No data activated</p>
-                </li>
-                <li>
-                  <p data-action='lux'>Luminous Emittance</p>
-                </li>
-                <li>
-                  <p data-action='nqm'>Sky Quality</p>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-        <div class="footer-tooltip">
-          <div id='lux-definition' class='hidden'>
-            <h2>Luminous Emittance</h2>
-            <p>Lux is the unit used to measure the luminous emittance,
-              as perceived by the human eye. <br>A moonless overcast night sky has a lux of 0.0001 and an office
-              lighting
-              ranges
-              from 320 to 500 lux.</p>
-          </div>
-          <div id='nqm-definition' class='hidden'>
-            <h2>About sky quality</h2>
-            <p>Sky quality measures the luminance of the night sky. Amateur astronomers use it to quantify the skyglow
-              aspect
-              of light pollution. <br>
-              An illuminated road has a sky quality lower than 16 and a clear night sky is higher than 20.
-            </p>
-          </div>
-          <div id='video-details' class='hidden'>
-            <div class='video-tooltip-wrapper'>
-              <div>
-                <h2 id='video-details-quartier'></h2>
-                <p id='video-details-location'></p>
-              </div>
-              <div class='video-details-wrapper'>
-                <div class='video-details-data-wrapper'>
-                  <p>Sky Quality: <span class='details-highlight' id='video-details-sqm'></span></p>
-                  <p>Luminous Emittance: <span class='details-highlight' id='video-details-lux'></span></p>
+          <div class="footer-tooltip hidden">
+            <div id='lux-definition' class='hidden'>
+              <h2>Luminous Emittance</h2>
+              <p>Lux is the unit used to measure the luminous emittance,
+                as perceived by the human eye. <br>A moonless overcast night sky has a lux of 0.0001 and an office
+                lighting
+                ranges
+                from 320 to 500 lux.</p>
+            </div>
+            <div id='nqm-definition' class='hidden'>
+              <h2>About sky quality</h2>
+              <p>Sky quality measures the luminance of the night sky. Amateur astronomers use it to quantify the skyglow
+                aspect
+                of light pollution. <br>
+                An illuminated road has a sky quality lower than 16 and a clear night sky is higher than 20.
+              </p>
+            </div>
+            <div id='video-details' class='hidden'>
+              <div class='video-tooltip-wrapper'>
+                <div>
+                  <h2 id='video-details-quartier'></h2>
+                  <p id='video-details-location'></p>
                 </div>
-                <p>Speaking interviewees: <span id='video-details-speakers'></span>
-                </p>
+                <div class='video-details-wrapper'>
+                  <div class='video-details-data-wrapper'>
+                    <p>Sky Quality: <span class='details-highlight' id='video-details-sqm'></span></p>
+                    <p>Luminous Emittance: <span class='details-highlight' id='video-details-lux'></span></p>
+                  </div>
+                  <p>Speaking interviewees: <span id='video-details-speakers'></span>
+                  </p>
+                </div>
               </div>
             </div>
           </div>

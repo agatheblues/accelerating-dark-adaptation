@@ -28,6 +28,7 @@ const closeVideo = () => {
   stopLargeVideo();
   hide("#video-wrapper");
   hide("#close-video");
+  hide('.footer-tooltip');
   hide('#video-details');
   $('#toggle-audio').prop('disabled', false);
   showDome();
