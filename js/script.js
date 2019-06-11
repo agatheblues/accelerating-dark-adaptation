@@ -12,9 +12,6 @@ import { playLargeVideo, closeVideo } from "./video.js";
 import { markers, findMarkerById, findIntervieweesById } from "./markers.js";
 import { customLayer, hideDome } from "./dome.js";
 import { show, hideDropdownMenus, hide } from "./utils.js";
-import { config } from "../config.js";
-
-mapboxgl.accessToken = config.MAPBOX_ACCESS_TOKEN;
 
 window.STATUS = "down";
 

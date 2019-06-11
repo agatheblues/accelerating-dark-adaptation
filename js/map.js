@@ -1,4 +1,5 @@
 import { show, hide, easing } from "./utils.js";
+import { config } from "../config.js";
 
 let timer;
 
@@ -74,6 +75,9 @@ const bounds = [
   [4.717755, 52.278175], // Southwest coordinates
   [5.07506, 52.431021] // Northeast coordinates
 ];
+
+
+mapboxgl.accessToken = config.MAPBOX_ACCESS_TOKEN;
 
 const mapConfig = {
   default: {
