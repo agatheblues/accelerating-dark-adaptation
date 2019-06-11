@@ -113,17 +113,23 @@ const handleDataLayer = (target) => {
   }
 }
 
+const renderInterviewees = (interviewees) => {
+  let htmlElements = interviewees.map(({ name, job }) => `<span class='details-highlight'>${name}</span> (${job})`);
+  $('#video-details-speakers').html(htmlElements.join(', '))
+}
 const showVideoDetails = ({
   lieu = "",
   lux = "",
   nqm = "",
   latitude = 0,
   longitude = 0,
+  interviewees = []
 }) => {
   $('#video-details-quartier').text(lieu);
   $('#video-details-location').text(longitude + ' ' + latitude);
   $('#video-details-sqm').text(nqm);
   $('#video-details-lux').text(lux);
+  renderInterviewees(interviewees);
 }
 
 export { handleNavigateClick, handleDataLayer, showVideoDetails }

@@ -9,7 +9,7 @@ import { handleDataLayer, handleNavigateClick, showVideoDetails } from "./footer
 import { pauseAudio, toggleAudio } from "./audio.js";
 import { addMarkerPopupToMap, updatePopupContent } from "./popup.js";
 import { playLargeVideo, closeVideo } from "./video.js";
-import { markers, findMarkerById } from "./markers.js";
+import { markers, findMarkerById, findIntervieweesById } from "./markers.js";
 import { customLayer, hideDome } from "./dome.js";
 import { show, hideDropdownMenus, hide } from "./utils.js";
 import { config } from "../config.js";
@@ -35,6 +35,7 @@ $("#map").on("click", '.mapboxgl-popup-content', function (e) {
   window.STATUS = "down";
   const popupId = $(this).children('.popup-wrapper').data('id');
   const marker = findMarkerById(`${popupId}`);
+  const interviewees = findIntervieweesById(`${popupId}`);
 
   const [longitude, latitude] = marker.geometry.coordinates;
 
@@ -53,7 +54,7 @@ $("#map").on("click", '.mapboxgl-popup-content', function (e) {
   hide('#nqm-definition');
   hide('#lux-definition');
   playLargeVideo(marker.properties.video_id);
-  showVideoDetails({ ...marker.properties, longitude, latitude });
+  showVideoDetails({ ...marker.properties, longitude, latitude, interviewees });
 
   dimMap();
   hideDome();
