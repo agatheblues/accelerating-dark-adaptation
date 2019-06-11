@@ -1,5 +1,85 @@
 @import url('https://fonts.googleapis.com/css?family=Titillium+Web:300,700');
 
+@font-face {
+  font-family: "BPdotsLight";
+  /* src: url("/fonts/BPdotsLight.ttf") format('truetype'); */
+  src: 
+  /* url("/fonts/BPdotsLight.woff") format("woff"), */
+  url("/fonts/BPdotsLight.otf") format("opentype"),
+  url("/fonts/BPdotsLight.svg") format("svg");
+  }
+  
+
+@-webkit-keyframes MAIN-TITLE-ANIMATION {
+  0%   { -webkit-text-stroke: 5px #fff; }
+  10%   { -webkit-text-stroke: 4px #fff; }
+  20%   { -webkit-text-stroke: 3px #fff; }
+  30%   { -webkit-text-stroke: 2px #fff; }
+  40%   { -webkit-text-stroke: 1px #fff; }
+  50% { -webkit-text-stroke: 0px #fff; }
+  60% { -webkit-text-stroke: 0px #000; }
+  70% { -webkit-text-stroke: 0.25px #000; }
+  80% { -webkit-text-stroke: 0.5px #000; }
+  90% { -webkit-text-stroke: 1px #000; }
+  100% { -webkit-text-stroke: 1.5px #000; }
+}
+@-moz-keyframes MAIN-TITLE-ANIMATION {
+  0%   { -webkit-text-stroke: 5px #fff; }
+  10%   { -webkit-text-stroke: 4px #fff; }
+  20%   { -webkit-text-stroke: 3px #fff; }
+  30%   { -webkit-text-stroke: 2px #fff; }
+  40%   { -webkit-text-stroke: 1px #fff; }
+  50% { -webkit-text-stroke: 0px #fff; }
+  60% { -webkit-text-stroke: 0px #000; }
+  70% { -webkit-text-stroke: 0.25px #000; }
+  80% { -webkit-text-stroke: 0.5px #000; }
+  90% { -webkit-text-stroke: 1px #000; }
+  100% { -webkit-text-stroke: 1.5px #000; }
+}
+@-o-keyframes MAIN-TITLE-ANIMATION {
+  0%   { -webkit-text-stroke: 5px #fff; }
+  10%   { -webkit-text-stroke: 4px #fff; }
+  20%   { -webkit-text-stroke: 3px #fff; }
+  30%   { -webkit-text-stroke: 2px #fff; }
+  40%   { -webkit-text-stroke: 1px #fff; }
+  50% { -webkit-text-stroke: 0px #fff; }
+  60% { -webkit-text-stroke: 0px #000; }
+  70% { -webkit-text-stroke: 0.25px #000; }
+  80% { -webkit-text-stroke: 0.5px #000; }
+  90% { -webkit-text-stroke: 1px #000; }
+  100% { -webkit-text-stroke: 1.5px #000; }
+}
+@keyframes MAIN-TITLE-ANIMATION {
+  0%   { -webkit-text-stroke: 5px #fff; }
+  10%   { -webkit-text-stroke: 4px #fff; }
+  20%   { -webkit-text-stroke: 3px #fff; }
+  30%   { -webkit-text-stroke: 2px #fff; }
+  40%   { -webkit-text-stroke: 1px #fff; }
+  50% { -webkit-text-stroke: 0px #fff; }
+  60% { -webkit-text-stroke: 0px #000; }
+  70% { -webkit-text-stroke: 0.25px #000; }
+  80% { -webkit-text-stroke: 0.5px #000; }
+  90% { -webkit-text-stroke: 1px #000; }
+  100% { -webkit-text-stroke: 1.5px #000; }
+}
+
+@-webkit-keyframes BUTTON-INTRO-ANIMATION {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-moz-keyframes BUTTON-INTRO-ANIMATION {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-o-keyframes BUTTON-INTRO-ANIMATION {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes BUTTON-INTRO-ANIMATION {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -17,9 +97,18 @@ p {
 
 h1 {
   margin: 0;
-  font-size: 50px;
-  font-weight: 600;
+  font-size: 100px;
+  font-family: 'BPdotsLight', Arial, sans-serif;
+  text-transform: uppercase;
+  line-height: 100px;
+  -webkit-text-stroke: 5px #fff;
+
+  -webkit-animation: MAIN-TITLE-ANIMATION 2s alternate ease-out infinite; /* Safari 4+ */
+  -moz-animation:    MAIN-TITLE-ANIMATION 2s alternate ease-out infinite; /* Fx 5+ */
+  -o-animation:      MAIN-TITLE-ANIMATION 2s alternate ease-out infinite; /* Opera 12+ */
+  animation:         MAIN-TITLE-ANIMATION 2s alternate ease-out infinite; /* IE 10+, Fx 29+ */
 }
+
 
 h2 {
   font-weight: 700;
@@ -55,21 +144,27 @@ a.not-underlined {
 .intro-container {
   display: flex;
   align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-evenly;
   height: 100vh;
+  position: relative;
 }
 
 .intro-container.hidden {
   display: none;
 }
 
-.intro-wrapper {
-  max-width: 50%;
-  /* text-align: center; */
+.intro-title {
+  display: inline-block;
 }
 
-.intro-description {
-  margin: 20px 0 20px 0;
+.intro-actions {
+  text-align: center;
+  opacity: 0;
+  -webkit-animation: BUTTON-INTRO-ANIMATION 6s forwards; /* Safari 4+ */
+  -moz-animation:    BUTTON-INTRO-ANIMATION 6s forwards; /* Fx 5+ */
+  -o-animation:      BUTTON-INTRO-ANIMATION 6s forwards; /* Opera 12+ */
+  animation:         BUTTON-INTRO-ANIMATION 6s forwards; /* IE 10+, Fx 29+ */
 }
 
 /* Buttons */
