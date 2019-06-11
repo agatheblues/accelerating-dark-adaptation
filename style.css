@@ -279,9 +279,6 @@ a.not-underlined {
 .footer-container {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  transition: none;
-  /* flex-wrap: wrap; */
 }
 
 .footer.hidden {
@@ -291,7 +288,10 @@ a.not-underlined {
 .footer-wrapper {
   padding: 10px;
   display: flex;
-  align-items: flex-end;
+}
+
+.footer-tooltip {
+  margin: 20px 0 0 20px;
 }
 
 .footer-wrapper--column {
@@ -483,16 +483,24 @@ a.not-underlined {
 
 
 /* Medium mobile*/
-@media only screen and (min-width : 480px) {
+@media only screen and (min-width : 481px) {
   .content-container {
     width: 80%;
   }
 }
 
 /* iPads (portrait and landscape) ----------- */
-@media only screen and (min-width : 768px) {
+@media only screen and (min-width : 769px) {
   .content-container {
     width: 60%;
+  }
+
+  .control-details-wrapper {
+    display: flex;
+  }
+
+  .footer-tooltip {
+    margin: 0 0 0 20px;
   }
 }
 

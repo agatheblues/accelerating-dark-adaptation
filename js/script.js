@@ -50,6 +50,7 @@ $("#map").on("click", '.mapboxgl-popup-content', function (e) {
 
   show("#video-wrapper");
   show("#close-video");
+  show('.footer-tooltip');
   show("#video-details");
   hide('#nqm-definition');
   hide('#lux-definition');
