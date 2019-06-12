@@ -348,6 +348,7 @@ a.not-underlined {
   pointer-events: auto;
   font: 13px 'Titillium Web', sans-serif;
   color: #fff;
+  min-width: 120px;
 }
 
 .mapboxgl-popup-content {
@@ -380,7 +381,6 @@ a.not-underlined {
 
 .popup-left {
   float: left;
-  margin-right: 10px;
 }
 
 .popup-right {
@@ -400,13 +400,13 @@ a.not-underlined {
   line-height: 14px;
 }
 
-.popup-lux {
+/* .popup-lux {
   margin: 10px 0 0 0;
 }
 
 .popup-nqm {
   margin: 10px 0 0 0;
-}
+} */
 
 
 /* Content */

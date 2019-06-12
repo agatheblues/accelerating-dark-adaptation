@@ -945,5 +945,6 @@ const interviewees = {
 
 const findMarkerById = (id) => markers.features.find(m => m.properties.id === id);
 const findIntervieweesById = (id) => interviewees[id];
+const getMarkersWithVideo = () => markers.features.filter(m => m.properties.video_id.length > 0);
 
-export { markers, findMarkerById, findIntervieweesById };
+export { markers, findMarkerById, findIntervieweesById, getMarkersWithVideo };

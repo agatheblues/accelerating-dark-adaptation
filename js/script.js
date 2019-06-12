@@ -9,7 +9,7 @@ import { handleDataLayer, handleNavigateClick, showVideoDetails } from "./footer
 import { pauseAudio, toggleAudio } from "./audio.js";
 import { addMarkerPopupToMap, updatePopupContent } from "./popup.js";
 import { playLargeVideo, closeVideo } from "./video.js";
-import { markers, findMarkerById, findIntervieweesById } from "./markers.js";
+import { markers, findMarkerById, findIntervieweesById, getMarkersWithVideo } from "./markers.js";
 import { customLayer, hideDome } from "./dome.js";
 import { show, hideDropdownMenus, hide } from "./utils.js";
 
@@ -79,7 +79,8 @@ map.on("load", function () {
     }
   });
 
-  markers.features.forEach(feature => addMarkerPopupToMap(feature));
+  let features = getMarkersWithVideo()
+  features.forEach(feature => addMarkerPopupToMap(feature));
   hide('.mapboxgl-popup');
   updatePopupContent();
 });
