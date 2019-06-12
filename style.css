@@ -298,12 +298,12 @@ a.not-underlined {
   display: block;
 }
 
-.video-tooltip-wrapper {
+.tooltip-wrapper {
   display: flex;
   align-items: baseline;
 }
 
-.video-details-wrapper {
+.details-wrapper {
   margin: 0 0 0 20px;
 }
 
