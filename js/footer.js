@@ -70,7 +70,7 @@ const handleDataLayer = (target) => {
         "interpolate",
         ["linear"],
         ["get", "markers_lux"],
-        0.22,
+        0.02,
         0.5,
         123.6,
         5
@@ -93,7 +93,7 @@ const handleDataLayer = (target) => {
         ["get", "markers_lux"],
         0,
         1,
-        11.31,
+        10.35,
         1,
         19.38,
         0.5
@@ -105,7 +105,7 @@ const handleDataLayer = (target) => {
         ["get", "markers_nqm"],
         0,
         1,
-        11.31,
+        10.35,
         1,
         19.38,
         0
