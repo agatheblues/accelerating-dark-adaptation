@@ -5,7 +5,7 @@ const markers = {
       "type": "Feature",
       "properties": {
         "id": "2",
-        "lieu": "Football Field, Geuzenveld-Slotermeer",
+        "lieu": "Football Field, Slotermeer",
         "lux": "1.85",
         "nqm": "17.97",
         "name": "video2",
@@ -62,7 +62,7 @@ const markers = {
       "type": "Feature",
       "properties": {
         "id": "5",
-        "lieu": "Station Amsterdam Zuid",
+        "lieu": "Station Zuid",
         "lux": "18.41",
         "nqm": "14.01",
         "name": "video5",
@@ -81,7 +81,7 @@ const markers = {
       "type": "Feature",
       "properties": {
         "id": "6",
-        "lieu": "Amstel River, Korte Ouderkerkerdijk ",
+        "lieu": "Amstel River",
         "lux": "1.28",
         "nqm": "17.72",
         "name": "video6",
@@ -271,7 +271,7 @@ const markers = {
       "type": "Feature",
       "properties": {
         "id": "16",
-        "lieu": "Foodhallen, Kinkerbuurt",
+        "lieu": "Kinkerbuurt",
         "lux": "7.9",
         "nqm": "16.17",
         "name": "video16",
@@ -290,7 +290,7 @@ const markers = {
       "type": "Feature",
       "properties": {
         "id": "17",
-        "lieu": "Anne Frank Huis, Bloemgracht",
+        "lieu": "Anne Frank Huis",
         "lux": "6.79",
         "nqm": "16.31",
         "name": "video17",
@@ -385,7 +385,7 @@ const markers = {
       "type": "Feature",
       "properties": {
         "id": "22",
-        "lieu": "Westelijke Merwedekanaaldijk",
+        "lieu": "Westelijke M.",
         "lux": "3.56",
         "nqm": "16.71",
         "name": "video22",
@@ -746,7 +746,7 @@ const markers = {
       "type": "Feature",
       "properties": {
         "id": "46",
-        "lieu": "Nemo, Oosterdok",
+        "lieu": "Nemo Museum",
         "lux": "71.8",
         "nqm": "14.19",
         "name": "video46",
