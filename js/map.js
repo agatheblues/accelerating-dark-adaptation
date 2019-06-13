@@ -6,10 +6,20 @@ import { customLayer } from "./dome.js";
 let timer;
 let map;
 
+
+const loadingSpinner = (loaded) => {
+  if (loaded) {
+    hide('#loader');
+  } else {
+    show('#loader');
+  }
+}
+
 const initMap = () => {
   map = new mapboxgl.Map({ ...mapConfig.default, ...mapConfig.intro.position, ...mapConfig.intro.limits });
 
   map.on("load", () => {
+    loadingSpinner(true);
     initPopups();
     animateMap();
   });
@@ -52,6 +62,7 @@ const animateMap = () => {
 }
 
 const startExploreMode = () => {
+  loadingSpinner(false);
   showMap();
   initMap();
   $("#audio-player")[0].play();
