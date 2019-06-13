@@ -6,7 +6,7 @@ import {
 } from "./map.js";
 import { handleDataLayer, handleNavigateClick, showVideoDetails } from "./footer.js";
 import { pauseAudio, toggleAudio } from "./audio.js";
-import { playLargeVideo, closeVideo } from "./video.js";
+import { playLargeVideo, closeVideo, resizeVideo } from "./video.js";
 import { findMarkerById, findIntervieweesById } from "./markers.js";
 import { hideDome } from "./dome.js";
 import { show, hideDropdownMenus, hide } from "./utils.js";
@@ -52,10 +52,12 @@ $("#map").on("click", '.mapboxgl-popup-content', function (e) {
   hide('#lux-definition');
   playLargeVideo(marker.properties.video_id);
   showVideoDetails({ ...marker.properties, longitude, latitude, interviewees });
-
+  resizeVideo();
   dimMap();
   hideDome();
 });
+
+$(window).resize(() => resizeVideo());
 
 $('#toggle-audio').on('click', function () { return toggleAudio($(this).data('status')); });
 
