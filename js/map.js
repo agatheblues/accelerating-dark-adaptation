@@ -18,6 +18,8 @@ const loadingSpinner = (loaded) => {
 const initMap = () => {
   map = new mapboxgl.Map({ ...mapConfig.default, ...mapConfig.intro.position, ...mapConfig.intro.limits });
 
+  map.doubleClickZoom.disable();
+
   map.on("load", () => {
     loadingSpinner(true);
     initPopups();
