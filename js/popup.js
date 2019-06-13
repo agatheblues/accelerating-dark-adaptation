@@ -91,6 +91,7 @@ const addMarkerPopupToMap = (feature) => {
 };
 
 const updatePopupContent = () => {
+  console.log('updating popups')
   const zoom = map.getZoom()
   const pitch = map.getPitch();
 

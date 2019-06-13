@@ -4,7 +4,6 @@ import { initPopups, updatePopupContent } from "./popup.js";
 import { customLayer } from "./dome.js";
 
 let timer;
-let map;
 
 const loadingSpinner = (loaded) => {
   if (loaded) {
@@ -15,17 +14,18 @@ const loadingSpinner = (loaded) => {
 }
 
 const initMap = () => {
-  map = new mapboxgl.Map({ ...mapConfig.default, ...mapConfig.intro.position, ...mapConfig.intro.limits });
-
-  map.doubleClickZoom.disable();
-
-  map.on("load", () => {
-    loadingSpinner(true);
+  if (map.loaded) {
+    map.addLayer(customLayer);
     initPopups();
     animateMap();
-  });
-
-  map.on("style.load", () => map.addLayer(customLayer));
+  } else {
+    map.on("load", () => {
+      // loadingSpinner(true);
+      map.addLayer(customLayer);
+      initPopups();
+      animateMap();
+    });
+  }
 
   map.on("pitchend", () => {
     if (map.getPitch() == 80) {
@@ -37,9 +37,6 @@ const initMap = () => {
   });
 
   map.on("zoomend", () => updatePopupContent());
-
-  map.on('moveend', () => updatePopupContent());
-
 }
 
 const showMap = () => {
@@ -63,7 +60,7 @@ const animateMap = () => {
 }
 
 const startExploreMode = () => {
-  loadingSpinner(false);
+  // loadingSpinner(false);
   showMap();
   initMap();
   $("#audio-player")[0].play();
@@ -178,5 +175,8 @@ const mapConfig = {
     }
   }
 }
+
+let map = new mapboxgl.Map({ ...mapConfig.default, ...mapConfig.intro.position, ...mapConfig.intro.limits });
+map.doubleClickZoom.disable();
 
 export { mapConfig, showMap, handleDimmedMap, dimMap, undimMap, moveTo, rotateCamera, map, startExploreMode };
