@@ -1,31 +1,38 @@
 @import url('https://fonts.googleapis.com/css?family=Titillium+Web:300,700');
 
 @-webkit-keyframes BUTTON-INTRO-ANIMATION {
-  0%   { opacity: 0; }
-  100% { opacity: 1; }
+from   { opacity: 0; }
+to  { opacity: 1; }
 }
 @-moz-keyframes BUTTON-INTRO-ANIMATION {
-  0%   { opacity: 0; }
-  100% { opacity: 1; }
+from   { opacity: 0; }
+to  { opacity: 1; }
 }
 @-o-keyframes BUTTON-INTRO-ANIMATION {
-  0%   { opacity: 0; }
-  100% { opacity: 1; }
+from   { opacity: 0; }
+to  { opacity: 1; }
 }
 @keyframes BUTTON-INTRO-ANIMATION {
-  0%   { opacity: 0; }
-  100% { opacity: 1; }
+from   { opacity: 0; }
+to  { opacity: 1; }
 }
 
+@-webkit-keyframes TITLE-ANIMATION {
+  from { r: 3px; }
+  to { r: 0.5px; }
+}
+@-moz-keyframes TITLE-ANIMATION {
+  from { r: 3px; }
+  to { r: 0.5px; }
+}
+@-o-keyframes TITLE-ANIMATION {
+  from { r: 3px; }
+  to { r: 0.5px; }
+}
 @keyframes TITLE-ANIMATION {
-  from {
-      r: 3px;
-  }
-  to {
-      r: 1px;
-  }
+  from { r: 3px; }
+  to { r: 0.5px; }
 }
-
 
 body {
   margin: 0;
@@ -45,17 +52,9 @@ p {
 h1 {
   margin: 0;
   font-size: 100px;
-  font-family: 'BPdotsLight', Arial, sans-serif;
   text-transform: uppercase;
   line-height: 100px;
-  -webkit-text-stroke: 5px #fff;
-
-  -webkit-animation: MAIN-TITLE-ANIMATION 2s alternate ease-out infinite; /* Safari 4+ */
-  -moz-animation:    MAIN-TITLE-ANIMATION 2s alternate ease-out infinite; /* Fx 5+ */
-  -o-animation:      MAIN-TITLE-ANIMATION 2s alternate ease-out infinite; /* Opera 12+ */
-  animation:         MAIN-TITLE-ANIMATION 2s alternate ease-out infinite; /* IE 10+, Fx 29+ */
 }
-
 
 h2 {
   font-weight: 700;
@@ -112,8 +111,10 @@ a.not-underlined {
   stroke-width: 0;
   fill: #fff;
 
-  animation-duration: 6s;
-  animation-name: TITLE-ANIMATION;
+  -webkit-animation: TITLE-ANIMATION 6s; /* Safari 4+ */
+  -moz-animation:    TITLE-ANIMATION 6s; /* Fx 5+ */
+  -o-animation:      TITLE-ANIMATION 6s; /* Opera 12+ */
+  animation: TITLE-ANIMATION 6s;
 }
 
 .intro-actions {
@@ -123,6 +124,10 @@ a.not-underlined {
   -moz-animation:    BUTTON-INTRO-ANIMATION 6s forwards; /* Fx 5+ */
   -o-animation:      BUTTON-INTRO-ANIMATION 6s forwards; /* Opera 12+ */
   animation:         BUTTON-INTRO-ANIMATION 6s forwards; /* IE 10+, Fx 29+ */
+}
+
+.intro-actions button {
+  margin: 0 10px 0 10px;
 }
 
 /* Buttons */
