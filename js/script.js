@@ -27,6 +27,7 @@ $("#close-video").on("click", e => closeVideo());
 
 
 $("#map").on("click", '.mapboxgl-popup-content', function (e) {
+  console.log('click video')
   window.STATUS = "down";
   const popupId = $(this).children('.popup-wrapper').data('id');
   const marker = findMarkerById(`${popupId}`);
@@ -51,17 +52,15 @@ $("#map").on("click", '.mapboxgl-popup-content', function (e) {
   hide('#lux-definition');
   playLargeVideo(marker.properties.video_id);
   showVideoDetails({ ...marker.properties, longitude, latitude, interviewees });
-  $('body').on('mousemove', () => handleDimmedMap());
-  $('body').on('touchstart', (e) => {
-    e.preventDefault();
-    handleDimmedMap();
-  });
 
   dimMap();
   hideDome();
 });
 
 $('#toggle-audio').on('click', function () { return toggleAudio($(this).data('status')); });
+
+$('body').on('mousemove', () => handleDimmedMap());
+$('body').on('touchstart', () => handleDimmedMap());
 
 /* FOOTER EVENTS */
 $('.dropdown-trigger').on('click', (e) => {

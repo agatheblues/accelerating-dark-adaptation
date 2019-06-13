@@ -6,17 +6,23 @@ import Player from '@vimeo/player';
 
 let videoPlayer;
 
-const playLargeVideo = stringId => {
-  let id = stringId;
-  console.log('vimeo', id)
+const initPlayer = (id) => {
+  videoPlayer = new Player('player', { autoplay: true, controls: false, id: id });
+  videoPlayer.setVolume(1);
+  videoPlayer.on('ended', function () {
+    closeVideo();
+  });
+}
+
+const playLargeVideo = id => {
   if (!videoPlayer) {
-    videoPlayer = new Player('player', { autoplay: true, controls: false, id: id });
-    videoPlayer.setVolume(1);
-    videoPlayer.on('ended', function (data) {
-      closeVideo();
+    initPlayer(id);
+    videoPlayer.play();
+  } else {
+    videoPlayer.loadVideo(id).then(() => {
+      videoPlayer.play();
     });
   }
-  videoPlayer.loadVideo(id);
 };
 
 const stopLargeVideo = () => {
@@ -32,8 +38,6 @@ const closeVideo = () => {
   hide('#video-details');
   $('#toggle-audio').prop('disabled', false);
   showDome();
-  $('body').off('mousemove');
-  $('body').off('touchstart');
 }
 
 export { playLargeVideo, stopLargeVideo, closeVideo };
