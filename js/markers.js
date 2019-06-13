@@ -161,7 +161,7 @@ const markers = {
         "lux": "9.61",
         "nqm": "15.81",
         "name": "video10",
-        "video_id": "339824008",
+        "video_id": "",
         "description": ""
       },
       "geometry": {
@@ -484,7 +484,7 @@ const markers = {
         "lux": "0.02",
         "nqm": "19.21",
         "name": "video28",
-        "video_id": "339823413",
+        "video_id": "",
         "description": "The color red has the least effect on night vision. By adapting to the dark and then using a flashlight with a red lens, we can see well enough to walk among objects including sleeping pets and people without waking them up. "
       },
       "geometry": {
@@ -541,7 +541,7 @@ const markers = {
         "lux": "0.27",
         "nqm": "17.95",
         "name": "video31",
-        "video_id": "339823704",
+        "video_id": "",
         "description": ""
       },
       "geometry": {
@@ -651,11 +651,11 @@ const markers = {
       "type": "Feature",
       "properties": {
         "id": "41",
-        "lieu": "Neuwmarkt",
+        "lieu": "Nieuwmarkt",
         "lux": "1.59",
         "nqm": "17.74",
         "name": "video41",
-        "video_id": "339823804",
+        "video_id": "",
         "description": ""
       },
       "geometry": {
@@ -693,7 +693,7 @@ const markers = {
         "lux": "18.26",
         "nqm": "14.58",
         "name": "video43",
-        "video_id": "339823833",
+        "video_id": "",
         "description": ""
       },
       "geometry": {
