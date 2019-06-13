@@ -6,7 +6,6 @@ import { customLayer } from "./dome.js";
 let timer;
 let map;
 
-
 const loadingSpinner = (loaded) => {
   if (loaded) {
     hide('#loader');

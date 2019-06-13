@@ -18,20 +18,24 @@ to  { opacity: 1; }
 }
 
 @-webkit-keyframes TITLE-ANIMATION {
-  from { r: 3px; }
-  to { r: 0.5px; }
+  0% { r: 3px; opacity: 0; }
+  20% { r: 2.5px; opacity: 1; }
+  100% { r: 0.5px; opacity: 1; }
 }
 @-moz-keyframes TITLE-ANIMATION {
-  from { r: 3px; }
-  to { r: 0.5px; }
+  0% { r: 3px; opacity: 0; }
+  20% { r: 2.5px; opacity: 1; }
+  100% { r: 0.5px; opacity: 1; }
 }
 @-o-keyframes TITLE-ANIMATION {
-  from { r: 3px; }
-  to { r: 0.5px; }
+  0% { r: 3px; opacity: 0; }
+  20% { r: 2.5px; opacity: 1; }
+  100% { r: 0.5px; opacity: 1; }
 }
 @keyframes TITLE-ANIMATION {
-  from { r: 3px; }
-  to { r: 0.5px; }
+  0% { r: 3px; opacity: 0; }
+  20% { r: 2.5px; opacity: 1; }
+  100% { r: 0.5px; opacity: 1; }
 }
 
 body {
@@ -110,20 +114,21 @@ a.not-underlined {
   stroke: none;
   stroke-width: 0;
   fill: #fff;
+  opacity: 0;
 
-  -webkit-animation: TITLE-ANIMATION 6s; /* Safari 4+ */
-  -moz-animation:    TITLE-ANIMATION 6s; /* Fx 5+ */
-  -o-animation:      TITLE-ANIMATION 6s; /* Opera 12+ */
-  animation: TITLE-ANIMATION 6s;
+  -webkit-animation: 6s linear forwards TITLE-ANIMATION; /* Safari 4+ */
+  -moz-animation:    6s linear forwards TITLE-ANIMATION; /* Fx 5+ */
+  -o-animation:      6s linear forwards TITLE-ANIMATION; /* Opera 12+ */
+  animation: 6s linear forwards TITLE-ANIMATION;
 }
 
 .intro-actions {
   text-align: center;
   opacity: 0;
-  -webkit-animation: BUTTON-INTRO-ANIMATION 6s forwards; /* Safari 4+ */
-  -moz-animation:    BUTTON-INTRO-ANIMATION 6s forwards; /* Fx 5+ */
-  -o-animation:      BUTTON-INTRO-ANIMATION 6s forwards; /* Opera 12+ */
-  animation:         BUTTON-INTRO-ANIMATION 6s forwards; /* IE 10+, Fx 29+ */
+  -webkit-animation: 3s linear 3s forwards BUTTON-INTRO-ANIMATION; /* Safari 4+ */
+  -moz-animation:    3s linear 3s forwards BUTTON-INTRO-ANIMATION; /* Fx 5+ */
+  -o-animation:      3s linear 3s forwards BUTTON-INTRO-ANIMATION; /* Opera 12+ */
+  animation:         3s linear 3s forwards BUTTON-INTRO-ANIMATION; /* IE 10+, Fx 29+ */
 }
 
 .intro-actions button {
