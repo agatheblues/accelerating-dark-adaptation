@@ -14,6 +14,8 @@ import { show, hideDropdownMenus, hide } from "./utils.js";
 window.STATUS = "down";
 
 /* Events */
+document.body.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false });
+
 $(".mapboxgl-canvas").css("cursor", "crosshair");
 
 $("#btn-explore").on("click", e => startExploreMode());
