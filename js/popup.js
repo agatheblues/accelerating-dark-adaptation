@@ -1,5 +1,6 @@
 import { show, hide } from "./utils.js";
 import { map } from "./map.js";
+import { markers, getMarkersWithVideo } from "./markers.js";
 
 const setDefaultValue = value => (value.length > 0 ? value : "~");
 
@@ -49,6 +50,26 @@ const showMarkerPopups = () => {
   hide('.popup-description');
 }
 
+const initPopups = () => {
+  map.addLayer({
+    "id": "markers",
+    "type": "circle",
+    "source": {
+      "type": "geojson",
+      "data": markers
+    },
+    'paint': {
+      'circle-radius': 1,
+      'circle-color': "#000"
+    }
+  });
+
+  let features = getMarkersWithVideo()
+  features.forEach(feature => addMarkerPopupToMap(feature));
+  hide('.mapboxgl-popup');
+  updatePopupContent();
+}
+
 const addMarkerPopupToMap = (feature) => {
   let popup = new mapboxgl.Popup({
     closeButton: false,
@@ -84,4 +105,4 @@ const updatePopupContent = () => {
   }
 }
 
-export { addMarkerPopupToMap, updatePopupContent }
+export { initPopups, updatePopupContent }

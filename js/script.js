@@ -2,15 +2,13 @@ import {
   startExploreMode,
   handleDimmedMap,
   dimMap,
-  moveTo, rotateCamera,
-  map
+  moveTo
 } from "./map.js";
 import { handleDataLayer, handleNavigateClick, showVideoDetails } from "./footer.js";
 import { pauseAudio, toggleAudio } from "./audio.js";
-import { addMarkerPopupToMap, updatePopupContent } from "./popup.js";
 import { playLargeVideo, closeVideo } from "./video.js";
-import { markers, findMarkerById, findIntervieweesById, getMarkersWithVideo } from "./markers.js";
-import { customLayer, hideDome } from "./dome.js";
+import { findMarkerById, findIntervieweesById } from "./markers.js";
+import { hideDome } from "./dome.js";
 import { show, hideDropdownMenus, hide } from "./utils.js";
 
 window.STATUS = "down";
@@ -64,41 +62,6 @@ $(document).mousemove(() => handleDimmedMap());
 
 $(document).on('touchmove', () => handleDimmedMap());
 
-/* Map events */
-map.on("load", function () {
-  map.addLayer({
-    "id": "markers",
-    "type": "circle",
-    "source": {
-      "type": "geojson",
-      "data": markers
-    },
-    'paint': {
-      'circle-radius': 1,
-      'circle-color': "#000"
-    }
-  });
-
-  let features = getMarkersWithVideo()
-  features.forEach(feature => addMarkerPopupToMap(feature));
-  hide('.mapboxgl-popup');
-  updatePopupContent();
-});
-
-map.on("style.load", () => map.addLayer(customLayer));
-
-map.on("pitchend", () => {
-  if (map.getPitch() == 80) {
-    window.STATUS = "up";
-    rotateCamera();
-    return;
-  }
-  if (map.getPitch() < 80) window.STATUS = "down";
-});
-
-map.on("zoomend", () => updatePopupContent());
-
-map.on('moveend', () => updatePopupContent());
 
 /* FOOTER EVENTS */
 $('.dropdown-trigger').on('click', (e) => {

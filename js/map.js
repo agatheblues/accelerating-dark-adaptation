@@ -1,7 +1,35 @@
 import { show, hide, easing } from "./utils.js";
 import { config } from "../config.js";
+import { initPopups, updatePopupContent } from "./popup.js";
+import { customLayer } from "./dome.js";
 
 let timer;
+let map;
+
+const initMap = () => {
+  map = new mapboxgl.Map({ ...mapConfig.default, ...mapConfig.intro.position, ...mapConfig.intro.limits });
+
+  map.on("load", () => {
+    initPopups();
+    animateMap();
+  });
+
+  map.on("style.load", () => map.addLayer(customLayer));
+
+  map.on("pitchend", () => {
+    if (map.getPitch() == 80) {
+      window.STATUS = "up";
+      rotateCamera();
+      return;
+    }
+    if (map.getPitch() < 80) window.STATUS = "down";
+  });
+
+  map.on("zoomend", () => updatePopupContent());
+
+  map.on('moveend', () => updatePopupContent());
+
+}
 
 const showMap = () => {
   hide("#intro");
@@ -10,9 +38,7 @@ const showMap = () => {
   show("#header");
 };
 
-const startExploreMode = () => {
-  showMap();
-  $("#audio-player")[0].play();
+const animateMap = () => {
   setTimeout(() => {
     map.easeTo({
       ...mapConfig.side_rotate.position,
@@ -23,6 +49,12 @@ const startExploreMode = () => {
     map.once('moveend', () =>
       show('.mapboxgl-popup'));
   }, 750);
+}
+
+const startExploreMode = () => {
+  showMap();
+  initMap();
+  $("#audio-player")[0].play();
 }
 
 const undimMap = () => {
@@ -134,7 +166,5 @@ const mapConfig = {
     }
   }
 }
-
-const map = new mapboxgl.Map({ ...mapConfig.default, ...mapConfig.intro.position, ...mapConfig.intro.limits });
 
 export { mapConfig, showMap, handleDimmedMap, dimMap, undimMap, moveTo, rotateCamera, map, startExploreMode };
