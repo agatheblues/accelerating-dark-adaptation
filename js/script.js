@@ -37,7 +37,7 @@ $("#map").on("click", '.mapboxgl-popup-content', function (e) {
   const [longitude, latitude] = marker.geometry.coordinates;
 
   moveTo({
-    zoom: 14,
+    zoom: 15,
     center: [longitude, latitude],
     bearing: 0,
     pitch: 0
