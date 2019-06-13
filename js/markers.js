@@ -276,7 +276,7 @@ const markers = {
         "nqm": "16.17",
         "name": "video16",
         "video_id": "339823512",
-        "description": "In April 2007 members of UNESCO, the International Astronomical Union, and the Instituto Astrof├¡sico de Canaries signed the 'Declaration in Defence of the Night Sky and the Right to Starlight', called the 'La Palma Declaration' for short. It proclaims, 'An unpolluted night sky should be considered an inalienable right of humankind.'"
+        "description": "In April 2007 members of UNESCO, the International Astronomical Union, and the Instituto Astrofísico de Canaries signed the 'Declaration in Defence of the Night Sky and the Right to Starlight', called the 'La Palma Declaration' for short. It proclaims, 'An unpolluted night sky should be considered an inalienable right of humankind.'"
       },
       "geometry": {
         "type": "Point",

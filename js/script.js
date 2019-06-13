@@ -14,8 +14,6 @@ import { show, hideDropdownMenus, hide } from "./utils.js";
 window.STATUS = "down";
 
 /* Events */
-document.body.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false });
-
 $(".mapboxgl-canvas").css("cursor", "crosshair");
 
 $("#btn-explore").on("click", e => startExploreMode());
@@ -53,17 +51,17 @@ $("#map").on("click", '.mapboxgl-popup-content', function (e) {
   hide('#lux-definition');
   playLargeVideo(marker.properties.video_id);
   showVideoDetails({ ...marker.properties, longitude, latitude, interviewees });
+  $('body').on('mousemove', () => handleDimmedMap());
+  $('body').on('touchstart', (e) => {
+    e.preventDefault();
+    handleDimmedMap();
+  });
 
   dimMap();
   hideDome();
 });
 
 $('#toggle-audio').on('click', function () { return toggleAudio($(this).data('status')); });
-
-$(document).mousemove(() => handleDimmedMap());
-
-$(document).on('touchmove', () => handleDimmedMap());
-
 
 /* FOOTER EVENTS */
 $('.dropdown-trigger').on('click', (e) => {

@@ -32,6 +32,8 @@ const closeVideo = () => {
   hide('#video-details');
   $('#toggle-audio').prop('disabled', false);
   showDome();
+  $('body').off('mousemove');
+  $('body').off('touchstart');
 }
 
 export { playLargeVideo, stopLargeVideo, closeVideo };
