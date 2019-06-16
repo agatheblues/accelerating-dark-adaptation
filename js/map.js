@@ -13,7 +13,10 @@ const loadingSpinner = (loaded) => {
   }
 }
 
-const initMap = () => {
+const initMap = (config) => {
+  map = new mapboxgl.Map(config);
+  map.doubleClickZoom.disable();
+
   if (map.loaded) {
     map.addLayer(customLayer);
     initPopups();
@@ -62,7 +65,15 @@ const animateMap = () => {
 const startExploreMode = () => {
   // loadingSpinner(false);
   showMap();
-  initMap();
+  initMap({ ...mapConfig.default, ...mapConfig.intro.position, ...mapConfig.intro.limits });
+  $("#audio-player")[0].play();
+}
+
+
+const startMapStoryMode = () => {
+  // loadingSpinner(false);
+  showMap();
+  initMap({ ...mapConfig.default, ...mapConfig.intro.position, ...mapConfig.intro.limits, 'interactive': false });
   $("#audio-player")[0].play();
 }
 
@@ -176,7 +187,7 @@ const mapConfig = {
   }
 }
 
-let map = new mapboxgl.Map({ ...mapConfig.default, ...mapConfig.intro.position, ...mapConfig.intro.limits });
-map.doubleClickZoom.disable();
 
-export { mapConfig, showMap, handleDimmedMap, dimMap, undimMap, moveTo, rotateCamera, map, startExploreMode };
+let map;
+
+export { mapConfig, showMap, handleDimmedMap, dimMap, undimMap, moveTo, rotateCamera, map, startExploreMode, startMapStoryMode };

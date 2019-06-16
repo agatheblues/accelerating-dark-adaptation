@@ -10,4 +10,10 @@ const hideDropdownMenus = (e) => {
     $('.dropdown-menu').hide(300)
   }
 }
-export { show, hide, easing, hideDropdownMenus };
+
+const showIntroSlides = () => {
+  hide('#intro');
+  show('#intro-slide');
+}
+
+export { show, hide, easing, hideDropdownMenus, showIntroSlides };

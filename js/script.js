@@ -9,19 +9,17 @@ import { pauseAudio, toggleAudio } from "./audio.js";
 import { playLargeVideo, closeVideo, resizeVideo } from "./video.js";
 import { findMarkerById, findIntervieweesById } from "./markers.js";
 import { hideDome } from "./dome.js";
-import { show, hideDropdownMenus, hide } from "./utils.js";
+import { show, hideDropdownMenus, hide, showIntroSlides } from "./utils.js";
+import { startStory } from "./story.js";
 
 window.STATUS = "down";
 
 /* Events */
 $(".mapboxgl-canvas").css("cursor", "crosshair");
 
-$("#btn-explore").on("click", e => startExploreMode());
+$("#btn-explore").on("click", e => showIntroSlides()); // startExploreMode());
 
-$("#btn-story").on("click", e => {
-  /* @TODO */
-  console.log('create view story mode');
-});
+$("#btn-story").on("click", e => startStory());
 
 $("#close-video").on("click", e => closeVideo());
 

@@ -7,7 +7,7 @@ import Player from '@vimeo/player';
 let videoPlayer;
 
 const initPlayer = (id) => {
-  videoPlayer = new Player('player', { autoplay: true, controls: false, id: id });
+  videoPlayer = new Player('player', { autoplay: true, controls: true, id: id });
   videoPlayer.setVolume(1);
   videoPlayer.on('ended', function () {
     closeVideo();
@@ -44,4 +44,4 @@ const resizeVideo = () => {
   $('#video-wrapper').css({ 'height': `calc(100vh - ${$('#footer').innerHeight() * window.devicePixelRatio}px)` });
 }
 
-export { playLargeVideo, stopLargeVideo, closeVideo, resizeVideo };
+export { playLargeVideo, stopLargeVideo, closeVideo, resizeVideo, videoPlayer };
