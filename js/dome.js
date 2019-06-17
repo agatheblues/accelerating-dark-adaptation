@@ -2,7 +2,7 @@ import { map } from "./map.js";
 
 // parameters to ensure the model is georeferenced correctly on the map
 var modelOrigin = [4.892891, 52.370088];
-var modelAltitude = -500;
+var modelAltitude = -1000;
 var modelRotate = [Math.PI / 2, 0, 0];
 var modelScale = 5.41843220338983e-8;
 
@@ -36,7 +36,7 @@ const customLayer = {
 
     var loader = new THREE.TextureLoader(),
       texture = loader.load("../data/galaxy_starfield.png");
-    var geometry = new THREE.SphereGeometry(15000, 500, 500, 0, 2 * Math.PI, -0.5 * Math.PI, 0.5 * Math.PI);
+    var geometry = new THREE.SphereGeometry(15000, 8, 80, 0, 2 * Math.PI, -0.5 * Math.PI, 0.5 * Math.PI);
     var material = new THREE.MeshPhongMaterial({
       color: 0xffffff,
       map: texture
