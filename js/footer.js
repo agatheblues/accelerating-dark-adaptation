@@ -28,6 +28,83 @@ const handleNavigateClick = (target) => {
   }
 }
 
+const toggleLux = () => {
+  hide('.popup-nqm');
+  show('.popup-lux');
+  show('.footer-tooltip');
+  show('#lux-definition');
+  hide('#nqm-definition');
+  hide('.popup-location');
+
+  map.setPaintProperty("public_lighting", "circle-radius", [
+    "interpolate",
+    ["linear"],
+    ["get", "markers_lux"],
+    0.02,
+    0.5,
+    123.6,
+    5
+  ]);
+
+  map.setPaintProperty("public_lighting", "circle-opacity", 1);
+}
+
+const toggleNqm = () => {
+  hide('.popup-lux');
+  show('.popup-nqm');
+  hide('#lux-definition');
+  show('#nqm-definition');
+  show('.footer-tooltip');
+  hide('.popup-location');
+
+  map.setPaintProperty("public_lighting", "circle-radius", [
+    "interpolate",
+    ["linear"],
+    ["get", "markers_lux"],
+    0,
+    1,
+    10.35,
+    1,
+    19.38,
+    0.5
+  ]);
+
+  map.setPaintProperty("public_lighting", "circle-opacity", [
+    "interpolate",
+    ["linear"],
+    ["get", "markers_nqm"],
+    0,
+    1,
+    10.35,
+    1,
+    19.38,
+    0
+  ]);
+}
+
+const toggleNormal = () => {
+  hide('.popup-lux');
+  hide('.popup-nqm');
+  hide('#lux-definition');
+  hide('#nqm-definition');
+  hide('.footer-tooltip');
+  show('.popup-location');
+
+  map.setPaintProperty("public_lighting", "circle-radius", [
+    "interpolate",
+    ["linear"],
+    ["zoom"],
+    0,
+    0.5,
+    12.66,
+    0.7,
+    22,
+    7
+  ]);
+
+  map.setPaintProperty("public_lighting", "circle-opacity", 1);
+}
+
 const handleDataLayer = (target) => {
   // Change current active view
   $('.dropdown-menu p').removeClass('active');
@@ -36,80 +113,13 @@ const handleDataLayer = (target) => {
   const action = $(target).data('action');
   switch (action) {
     case 'normal':
-      hide('.popup-lux');
-      hide('.popup-nqm');
-      hide('#lux-definition');
-      hide('#nqm-definition');
-      hide('.footer-tooltip');
-      show('.popup-location');
-
-      map.setPaintProperty("public_lighting", "circle-radius", [
-        "interpolate",
-        ["linear"],
-        ["zoom"],
-        0,
-        0.5,
-        12.66,
-        0.7,
-        22,
-        7
-      ]);
-
-      map.setPaintProperty("public_lighting", "circle-opacity", 1);
-
+      toggleNormal();
       break;
     case 'lux':
-      hide('.popup-nqm');
-      show('.popup-lux');
-      show('.footer-tooltip');
-      show('#lux-definition');
-      hide('#nqm-definition');
-      hide('.popup-location');
-
-      map.setPaintProperty("public_lighting", "circle-radius", [
-        "interpolate",
-        ["linear"],
-        ["get", "markers_lux"],
-        0.02,
-        0.5,
-        123.6,
-        5
-      ]);
-
-      map.setPaintProperty("public_lighting", "circle-opacity", 1);
-
+      toggleLux();
       break;
     case 'nqm':
-      hide('.popup-lux');
-      show('.popup-nqm');
-      hide('#lux-definition');
-      show('#nqm-definition');
-      show('.footer-tooltip');
-      hide('.popup-location');
-
-      map.setPaintProperty("public_lighting", "circle-radius", [
-        "interpolate",
-        ["linear"],
-        ["get", "markers_lux"],
-        0,
-        1,
-        10.35,
-        1,
-        19.38,
-        0.5
-      ]);
-
-      map.setPaintProperty("public_lighting", "circle-opacity", [
-        "interpolate",
-        ["linear"],
-        ["get", "markers_nqm"],
-        0,
-        1,
-        10.35,
-        1,
-        19.38,
-        0
-      ]);
+      toggleNqm();
       break;
     default:
       break;
@@ -135,4 +145,4 @@ const showVideoDetails = ({
   renderInterviewees(interviewees);
 }
 
-export { handleNavigateClick, handleDataLayer, showVideoDetails }
+export { handleNavigateClick, handleDataLayer, showVideoDetails, toggleLux, toggleNormal, toggleNqm }

@@ -1,52 +1,30 @@
 import { show, hide, easing } from "./utils.js";
 import { config } from "../config.js";
 import { initPopups, updatePopupContent } from "./popup.js";
-import { customLayer } from "./dome.js";
+import { customLayer, hideDome } from "./dome.js";
+import { showVideoDetails } from "./footer.js";
+import { pauseAudio, loadAudio } from "./audio.js";
+import { playLargeVideo, closeVideo, resizeVideo } from "./video.js";
+import { findMarkerById, findIntervieweesById } from "./markers.js";
+
 
 let timer;
-
-const loadingSpinner = (loaded) => {
-  if (loaded) {
-    hide('#loader');
-  } else {
-    show('#loader');
-  }
-}
 
 const initMap = (config) => {
   map = new mapboxgl.Map(config);
   map.doubleClickZoom.disable();
 
-  if (map.loaded) {
+  map.on("load", () => {
     map.addLayer(customLayer);
     initPopups();
     animateMap();
-  } else {
-    map.on("load", () => {
-      // loadingSpinner(true);
-      map.addLayer(customLayer);
-      initPopups();
-      animateMap();
-    });
-  }
-
-  map.on("pitchend", () => {
-    if (map.getPitch() == 80) {
-      window.STATUS = "up";
-      rotateCamera();
-      return;
-    }
-    if (map.getPitch() < 80) window.STATUS = "down";
   });
-
-  map.on("zoomend", () => updatePopupContent());
 }
 
 const showMap = () => {
   hide("#intro");
   $("#map").removeClass("invisible");
   show("#footer");
-  show("#header");
 };
 
 const animateMap = () => {
@@ -65,16 +43,72 @@ const animateMap = () => {
 const startExploreMode = () => {
   // loadingSpinner(false);
   showMap();
+  loadAudio('explore');
   initMap({ ...mapConfig.default, ...mapConfig.intro.position, ...mapConfig.intro.limits });
+  updatePopupContent();
+
+  map.on("pitchend", () => {
+    if (map.getPitch() == 80) {
+      window.STATUS = "up";
+      rotateCamera();
+      return;
+    }
+    if (map.getPitch() < 80) window.STATUS = "down";
+  });
+
+  map.on("zoomend", () => updatePopupContent());
+
+  $('.mapboxgl-popup-content').css('cursor', 'pointer');
+  $("#map").on("click", '.mapboxgl-popup-content', function (e) {
+    window.STATUS = "down";
+    const popupId = $(this).children('.popup-wrapper').data('id');
+    const marker = findMarkerById(`${popupId}`);
+    const interviewees = findIntervieweesById(`${popupId}`);
+
+    const [longitude, latitude] = marker.geometry.coordinates;
+
+    moveTo({
+      zoom: 15,
+      center: [longitude, latitude],
+      bearing: 0,
+      pitch: 0
+    }, null);
+
+    pauseAudio(true);
+
+    show("#video-wrapper");
+    show("#close-video");
+    show('.footer-tooltip');
+    show("#video-details");
+    hide('#nqm-definition');
+    hide('#lux-definition');
+    playLargeVideo(marker.properties.video_id);
+    showVideoDetails({ ...marker.properties, longitude, latitude, interviewees });
+    resizeVideo();
+    dimMap();
+    hideDome();
+  });
+
+  $('body').on('mousemove', () => handleDimmedMap());
+  $('body').on('touchstart', () => handleDimmedMap());
+
+  $("#close-video").on("click", e => closeVideo());
+
   $("#audio-player")[0].play();
 }
 
-
 const startMapStoryMode = () => {
-  // loadingSpinner(false);
-  showMap();
+  $("#map").removeClass("invisible");
   initMap({ ...mapConfig.default, ...mapConfig.intro.position, ...mapConfig.intro.limits, 'interactive': false });
-  $("#audio-player")[0].play();
+  window.STATUS = "up";
+  map.on("pitchend", () => {
+    if (map.getPitch() == 80) {
+      window.STATUS = "up";
+      rotateCamera();
+      return;
+    }
+    if (map.getPitch() < 80) window.STATUS = "down";
+  });
 }
 
 const undimMap = () => {
@@ -96,17 +130,21 @@ const handleDimmedMap = () => {
   dimMapAfterDelay();
 }
 
-const moveTo = (position, limits) => {
-  map.easeTo({
+const moveTo = (position, limits = null, callback = null) => {
+  map.flyTo({
     ...position,
-    speed: 5,
-    curve: 10,
+    minZoom: 13,
+    speed: 0.25,
     easing: easing
   });
 
   if (limits !== null) {
     map.setMinZoom(limits.minZoom);
     map.setMaxZoom(limits.maxZoom);
+  }
+
+  if (callback) {
+    map.once('moveend', callback);
   }
 }
 
