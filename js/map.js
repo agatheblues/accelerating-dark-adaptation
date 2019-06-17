@@ -101,6 +101,7 @@ const startMapStoryMode = () => {
   $("#map").removeClass("invisible");
   initMap({ ...mapConfig.default, ...mapConfig.intro.position, ...mapConfig.intro.limits, 'interactive': false });
   window.STATUS = "up";
+
   map.on("pitchend", () => {
     if (map.getPitch() == 80) {
       window.STATUS = "up";

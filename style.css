@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Titillium+Web:300,700');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,700');
 
 @-webkit-keyframes BUTTON-INTRO-ANIMATION {
 from   { opacity: 0; }
@@ -42,7 +42,7 @@ to  { opacity: 1; }
 @keyframes fadeInAndOut {
   0% {
     position: absolute;
-    bottom: 40%;
+    bottom: 45%;
     opacity: 0;
   }
 
@@ -60,7 +60,7 @@ to  { opacity: 1; }
 
   100% {
     position: absolute;
-    bottom: 60%;
+    bottom: 55%;
     opacity: 0;
   }
 }
@@ -68,7 +68,7 @@ to  { opacity: 1; }
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Titillium Web', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 13px;
   line-height: 18px;
   background: #000;
@@ -169,7 +169,7 @@ a.not-underlined {
 
 .slide-container p {
   font-size: 20px;
-  line-height: 25px;
+  line-height: 30px;
 }
 
 .slide {
@@ -181,23 +181,23 @@ a.not-underlined {
 }
 
 .slide-0 {
-  animation: 6s linear 0s forwards fadeInAndOut;
+  animation: 8s ease-in-out 0s forwards fadeInAndOut;
 }
 
 .slide-1 {
-  animation: 6s linear 7s forwards fadeInAndOut;
+  animation: 8s ease-in-out 9s forwards fadeInAndOut;
 }
 
 .slide-2 {
-  animation: 6s linear 14s forwards fadeInAndOut;
+  animation: 8s ease-in-out 18s forwards fadeInAndOut;
 }
 
 .slide-3 {
-  animation: 6s linear 21s forwards fadeInAndOut;
+  animation: 8s ease-in-out 27s forwards fadeInAndOut;
 }
 
 .slide-4 {
-  animation: 6s linear 28s forwards fadeInAndOut;
+  animation: 8s ease-in-out 36s forwards fadeInAndOut;
 }
 
 /* Buttons */
@@ -379,7 +379,7 @@ a.not-underlined {
 /* Pop up*/
 .mapboxgl-popup {
   pointer-events: auto;
-  font: 13px 'Titillium Web', sans-serif;
+  font: 13px 'Roboto', sans-serif;
   color: #fff;
   min-width: 120px;
 }
@@ -498,6 +498,10 @@ a.not-underlined {
   display: flex;
   padding: 0;
   margin: 0 0 0 20px;
+}
+
+.control-container.hidden {
+  display: none;
 }
 
 .header {

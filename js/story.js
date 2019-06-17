@@ -5,6 +5,8 @@ import { findMarkerById, findIntervieweesById } from "./markers.js";
 import { startMapStoryMode, moveTo, mapConfig, dimMap, undimMap, map } from "./map.js";
 import { loadAudio } from "./audio.js";
 
+const SLIDE_ANIMATION = 9000;
+
 const initFooter = () => {
   hide('.dropdown-container');
   hide('.control-container');
@@ -29,6 +31,8 @@ const playVideoStory = (id, video_id, nextState) => {
   show("#video-wrapper");
   show('.footer-tooltip');
   show("#video-details");
+  hide('#nqm-definition');
+  hide('#lux-definition');
   playLargeVideo(video_id);
   showVideoDetails({ ...marker.properties, longitude, latitude, interviewees });
   resizeVideo();
@@ -58,10 +62,10 @@ const playStory = (state) => {
       initFooter();
       loadAudio('story');
       showIntroSlides();
-      setTimeout(() => playStory(1), 34000);
+      setTimeout(() => playStory(1), SLIDE_ANIMATION * 5);
       break;
     case 1:
-      playVideoStory("33", 339823972, 2); // Museumplein
+      playVideoStory("33", 339823972, 2); // Achterlaan Tour
       break;
     case 2:
       stopVideoStory();
@@ -72,7 +76,7 @@ const playStory = (state) => {
     case 3:
       hide('#intro');
       show('#author-slide');
-      setTimeout(() => playStory(4), 13000);
+      setTimeout(() => playStory(4), SLIDE_ANIMATION * 2);
       break;
     case 4:
       hide('#author-slide');
@@ -82,19 +86,19 @@ const playStory = (state) => {
       break;
     case 5:
       window.STATUS = "down";
-      moveToVideo("5", 6);
+      moveToVideo("42", 6);
       break;
     case 6:
-      playVideoStory("5", 339823739, 7); // Station zuid
+      playVideoStory("42", 339823739, 7); // Museumplein
       break;
     case 7:
       stopVideoStory();
       show('#text-slide-7');
-      setTimeout(() => playStory(8), 13000);
+      setTimeout(() => playStory(8), SLIDE_ANIMATION * 2);
       break;
     case 8:
-      undimMap();
       hide('#text-slide-7');
+      undimMap();
       moveToVideo("6", 9);
       break;
     case 9:
@@ -103,11 +107,11 @@ const playStory = (state) => {
     case 10:
       stopVideoStory();
       show('#text-slide-10');
-      setTimeout(() => playStory(11), 13000);
+      setTimeout(() => playStory(11), SLIDE_ANIMATION * 2);
       break;
     case 11:
-      undimMap();
       hide('#text-slide-10');
+      undimMap();
       moveToVideo("36", 12);
       break;
     case 12:
@@ -116,7 +120,7 @@ const playStory = (state) => {
     case 13:
       stopVideoStory();
       show('#text-slide-13');
-      setTimeout(() => playStory(14), 6500);
+      setTimeout(() => playStory(14), SLIDE_ANIMATION);
       break;
     case 14:
       hide('#text-slide-13');
@@ -141,11 +145,12 @@ const playStory = (state) => {
     case 18:
       stopVideoStory();
       show('#text-slide-18');
-      setTimeout(() => playStory(19), 6500);
+      setTimeout(() => playStory(19), SLIDE_ANIMATION);
       break;
     case 19:
-      undimMap();
       hide('#text-slide-18');
+      undimMap();
+      show('#lux-definition');
       moveToVideo("32", 20);
       break;
     case 20:
@@ -154,11 +159,12 @@ const playStory = (state) => {
     case 21:
       stopVideoStory();
       show('#text-slide-21');
-      setTimeout(() => playStory(22), 21000);
+      setTimeout(() => playStory(22), SLIDE_ANIMATION * 3);
       break;
     case 22:
-      undimMap();
       hide('#text-slide-21');
+      undimMap();
+      show('#lux-definition');
       setTimeout(() => playStory(23), 2000);
       break;
     case 23:
@@ -171,7 +177,7 @@ const playStory = (state) => {
     case 25:
       stopVideoStory();
       show('#text-slide-25');
-      setTimeout(() => playStory(26), 13000);
+      setTimeout(() => playStory(26), SLIDE_ANIMATION * 2);
       break;
     case 26:
       hide('#text-slide-25');
@@ -196,11 +202,12 @@ const playStory = (state) => {
     case 30:
       stopVideoStory();
       show('#text-slide-30');
-      setTimeout(() => playStory(31), 28000);
+      setTimeout(() => playStory(31), SLIDE_ANIMATION * 4);
       break;
     case 31:
-      undimMap();
       hide('#text-slide-30');
+      undimMap();
+      show('#nqm-definition');
       moveToVideo("19", 32);
       break;
     case 32:
@@ -209,11 +216,12 @@ const playStory = (state) => {
     case 33:
       stopVideoStory();
       show('#text-slide-33');
-      setTimeout(() => playStory(34), 13000);
+      setTimeout(() => playStory(34), SLIDE_ANIMATION * 2);
       break;
     case 34:
       hide('#text-slide-33');
       undimMap();
+      show('#nqm-definition');
       moveTo(mapConfig.side_rotate.position, null, () => {
         window.STATUS = "up";
         playStory(35);
@@ -229,11 +237,12 @@ const playStory = (state) => {
     case 37:
       stopVideoStory();
       show('#text-slide-37');
-      setTimeout(() => playStory(38), 13000);
+      setTimeout(() => playStory(38), SLIDE_ANIMATION * 2);
       break;
     case 38:
-      undimMap();
       hide('#text-slide-37');
+      undimMap();
+      toggleNormal();
       moveToVideo("15", 39);
       break;
     case 39:
@@ -241,6 +250,8 @@ const playStory = (state) => {
       break;
     case 40:
       stopVideoStory();
+      show('#intro');
+      show('.intro-actions');
       break;
     default:
       console.log('default');
