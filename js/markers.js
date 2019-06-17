@@ -799,6 +799,22 @@ const interviewees = {
       'job': 'Ecologist at The Netherlands Institute of Ecology'
     }
   ],
+  '7': [
+    {
+      'name': 'Lothar Schwarte',
+      'job': 'Helicopter Doctor at the VU Hospital'
+    },
+    {
+      'name': 'Kamiel Spoelstra',
+      'job': 'Ecologist at The Netherlands Institute of Ecology'
+    }
+  ],
+  '8': [
+    {
+      'name': 'Diedrick Wilderman',
+      'job': 'Former navigational officer and curator at the National Maritime Museum'
+    }
+  ],
   '9': [
     {
       'name': 'Marc Schuilenburg',
@@ -858,6 +874,22 @@ const interviewees = {
     }
   ],
   '21': [
+    {
+      'name': 'Diedrick Wilderman',
+      'job': 'Former navigational officer and curator at the National Maritime Museum'
+    }
+  ],
+  '22': [
+    {
+      'name': 'Lothar Schwarte',
+      'job': 'Helicopter Doctor at the VU Hospital'
+    },
+    {
+      'name': 'Marco Roos ',
+      'job': 'Doctor in Urban Biology'
+    }
+  ],
+  '23': [
     {
       'name': 'Diedrick Wilderman',
       'job': 'Former navigational officer and curator at the National Maritime Museum'
@@ -936,6 +968,16 @@ const interviewees = {
     }
   ],
   '42': [
+    {
+      'name': 'Esther Hanko',
+      'job': 'Outreach coordinator at the Anton Institute of Astronomy'
+    }
+  ],
+  '46': [
+    {
+      'name': 'Marco Roos ',
+      'job': 'Doctor in Urban Biology'
+    },
     {
       'name': 'Esther Hanko',
       'job': 'Outreach coordinator at the Anton Institute of Astronomy'
