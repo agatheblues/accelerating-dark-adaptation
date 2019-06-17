@@ -17,7 +17,7 @@ window.STATUS = "down";
 /* Events */
 $(".mapboxgl-canvas").css("cursor", "crosshair");
 
-$("#btn-explore").on("click", e => showIntroSlides()); // startExploreMode());
+$("#btn-explore").on("click", e => startExploreMode());
 
 $("#btn-story").on("click", e => startStory());
 

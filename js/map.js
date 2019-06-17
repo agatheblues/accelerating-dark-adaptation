@@ -10,13 +10,15 @@ import { findMarkerById, findIntervieweesById } from "./markers.js";
 
 let timer;
 
-const initMap = (config) => {
+const initMap = (config, mode) => {
   map = new mapboxgl.Map(config);
   map.doubleClickZoom.disable();
 
   map.on("load", () => {
     map.addLayer(customLayer);
     initPopups();
+
+    if (mode === 'explore') $('.popup-wrapper').css({ 'cursor': 'pointer' });
     animateMap();
   });
 }
@@ -41,10 +43,9 @@ const animateMap = () => {
 }
 
 const startExploreMode = () => {
-  // loadingSpinner(false);
   showMap();
   loadAudio('explore');
-  initMap({ ...mapConfig.default, ...mapConfig.intro.position, ...mapConfig.intro.limits });
+  initMap({ ...mapConfig.default, ...mapConfig.intro.position, ...mapConfig.intro.limits }, 'explore');
   updatePopupContent();
 
   map.on("pitchend", () => {
@@ -58,7 +59,6 @@ const startExploreMode = () => {
 
   map.on("zoomend", () => updatePopupContent());
 
-  $('.mapboxgl-popup-content').css('cursor', 'pointer');
   $("#map").on("click", '.mapboxgl-popup-content', function (e) {
     window.STATUS = "down";
     const popupId = $(this).children('.popup-wrapper').data('id');
@@ -72,7 +72,7 @@ const startExploreMode = () => {
       center: [longitude, latitude],
       bearing: 0,
       pitch: 0
-    }, null);
+    }, null, () => dimMap(), 'explore');
 
     pauseAudio(true);
 
@@ -85,7 +85,6 @@ const startExploreMode = () => {
     playLargeVideo(marker.properties.video_id);
     showVideoDetails({ ...marker.properties, longitude, latitude, interviewees });
     resizeVideo();
-    dimMap();
     hideDome();
   });
 
@@ -99,7 +98,7 @@ const startExploreMode = () => {
 
 const startMapStoryMode = () => {
   $("#map").removeClass("invisible");
-  initMap({ ...mapConfig.default, ...mapConfig.intro.position, ...mapConfig.intro.limits, 'interactive': false });
+  initMap({ ...mapConfig.default, ...mapConfig.intro.position, ...mapConfig.intro.limits, 'interactive': false }, 'story');
   window.STATUS = "up";
 
   map.on("pitchend", () => {
@@ -118,7 +117,7 @@ const undimMap = () => {
 }
 
 const dimMapAfterDelay = () => {
-  timer = setTimeout(() => dimMap(), 2000);
+  timer = setTimeout(() => dimMap(), 3000);
 }
 
 const dimMap = () => {
@@ -131,22 +130,29 @@ const handleDimmedMap = () => {
   dimMapAfterDelay();
 }
 
-const moveTo = (position, limits = null, callback = null) => {
-  map.flyTo({
-    ...position,
-    minZoom: 13,
-    speed: 0.25,
-    easing: easing
-  });
+const moveTo = (position, limits = null, callback = null, mode = 'story') => {
 
-  if (limits !== null) {
-    map.setMinZoom(limits.minZoom);
-    map.setMaxZoom(limits.maxZoom);
+  if (mode === 'story') {
+    map.flyTo({
+      ...position,
+      minZoom: 13,
+      speed: 0.25,
+      easing: easing
+    });
+  } else {
+    map.easeTo({
+      ...position,
+      easing,
+      duration: 2000
+    });
+
+    if (limits !== null) {
+      map.setMinZoom(limits.minZoom);
+      map.setMaxZoom(limits.maxZoom);
+    }
   }
 
-  if (callback) {
-    map.once('moveend', callback);
-  }
+  if (callback) map.once('moveend', callback);
 }
 
 const rotateCamera = () => {
