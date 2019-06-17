@@ -1,12 +1,11 @@
-import { show, hide, easing } from "./utils.js";
-import { config } from "../config.js";
-import { initPopups, updatePopupContent } from "./popup.js";
-import { customLayer, hideDome } from "./dome.js";
-import { showVideoDetails } from "./footer.js";
-import { pauseAudio, loadAudio } from "./audio.js";
-import { playLargeVideo, closeVideo, resizeVideo } from "./video.js";
-import { findMarkerById, findIntervieweesById } from "./markers.js";
-
+import { show, hide, easing } from './utils.js';
+import { config } from '../config.js';
+import { initPopups, updatePopupContent } from './popup.js';
+import { customLayer, hideDome } from './dome.js';
+import { showVideoDetails } from './footer.js';
+import { pauseAudio, loadAudio } from './audio.js';
+import { playLargeVideo, closeVideo, resizeVideo } from './video.js';
+import { findMarkerById, findIntervieweesById } from './markers.js';
 
 let timer;
 
@@ -14,19 +13,19 @@ const initMap = (config, mode) => {
   map = new mapboxgl.Map(config);
   map.doubleClickZoom.disable();
 
-  map.on("load", () => {
+  map.on('load', () => {
     map.addLayer(customLayer);
     initPopups();
 
     if (mode === 'explore') $('.popup-wrapper').css({ 'cursor': 'pointer' });
     animateMap();
   });
-}
+};
 
 const showMap = () => {
-  hide("#intro");
-  $("#map").removeClass("invisible");
-  show("#footer");
+  hide('#intro');
+  $('#map').removeClass('invisible');
+  show('#footer');
 };
 
 const animateMap = () => {
@@ -40,7 +39,7 @@ const animateMap = () => {
     map.once('moveend', () =>
       show('.mapboxgl-popup'));
   }, 750);
-}
+};
 
 const startExploreMode = () => {
   showMap();
@@ -48,19 +47,19 @@ const startExploreMode = () => {
   initMap({ ...mapConfig.default, ...mapConfig.intro.position, ...mapConfig.intro.limits }, 'explore');
   updatePopupContent();
 
-  map.on("pitchend", () => {
-    if (map.getPitch() == 80) {
-      window.STATUS = "up";
+  map.on('pitchend', () => {
+    if (map.getPitch() === 80) {
+      window.STATUS = 'up';
       rotateCamera();
       return;
     }
-    if (map.getPitch() < 80) window.STATUS = "down";
+    if (map.getPitch() < 80) window.STATUS = 'down';
   });
 
-  map.on("zoomend", () => updatePopupContent());
+  map.on('zoomend', () => updatePopupContent());
 
-  $("#map").on("click", '.mapboxgl-popup-content', function (e) {
-    window.STATUS = "down";
+  $('#map').on('click', '.mapboxgl-popup-content', function (e) {
+    window.STATUS = 'down';
     const popupId = $(this).children('.popup-wrapper').data('id');
     const marker = findMarkerById(`${popupId}`);
     const interviewees = findIntervieweesById(`${popupId}`);
@@ -76,10 +75,10 @@ const startExploreMode = () => {
 
     pauseAudio(true);
 
-    show("#video-wrapper");
-    show("#close-video");
+    show('#video-wrapper');
+    show('#close-video');
     show('.footer-tooltip');
-    show("#video-details");
+    show('#video-details');
     hide('#nqm-definition');
     hide('#lux-definition');
     playLargeVideo(marker.properties.video_id);
@@ -91,47 +90,46 @@ const startExploreMode = () => {
   $('body').on('mousemove', () => handleDimmedMap());
   $('body').on('touchstart', () => handleDimmedMap());
 
-  $("#close-video").on("click", e => closeVideo());
+  $('#close-video').on('click', e => closeVideo());
 
-  $("#audio-player")[0].play();
-}
+  $('#audio-player')[0].play();
+};
 
 const startMapStoryMode = () => {
-  $("#map").removeClass("invisible");
+  $('#map').removeClass('invisible');
   initMap({ ...mapConfig.default, ...mapConfig.intro.position, ...mapConfig.intro.limits, 'interactive': false }, 'story');
-  window.STATUS = "up";
+  window.STATUS = 'up';
 
-  map.on("pitchend", () => {
-    if (map.getPitch() == 80) {
-      window.STATUS = "up";
+  map.on('pitchend', () => {
+    if (map.getPitch() === 80) {
+      window.STATUS = 'up';
       rotateCamera();
       return;
     }
-    if (map.getPitch() < 80) window.STATUS = "down";
+    if (map.getPitch() < 80) window.STATUS = 'down';
   });
-}
+};
 
 const undimMap = () => {
   clearTimeout(timer);
   $('.mapboxgl-map').removeClass('opacity-off');
-}
+};
 
 const dimMapAfterDelay = () => {
   timer = setTimeout(() => dimMap(), 3000);
-}
+};
 
 const dimMap = () => {
   $('.mapboxgl-map').addClass('opacity-off');
-}
+};
 
 const handleDimmedMap = () => {
   if (!$('.mapboxgl-map').hasClass('opacity-off')) return;
   undimMap();
   dimMapAfterDelay();
-}
+};
 
 const moveTo = (position, limits = null, callback = null, mode = 'story') => {
-
   if (mode === 'story') {
     map.flyTo({
       ...position,
@@ -153,10 +151,10 @@ const moveTo = (position, limits = null, callback = null, mode = 'story') => {
   }
 
   if (callback) map.once('moveend', callback);
-}
+};
 
 const rotateCamera = () => {
-  if (window.STATUS != "up") return;
+  if (window.STATUS !== 'up') return;
 
   // Request the next frame of the animation.
   map.easeTo({
@@ -165,20 +163,18 @@ const rotateCamera = () => {
     pitch: 80
   });
   requestAnimationFrame(() => rotateCamera());
-}
-
+};
 
 const bounds = [
   [4.717755, 52.278175], // Southwest coordinates
   [5.07506, 52.431021] // Northeast coordinates
 ];
 
-
 mapboxgl.accessToken = config.MAPBOX_ACCESS_TOKEN;
 
 const mapConfig = {
   default: {
-    container: "map",
+    container: 'map',
     maxBounds: bounds,
     style: 'mapbox://styles/agatheblues/cjwsb96fq9r211cmgdq36xulv?optimize=true'
   },
@@ -223,15 +219,14 @@ const mapConfig = {
       center: [4.892891, 52.370088],
       zoom: 13,
       pitch: 80,
-      bearing: 0,
+      bearing: 0
     },
     limits: {
       maxZoom: 16,
       minZoom: 13
     }
   }
-}
-
+};
 
 let map;
 

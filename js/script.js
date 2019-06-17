@@ -1,25 +1,21 @@
 import {
   startExploreMode,
-  handleDimmedMap,
-  dimMap,
-  moveTo
-} from "./map.js";
-import { handleDataLayer, handleNavigateClick, showVideoDetails } from "./footer.js";
-import { pauseAudio, toggleAudio } from "./audio.js";
-import { playLargeVideo, closeVideo, resizeVideo } from "./video.js";
-import { findMarkerById, findIntervieweesById } from "./markers.js";
-import { hideDome } from "./dome.js";
-import { show, hideDropdownMenus, hide, showIntroSlides } from "./utils.js";
-import { startStory } from "./story.js";
+  handleDimmedMap
+} from './map.js';
+import { handleDataLayer, handleNavigateClick } from './footer.js';
+import { toggleAudio } from './audio.js';
+import { resizeVideo } from './video.js';
+import { hideDropdownMenus } from './utils.js';
+import { startStory } from './story.js';
 
-window.STATUS = "down";
+window.STATUS = 'down';
 
 /* Events */
-$(".mapboxgl-canvas").css("cursor", "crosshair");
+$('.mapboxgl-canvas').css('cursor', 'crosshair');
 
-$("#btn-explore").on("click", e => startExploreMode());
+$('#btn-explore').on('click', e => startExploreMode());
 
-$("#btn-story").on("click", e => startStory());
+$('#btn-story').on('click', e => startStory());
 
 $(window).resize(() => resizeVideo());
 
