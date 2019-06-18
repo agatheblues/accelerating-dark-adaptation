@@ -2,7 +2,7 @@ import { show, hide } from './utils.js';
 import { playLargeVideo, resizeVideo, videoPlayer } from './video.js';
 import { showVideoDetails, toggleLux, toggleNormal, toggleNqm } from './footer.js';
 import { findMarkerById, findIntervieweesById } from './markers.js';
-import { startMapStoryMode, moveTo, mapConfig, dimMap, undimMap, map } from './map.js';
+import { startMapStoryMode, moveTo, mapConfig, dimMap, undimMap } from './map.js';
 import { loadAudio } from './audio.js';
 
 const SLIDE_ANIMATION = 8000;
@@ -24,7 +24,6 @@ const stopVideoStory = () => {
 const playVideoStory = (id, video_id, nextState) => {
   const marker = findMarkerById(id);
   const interviewees = findIntervieweesById(id);
-  const [longitude, latitude] = marker.geometry.coordinates;
 
   dimMap();
   show('.footer');
@@ -34,7 +33,7 @@ const playVideoStory = (id, video_id, nextState) => {
   hide('#nqm-definition');
   hide('#lux-definition');
   playLargeVideo(video_id);
-  showVideoDetails({ ...marker.properties, longitude, latitude, interviewees });
+  showVideoDetails({ ...marker.properties, interviewees });
   resizeVideo();
 
   videoPlayer.off('ended');

@@ -522,6 +522,10 @@ a.not-underlined {
   line-height: 14px;
 }
 
+.keyword {
+  text-transform: capitalize;
+}
+
 .popup-data {
   line-height: 14px;
 }

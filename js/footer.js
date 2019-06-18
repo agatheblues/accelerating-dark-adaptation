@@ -134,12 +134,11 @@ const showVideoDetails = ({
   lieu = '',
   lux = '',
   nqm = '',
-  latitude = 0,
-  longitude = 0,
+  keyword = '',
   interviewees = []
 }) => {
   $('#video-details-quartier').text(lieu);
-  $('#video-details-location').text(longitude + ' ' + latitude);
+  $('#video-details-location').text(keyword);
   $('#video-details-sqm').text(nqm);
   $('#video-details-lux').text(lux);
   renderInterviewees(interviewees);

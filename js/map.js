@@ -82,7 +82,7 @@ const startExploreMode = () => {
     hide('#nqm-definition');
     hide('#lux-definition');
     playLargeVideo(marker.properties.video_id);
-    showVideoDetails({ ...marker.properties, longitude, latitude, interviewees });
+    showVideoDetails({ ...marker.properties, interviewees });
     resizeVideo();
     hideDome();
   });
