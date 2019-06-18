@@ -25,7 +25,6 @@ const initMap = (config, mode) => {
 const showMap = () => {
   hide('#intro');
   $('#map').removeClass('invisible');
-  show('#footer');
 };
 
 const animateMap = () => {
@@ -36,8 +35,10 @@ const animateMap = () => {
       duration: 3000
     });
 
-    map.once('moveend', () =>
-      show('.mapboxgl-popup'));
+    map.once('moveend', () => {
+      show('#footer');
+      show('.mapboxgl-popup');
+    });
   }, 750);
 };
 

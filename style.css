@@ -323,6 +323,10 @@ a.not-underlined {
   display: flex;
 }
 
+.footer-wrapper--column {
+  flex-direction: column;
+}
+
 .footer-tooltip {
   margin: 20px 0 0 20px;
 }
