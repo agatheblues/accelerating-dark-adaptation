@@ -1,9 +1,9 @@
-import { showIntroSlides, show, hide } from "./utils.js";
-import { playLargeVideo, resizeVideo, videoPlayer } from "./video.js";
-import { showVideoDetails, toggleLux, toggleNormal, toggleNqm } from "./footer.js";
-import { findMarkerById, findIntervieweesById } from "./markers.js";
-import { startMapStoryMode, moveTo, mapConfig, dimMap, undimMap, map } from "./map.js";
-import { loadAudio } from "./audio.js";
+import { show, hide } from './utils.js';
+import { playLargeVideo, resizeVideo, videoPlayer } from './video.js';
+import { showVideoDetails, toggleLux, toggleNormal, toggleNqm } from './footer.js';
+import { findMarkerById, findIntervieweesById } from './markers.js';
+import { startMapStoryMode, moveTo, mapConfig, dimMap, undimMap, map } from './map.js';
+import { loadAudio } from './audio.js';
 
 const SLIDE_ANIMATION = 9000;
 
@@ -11,15 +11,15 @@ const initFooter = () => {
   hide('.dropdown-container');
   hide('.control-container');
   hide('.footer-audio');
-}
+};
 
 const stopVideoStory = () => {
   show('#map');
   hide('.footer');
-  hide("#video-wrapper");
+  hide('#video-wrapper');
   hide('.footer-tooltip');
-  hide("#video-details");
-}
+  hide('#video-details');
+};
 
 const playVideoStory = (id, video_id, nextState) => {
   const marker = findMarkerById(id);
@@ -28,9 +28,9 @@ const playVideoStory = (id, video_id, nextState) => {
 
   dimMap();
   show('.footer');
-  show("#video-wrapper");
+  show('#video-wrapper');
   show('.footer-tooltip');
-  show("#video-details");
+  show('#video-details');
   hide('#nqm-definition');
   hide('#lux-definition');
   playLargeVideo(video_id);
@@ -39,7 +39,7 @@ const playVideoStory = (id, video_id, nextState) => {
 
   videoPlayer.off('ended');
   videoPlayer.on('ended', () => playStory(nextState));
-}
+};
 
 const moveToVideo = (id, nextState) => {
   const marker = findMarkerById(id);
@@ -50,10 +50,10 @@ const moveToVideo = (id, nextState) => {
     center: [longitude, latitude],
     bearing: 0,
     pitch: 0
-  }
+  };
 
   moveTo(position, null, () => playStory(nextState));
-}
+};
 
 const playStory = (state) => {
   console.log(state);
@@ -61,11 +61,11 @@ const playStory = (state) => {
     case 0:
       initFooter();
       loadAudio('story');
-      showIntroSlides();
-      setTimeout(() => playStory(1), SLIDE_ANIMATION * 5);
+      show('#intro-slide');
+      setTimeout(() => playStory(1), SLIDE_ANIMATION * 4);
       break;
     case 1:
-      playVideoStory("33", 339823972, 2); // Achterlaan Tour
+      playVideoStory('33', 339823972, 2); // Achterlaan Tour
       break;
     case 2:
       stopVideoStory();
@@ -81,15 +81,15 @@ const playStory = (state) => {
     case 4:
       hide('#author-slide');
       startMapStoryMode();
-      $("#audio-player")[0].onended = () => playStory(5);
-      $("#audio-player")[0].play();
+      $('#audio-player')[0].onended = () => playStory(5);
+      $('#audio-player')[0].play();
       break;
     case 5:
-      window.STATUS = "down";
-      moveToVideo("42", 6);
+      window.STATUS = 'down';
+      moveToVideo('42', 6);
       break;
     case 6:
-      playVideoStory("42", 339823739, 7); // Museumplein
+      playVideoStory('42', 339823739, 7); // Museumplein
       break;
     case 7:
       stopVideoStory();
@@ -99,10 +99,10 @@ const playStory = (state) => {
     case 8:
       hide('#text-slide-7');
       undimMap();
-      moveToVideo("6", 9);
+      moveToVideo('6', 9);
       break;
     case 9:
-      playVideoStory("6", 339823043, 10); // Amstel River
+      playVideoStory('6', 339823043, 10); // Amstel River
       break;
     case 10:
       stopVideoStory();
@@ -112,10 +112,10 @@ const playStory = (state) => {
     case 11:
       hide('#text-slide-10');
       undimMap();
-      moveToVideo("36", 12);
+      moveToVideo('36', 12);
       break;
     case 12:
-      playVideoStory("36", 339823923, 13); // North IJ Hallen
+      playVideoStory('36', 339823923, 13); // North IJ Hallen
       break;
     case 13:
       stopVideoStory();
@@ -126,7 +126,7 @@ const playStory = (state) => {
       hide('#text-slide-13');
       undimMap();
       moveTo(mapConfig.side_rotate.position, null, () => {
-        window.STATUS = "up";
+        window.STATUS = 'up';
         playStory(15);
       });
       break;
@@ -136,11 +136,11 @@ const playStory = (state) => {
       setTimeout(() => playStory(16), 5000);
       break;
     case 16:
-      window.STATUS = "down";
-      moveToVideo("26", 17);
+      window.STATUS = 'down';
+      moveToVideo('26', 17);
       break;
     case 17:
-      playVideoStory("26", 339824214, 18); // Ziggodome
+      playVideoStory('26', 339824214, 18); // Ziggodome
       break;
     case 18:
       stopVideoStory();
@@ -151,10 +151,10 @@ const playStory = (state) => {
       hide('#text-slide-18');
       undimMap();
       show('#lux-definition');
-      moveToVideo("32", 20);
+      moveToVideo('32', 20);
       break;
     case 20:
-      playVideoStory("32", 339824141, 21); // Uithammerdijk
+      playVideoStory('32', 339824141, 21); // Uithammerdijk
       break;
     case 21:
       stopVideoStory();
@@ -169,10 +169,10 @@ const playStory = (state) => {
       break;
     case 23:
       toggleNormal();
-      moveToVideo("18", 24);
+      moveToVideo('18', 24);
       break;
     case 24:
-      playVideoStory("18", 339823292, 25); // De dam
+      playVideoStory('18', 339823292, 25); // De dam
       break;
     case 25:
       stopVideoStory();
@@ -183,7 +183,7 @@ const playStory = (state) => {
       hide('#text-slide-25');
       undimMap();
       moveTo(mapConfig.side_rotate.position, null, () => {
-        window.STATUS = "up";
+        window.STATUS = 'up';
         playStory(27);
       });
       break;
@@ -193,11 +193,11 @@ const playStory = (state) => {
       setTimeout(() => playStory(28), 5000);
       break;
     case 28:
-      window.STATUS = "down";
-      moveToVideo("24", 29);
+      window.STATUS = 'down';
+      moveToVideo('24', 29);
       break;
     case 29:
-      playVideoStory("24", 339823602, 30); // Blijburg
+      playVideoStory('24', 339823602, 30); // Blijburg
       break;
     case 30:
       stopVideoStory();
@@ -208,10 +208,10 @@ const playStory = (state) => {
       hide('#text-slide-30');
       undimMap();
       show('#nqm-definition');
-      moveToVideo("19", 32);
+      moveToVideo('19', 32);
       break;
     case 32:
-      playVideoStory("19", 339824071, 33); // Skinny Bridge
+      playVideoStory('19', 339824071, 33); // Skinny Bridge
       break;
     case 33:
       stopVideoStory();
@@ -223,16 +223,16 @@ const playStory = (state) => {
       undimMap();
       show('#nqm-definition');
       moveTo(mapConfig.side_rotate.position, null, () => {
-        window.STATUS = "up";
+        window.STATUS = 'up';
         playStory(35);
       });
       break;
     case 35:
-      window.STATUS = "down";
-      moveToVideo("23", 36);
+      window.STATUS = 'down';
+      moveToVideo('23', 36);
       break;
     case 36:
-      playVideoStory("23", 341809140, 37); // IJ KNSM
+      playVideoStory('23', 341809140, 37); // IJ KNSM
       break;
     case 37:
       stopVideoStory();
@@ -243,10 +243,10 @@ const playStory = (state) => {
       hide('#text-slide-37');
       undimMap();
       toggleNormal();
-      moveToVideo("15", 39);
+      moveToVideo('15', 39);
       break;
     case 39:
-      playVideoStory("15", 341571530, 40); // Houthavens
+      playVideoStory('15', 341571530, 40); // Houthavens
       break;
     case 40:
       stopVideoStory();
@@ -256,10 +256,10 @@ const playStory = (state) => {
     default:
       console.log('default');
   }
-}
+};
 
 const startStory = () => {
   playStory(0);
-}
+};
 
-export { startStory }
+export { startStory };

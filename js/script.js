@@ -5,17 +5,29 @@ import {
 import { handleDataLayer, handleNavigateClick } from './footer.js';
 import { toggleAudio } from './audio.js';
 import { resizeVideo } from './video.js';
-import { hideDropdownMenus } from './utils.js';
+import { hideDropdownMenus, show, hide } from './utils.js';
 import { startStory } from './story.js';
 
 window.STATUS = 'down';
 
 /* Events */
+const handleStartClick = (callback, mode) => {
+  hide('.intro-wrapper');
+  show('#intro-modal');
+  if (mode === 'explore') show('.instruction-container');
+  $('#start').on('click', () => {
+    hide('#intro-modal');
+    if (mode === 'explore') hide('.instruction-container');
+    $('#intro').addClass('opacity-off');
+    setTimeout(() => hide('#intro'), 3000);
+    callback();
+  });
+}
 $('.mapboxgl-canvas').css('cursor', 'crosshair');
 
-$('#btn-explore').on('click', e => startExploreMode());
+$('#btn-explore').on('click', e => handleStartClick(startExploreMode, 'explore'));
 
-$('#btn-story').on('click', e => startStory());
+$('#btn-story').on('click', e => handleStartClick(startStory, 'story'));
 
 $(window).resize(() => resizeVideo());
 

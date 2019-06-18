@@ -5,15 +5,9 @@ const hideDropdownMenus = (e) => {
   const $menu = $('.dropdown-container');
 
   if (!$menu.is(e.target) && // if the target of the click isn't the container...
-    $menu.has(e.target).length === 0) // ... nor a descendant of the container
-  {
+    $menu.has(e.target).length === 0) {
     $('.dropdown-menu').hide(300);
   }
 };
 
-const showIntroSlides = () => {
-  hide('#intro');
-  show('#intro-slide');
-};
-
-export { show, hide, easing, hideDropdownMenus, showIntroSlides };
+export { show, hide, easing, hideDropdownMenus };

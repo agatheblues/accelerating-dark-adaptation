@@ -23,7 +23,6 @@ const initMap = (config, mode) => {
 };
 
 const showMap = () => {
-  hide('#intro');
   $('#map').removeClass('invisible');
 };
 
