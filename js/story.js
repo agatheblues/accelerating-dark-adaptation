@@ -5,7 +5,7 @@ import { findMarkerById, findIntervieweesById } from './markers.js';
 import { startMapStoryMode, moveTo, mapConfig, dimMap, undimMap, map } from './map.js';
 import { loadAudio } from './audio.js';
 
-const SLIDE_ANIMATION = 9000;
+const SLIDE_ANIMATION = 8000;
 
 const initFooter = () => {
   hide('.dropdown-container');

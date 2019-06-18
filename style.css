@@ -35,7 +35,8 @@ to  { opacity: 1; }
 @keyframes TITLE-ANIMATION {
   0% { r: 3px; opacity: 0; }
   20% { r: 2.5px; opacity: 1; }
-  100% { r: 0.5px; opacity: 1; }
+  80% { r: 0.5px; opacity: 1; }
+  100% { r: 1.5px; opacity: 1; }
 }
 
 
@@ -63,24 +64,6 @@ to  { opacity: 1; }
     bottom: 55%;
     opacity: 0;
   }
-}
-
-
-@-webkit-keyframes MOVE-BG {
-  from { background-position: 0 0; }
-  to { background-position: -400px 0; }
-}
-@-moz-keyframes MOVE-BG {
-  from { background-position: 0 0; }
-  to { background-position: -400px 0; }
-}
-@-o-keyframes MOVE-BG {
-  from { background-position: 0 0; }
-  to { background-position: -400px 0; }
-}
-@keyframes MOVE-BG {
-  from { background-position: 0 0; }
-  to { background-position: -400px 0; }
 }
 
 body {
@@ -144,17 +127,12 @@ a.not-underlined {
 
 /* intro */
 .intro-container {
-  background: #000  url("data/galaxy_starfield.png") repeat 0 0;
   width: 100%;
   margin: 0;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  -webkit-animation: MOVE-BG 30s linear infinite;
-  -moz-animation: MOVE-BG 30s linear infinite;
-  -o-animation: MOVE-BG 30s linear infinite;
-  animation: MOVE-BG 30s linear infinite;
 }
 
 .intro-wrapper {
@@ -229,7 +207,7 @@ a.not-underlined {
   text-align: center;
   border: none;
   padding: 24px;
-  background: rgb(0, 0, 0, 0);
+  background:#000;
 }
 
 .modal-text {
@@ -279,19 +257,19 @@ a.not-underlined {
 }
 
 .slide-1 {
-  animation: 8s ease-in-out 9s forwards fadeInAndOut;
+  animation: 8s ease-in-out 8s forwards fadeInAndOut;
 }
 
 .slide-2 {
-  animation: 8s ease-in-out 18s forwards fadeInAndOut;
+  animation: 8s ease-in-out 16s forwards fadeInAndOut;
 }
 
 .slide-3 {
-  animation: 8s ease-in-out 27s forwards fadeInAndOut;
+  animation: 8s ease-in-out 24s forwards fadeInAndOut;
 }
 
 .slide-4 {
-  animation: 8s ease-in-out 36s forwards fadeInAndOut;
+  animation: 8s ease-in-out 32s forwards fadeInAndOut;
 }
 
 /* Buttons */
@@ -320,13 +298,15 @@ a.not-underlined {
 
   font-size: 14px;
   font-family: inherit;
-  font-weight: 700;
+}
+
+.btn.hidden {
+  display: none;
 }
 
 .btn--intro {
   padding: 15px 17px;
   margin: 0 10px 0 10px;
-  text-transform: uppercase;
   background-color: transparent;
 }
 
@@ -380,6 +360,13 @@ a.not-underlined {
   border: dotted 1px;
   opacity: 0.5;
 }
+
+.close--modal {
+    right: 24px;
+    top: 24px;
+    opacity: 1;
+}
+
 .close:hover {
   opacity: 1;
   cursor: pointer;
@@ -479,7 +466,7 @@ a.not-underlined {
 .opacity-off {
   opacity: 0;
   visibility: hidden;
-  transition: visibility 0s linear 3s, opacity 8s linear;
+  transition: visibility 0s linear 3s, opacity 3s linear;
 }
 
 /* Pop up*/
@@ -639,11 +626,6 @@ a.not-underlined {
 
   .modal-box {
     width: 70%;
-    box-sizing: border-box;
-    border-width: 1px;
-    border-style: dotted;
-    border-color: rgb(255, 255, 255);
-    border-image: initial;
   }
   
 }
@@ -661,11 +643,6 @@ a.not-underlined {
 
   .modal-box {
     width: 600px;
-    box-sizing: border-box;
-    border-width: 1px;
-    border-style: dotted;
-    border-color: rgb(255, 255, 255);
-    border-image: initial;
   }
   
 }

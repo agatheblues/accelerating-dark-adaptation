@@ -5,24 +5,12 @@ import {
 import { handleDataLayer, handleNavigateClick } from './footer.js';
 import { toggleAudio } from './audio.js';
 import { resizeVideo } from './video.js';
-import { hideDropdownMenus, show, hide } from './utils.js';
+import { hideDropdownMenus, showMapInstructions, hideMapInstructions, handleStartClick } from './utils.js';
 import { startStory } from './story.js';
 
 window.STATUS = 'down';
 
 /* Events */
-const handleStartClick = (callback, mode) => {
-  hide('.intro-wrapper');
-  show('#intro-modal');
-  if (mode === 'explore') show('.instruction-container');
-  $('#start').on('click', () => {
-    hide('#intro-modal');
-    if (mode === 'explore') hide('.instruction-container');
-    $('#intro').addClass('opacity-off');
-    setTimeout(() => hide('#intro'), 3000);
-    callback();
-  });
-}
 $('.mapboxgl-canvas').css('cursor', 'crosshair');
 
 $('#btn-explore').on('click', e => handleStartClick(startExploreMode, 'explore'));
@@ -51,5 +39,8 @@ $('#navigate-menu-list').on('click', (e) => {
   handleNavigateClick(e.target);
   $('.dropdown-menu').hide(300);
 });
+
+$('#help').on('click', (e) => showMapInstructions());
+$('#close-modal').on('click', (e) => hideMapInstructions());
 
 $(document).on('click', (e) => hideDropdownMenus(e));
