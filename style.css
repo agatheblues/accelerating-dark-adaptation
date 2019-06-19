@@ -393,6 +393,13 @@ a.not-underlined {
     opacity: 1;
 }
 
+.close--about {
+  top: 0;
+  opacity: 1;
+  right: 0;
+}
+
+
 .close:hover {
   opacity: 1;
   cursor: pointer;
@@ -617,11 +624,20 @@ a.not-underlined {
 /* About */
 .content-container {
   width: 90%;
-  margin: 10% auto 10% auto;
+  margin: 5% auto 10% auto;
 }
 
 .content-container p {
   margin: 10px 0 10px;
+}
+
+.close-container {
+  padding-bottom: 5%;
+  position: relative;
+}
+
+.close-container a:hover {
+  color: unset;
 }
 
 .section-container {
