@@ -1,4 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,700');
+@font-face {
+  font-family: "BPDots";
+  src: url("fonts/BPDots.eot");
+  src: 
+  url("fonts/BPDots.woff") format("woff"),
+  url("fonts/BPDots.otf") format("opentype"),
+  url("fonts/BPDots.ttf") format("truetype"),
+  url("fonts/BPDots.svg#BPdots") format("svg");
+  }
+  
+  
 
 @-webkit-keyframes BUTTON-INTRO-ANIMATION {
 from   { opacity: 0; }
@@ -106,6 +117,11 @@ h3 {
 h4 {
   margin: 0;
   padding: 0;
+  font-family: 'BPDots', 'Roboto', sans-serif;
+  text-transform: uppercase;
+  line-height: 35px;
+  font-size: 25px;
+  font-weight: 100;
 }
 
 h5 {
@@ -540,16 +556,6 @@ a.not-underlined {
   line-height: 14px;
 }
 
-/* Content */
-.content-container {
-  width: 90%;
-  margin: 10% auto 10% auto;
-}
-
-.content-container p {
-  margin: 10px 0 10px;
-}
-
 /* Dropdown menu */
 .dropdown-container {
   position: relative;
@@ -609,6 +615,15 @@ a.not-underlined {
 }
 
 /* About */
+.content-container {
+  width: 90%;
+  margin: 10% auto 10% auto;
+}
+
+.content-container p {
+  margin: 10px 0 10px;
+}
+
 .section-container {
   clear: both;
   padding: 40px 0;
@@ -625,10 +640,14 @@ a.not-underlined {
 
 .section-content p {
   margin: 20px 0;
+  text-indent: 30px;
+}
+
+.section-content--source p {
+  text-indent: 0;
 }
 
 table, th, td {
-  border-bottom: 1px solid #fff;
   border-collapse: collapse;
   margin-top: 10px;
 }
@@ -659,7 +678,8 @@ th:last-child, td:last-child {
 /* iPads (portrait and landscape) ----------- */
 @media only screen and (min-width : 768px) {
   .content-container {
-    width: 60%;
+    width: 70%;
+    padding-left: 10%;
   }
 
   .control-details-wrapper {
@@ -675,12 +695,12 @@ th:last-child, td:last-child {
   }
 
   .section-title {
-    width: 15%;
+    width: 30%;
     float: left;
   }
   .section-content {
     float: right;
-    width: 75%;
+    width: 65%;
   }
   
 }
@@ -690,6 +710,7 @@ th:last-child, td:last-child {
   .content-container {
     width: 50%;
     margin: 5% auto 5% auto;
+    padding-left: 15%;
   }
   
   .control-container {
@@ -699,12 +720,12 @@ th:last-child, td:last-child {
   .modal-box {
     width: 600px;
   }
-  
 }
 
 /* desktops ----------- */
 @media only screen and (min-width : 1280px) {
   .content-container {
-    width: 700px;
+    width: 800px;
+    padding-left: 20%;
   }
 }
