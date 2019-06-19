@@ -63,16 +63,12 @@ const showExploreInstructions = () => {
 const showAbout = () => {
   hide('#footer');
   hide('#map');
-  hide('.video-container');
-  hide('#close-video');
   show('#about-container');
 }
 
 const hideAbout = () => {
   show('#footer');
   show('#map');
-  show('.video-container');
-  show('#close-video');
   hide('#about-container');
 }
 
