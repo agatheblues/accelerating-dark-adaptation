@@ -103,6 +103,16 @@ h3 {
   padding: 0;
 }
 
+h4 {
+  margin: 0;
+  padding: 0;
+}
+
+h5 {
+  margin: 20px 0 0 0;
+  padding: 0;
+}
+
 a {
   color: #fff;
   text-decoration: underline;
@@ -536,15 +546,6 @@ a.not-underlined {
   margin: 10% auto 10% auto;
 }
 
-.content-container video {
-  width: 100%;
-  height: auto;
-}
-
-.section-container {
-  margin: 50px 0 50px 0;
-}
-
 .content-container p {
   margin: 10px 0 10px;
 }
@@ -555,7 +556,8 @@ a.not-underlined {
   margin-right: 20px;
 }
 
-.dropdown-wrapper p, a {
+.dropdown-wrapper p, 
+.dropdown-wrapper a {
   display: block;
   cursor: pointer;
   white-space: nowrap;
@@ -606,6 +608,46 @@ a.not-underlined {
   padding: 10px;
 }
 
+/* About */
+.section-container {
+  clear: both;
+  padding: 40px 0;
+}
+
+.section-title {
+  margin: 20px 0;
+}
+
+.section-list {
+  list-style: none;
+  padding: 0;
+}
+
+.section-content p {
+  margin: 20px 0;
+}
+
+table, th, td {
+  border-bottom: 1px solid #fff;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  padding: 10px;
+  vertical-align: top;
+}
+
+th:first-child, td:first-child {
+  padding: 10px 10px 10px 0;
+}
+th:last-child, td:last-child {
+  padding: 10px 0 10px 10px;
+}
+
+.italic {
+  font-style: italic;
+}
 
 /* Medium mobile*/
 @media only screen and (min-width : 481px) {
@@ -630,6 +672,15 @@ a.not-underlined {
 
   .modal-box {
     width: 70%;
+  }
+
+  .section-title {
+    width: 15%;
+    float: left;
+  }
+  .section-content {
+    float: right;
+    width: 75%;
   }
   
 }
