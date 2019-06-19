@@ -5,7 +5,7 @@ import {
 import { handleDataLayer, handleNavigateClick } from './footer.js';
 import { toggleAudio } from './audio.js';
 import { resizeVideo } from './video.js';
-import { hideDropdownMenus, showMapInstructions, hideMapInstructions, handleStartClick } from './utils.js';
+import { hideDropdownMenus, showMapInstructions, hideMapInstructions, handleStartClick, showAbout, hideAbout } from './utils.js';
 import { startStory } from './story.js';
 
 window.STATUS = 'down';
@@ -42,5 +42,8 @@ $('#navigate-menu-list').on('click', (e) => {
 
 $('#help').on('click', (e) => showMapInstructions());
 $('#close-modal').on('click', (e) => hideMapInstructions());
+
+$('#about').on('click', (e) => showAbout());
+$('#close-about').on('click', (e) => hideAbout());
 
 $(document).on('click', (e) => hideDropdownMenus(e));

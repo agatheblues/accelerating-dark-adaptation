@@ -633,7 +633,7 @@
                 <a href="/">Home</a>
               </li>
               <li>
-                <a href="/about.html">About the project</a>
+                <p id='about'>About the project</p>
               </li>
               <li>
                 <p id='help'>Help</p>
@@ -739,6 +739,588 @@
     </audio>
   </div>
 
+  <div id='about-container' class="content-container hidden">
+    <div class='close-container' id='close-about'>
+      <span class="close close--about"></span>
+    </div>
+    <section class="section-container">
+      <div class="section-wrapper">
+        <div class="section-title">
+          <h4>General Information</h4>
+        </div>
+        <div class="section-content">
+          <p>Unpolluted dark skies are seen as something <span class="italic">out there</span>, beyond spaces of human
+            activity which seem to be
+            defined by artificial light. Why is it that darkness in the natural space is perceived as beautiful and
+            mysterious, while darkness in the urban space as scary and dangerous?</p>
+          <p><span class="italic">Accelerating Dark Adaptation</span> is a website in which the viewer can experience
+            the city of Amsterdam at
+            night
+            through an infrared lens, navigating data points in which the light intensity and night quality have been
+            measured. The viewer can visit these sites while listening to a collection of perspectives on darkness.
+          </p>
+          <p>The aim is to bring a more positive image of darkness into our urban space as well as a better
+            understanding
+            of the negative effects of artificial lights, in order to preserve and protect our night skies not only
+            <span class="italic">out
+              there</span>, but also <span class="italic">in here</span>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-container">
+      <div class="section-wrapper">
+        <div class="section-title">
+          <h4>Locations</h4>
+        </div>
+        <div class="section-content">
+          <p>Building up the data set that was used for the project, the aim was to cover the municipality of Amsterdam
+            measuring at least one point in each neighbourhood. The idea was to find places of either very high light
+            intensity or very dark surroundings. So each of the locations that were chosen were expecting to be
+            representative of such contrast.
+          </p>
+
+          <table>
+            <thead>
+              <tr>
+                <th align="left">Location</th>
+                <th align="left">Luminous Emittance</th>
+                <th align="left">Sky Quality</th>
+                <th align="left">Latitude</th>
+                <th align="left">Longitude</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Achterlaan Tour</td>
+                <td align="right">0.56</td>
+                <td align="right">17.78</td>
+                <td align="right">52.407073</td>
+                <td align="right">4.966835</td>
+              </tr>
+              <tr>
+                <td>Amstel River</td>
+                <td align="right">1.28</td>
+                <td align="right">17.72</td>
+                <td align="right">52.340365</td>
+                <td align="right">4.917081</td>
+              </tr>
+              <tr>
+                <td>Amsterdamse Bos</td>
+                <td align="right">0.02</td>
+                <td align="right">19.14</td>
+                <td align="right">52.318876</td>
+                <td align="right">4.830228</td>
+              </tr>
+              <tr>
+                <td>Anton Instituut</td>
+                <td align="right">12.06</td>
+                <td align="right">10.35</td>
+                <td align="right">52.356290</td>
+                <td align="right">4.955540</td>
+              </tr>
+              <tr>
+                <td>ArenA</td>
+                <td align="right">23.44</td>
+                <td align="right">12.66</td>
+                <td align="right">52.312733</td>
+                <td align="right">4.944070</td>
+              </tr>
+              <tr>
+                <td>Blijburg</td>
+                <td align="right">0.12</td>
+                <td align="right">19.38</td>
+                <td align="right">52.356124</td>
+                <td align="right">5.019922</td>
+              </tr>
+              <tr>
+                <td>Bloemgracht</td>
+                <td align="right">6.79</td>
+                <td align="right">16.31</td>
+                <td align="right">52.375298</td>
+                <td align="right">4.883293</td>
+              </tr>
+              <tr>
+                <td>Centraal Station</td>
+                <td align="right">10.89</td>
+                <td align="right">14.64</td>
+                <td align="right">52.377984</td>
+                <td align="right">4.899987</td>
+              </tr>
+              <tr>
+                <td>de Dam</td>
+                <td align="right">26.72</td>
+                <td align="right">13.11</td>
+                <td align="right">52.372931</td>
+                <td align="right">4.893402</td>
+              </tr>
+              <tr>
+                <td>De Wallen</td>
+                <td align="right">4.02</td>
+                <td align="right">16.82</td>
+                <td align="right">52.373727</td>
+                <td align="right">4.899243</td>
+              </tr>
+              <tr>
+                <td>Dog Beach, Gaasperpark</td>
+                <td align="right">0.02</td>
+                <td align="right">19.21</td>
+                <td align="right">52.304095</td>
+                <td align="right">4.982892</td>
+              </tr>
+              <tr>
+                <td>Eye Museum</td>
+                <td align="right">0.55</td>
+                <td align="right">17.56</td>
+                <td align="right">52.384119</td>
+                <td align="right">4.900546</td>
+              </tr>
+              <tr>
+                <td>Football Field, Slotermeer</td>
+                <td align="right">1.85</td>
+                <td align="right">17.97</td>
+                <td align="right">52.381099</td>
+                <td align="right">4.785298</td>
+              </tr>
+              <tr>
+                <td>Gerard Douplein</td>
+                <td align="right">3.67</td>
+                <td align="right">16.03</td>
+                <td align="right">52.355976</td>
+                <td align="right">4.892886</td>
+              </tr>
+              <tr>
+                <td>Hageland</td>
+                <td align="right">18.26</td>
+                <td align="right">14.58</td>
+                <td align="right">52.345329</td>
+                <td align="right">4.811521</td>
+              </tr>
+              <tr>
+                <td>Houthavens</td>
+                <td align="right">0.36</td>
+                <td align="right">15.54</td>
+                <td align="right">52.398521</td>
+                <td align="right">4.884024</td>
+              </tr>
+              <tr>
+                <td>Ij KNSM </td>
+                <td align="right">22.91</td>
+                <td align="right">13.76</td>
+                <td align="right">52.377947</td>
+                <td align="right">4.937265</td>
+              </tr>
+              <tr>
+                <td>Kinkerbuurt</td>
+                <td align="right">7.9</td>
+                <td align="right">16.17</td>
+                <td align="right">52.367337</td>
+                <td align="right">4.868170</td>
+              </tr>
+              <tr>
+                <td>Mercatorplein</td>
+                <td align="right">2.46</td>
+                <td align="right">16.16</td>
+                <td align="right">52.380207</td>
+                <td align="right">4.850123</td>
+              </tr>
+              <tr>
+                <td>Metro Noord</td>
+                <td align="right">23.1</td>
+                <td align="right">13.24</td>
+                <td align="right">52.401416</td>
+                <td align="right">4.932292</td>
+              </tr>
+              <tr>
+                <td>Molenwijk parking</td>
+                <td align="right">16.06</td>
+                <td align="right">15.17</td>
+                <td align="right">52.417688</td>
+                <td align="right">4.893956</td>
+              </tr>
+              <tr>
+                <td>Monk Gym, Aambeeldstraat</td>
+                <td align="right">0.27</td>
+                <td align="right">17.95</td>
+                <td align="right">52.383438</td>
+                <td align="right">4.929288</td>
+              </tr>
+              <tr>
+                <td>Museumplein</td>
+                <td align="right">0.42</td>
+                <td align="right">18.31</td>
+                <td align="right">52.357153</td>
+                <td align="right">4.881066</td>
+              </tr>
+              <tr>
+                <td>NDSM Bungee</td>
+                <td align="right">1.34</td>
+                <td align="right">16.26</td>
+                <td align="right">52.399379</td>
+                <td align="right">4.894693</td>
+              </tr>
+              <tr>
+                <td>NDSM hallenplein</td>
+                <td align="right">123.6</td>
+                <td align="right">11.31</td>
+                <td align="right">52.401936</td>
+                <td align="right">4.895037</td>
+              </tr>
+              <tr>
+                <td>Nemo Museum</td>
+                <td align="right">71.8</td>
+                <td align="right">14.19</td>
+                <td align="right">52.373703</td>
+                <td align="right">4.912637</td>
+              </tr>
+              <tr>
+                <td>Nieuwmarkt</td>
+                <td align="right">1.59</td>
+                <td align="right">17.74</td>
+                <td align="right">52.372542</td>
+                <td align="right">4.900229</td>
+              </tr>
+              <tr>
+                <td>Olympishe Stadion, Laan der Hesperiden</td>
+                <td align="right">9.61</td>
+                <td align="right">15.81</td>
+                <td align="right">52.344754</td>
+                <td align="right">4.854070</td>
+              </tr>
+              <tr>
+                <td>OosterPark</td>
+                <td align="right">0.08</td>
+                <td align="right">16.35</td>
+                <td align="right">52.360014</td>
+                <td align="right">4.922471</td>
+              </tr>
+              <tr>
+                <td>Osdorper ban</td>
+                <td align="right">16.65</td>
+                <td align="right">14.94</td>
+                <td align="right">52.359331</td>
+                <td align="right">4.780990</td>
+              </tr>
+              <tr>
+                <td>Rembrandtpark</td>
+                <td align="right">0.2</td>
+                <td align="right">17</td>
+                <td align="right">52.364169</td>
+                <td align="right">4.844095</td>
+              </tr>
+              <tr>
+                <td>Rembrandtplein</td>
+                <td align="right">30.24</td>
+                <td align="right">13.32</td>
+                <td align="right">52.366167</td>
+                <td align="right">4.896571</td>
+              </tr>
+              <tr>
+                <td>Skinny Bridge</td>
+                <td align="right">2.52</td>
+                <td align="right">14.81</td>
+                <td align="right">52.363569</td>
+                <td align="right">4.902374</td>
+              </tr>
+              <tr>
+                <td>Station Zuid</td>
+                <td align="right">18.41</td>
+                <td align="right">14.01</td>
+                <td align="right">52.341077</td>
+                <td align="right">4.874418</td>
+              </tr>
+              <tr>
+                <td>Uitdammerdijk</td>
+                <td align="right">0.04</td>
+                <td align="right">17.62</td>
+                <td align="right">52.393127</td>
+                <td align="right">5.026689</td>
+              </tr>
+              <tr>
+                <td>Utrechtsestraat </td>
+                <td align="right">37.41</td>
+                <td align="right">13.15</td>
+                <td align="right">52.362861</td>
+                <td align="right">4.898646</td>
+              </tr>
+              <tr>
+                <td>Vondel Park</td>
+                <td align="right">0.5</td>
+                <td align="right">18.48</td>
+                <td align="right">52.357841</td>
+                <td align="right">4.869375</td>
+              </tr>
+              <tr>
+                <td>Westelijke M.</td>
+                <td align="right">3.56</td>
+                <td align="right">16.71</td>
+                <td align="right">52.363405</td>
+                <td align="right">4.957235</td>
+              </tr>
+              <tr>
+                <td>Westerpark</td>
+                <td align="right">0.82</td>
+                <td align="right">16.12</td>
+                <td align="right">52.386301</td>
+                <td align="right">4.874647</td>
+              </tr>
+              <tr>
+                <td>Ziggo Dome</td>
+                <td align="right">19.61</td>
+                <td align="right">15.13</td>
+                <td align="right">52.313673</td>
+                <td align="right">4.935085</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-container">
+      <div class="section-wrapper">
+        <div class="section-title">
+          <h4>Speakers</h4>
+        </div>
+        <div class="section-content">
+          <table>
+            <col style="width:30%">
+            <col style="width:70%">
+            <tbody>
+              <tr>
+                <td>Esther Hanko</td>
+                <td>Outreach coordinator at the Anton Institute of Astronomy</td>
+              </tr>
+              <tr>
+                <td>Diedrick Wilderman</td>
+                <td>Former navigational officer and curator at the National Maritime Museum</td>
+              </tr>
+              <tr>
+                <td>Kamiel Spoelstra</td>
+                <td>Ecologist at The Netherlands Institute of Ecology</td>
+              </tr>
+              <tr>
+                <td>Lothar Schwarte</td>
+                <td>Helicopter Doctor at the VU Hospital</td>
+              </tr>
+              <tr>
+                <td>Marc Schuilenburg</td>
+                <td>Philosopher, Department Criminal Law & Criminology</td>
+              </tr>
+              <tr>
+                <td>Marco Roos</td>
+                <td>Doctor in Urban Biology</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+    <section class="section-container">
+      <div class="section-wrapper">
+        <div class="section-title">
+          <h4>Credits</h4>
+        </div>
+        <div class="section-content">
+          <h5>Creator</h5>
+          <ul class="section-list">
+            <li>Manon Féval</li>
+          </ul>
+          <h5>Developper and co-creator</h5>
+          <ul class="section-list">
+            <li>Agathe Lenclen</li>
+          </ul>
+
+          <h5>With the voices of</h5>
+          <ul class="section-list">
+            <li>Esther Hanko</li>
+            <li> Diedrick Wilderman</li>
+            <li>Kamiel Spoelstra</li>
+            <li>Lothar Schwarte</li>
+            <li>Marc Schuilenburg</li>
+            <li>Marco Roos</li>
+          </ul>
+          <h5>Extra support from</h5>
+          <ul class="section-list">
+            <li>Thomas Buxo</li>
+            <li>Jan Robert Leegte</li>
+            <li>Pierre Van de Velde</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-container">
+      <div class="section-wrapper">
+        <div class="section-title">
+          <h4>Data & Technology</h4>
+        </div>
+        <div class="section-content">
+          <p>This website is built with Mapbox GL JS, JQuery and Three.js. The project codebase is open-source on <a
+              href="https://github.com/agatheblues/accelerating-dark-adaptation">Github</a>.</p>
+          <p>The dotted map represents the geolocation of each street light in the municipality of Amsterdam. The public
+            lighting dataset, <a
+              href="https://www.dataplatform.nl/dataset/9394fe5f-c0ee-4907-a39e-88b79106642d">Openbare verlichting in de
+              gemeente Amsterdam</a>, is available on the municipality's data portal.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-container">
+      <div class="section-wrapper">
+        <div class="section-title">
+          <h4>Sources</h4>
+        </div>
+        <div class="section-content section-content--source">
+          <p>Inside Science. (2017, January 30). Ramin Skibba. Astronomers Encourage Cities to Shield Outdoor Lighting.
+            Retrieved 11 June 2019, from
+            <a
+              href="https://www.insidescience.org/news/astronomers-encourage-cities-shield-outdoor-lighting">https://www.insidescience.org/news/astronomers-encourage-cities-shield-outdoor-lighting</a>
+          </p>
+          <p>The Nature of Cities. (2018, March 26). Will Allen. Protecting more with less: More nature in cities with
+            the science of strategic conservation. Retrieved 4 June 2019, from <a
+              href="https://www.thenatureofcities.com">https://www.thenatureofcities.com</a>
+          </p>
+          <p>Donald C. Dearborn and Salit Kark. Motivations for Conserving Urban Biodiversity. Conservation Biology.
+            Volume 24, No. 2, 432–440, 2009
+          </p>
+          <p>Futurism. (2013, April 8). Joshua Filmer, Light pollution: How does it impact people? Retrieved 4 June
+            2019, from <a href="https://futurism.com">https://futurism.com</a>
+          </p>
+          <p>Wikipedia. Celestial Navigation. (last edited june 1st 2019). Retrieved 4 June 2019, from
+            <a
+              href="https://en.wikipedia.org/wiki/Celestial_navigation">https://en.wikipedia.org/wiki/Celestial_navigation</a>
+          </p>
+          <p>Van-SuongNguyen, Nam-KyunIm, Quang-Dan. Azimuth method for ship position in celestial
+            navigation. International Journal of e-Navigation and Maritime Economy
+            Volume 7, June 2017, Pages 55-62
+            Eindhovennews. (2015, January 8). Editor, Anti-aggression lighting tested on Stratumseind. Retrieved 4 June
+            2019, from <a href="https://eindhovennews.com">https://eindhovennews.com</a></p>
+          <p>Encyclopedia of the Environment. Impact of light pollution on plants. Retrieved 4 June 2019,
+            <a
+              href="https://www.encyclopedie-environnement.org/en/zoom/impact-of-light-pollution-on-plants/">https://www.encyclopedie-environnement.org/en/zoom/impact-of-light-pollution-on-plants/</a>
+          </p>
+          <p>Survival Life. Robert Brenner. Night Vision: The Case for Red at Night. Retrieved 4 June 2019,
+            <a
+              href="https://survivallife.com/red-light-for-night-vision/">https://survivallife.com/red-light-for-night-vision/</a>
+          </p>
+          <p>Wikipedia. Polaris. (last edited 26th May 2019). Retrieved 4 June 2019,
+            <a href="https://en.wikipedia.org/wiki/Polaris">https://en.wikipedia.org/wiki/Polaris</a></p>
+          <p>Sky and Telescope. Jan Hattenbach. Starry Success: Protecting the Night Sky Above La Palma. May 2, 2017.
+            Retrieved 4 June 2019,
+            <a
+              href="https://www.skyandtelescope.com/get-involved/starry-success-protecting-the-night-sky-above-la-palma/">https://www.skyandtelescope.com/get-involved/starry-success-protecting-the-night-sky-above-la-palma/</a>
+          </p>
+          <p>Live Science. Becky Oskin. Bright and Stormy Night: Clouds Make Cities Lighter. February 19, 2015.
+            Retrieved 4 June 2019, <a
+              href="https://www.livescience.com/49819-light-pollution-bright-cloudy-nights.html">https://www.livescience.com/49819-light-pollution-bright-cloudy-nights.html</a>
+          </p>
+          <p>Phys Org. Public Library of Science. Clouds amplify ecological light pollution. 2011 2nd March. Retrieved 4
+            June 2019, <a
+              href="https://phys.org/news/2011-03-clouds-amplify-ecological-pollution.html">https://phys.org/news/2011-03-clouds-amplify-ecological-pollution.html</a>
+          </p>
+          <p>Flagstaff Dark Skies Coalition. Lamp Spectrum and light pollution. 2018 22nd October. Retrieved 4 June
+            2019, <a
+              href="http://www.flagstaffdarkskies.org/critical-dark-sky-issues/lamp-spectrum-light-pollution/">http://www.flagstaffdarkskies.org/critical-dark-sky-issues/lamp-spectrum-light-pollution/</a>
+          </p>
+          <p>Airfal International. Admin27. How lighting could affect our emotions and behaviour. 2014 25th february.
+            Retrieved 4 June 2019,
+            <a
+              href="https://www.airfal.com/en/residential-lighting-news/how-lighting-affect-emotions-behaviour-2950/">https://www.airfal.com/en/residential-lighting-news/how-lighting-affect-emotions-behaviour-2950/</a>
+          </p>
+
+          <p>Live Science. Jessie Szalay. What was the Enlightenment? 2016 July 7. Retrieved 4 June 2019,
+            <a
+              href="https://www.livescience.com/55327-the-enlightenment.html">https://www.livescience.com/55327-the-enlightenment.html</a>
+          </p>
+
+          <p>International Dark Sky Association. Lauwersmeer National Park Becomes Second Dark Sky Park Named In The
+            Netherlands. 2016 October 7. Retrieved 4 June 2019,
+            <a
+              href="https://www.darksky.org/lauwersmeer-national-park-becomes-second-dark-sky-park-named-in-the-netherlands/">https://www.darksky.org/lauwersmeer-national-park-becomes-second-dark-sky-park-named-in-the-netherlands/</a>
+          </p>
+
+          <p>University of Arizona. Space versus ground telescopes. Retrieved 4 June 2019,
+            <a
+              href="https://research.arizona.edu/learn-more/space-versus-ground-telescopes">https://research.arizona.edu/learn-more/space-versus-ground-telescopes</a>
+          </p>
+
+          <p>Wikipedia. Polynesian Navigation. (last edited 25th may 2019). Retrieved 4 June 2019,
+            <a
+              href="https://en.wikipedia.org/wiki/Polynesian_navigation">https://en.wikipedia.org/wiki/Polynesian_navigation</a>
+          </p>
+
+          <p>
+            Vox. Brad Plumer The night sky is vanishing: 80 percent of Americans can no longer see the Milky Way. 2016
+            June 10. Retrieved 4 June 2019, <a
+              href="https://www.vox.com/2016/6/10/11905390/light-pollution-night-sky">https://www.vox.com/2016/6/10/11905390/light-pollution-night-sky</a>
+          </p>
+
+          <p>Quora. Denial Sefer. Why do Belgium and The Netherlands illuminate their highways? 2016 December 6.
+            Retrieved 4 June 2019,
+            <a
+              href="https://www.quora.com/Why-do-Belgium-and-The-Netherlands-illuminate-their-highways">https://www.quora.com/Why-do-Belgium-and-The-Netherlands-illuminate-their-highways</a>
+          </p>
+          <p>Tulisi, A. (2017). Urban Green Network Design: Defining green network from an urban planning perspective.
+            TeMA - Journal of Land Use, Mobility and Environment, 10(2), 179-192.
+            <a href="https://doi.org/10.6092/1970-9870/5156">https://doi.org/10.6092/1970-9870/5156</a>
+          </p>
+
+          <p>CityLab. John Metcalfe. The Psychological Benefit of White Street Lights. 2016 February 3. Retrieved 4 June
+            2019, <a
+              href="https://www.citylab.com/equity/2016/02/white-street-light-safe-study-granada/459702/">https://www.citylab.com/equity/2016/02/white-street-light-safe-study-granada/459702/</a>
+          </p>
+
+          <p>International Dark Sky Association. Lighting, Crime and Safety.
+            <a
+              href="https://www.darksky.org/light-pollution/lighting-crime-and-safety/">https://www.darksky.org/light-pollution/lighting-crime-and-safety/</a>
+          </p>
+
+          <p>Roland Dechesne. Hazardous Light Pollution from Digital Electronic Billboards. 2012 July 7.
+            <a
+              href="https://calgary.rasc.ca/lp/Digital_Electronic_Billboards.pdf">https://calgary.rasc.ca/lp/Digital_Electronic_Billboards.pdf</a>
+          </p>
+
+          <p>Ban Billboard Blight. Dennis Hathaway. Earth Day Topic: Billboards Creating Light Pollution, Squandering
+            Energy. 2010 April 21.
+            <a
+              href="http://banbillboardblight.org/earth-day-topic-billboards-creating-light-pollution-squandering-energy/">http://banbillboardblight.org/earth-day-topic-billboards-creating-light-pollution-squandering-energy/</a>
+          </p>
+
+          <p>Alberta Dark Sky Association. Light Pollution Effect on Astronomy.
+            <a
+              href="https://www.rasc.ca/sites/default/files/LightPollution-EffectsonAstronomy.pdf">https://www.rasc.ca/sites/default/files/LightPollution-EffectsonAstronomy.pdf</a>
+          </p>
+
+          <p>Wikipedia. Night Vision Device. <a
+              href="https://en.wikipedia.org/wiki/Night-vision_device">https://en.wikipedia.org/wiki/Night-vision_device</a>
+          </p>
+
+          <p>The Conversation. The science of street lights: what makes people feel safe at night. 2018 September 28.
+            <a
+              href="http://theconversation.com/the-science-of-street-lights-what-makes-people-feel-safe-at-night-103805">http://theconversation.com/the-science-of-street-lights-what-makes-people-feel-safe-at-night-103805</a>
+          </p>
+
+          <p>International Dark Sky Association. Light Pollution Effects on Wildlife and Ecosystem.
+            <a
+              href="http://www.darksky.org/light-pollution/wildlife/">http://www.darksky.org/light-pollution/wildlife/</a>
+          </p>
+
+          <p>The Guardian. Turning off street lights does not lead to more crime or accidents – study. 2015 July 29.
+            <a
+              href="https://www.theguardian.com/society/2015/jul/29/turning-off-street-lights-does-not-lead-to-more-or-accidents-study">https://www.theguardian.com/society/2015/jul/29/turning-off-street-lights-does-not-lead-to-more-or-accidents-study</a>
+          </p>
+
+          <p>Stephen Atkins, Sohail Husain and Angele Storey, The influence of street light on crime and fear of crime.
+            Crime prevention unit paper n°28, London. 1991.
+            <a
+              href="http://www.celfosc.org/biblio/seguridad/atkins.pdf">http://www.celfosc.org/biblio/seguridad/atkins.pdf</a>
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
   <script src="dist/bundle.js"></script>
 </body>
 
