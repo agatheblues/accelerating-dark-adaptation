@@ -35,7 +35,7 @@ const customLayer = {
     this.scene.add(directionalLight2);
 
     var loader = new THREE.TextureLoader();
-    var texture = loader.load('../data/galaxy_starfield.png');
+    var texture = loader.load('../assets/galaxy_starfield.png');
     var geometry = new THREE.SphereGeometry(15000, 500, 500, 0, 2 * Math.PI, -0.5 * Math.PI, 0.5 * Math.PI);
     var material = new THREE.MeshPhongMaterial({
       color: 0xffffff,
