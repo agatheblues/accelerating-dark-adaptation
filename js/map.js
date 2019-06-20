@@ -42,6 +42,7 @@ const animateMap = () => {
 };
 
 const startMapExploreMode = () => {
+  hide('.skip-container');
   showMap();
   loadAudio('explore');
   initMap({ ...mapConfig.default, ...mapConfig.intro.position, ...mapConfig.intro.limits }, 'explore');
