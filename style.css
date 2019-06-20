@@ -234,6 +234,7 @@ a.not-underlined {
   border: none;
   padding: 24px;
   background:#000;
+  border: dotted 1px #fff;
 }
 
 .modal-text {
