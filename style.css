@@ -245,9 +245,9 @@ a.not-underlined {
   line-height: 20px;
 }
 
-.modal-box img {
-  width: 30px;
-  height: 30px
+.modal-box object {
+  width: 80px;
+  height: 80px
 }
 
 .instruction-container {
