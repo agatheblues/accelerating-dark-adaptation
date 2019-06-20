@@ -88,7 +88,6 @@ const addMarkerPopupToMap = (feature) => {
 const updatePopupContent = () => {
   const zoom = map.getZoom();
   const pitch = map.getPitch();
-
   if (pitch > 60 || zoom <= 12) {
     showMarkerPopups();
   } else {

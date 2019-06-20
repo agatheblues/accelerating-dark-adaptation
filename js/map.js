@@ -144,10 +144,10 @@ const moveTo = (position, limits = null, callback = null, mode = 'story') => {
       duration: 2000
     });
 
-    if (limits !== null) {
-      map.setMinZoom(limits.minZoom);
-      map.setMaxZoom(limits.maxZoom);
-    }
+    // if (limits !== null) {
+    //   map.setMinZoom(limits.minZoom);
+    //   map.setMaxZoom(limits.maxZoom);
+    // }
   }
 
   if (callback) map.once('moveend', callback);
@@ -177,18 +177,6 @@ const mapConfig = {
     container: 'map',
     maxBounds: bounds,
     style: 'mapbox://styles/agatheblues/cjwsb96fq9r211cmgdq36xulv?optimize=true'
-  },
-  top_zoomed: {
-    position: {
-      zoom: 14,
-      center: [4.892891, 52.370088],
-      bearing: 0,
-      pitch: 0
-    },
-    limits: {
-      maxZoom: 19,
-      minZoom: 12
-    }
   },
   top_distanced: {
     position: {
