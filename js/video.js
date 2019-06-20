@@ -1,9 +1,9 @@
 import { undimMap } from './map.js';
 import { showDome } from './dome.js';
-import { hide } from './utils.js';
+import { show, hide } from './utils.js';
 import Player from '@vimeo/player';
 
-let videoPlayer;
+let videoPlayer, videoStoryPlayer;
 
 const initPlayer = (id) => {
   videoPlayer = new Player('player', { autoplay: true, controls: true, id: id });
@@ -12,6 +12,25 @@ const initPlayer = (id) => {
     closeVideo();
   });
 };
+
+const initStoryPlayer = (id) => {
+  videoStoryPlayer = new Player('slide-player', { autoplay: true, muted: true, controls: true, id: id });
+  videoStoryPlayer.setVolume(0);
+};
+
+const playSlideVideo = id => {
+  if (!videoStoryPlayer) {
+    initStoryPlayer(id);
+    show('#slide-video-wrapper');
+    videoStoryPlayer.play();
+  } else {
+    videoStoryPlayer.loadVideo(id).then(() => {
+      show('#slide-video-wrapper');
+      videoStoryPlayer.play();
+    });
+  }
+};
+
 
 const playLargeVideo = id => {
   if (!videoPlayer) {
@@ -43,4 +62,4 @@ const resizeVideo = () => {
   $('#video-wrapper').css({ 'height': `calc(100vh - ${$('#footer').innerHeight() * window.devicePixelRatio}px)` });
 };
 
-export { playLargeVideo, stopLargeVideo, closeVideo, resizeVideo, videoPlayer };
+export { playLargeVideo, stopLargeVideo, closeVideo, resizeVideo, videoPlayer, videoStoryPlayer, playSlideVideo };

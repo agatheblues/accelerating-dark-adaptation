@@ -23,9 +23,7 @@ const initMap = (config, mode) => {
 };
 
 const showMap = () => {
-  hide('#intro');
   $('#map').removeClass('invisible');
-  show('#footer');
 };
 
 const animateMap = () => {
@@ -36,12 +34,14 @@ const animateMap = () => {
       duration: 3000
     });
 
-    map.once('moveend', () =>
-      show('.mapboxgl-popup'));
+    map.once('moveend', () => {
+      show('#footer');
+      show('.mapboxgl-popup');
+    });
   }, 750);
 };
 
-const startExploreMode = () => {
+const startMapExploreMode = () => {
   showMap();
   loadAudio('explore');
   initMap({ ...mapConfig.default, ...mapConfig.intro.position, ...mapConfig.intro.limits }, 'explore');
@@ -82,7 +82,7 @@ const startExploreMode = () => {
     hide('#nqm-definition');
     hide('#lux-definition');
     playLargeVideo(marker.properties.video_id);
-    showVideoDetails({ ...marker.properties, longitude, latitude, interviewees });
+    showVideoDetails({ ...marker.properties, interviewees });
     resizeVideo();
     hideDome();
   });
@@ -144,10 +144,10 @@ const moveTo = (position, limits = null, callback = null, mode = 'story') => {
       duration: 2000
     });
 
-    if (limits !== null) {
-      map.setMinZoom(limits.minZoom);
-      map.setMaxZoom(limits.maxZoom);
-    }
+    // if (limits !== null) {
+    //   map.setMinZoom(limits.minZoom);
+    //   map.setMaxZoom(limits.maxZoom);
+    // }
   }
 
   if (callback) map.once('moveend', callback);
@@ -177,18 +177,6 @@ const mapConfig = {
     container: 'map',
     maxBounds: bounds,
     style: 'mapbox://styles/agatheblues/cjwsb96fq9r211cmgdq36xulv?optimize=true'
-  },
-  top_zoomed: {
-    position: {
-      zoom: 14,
-      center: [4.892891, 52.370088],
-      bearing: 0,
-      pitch: 0
-    },
-    limits: {
-      maxZoom: 19,
-      minZoom: 12
-    }
   },
   top_distanced: {
     position: {
@@ -230,4 +218,4 @@ const mapConfig = {
 
 let map;
 
-export { mapConfig, showMap, handleDimmedMap, dimMap, undimMap, moveTo, rotateCamera, map, startExploreMode, startMapStoryMode };
+export { mapConfig, showMap, handleDimmedMap, dimMap, undimMap, moveTo, rotateCamera, map, startMapExploreMode, startMapStoryMode };

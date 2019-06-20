@@ -10,10 +10,6 @@ const handleNavigateClick = (target) => {
   // Move to different areas on map
   const action = $(target).data('action');
   switch (action) {
-    case 'center':
-      window.STATUS = 'down';
-      moveTo(mapConfig.top_zoomed.position, mapConfig.top_zoomed.limits);
-      break;
     case 'rotating':
       moveTo(mapConfig.side_rotate.position, mapConfig.side_rotate.limits);
       window.STATUS = 'up';
@@ -134,12 +130,11 @@ const showVideoDetails = ({
   lieu = '',
   lux = '',
   nqm = '',
-  latitude = 0,
-  longitude = 0,
+  keyword = '',
   interviewees = []
 }) => {
   $('#video-details-quartier').text(lieu);
-  $('#video-details-location').text(longitude + ' ' + latitude);
+  $('#video-details-location').text(keyword);
   $('#video-details-sqm').text(nqm);
   $('#video-details-lux').text(lux);
   renderInterviewees(interviewees);

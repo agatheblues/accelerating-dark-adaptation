@@ -1,13 +1,13 @@
-import { show, hide } from "./utils.js";
-import { map } from "./map.js";
-import { markers, getMarkersWithVideo } from "./markers.js";
+import { show, hide } from './utils.js';
+import { map } from './map.js';
+import { markers, getMarkersWithVideo } from './markers.js';
 
-const setDefaultValue = value => (value.length > 0 ? value : "~");
+const setDefaultValue = value => (value.length > 0 ? value : '~');
 
-const renderPopupLocation = (lieu, latitude, longitude) => `<div><div class='popup-quartier'><h2>${lieu}</h2></div><div class='popup-location'><p>${longitude}&nbsp;&nbsp;${latitude}</p></div></div>`;
+const renderPopupLocation = (lieu, keyword) => `<div><div class='popup-quartier'><h2>${lieu}</h2></div><div class='popup-location keyword'><p>${keyword}</p></div></div>`;
 
 const renderPopupLabels = () =>
-  "<div class='popup-left'><p class='popup-lux hidden'>Lux</p><p class='popup-nqm hidden'>Sky quality</p></div>";
+  '<div class=\'popup-left\'><p class=\'popup-lux hidden\'>Lux</p><p class=\'popup-nqm hidden\'>Sky quality</p></div>';
 
 const renderPopupValues = (lux, nqm) =>
   `<div class='popup-right'><p class='popup-lux hidden'>${setDefaultValue(lux)}</p>
@@ -17,58 +17,55 @@ const renderPopupDescription = (description) => `<div class='popup-description'>
 
 const renderPopUpContent = ({
   id,
-  lieu = "",
-  lux = "",
-  nqm = "",
-  latitude = 0,
-  longitude = 0,
-  description = ""
+  lieu = '',
+  lux = '',
+  nqm = '',
+  keyword = '',
+  description = ''
 }) => {
-  latitude = latitude.toFixed(5);
-  longitude = longitude.toFixed(5);
-
   return (
     `<div class='popup-wrapper' data-id='${id}'>` +
-    renderPopupLocation(lieu, latitude, longitude) +
+    renderPopupLocation(lieu, keyword) +
     renderPopupDescription(description) +
-    "<div class='popup-data'>" +
+    '<div class=\'popup-data\'>' +
     renderPopupLabels() +
     renderPopupValues(lux, nqm) +
-    "</div></div>"
+    '</div></div>'
   );
 };
 
 const showExtendedPopups = () => {
   show('.popup-description');
-}
+  show('.popup-location');
+};
 
 const showShortPopups = () => {
   hide('.popup-description');
-}
+};
 
 const showMarkerPopups = () => {
   hide('.popup-description');
-}
+};
 
 const initPopups = () => {
   map.addLayer({
-    "id": "markers",
-    "type": "circle",
-    "source": {
-      "type": "geojson",
-      "data": markers
+    'id': 'markers',
+    'type': 'circle',
+    'source': {
+      'type': 'geojson',
+      'data': markers
     },
     'paint': {
       'circle-radius': 1,
-      'circle-color': "#000"
+      'circle-color': '#000'
     }
   });
 
-  let features = getMarkersWithVideo()
+  let features = getMarkersWithVideo();
   features.forEach(feature => addMarkerPopupToMap(feature));
   hide('.mapboxgl-popup');
   showShortPopups();
-}
+};
 
 const addMarkerPopupToMap = (feature) => {
   let popup = new mapboxgl.Popup({
@@ -84,16 +81,13 @@ const addMarkerPopupToMap = (feature) => {
     .setLngLat(coordinates)
     .addTo(map)
     .setHTML(renderPopUpContent({
-      ...feature.properties,
-      latitude: coordinates[1],
-      longitude: coordinates[0]
+      ...feature.properties
     }));
 };
 
 const updatePopupContent = () => {
-  const zoom = map.getZoom()
+  const zoom = map.getZoom();
   const pitch = map.getPitch();
-
   if (pitch > 60 || zoom <= 12) {
     showMarkerPopups();
   } else {
@@ -103,6 +97,6 @@ const updatePopupContent = () => {
       showShortPopups();
     }
   }
-}
+};
 
-export { initPopups, updatePopupContent }
+export { initPopups, updatePopupContent };

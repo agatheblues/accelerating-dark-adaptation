@@ -10,6 +10,7 @@ const markers = {
         'nqm': '17.97',
         'name': 'video2',
         'video_id': '339823554',
+        'keyword': 'Sly glow',
         'description': 'The brightness of the nightly sky glow over major cities has been shown to depend strongly on cloud cover. In natural environments, clouds make the night sky darker by blocking the light of the stars but around urban centers, this effect is completely reversed.'
       },
       'geometry': {
@@ -29,6 +30,7 @@ const markers = {
         'nqm': '14.94',
         'name': 'video3',
         'video_id': '339823879',
+        'keyword': 'Dark Highways',
         'description': 'The Netherlands have 3200 km of \'Rijksweg\', of which about 20% is lit. In Belgium, 90% was lit before 2011. That year, Flanders decided to switch off the lights on all highways in their region, except at intersections and ramps.'
       },
       'geometry': {
@@ -48,6 +50,7 @@ const markers = {
         'nqm': '19.14',
         'name': 'video4',
         'video_id': '339823349',
+        'keyword': 'Autumn leaves',
         'description': 'By altering the day/night perception of plants and artificially increasing the length of the day, it can inhibit the dormancy of plants that allows them to survive the harsh winter. It can also promote leaf expansion and thus increase plant exposure to air pollution and water stress. In urban areas, it is possible to observe a delay in leaf fall for trees located near streetlights.'
       },
       'geometry': {
@@ -67,6 +70,7 @@ const markers = {
         'nqm': '14.01',
         'name': 'video5',
         'video_id': '339824104',
+        'keyword': 'Night vision',
         'description': 'A night-vision device (NVD)  is an optoelectronic device that allows images be produced in levels of light approaching total darkness. The image may be a conversion to visible light of both visible light and near-infrared, while by convention detection of thermal infrared is denoted thermal imaging. '
       },
       'geometry': {
@@ -86,6 +90,7 @@ const markers = {
         'nqm': '17.72',
         'name': 'video6',
         'video_id': '339823043',
+        'keyword': 'Urban biodiversity',
         'description': '\'In the Netherlands about 20 percent of the land surface is city or infrastructure roads railroads. So if you don\'t take that into account you\'ll lose a lot of surface for life and that has consequences in the long run.\' Marco Roos'
       },
       'geometry': {
@@ -105,6 +110,7 @@ const markers = {
         'nqm': '10.35',
         'name': 'video7',
         'video_id': '341809259',
+        'keyword': 'Red',
         'description': 'The color red has the least effect on night vision. By adapting to the dark and then using a flashlight with a red lens, we can see well enough to walk among objects including sleeping pets and people without waking them up. '
       },
       'geometry': {
@@ -124,6 +130,7 @@ const markers = {
         'nqm': '16.35',
         'name': 'video8',
         'video_id': '341808781',
+        'keyword': 'Celestial navigation',
         'description': 'The positions of the stars helped guide Polynesians through their voyaging routes. Stars, as opposed to planets, are able to hold a steady position year-round. The only thing that changes is the time the star rises, which changes seasonally. Polynesian voyagers would follow stars near the horizon whether they were just rising or about to set and they used these specific stars for guidance.'
       },
       'geometry': {
@@ -143,6 +150,7 @@ const markers = {
         'nqm': '16.03',
         'name': 'video9',
         'video_id': '341570714',
+        'keyword': 'Fear',
         'description': 'There is a widely held belief that the improvement of street lighting will reduce bothcrime and fear of crime. Improved visibility, it is thought, will increase thepossibilities for identification and apprehension of criminals and hence deter theperpetration of criminal acts, while also providing reassurance to those people whoare fearful for personal safety in public places. '
       },
       'geometry': {
@@ -162,6 +170,7 @@ const markers = {
         'nqm': '15.81',
         'name': 'video10',
         'video_id': '',
+        'keyword': '',
         'description': ''
       },
       'geometry': {
@@ -181,6 +190,7 @@ const markers = {
         'nqm': '18.48',
         'name': 'video11',
         'video_id': '339824164',
+        'keyword': 'Night life',
         'description': 'Nocturnal animals sleep during the day and are active at night. Light pollution radically alters their nighttime environment by turning night into day. According to research scientist Christopher Kyba, for nocturnal animals, \'the introduction of artificial light probably represents the most drastic change human beings have made to their environment.\''
       },
       'geometry': {
@@ -200,6 +210,7 @@ const markers = {
         'nqm': '17',
         'name': 'video12',
         'video_id': '',
+        'keyword': '',
         'description': ''
       },
       'geometry': {
@@ -219,6 +230,7 @@ const markers = {
         'nqm': '16.16',
         'name': 'video13',
         'video_id': '341573379',
+        'keyword': 'Shields',
         'description': 'Shielding light fixtures matters especially for astronomy and fans of the starry sky. Many street lamps project light upwards, but they can be shielded to prevent light from being emitted above the horizontal plane of the fixture. Lights with narrower angles further restrict the light glow above the city. '
       },
       'geometry': {
@@ -238,6 +250,7 @@ const markers = {
         'nqm': '16.12',
         'name': 'video14',
         'video_id': '341580053',
+        'keyword': 'Security',
         'description': 'There is no clear scientific evidence that increased outdoor lighting deters crimes. It may make us feel safer, but has not been shown to make us safer. The truth is bad outdoor lighting can decrease safety by making victims and property easier to see. A Chicago Alley Lighting Project showed a correlation between brightly lit alleyways and increased crime.'
       },
       'geometry': {
@@ -257,6 +270,7 @@ const markers = {
         'nqm': '15.54',
         'name': 'video15',
         'video_id': '341571530',
+        'keyword': 'The Enlightment',
         'description': 'The Enlightenment, also known as the Age of Reason, was a philosophical movement that took place primarily in Europe and, later, in North America, during the late 17thand early 18thcentury. Its participants thought they were illuminating human intellect and culture after the \'dark\' Middle Ages.'
       },
       'geometry': {
@@ -276,6 +290,7 @@ const markers = {
         'nqm': '16.17',
         'name': 'video16',
         'video_id': '339823512',
+        'keyword': 'Human right',
         'description': 'In April 2007 members of UNESCO, the International Astronomical Union, and the Instituto Astrofísico de Canaries signed the \'Declaration in Defence of the Night Sky and the Right to Starlight\', called the \'La Palma Declaration\' for short. It proclaims, \'An unpolluted night sky should be considered an inalienable right of humankind.\''
       },
       'geometry': {
@@ -295,6 +310,7 @@ const markers = {
         'nqm': '16.31',
         'name': 'video17',
         'video_id': '339823173',
+        'keyword': 'Anonymity',
         'description': 'Darkness, a place for anonymity.'
       },
       'geometry': {
@@ -314,6 +330,7 @@ const markers = {
         'nqm': '13.11',
         'name': 'video18',
         'video_id': '339823292',
+        'keyword': 'Control',
         'description': 'By clever use of lighting violence could be contained. In the famous pub street Stratumseind in Eindhoven experiments have been taken place with coloured light, ferocity, and light patterns. The expectation is that emotions will be affected, self-awareness will be increased or the attention of aggressive visitors will be shifted.'
       },
       'geometry': {
@@ -333,6 +350,7 @@ const markers = {
         'nqm': '14.81',
         'name': 'video19',
         'video_id': '339824071',
+        'keyword': 'Astronomy',
         'description': 'The science of astronomy is the world\'s oldest science, originating in a time when men first observed, wondered about and counted the stars with the naked eye. However, as our towns and cities have grown and light pollution has increased, we can no longer see most of the visible stars and other astronomical objects. '
       },
       'geometry': {
@@ -352,6 +370,7 @@ const markers = {
         'nqm': '16.82',
         'name': 'video20',
         'video_id': '',
+        'keyword': '',
         'description': ''
       },
       'geometry': {
@@ -371,6 +390,7 @@ const markers = {
         'nqm': '14.64',
         'name': 'video21',
         'video_id': '339823273',
+        'keyword': 'Orientation',
         'description': 'While celestial navigation seems to no longer be needed with the arrival of satellite navigation, it was used extensively in aviation until the 1960s, and marine navigation until quite recently. However; many national maritime authorities still require deck officers to show knowledge of celestial navigation in examinations.'
       },
       'geometry': {
@@ -390,6 +410,7 @@ const markers = {
         'nqm': '16.71',
         'name': 'video22',
         'video_id': '341808937',
+        'keyword': 'Crime',
         'description': 'bad outdoor lighting can decrease safety by making victims and property easier to see. A Chicago Alley Lighting Project showed a correlation between brightly lit alleyways and increased crime.'
       },
       'geometry': {
@@ -409,6 +430,7 @@ const markers = {
         'nqm': '13.76',
         'name': 'video23',
         'video_id': '341809140',
+        'keyword': 'Heritage',
         'description': 'The earliest written records were astronomical observations. In 1600 B.C. Babylonians recorded the positions of stars and planets and the times of eclipses. The history of astronomy since then has been a complex interplay of philosophy and science. Cultures throughout time have observed celestial events, constantly learning about the complexities of the universe.'
       },
       'geometry': {
@@ -428,6 +450,7 @@ const markers = {
         'nqm': '19.38',
         'name': 'video24',
         'video_id': '339823602',
+        'keyword': 'Colours',
         'description': 'Though the negative impacts of poorly shielded fixtures and overlighting are widely understood, the impact of lighting color is not widely known, and most lighting codes do not address lamp types. But recent research shows that white lighting (such as LED) has a dramatically greater impact on sky glow than yellow or amber light sources.'
       },
       'geometry': {
@@ -447,6 +470,7 @@ const markers = {
         'nqm': '15.13',
         'name': 'video26',
         'video_id': '339824214',
+        'keyword': 'Clean City',
         'description': 'In 2006, São Paulo, Brazil, decided to ban all forms of outdoor advertising under the \'Clean City Law.\' 15,000 billboards came down shortly thereafter. According to a 2011 survey, 70 percent of city residents find the ban beneficial. '
       },
       'geometry': {
@@ -466,6 +490,7 @@ const markers = {
         'nqm': '12.66',
         'name': 'video27',
         'video_id': '339823235',
+        'keyword': 'Cycles',
         'description': 'The 24-hour day/night cycle, known as the circadian clock, affects physiologic processes in almost all organisms, including humans. These processes include brain wave patterns, hormone production (melatonin), cell regulation and other biologic activities. '
       },
       'geometry': {
@@ -485,6 +510,7 @@ const markers = {
         'nqm': '19.21',
         'name': 'video28',
         'video_id': '',
+        'keyword': '',
         'description': 'The color red has the least effect on night vision. By adapting to the dark and then using a flashlight with a red lens, we can see well enough to walk among objects including sleeping pets and people without waking them up. '
       },
       'geometry': {
@@ -504,6 +530,7 @@ const markers = {
         'nqm': '16.26',
         'name': 'video29',
         'video_id': '339823777',
+        'keyword': 'Telescopes',
         'description': 'Compared to space-based telescopes, ground-based telescopes have much to offer. They can be built bigger and for less money. They\'re easier to maintain and upgrade. Practically speaking, they also have a much lower risk of being damaged by one of the 500,000 pieces of debris flying through the cosmos\'or space junk.'
       },
       'geometry': {
@@ -523,6 +550,7 @@ const markers = {
         'nqm': '17.56',
         'name': 'video30',
         'video_id': '339823447',
+        'keyword': 'Polaris',
         'description': 'Our current Pole Star, Polaris, lies nearly in a direct line with the Earth\'s rotational axis \'above\' the North Pole. It stands almost motionless in the sky, and all the stars of the northern sky appear to rotate around it. Therefore, it makes an excellent fixed point from which to draw measurements for celestial navigation and for astrometry.'
       },
       'geometry': {
@@ -542,6 +570,7 @@ const markers = {
         'nqm': '17.95',
         'name': 'video31',
         'video_id': '',
+        'keyword': '',
         'description': ''
       },
       'geometry': {
@@ -561,6 +590,7 @@ const markers = {
         'nqm': '17.62',
         'name': 'video32',
         'video_id': '339824141',
+        'keyword': 'predators',
         'description': 'There may be an evolutionary explanation for why people feel less safe at night – we can\'t see as well, and this may have exposed our ancestors to greater threat from predators. Nowadays, it\'s not so much the prospect of being eaten by a savage beast that concerns would-be pedestrians, but the fear of being mugged or victimised. '
       },
       'geometry': {
@@ -580,6 +610,7 @@ const markers = {
         'nqm': '17.78',
         'name': 'video33',
         'video_id': '339823972',
+        'keyword': 'Metaphors',
         'description': 'In medieval times, christian religion ruled over the western society and darkness was a common metaphor and symbol of the royaume of Satan. It was seen as the representation of the evil, sin, death. In darkness lured all the bad creatures, monsters, witches, ghosts and bad spirits.'
       },
       'geometry': {
@@ -599,6 +630,7 @@ const markers = {
         'nqm': '11.31',
         'name': 'video36',
         'video_id': '339823923',
+        'keyword': 'Dark network',
         'description': 'What we call green network is a network in the urban space composed by natural and semi-natural areas, whose connections are modelled according to specific variables, in order to deliver an equal distribution of public services for enhancing the quality of life as well as a wide range of ecosystem services\'.'
       },
       'geometry': {
@@ -618,6 +650,7 @@ const markers = {
         'nqm': '13.24',
         'name': 'video38',
         'video_id': '339823663',
+        'keyword': 'Behaviour',
         'description': 'Neuroscience researchers have been investigating the influence of light intensity and color temperature on human\'s mood and behaviour. Scientists have shown that blue light stimulate and strengthen connections between brain areas involved in the process of emotions and language. Blue light improves alertness and mental performance and seems to primarily affect the mind, including mood. '
       },
       'geometry': {
@@ -637,6 +670,7 @@ const markers = {
         'nqm': '13.32',
         'name': 'video40',
         'video_id': '339824042',
+        'keyword': 'Billboards',
         'description': 'Billboard lighting is a major source of light pollution and a new twist on billboards will to \'ratchet up\' the light output. Digital electronic billboards, or as they are known in the industry, Commercial Electronic Variable Message Signs, are harmful to human health, visually distracting for drivers and deleterious for community esthetics. '
       },
       'geometry': {
@@ -656,6 +690,7 @@ const markers = {
         'nqm': '17.74',
         'name': 'video41',
         'video_id': '',
+        'keyword': '',
         'description': ''
       },
       'geometry': {
@@ -675,6 +710,7 @@ const markers = {
         'nqm': '18.31',
         'name': 'video42',
         'video_id': '339823739',
+        'keyword': 'Dark Sky Park',
         'description': 'In 2016, the International Dark Sky Association (IDA) certified Lauwersmeer National Park in Friesland and Groningen, Netherlands, as only the second International Dark Sky Park in Holland. The designation for Lauwersmeer was special because the Netherlands is one of the countries with most light pollution in the world.'
       },
       'geometry': {
@@ -694,6 +730,7 @@ const markers = {
         'nqm': '14.58',
         'name': 'video43',
         'video_id': '',
+        'keyword': '',
         'description': ''
       },
       'geometry': {
@@ -713,6 +750,7 @@ const markers = {
         'nqm': '15.17',
         'name': '',
         'video_id': '',
+        'keyword': '',
         'description': ''
       },
       'geometry': {
@@ -732,6 +770,7 @@ const markers = {
         'nqm': '13.15',
         'name': '',
         'video_id': '',
+        'keyword': '',
         'description': ''
       },
       'geometry': {
@@ -751,6 +790,7 @@ const markers = {
         'nqm': '14.19',
         'name': 'video46',
         'video_id': '341808352',
+        'keyword': 'Milkyway',
         'description': 'The Netherlands have 3200 km of \'Rijksweg\', of which about 20% is lit. In Belgium, 90% was lit before 2011. That year, Flanders decided to switch off the lights on all highways in their region, except at intersections and ramps.'
       },
       'geometry': {
@@ -797,6 +837,22 @@ const interviewees = {
     {
       'name': 'Kamiel Spoelstra',
       'job': 'Ecologist at The Netherlands Institute of Ecology'
+    }
+  ],
+  '7': [
+    {
+      'name': 'Lothar Schwarte',
+      'job': 'Helicopter Doctor at the VU Hospital'
+    },
+    {
+      'name': 'Kamiel Spoelstra',
+      'job': 'Ecologist at The Netherlands Institute of Ecology'
+    }
+  ],
+  '8': [
+    {
+      'name': 'Diedrick Wilderman',
+      'job': 'Former navigational officer and curator at the National Maritime Museum'
     }
   ],
   '9': [
@@ -858,6 +914,22 @@ const interviewees = {
     }
   ],
   '21': [
+    {
+      'name': 'Diedrick Wilderman',
+      'job': 'Former navigational officer and curator at the National Maritime Museum'
+    }
+  ],
+  '22': [
+    {
+      'name': 'Lothar Schwarte',
+      'job': 'Helicopter Doctor at the VU Hospital'
+    },
+    {
+      'name': 'Marco Roos ',
+      'job': 'Doctor in Urban Biology'
+    }
+  ],
+  '23': [
     {
       'name': 'Diedrick Wilderman',
       'job': 'Former navigational officer and curator at the National Maritime Museum'
@@ -936,6 +1008,16 @@ const interviewees = {
     }
   ],
   '42': [
+    {
+      'name': 'Esther Hanko',
+      'job': 'Outreach coordinator at the Anton Institute of Astronomy'
+    }
+  ],
+  '46': [
+    {
+      'name': 'Marco Roos ',
+      'job': 'Doctor in Urban Biology'
+    },
     {
       'name': 'Esther Hanko',
       'job': 'Outreach coordinator at the Anton Institute of Astronomy'
