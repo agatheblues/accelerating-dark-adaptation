@@ -41,7 +41,7 @@ const animateMap = () => {
   }, 750);
 };
 
-const startExploreMode = () => {
+const startMapExploreMode = () => {
   showMap();
   loadAudio('explore');
   initMap({ ...mapConfig.default, ...mapConfig.intro.position, ...mapConfig.intro.limits }, 'explore');
@@ -218,4 +218,4 @@ const mapConfig = {
 
 let map;
 
-export { mapConfig, showMap, handleDimmedMap, dimMap, undimMap, moveTo, rotateCamera, map, startExploreMode, startMapStoryMode };
+export { mapConfig, showMap, handleDimmedMap, dimMap, undimMap, moveTo, rotateCamera, map, startMapExploreMode, startMapStoryMode };

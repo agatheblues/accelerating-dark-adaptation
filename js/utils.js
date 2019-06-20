@@ -10,28 +10,6 @@ const hideDropdownMenus = (e) => {
   }
 };
 
-const handleStartClick = (callback, mode) => {
-  hide('.intro-wrapper');
-
-  if (mode === 'explore') {
-    showExploreInstructions();
-  } else {
-    showStoryInstructions();
-  }
-
-  $('#start').on('click', () => {
-    hide('#intro-modal');
-    if (mode === 'explore') hide('.instruction-container');
-
-    $('#intro').addClass('opacity-off');
-    setTimeout(() => {
-      hide('#intro');
-      $('#intro').removeClass('opacity-off');
-    }, 3000);
-    callback();
-  });
-};
-
 const showMapInstructions = () => {
   show('#intro-modal');
   show('.instruction-container');
@@ -46,20 +24,6 @@ const hideMapInstructions = () => {
   hide('#close-modal');
 }
 
-const showStoryInstructions = () => {
-  show('#intro-modal');
-  hide('.instruction-container');
-  show('#start');
-  hide('#close-modal');
-};
-
-const showExploreInstructions = () => {
-  show('#intro-modal');
-  show('.instruction-container');
-  show('#start');
-  hide('#close-modal');
-};
-
 const showAbout = () => {
   hide('#footer');
   hide('#map');
@@ -72,4 +36,4 @@ const hideAbout = () => {
   hide('#about-container');
 }
 
-export { show, hide, easing, hideDropdownMenus, handleStartClick, showMapInstructions, hideMapInstructions, showAbout, hideAbout };
+export { show, hide, easing, hideDropdownMenus, showMapInstructions, hideMapInstructions, showAbout, hideAbout };

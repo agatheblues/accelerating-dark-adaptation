@@ -1,21 +1,20 @@
 import {
-  startExploreMode,
   handleDimmedMap
 } from './map.js';
 import { handleDataLayer, handleNavigateClick } from './footer.js';
 import { toggleAudio } from './audio.js';
 import { resizeVideo } from './video.js';
-import { hideDropdownMenus, showMapInstructions, hideMapInstructions, handleStartClick, showAbout, hideAbout } from './utils.js';
-import { startStory } from './story.js';
+import { hideDropdownMenus, showMapInstructions, hideMapInstructions, showAbout, hideAbout } from './utils.js';
+import { startStory, startExplore } from './story.js';
 
 window.STATUS = 'down';
 
 /* Events */
 $('.mapboxgl-canvas').css('cursor', 'crosshair');
 
-$('#btn-explore').on('click', e => handleStartClick(startExploreMode, 'explore'));
+$('#btn-explore').on('click', e => startExplore());
 
-$('#btn-story').on('click', e => handleStartClick(startStory, 'story'));
+$('#btn-story').on('click', e => startStory());
 
 $(window).resize(() => resizeVideo());
 
