@@ -154,7 +154,7 @@ const mapConfig = {
     position: {
       zoom: 13,
       center: [4.892891, 52.370088],
-      bearing: 0,
+      bearing: 30,
       pitch: 0
     },
     limits: {
@@ -167,7 +167,7 @@ const mapConfig = {
       center: [4.892891, 52.370088],
       zoom: 13,
       pitch: 80,
-      bearing: 0,
+      bearing: 30,
     },
     limits: {
       maxZoom: 16,
