@@ -1,4 +1,4 @@
-import { map } from "./map.js";
+import { map } from './map.js';
 
 // parameters to ensure the model is georeferenced correctly on the map
 var modelOrigin = [4.892891, 52.370088];
@@ -34,8 +34,8 @@ const customLayer = {
     directionalLight2.position.set(4.892891, 52.370088, 0).normalize();
     this.scene.add(directionalLight2);
 
-    var loader = new THREE.TextureLoader(),
-      texture = loader.load("../data/galaxy_starfield.png");
+    var loader = new THREE.TextureLoader();
+    var texture = loader.load('../data/galaxy_starfield.png');
     var geometry = new THREE.SphereGeometry(15000, 8, 80, 0, 2 * Math.PI, -0.5 * Math.PI, 0.5 * Math.PI);
     var material = new THREE.MeshPhongMaterial({
       color: 0xffffff,
@@ -79,4 +79,4 @@ const customLayer = {
 const hideDome = () => map.setLayoutProperty('dome', 'visibility', 'none');
 const showDome = () => map.setLayoutProperty('dome', 'visibility', 'visible');
 
-export { customLayer, hideDome, showDome }
+export { customLayer, hideDome, showDome };

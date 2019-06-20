@@ -437,21 +437,100 @@
       <button id="btn-explore" class="btn">Explore</button>
     </div>
   </div>
+
+  <div id='slides'>
+    <div id="intro-slide" class="slide-container hidden">
+      <p class='slide slide-0'>This is a 15 minutes interactive documentary.</p>
+      <p class='slide slide-1'>Unpolluted dark skies are seen as something out there, beyond spaces of human activity.
+      </p>
+      <p class='slide slide-2'>But why is it that darkness in the natural space is perceived as beautiful and
+        mysterious, while darkness in the urban space as scary and dangerous?</p>
+      <p class='slide slide-3'>The Netherlands is one of the most light polluted country in Europe.</p>
+      <p class='slide slide-4'>The municipality of Amsterdam has 241745 street lights </p>
+    </div>
+
+    <div id="author-slide" class="slide-container hidden">
+      <p class='slide slide-0'>Created by Manon Féval,</p>
+      <p class='slide slide-1'>in collaboration with Agathe Lenclen.</p>
+    </div>
+
+    <div id="text-slide-7" class="slide-container hidden">
+      <p class='slide slide-0'>In a study for Science Advances, an international team of researchers created the most
+        detailed atlas yet of light pollution around the world.</p>
+      <p class='slide slide-1'>They estimate that the Milky Way is no longer visible to fully one-third of humanity —
+        including 60 percent of Europeans and 80 percent of Americans.
+      </p>
+    </div>
+
+    <div id="text-slide-10" class="slide-container hidden">
+      <p class='slide slide-0'>In the Netherlands about 20 percent of the land surface is city or infrastructure roads
+        railroads.</p>
+      <p class='slide slide-1'> So if you we don’t take that into account we will lose a lot of surface for life and
+        that
+        will have consequences in the long run.
+      </p>
+    </div>
+
+    <div id="text-slide-13" class="slide-container hidden">
+      <p class='slide slide-0'>According to research scientist Christopher Kyba, for nocturnal animals, "the
+        introduction
+        of artificial light probably represents the most drastic change human beings have made to their environment."
+      </p>
+    </div>
+
+    <div id="text-slide-18" class="slide-container hidden">
+      <p class='slide slide-0'>Billboard lighting is a major source of light pollution. They are believed to be harmful
+        to
+        human health, visually distracting for drivers and deleterious for community esthetics.</p>
+    </div>
+
+    <div id="text-slide-21" class="slide-container hidden">
+      <p class='slide slide-0'>There is no clear scientific evidence that increased outdoor lighting deters crimes. It
+        may
+        make us feel safer, but has not been shown to make us safer.</p>
+      <p class='slide slide-1'>The truth is bad outdoor lighting can decrease safety by making victims and property
+        easier to see.</p>
+      <p class='slide slide-2'>A Chicago Alley Lighting Project showed a correlation between brightly lit alleyways and
+        increased crime.</p>
+    </div>
+
+    <div id="text-slide-25" class="slide-container hidden">
+      <p class='slide slide-0'>The impact of lighting color is not widely known, and most lighting codes do not address
+        lamp types.</p>
+      <p class='slide slide-1'>But recent research shows that white lighting (such as LED) has a dramatically greater
+        impact on sky glow than yellow or amber light sources.</p>
+    </div>
+
+    <div id="text-slide-30" class="slide-container hidden">
+      <p class='slide slide-0'>While being able to watch the stars might not be a necessity for our daily life, the
+        night
+        sky is still important for astronomy.</p>
+      <p class='slide slide-1'>Compared to space-based telescopes, ground-based telescopes have much to offer.</p>
+      <p class='slide slide-2'>They can be built bigger and for less money. They are easier to maintain and upgrade.</p>
+      <p class='slide slide-3'>Practically speaking, they also have a much lower risk of being damaged by space junk.
+      </p>
+    </div>
+
+    <div id="text-slide-33" class="slide-container hidden">
+      <p class='slide slide-0'>The science of astronomy is the world's oldest science, originating in a time when men
+        first observed, wondered about and counted the stars with the naked eye.</p>
+      <p class='slide slide-1'>However, as our towns and cities have grown and light pollution has increased, we can no
+        longer see most of the visible stars and other astronomical objects.</p>
+    </div>
+
+    <div id="text-slide-37" class="slide-container hidden">
+      <p class='slide slide-0'>In April 2007, members of UNESCO, the International Astronomical Union, and the Instituto
+        Astrofísico de Canaries signed the "Declaration in Defence of the Night Sky and the Right to Starlight", called
+        the "La Palma Declaration" for short.</p>
+      <p class='slide slide-1'>It proclaims, "An unpolluted night sky should be considered an inalienable right of
+        humankind."</p>
+    </div>
+  </div>
   <div id="video-wrapper" class="video-container hidden">
     <div id="player" class="video-player"></div>
   </div>
 
   <div id="map" class="container invisible">
-  </div>
-  <div id='loader' class='loader-container hidden'>
-    <div class='loader-wrapper'>
-      <div class="lds-ring">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-    </div>
   </div>
   <div id="close-video" class="hidden">
     <span class="close"></span>
@@ -555,20 +634,18 @@
           </div>
         </div>
       </div>
-      <div class="footer-wrapper footer-wrapper--column">
+      <div class="footer-wrapper footer-audio">
         <button id='toggle-audio' class="btn" data-status="play">&#10074;&#10074;</button>
       </div>
     </div>
   </footer>
 
   <div id="audio-wrapper invisible">
-    <audio id="audio-player" loop>
-      <source
-        src="https://res.cloudinary.com/dkylbarf5/video/upload/v1560431059/audio/Interview-poeticSkyView_v02_vds1r0.mp3"
-        type="audio/mpeg" />
+    <audio id="audio-player" volume="1">
+      <source type="audio/mpeg" />
       Your browser does not support the audio tag.
     </audio>
-    <audio id="audio-player-background" autoplay loop volume="0.05">
+    <audio id="audio-player-background" autoplay loop volume="0.15">
       <source src="https://res.cloudinary.com/dkylbarf5/video/upload/v1560427484/audio/Earth_backgroundSound_okngw8.mp3"
         type="audio/mpeg" />
       Your browser does not support the audio tag.

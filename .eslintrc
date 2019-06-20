@@ -1,18 +1,26 @@
 {
   "env": {
     "browser": true,
-    "es6": true
+    "es6": true,
+    "jquery": true
   },
   "extends": "standard",
   "parserOptions": {
-    "ecmaVersion": 6,
+    "ecmaVersion": 9,
     "sourceType": "module"
+  },
+  "globals": {
+    "mapboxgl": true,
+    "THREE": true
   },
   "plugins": [],
   "rules": {
     "indent": [
       2,
-      2
+      2,
+      {
+        "SwitchCase": 1
+      }
     ],
     "quotes": [
       "error",

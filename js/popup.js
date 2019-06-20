@@ -67,7 +67,7 @@ const initPopups = () => {
   let features = getMarkersWithVideo()
   features.forEach(feature => addMarkerPopupToMap(feature));
   hide('.mapboxgl-popup');
-  updatePopupContent();
+  showShortPopups();
 }
 
 const addMarkerPopupToMap = (feature) => {
