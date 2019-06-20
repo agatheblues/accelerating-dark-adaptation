@@ -48,14 +48,9 @@ const playVideoStory = (id, video_id, nextState) => {
 
 const playSlide = (callback) => (videoId, nextState) => {
   playSlideVideo(videoId);
-
   videoStoryPlayer.off('ended');
   videoStoryPlayer.on('ended', () => callback(nextState));
 };
-
-const playSlideExplore = playSlide(playExplore);
-
-const playSlideStory = playSlide(playStory);
 
 const skipExplore = () => {
   playExplore(7);
@@ -82,6 +77,8 @@ const moveToVideo = (id, nextState) => {
 
 
 const playExplore = (state) => {
+  const playSlideExplore = playSlide(playExplore);
+
   console.log('explore', state);
   switch (state) {
     case 0:
@@ -116,27 +113,28 @@ const playExplore = (state) => {
 
 const playStory = (state) => {
   console.log('story', state);
+  const playSlideStory = playSlide(playStory);
   switch (state) {
     case 0:
       hide('#intro');
       initStoryFooter();
       loadAudio('story');
-      playSlide(343487535, 1); // Put sound on
+      playSlideStory(343487535, 1); // Put sound on
       break;
     case 1:
-      playSlide(343487595, 2); // Created by
+      playSlideStory(343487595, 2); // Created by
       break;
     case 2:
-      playSlide(343487624, 3); // IN collab with
+      playSlideStory(343487624, 3); // IN collab with
       break;
     case 3:
-      playSlide(343487647, 4); // Unpolluted
+      playSlideStory(343487647, 4); // Unpolluted
       break;
     case 4:
-      playSlide(343487689, 5); // but why
+      playSlideStory(343487689, 5); // but why
       break;
     case 5:
-      playSlide(343487731, 6); // while
+      playSlideStory(343487731, 6); // while
       break;
     case 6:
       stopSlideStory();
@@ -144,10 +142,10 @@ const playStory = (state) => {
       break;
     case 7:
       stopVideoStory();
-      playSlide(343487775, 8); // in the netherlands
+      playSlideStory(343487775, 8); // in the netherlands
       break;
     case 8:
-      playSlide(343487816, 9); // ams street lights
+      playSlideStory(343487816, 9); // ams street lights
       break;
     case 9:
       stopSlideStory();
@@ -164,10 +162,10 @@ const playStory = (state) => {
       break;
     case 12:
       stopVideoStory();
-      playSlide(343487864, 13); // in a study
+      playSlideStory(343487864, 13); // in a study
       break;
     case 13:
-      playSlide(343487899, 14); // they estimate
+      playSlideStory(343487899, 14); // they estimate
       break;
     case 14:
       stopSlideStory();
@@ -179,10 +177,10 @@ const playStory = (state) => {
       break;
     case 16:
       stopVideoStory();
-      playSlide(343487930, 17); // in the nl
+      playSlideStory(343487930, 17); // in the nl
       break;
     case 17:
-      playSlide(343487967, 18); // if we dont
+      playSlideStory(343487967, 18); // if we dont
       break;
     case 18:
       stopSlideStory();
@@ -194,7 +192,7 @@ const playStory = (state) => {
       break;
     case 20:
       stopVideoStory();
-      playSlide(343488001, 21); // for nocturnal
+      playSlideStory(343488001, 21); // for nocturnal
       break;
     case 21:
       stopSlideStory();
@@ -218,10 +216,10 @@ const playStory = (state) => {
       break;
     case 25:
       stopVideoStory();
-      playSlide(343488032, 26); // billboard
+      playSlideStory(343488032, 26); // billboard
       break;
     case 26:
-      playSlide(343488060, 27); // they are believed to be harmful
+      playSlideStory(343488060, 27); // they are believed to be harmful
       break;
     case 27:
       stopSlideStory();
@@ -234,10 +232,10 @@ const playStory = (state) => {
       break;
     case 29:
       stopVideoStory();
-      playSlide(343488095, 30); // there is no clear
+      playSlideStory(343488095, 30); // there is no clear
       break;
     case 30:
-      playSlide(343488111, 31); // it makes
+      playSlideStory(343488111, 31); // it makes
       break;
     case 31:
       stopSlideStory();
@@ -254,10 +252,10 @@ const playStory = (state) => {
       break;
     case 34:
       stopVideoStory();
-      playSlide(343488111, 35); //the impact of
+      playSlideStory(343488111, 35); // the impact of
       break;
     case 35:
-      playSlide(343488142, 36); //recent research
+      playSlideStory(343488142, 36); // recent research
       break;
     case 36:
       stopSlideStory();
@@ -281,10 +279,10 @@ const playStory = (state) => {
       break;
     case 40:
       stopVideoStory();
-      playSlide(343488142, 41); // the impact of
+      playSlideStory(343488142, 41); // the impact of
       break;
     case 41:
-      playSlide(343488167, 42); // recent research
+      playSlideStory(343488167, 42); // recent research
       break;
     case 42:
       stopSlideStory();
@@ -297,10 +295,10 @@ const playStory = (state) => {
       break;
     case 44:
       stopVideoStory();
-      playSlide(343488196, 45); // compared to
+      playSlideStory(343488196, 45); // compared to
       break;
     case 45:
-      playSlide(343488218, 46); //they can be
+      playSlideStory(343488218, 46); // they can be
       break;
     case 46:
       stopSlideStory();
@@ -320,13 +318,13 @@ const playStory = (state) => {
       break;
     case 49:
       stopVideoStory();
-      playSlide(343488249, 50); // oldest science
+      playSlideStory(343488249, 50); // oldest science
       break;
     case 50:
-      playSlide(343510277, 51); // it originated
+      playSlideStory(343510277, 51); // it originated
       break;
     case 51:
-      playSlide(343488311, 52); //however
+      playSlideStory(343488311, 52); // however
       break;
     case 52:
       stopSlideStory();
@@ -335,13 +333,13 @@ const playStory = (state) => {
       setTimeout(() => playStory(53), 4000);
       break;
     case 53:
-      playSlide(343488334, 54); // in april
+      playSlideStory(343488334, 54); // in april
       break;
     case 54:
-      playSlide(343488374, 54); // signed
+      playSlideStory(343488374, 54); // signed
       break;
     case 55:
-      playSlide(343488413, 56);
+      playSlideStory(343488413, 56);
       break;
     case 56:
       stopSlideStory();
@@ -352,7 +350,7 @@ const playStory = (state) => {
       break;
     case 58:
       stopVideoStory();
-      playSlide(343494886, 59);
+      playSlideStory(343494886, 59);
       break;
     case 60:
       stopVideoStory();

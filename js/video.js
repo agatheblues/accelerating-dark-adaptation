@@ -14,7 +14,7 @@ const initPlayer = (id) => {
 };
 
 const initStoryPlayer = (id) => {
-  videoStoryPlayer = new Player('slide-player', { autoplay: true, muted: true, controls: true, id: id });
+  videoStoryPlayer = new Player('slide-player', { autoplay: true, muted: true, controls: false, id: id });
   videoStoryPlayer.setVolume(0);
 };
 
