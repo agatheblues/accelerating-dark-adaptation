@@ -36,6 +36,7 @@ const animateMap = () => {
 
     map.once('moveend', () => {
       show('#footer');
+      updatePopupContent();
       show('.mapboxgl-popup');
     });
   }, 750);

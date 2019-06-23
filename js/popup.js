@@ -4,7 +4,7 @@ import { markers, getMarkersWithVideo } from './markers.js';
 
 const setDefaultValue = value => (value.length > 0 ? value : '~');
 
-const renderPopupLocation = (lieu, keyword) => `<div><div class='popup-quartier'><h2>${lieu}</h2></div><div class='popup-location keyword'><p>${keyword}</p></div></div>`;
+const renderPopupLocation = (lieu, keyword) => `<div><div class='popup-quartier'><h2>${lieu}</h2></div><div class='popup-keyword keyword'><p>${keyword}</p></div></div>`;
 
 const renderPopupLabels = () =>
   '<div class=\'popup-left\'><p class=\'popup-lux hidden\'>Lux</p><p class=\'popup-nqm hidden\'>Sky quality</p></div>';
@@ -36,15 +36,24 @@ const renderPopUpContent = ({
 
 const showExtendedPopups = () => {
   show('.popup-description');
-  show('.popup-location');
+  show('.popup-quartier');
+  $('.mapboxgl-popup').css('min-width', '120px');
+  $('.popup-keyword').removeClass('centered');
 };
 
 const showShortPopups = () => {
   hide('.popup-description');
+  show('.popup-quartier');
+  $('.mapboxgl-popup').css('min-width', '120px');
+  $('.popup-keyword').removeClass('centered');
 };
+
 
 const showMarkerPopups = () => {
   hide('.popup-description');
+  hide('.popup-quartier');
+  $('.mapboxgl-popup').css('min-width', 'unset');
+  $('.popup-keyword').addClass('centered');
 };
 
 const initPopups = () => {
@@ -88,7 +97,7 @@ const addMarkerPopupToMap = (feature) => {
 const updatePopupContent = () => {
   const zoom = map.getZoom();
   const pitch = map.getPitch();
-  if (pitch > 60 || zoom <= 12) {
+  if (pitch > 60 || zoom <= 13) {
     showMarkerPopups();
   } else {
     if (zoom >= 15) {

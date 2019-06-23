@@ -30,7 +30,7 @@ const toggleLux = () => {
   show('.footer-tooltip');
   show('#lux-definition');
   hide('#nqm-definition');
-  hide('.popup-location');
+  hide('.popup-keyword');
 
   map.setPaintProperty('public_lighting', 'circle-radius', [
     'interpolate',
@@ -51,7 +51,7 @@ const toggleNqm = () => {
   hide('#lux-definition');
   show('#nqm-definition');
   show('.footer-tooltip');
-  hide('.popup-location');
+  hide('.popup-keyword');
 
   map.setPaintProperty('public_lighting', 'circle-radius', [
     'interpolate',
@@ -84,7 +84,7 @@ const toggleNormal = () => {
   hide('#lux-definition');
   hide('#nqm-definition');
   hide('.footer-tooltip');
-  show('.popup-location');
+  show('.popup-keyword');
 
   map.setPaintProperty('public_lighting', 'circle-radius', [
     'interpolate',

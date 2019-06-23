@@ -480,7 +480,6 @@ a.not-underlined {
   pointer-events: auto;
   font: 13px 'Roboto', sans-serif;
   color: #fff;
-  min-width: 120px;
 }
 
 .mapboxgl-popup-content {
@@ -524,7 +523,7 @@ a.not-underlined {
   line-height: 15px;
 }
 
-.popup-location {
+.popup-keyword {
   line-height: 16px;
 }
 
@@ -645,6 +644,10 @@ a.not-underlined {
 .help-container {
   display: flex;
   flex-direction: column;
+}
+
+.centered {
+  text-align: center;
 }
 
 table, th, td {
