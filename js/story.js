@@ -57,6 +57,7 @@ const skipExplore = () => {
 };
 
 const stopSlideStory = () => {
+  videoStoryPlayer.off('ended');
   videoStoryPlayer.unload();
   hide('#slide-video-wrapper');
 }
