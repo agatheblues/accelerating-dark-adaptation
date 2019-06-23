@@ -582,7 +582,7 @@ a.not-underlined {
 .control-container {
   display: flex;
   padding: 0;
-  margin: 0 0 0 20px;
+  margin: 0;
 }
 
 .control-container.hidden {
@@ -641,9 +641,14 @@ a.not-underlined {
   right: 10px;
 }
 
-.help-container {
+.navigate-container {
   display: flex;
   flex-direction: column;
+  margin-right: 5px;
+}
+
+.navigate-container--last {
+  margin-right: 20px;
 }
 
 .centered {

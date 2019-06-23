@@ -33,12 +33,6 @@ $('#data-menu-list').on('click', (e) => {
   $('.dropdown-menu').hide(300);
 });
 
-$('#navigate-menu-list').on('click', (e) => {
-  handleDimmedMap();
-  handleNavigateClick(e.target);
-  $('.dropdown-menu').hide(300);
-});
-
 $('#help').on('click', (e) => showMapInstructions());
 $('#close-modal').on('click', (e) => hideMapInstructions());
 
@@ -46,5 +40,15 @@ $('#about').on('click', (e) => showAbout());
 $('#close-about').on('click', (e) => hideAbout());
 
 $('#skip').on('click', (e) => skipExplore());
+
+$('#top').on('click', (e) => {
+  handleDimmedMap();
+  handleNavigateClick('top');
+});
+
+$('#rotating').on('click', (e) => {
+  handleDimmedMap();
+  handleNavigateClick('rotating');
+});
 
 $(document).on('click', (e) => hideDropdownMenus(e));

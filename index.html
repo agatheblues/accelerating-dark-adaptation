@@ -503,27 +503,21 @@
               <li>
                 <p id='about'>About the project</p>
               </li>
+              <li>
+                <p id='help'>Help</p>
+              </li>
             </ul>
           </nav>
         </div>
-        <div class="help-container">
-          <button id='help' class='btn'>&nbsp;&#x3f;&nbsp;</button>
-        </div>
         <div class="control-details-wrapper">
           <div class='control-container'>
-            <div class='dropdown-container'>
-              <button id='navigate-menu' class='btn dropdown-trigger'>Map View</button>
-              <nav class="dropdown-wrapper">
-                <ul id='navigate-menu-list' class="dropdown-menu">
-                  <li>
-                    <p data-action='top'>Top</p>
-                  </li>
-                  <li>
-                    <p data-action='rotating'>Rotating</p>
-                  </li>
-                </ul>
-              </nav>
+            <div class="navigate-container">
+              <button id='top' class='btn'>2D</button>
             </div>
+            <div class="navigate-container navigate-container--last">
+              <button id='rotating' class='btn'>3D</button>
+            </div>
+
             <div class='dropdown-container'>
               <button id='data-menu' class='btn dropdown-trigger'>Visualise Data</button>
               <nav class="dropdown-wrapper">

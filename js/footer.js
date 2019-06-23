@@ -6,9 +6,7 @@ import {
 import { playAudio } from './audio.js';
 import { show, hide } from './utils.js';
 
-const handleNavigateClick = (target) => {
-  // Move to different areas on map
-  const action = $(target).data('action');
+const handleNavigateClick = (action) => {
   switch (action) {
     case 'rotating':
       moveTo(mapConfig.side_rotate.position, mapConfig.side_rotate.limits);
