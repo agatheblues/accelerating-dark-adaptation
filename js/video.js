@@ -54,7 +54,7 @@ const closeVideo = () => {
   hide('#close-video');
   hide('.footer-tooltip');
   hide('#video-details');
-  $('#toggle-audio').prop('disabled', false);
+  $('#toggle-audio').show();
   showDome();
 };
 

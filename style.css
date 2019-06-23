@@ -2,14 +2,14 @@
 @font-face {
   font-family: "BPDots";
   src: url("fonts/BPDots.eot");
-  src: 
+  src:
   url("fonts/BPDots.woff") format("woff"),
   url("fonts/BPDots.otf") format("opentype"),
   url("fonts/BPDots.ttf") format("truetype"),
   url("fonts/BPDots.svg#BPdots") format("svg");
   }
-  
-  
+
+
 
 @-webkit-keyframes BUTTON-INTRO-ANIMATION {
 from   { opacity: 0; }
@@ -361,9 +361,9 @@ a.not-underlined {
 }
 
 .close--modal {
-    right: 24px;
-    top: 24px;
-    opacity: 1;
+  right: 24px;
+  top: 24px;
+  opacity: 1;
 }
 
 .close--about {
@@ -372,6 +372,18 @@ a.not-underlined {
   right: 0;
 }
 
+.close--video {
+  position: relative;
+  top: 0;
+  right: 0;
+  width: 38px;
+  height: 38px;
+  opacity: 1;
+}
+.close.close--video:hover:before,
+.close.close--video:hover:after {
+  background-color: #000;
+}
 
 .close:hover {
   opacity: 1;
@@ -380,9 +392,9 @@ a.not-underlined {
 .close:before,
 .close:after {
   position: absolute;
-  left: 15px;
+  left: calc(50% - 1px);
   content: " ";
-  top: 6px;
+  top: calc(50% - 10px);
   height: 20px;
   width: 2px;
   background-color: #fff;
@@ -541,7 +553,7 @@ a.not-underlined {
   margin-right: 20px;
 }
 
-.dropdown-wrapper p, 
+.dropdown-wrapper p,
 .dropdown-wrapper a {
   display: block;
   cursor: pointer;
@@ -574,7 +586,7 @@ a.not-underlined {
   display: none;
   background-color: #010101;
   border: 1px #fff dotted;
-  list-style: none;  
+  list-style: none;
   padding: 0;
   margin: 0;
 }
@@ -710,7 +722,7 @@ th:last-child, td:last-child {
     float: right;
     width: 65%;
   }
-  
+
 }
 
 /* desktops ----------- */
@@ -720,7 +732,7 @@ th:last-child, td:last-child {
     margin: 5% auto 5% auto;
     padding-left: 15%;
   }
-  
+
   .control-container {
     margin: 0 50px 0 50px;
   }
