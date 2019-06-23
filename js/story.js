@@ -66,7 +66,7 @@ const moveToVideo = (id, nextState) => {
   const [longitude, latitude] = marker.geometry.coordinates;
 
   const position = {
-    zoom: 15,
+    zoom: 16,
     center: [longitude, latitude],
     bearing: 0,
     pitch: 0
@@ -141,8 +141,8 @@ const playStory = (state) => {
       playVideoStory('33', 339823972, 7); // Achterlaan Tour
       break;
     case 7:
-      stopVideoStory();
       playSlideStory(343487775, 8); // in the netherlands
+      stopVideoStory();
       break;
     case 8:
       playSlideStory(343487816, 9); // ams street lights
@@ -151,7 +151,7 @@ const playStory = (state) => {
       stopSlideStory();
       startMapStoryMode();
       $('#audio-player')[0].onended = () => playStory(10);
-      $('#audio-player')[0].play();
+      setTimeout(() => $('#audio-player')[0].play(), 3000);
       break;
     case 10:
       window.STATUS = 'down';
