@@ -266,6 +266,7 @@ a.not-underlined {
 .btn {
   display: inline-block;
   overflow: hidden;
+  position: relative;
 
   padding: 10px 12px;
 
@@ -321,6 +322,46 @@ a.not-underlined {
 .btn:disabled {
   opacity: 0.5;
   cursor: default;
+}
+
+.btn--play,
+.btn--pause {
+  height: 38px;
+  width: 38px;
+}
+.btn--pause:before,
+.btn--pause:after {
+  background-color: #fff;
+  content: " ";
+  position: absolute;
+  height: 12px;
+  width: 5px;
+  top: calc(50% - 6px);
+}
+.btn--pause:before {
+  left: calc(50% + 1px);
+}
+.btn--pause:after {
+  left: calc(50% - 6px);
+}
+.btn--play:after {
+  content: " ";
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-left: 12px solid #fff;
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: calc(50% - 7px);
+  left: calc(50% - 6px);
+}
+
+.btn--pause:hover:before,
+.btn--pause:hover:after {
+  background-color: #000;
+}
+.btn--play:hover:after {
+  border-left-color: #000;
 }
 
 

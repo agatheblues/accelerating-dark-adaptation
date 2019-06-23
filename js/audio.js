@@ -1,14 +1,16 @@
 
 const playAudio = () => {
   $('#toggle-audio').show();
-  $('#toggle-audio').html('\u275A\u275A');
+  $('#toggle-audio').addClass('btn--pause');
+  $('#toggle-audio').removeClass('btn--play');
   $('#toggle-audio').data('status', 'play');
   $('#audio-player')[0].play();
 };
 
 const pauseAudio = (disabled) => {
   $('#toggle-audio').toggle(!disabled);
-  $('#toggle-audio').html('\u25B6');
+  $('#toggle-audio').addClass('btn--play');
+  $('#toggle-audio').removeClass('btn--pause');
   $('#toggle-audio').data('status', 'pause');
   $('#audio-player')[0].pause();
 };
