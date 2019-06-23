@@ -607,11 +607,17 @@
       <span class="close close--about"></span>
     </div>
     <section class="section-container">
+      <div class="section-title">
+        <h4 class='about-link active' data-action='about-general'>General</h4>
+        <h4 class='about-link' data-action='about-locations'>Places</h4>
+        <h4 class='about-link' data-action='about-speakers'>Speakers</h4>
+        <h4 class='about-link' data-action='about-credits'>Credits</h4>
+        <h4 class='about-link' data-action='about-references'>Sources</h4>
+        <h4 class='about-link' data-action='about-data'>Code</h4>
+      </div>
+
       <div class="section-wrapper">
-        <div class="section-title">
-          <h4>General Info</h4>
-        </div>
-        <div class="section-content">
+        <div id='about-general' class="section-content">
           <p>Unpolluted dark skies are seen as something <span class="italic">out there</span>, beyond spaces of human
             activity which seem to be
             defined by artificial light. Why is it that darkness in the natural space is perceived as beautiful and
@@ -629,15 +635,9 @@
               there</span>, but also <span class="italic">in here</span>.
           </p>
         </div>
-      </div>
-    </section>
 
-    <section class="section-container">
-      <div class="section-wrapper">
-        <div class="section-title">
-          <h4>Locations</h4>
-        </div>
-        <div class="section-content">
+
+        <div id='about-locations' class="section-content hidden">
           <p>Building up the data set that was used for the project, the aim was to cover the municipality of Amsterdam
             measuring at least one point in each neighbourhood. The idea was to find places of either very high light
             intensity or very dark surroundings. So each of the locations that were chosen were expecting to be
@@ -938,15 +938,7 @@
             </tbody>
           </table>
         </div>
-      </div>
-    </section>
-
-    <section class="section-container">
-      <div class="section-wrapper">
-        <div class="section-title">
-          <h4>Speakers</h4>
-        </div>
-        <div class="section-content">
+        <div id='about-speakers' class="section-content hidden">
           <table>
             <col style="width:30%">
             <col style="width:70%">
@@ -978,14 +970,8 @@
             </tbody>
           </table>
         </div>
-      </div>
-    </section>
-    <section class="section-container">
-      <div class="section-wrapper">
-        <div class="section-title">
-          <h4>Credits</h4>
-        </div>
-        <div class="section-content">
+
+        <div id='about-credits' class="section-content hidden">
           <h5>Creator</h5>
           <ul class="section-list">
             <li>Manon Féval</li>
@@ -1011,31 +997,16 @@
             <li>Pierre Van de Velde</li>
           </ul>
         </div>
-      </div>
-    </section>
-
-    <section class="section-container">
-      <div class="section-wrapper">
-        <div class="section-title">
-          <h4>Data & Technology</h4>
-        </div>
-        <div class="section-content">
+        <div id='about-data' class="section-content hidden">
           <p>This website is built with Mapbox GL JS, JQuery and Three.js. The project codebase is open-source on <a
               href="https://github.com/agatheblues/accelerating-dark-adaptation">Github</a>.</p>
           <p>The dotted map represents the geolocation of each street light in the municipality of Amsterdam. The public
             lighting dataset, <a
-              href="https://www.dataplatform.nl/dataset/9394fe5f-c0ee-4907-a39e-88b79106642d">Openbare verlichting in de
+              href="https://www.dataplatform.nl/dataset/9394fe5f-c0ee-4907-a39e-88b79106642d">Openbare
+              verlichting in de
               gemeente Amsterdam</a>, is available on the municipality's data portal.</p>
         </div>
-      </div>
-    </section>
-
-    <section class="section-container">
-      <div class="section-wrapper">
-        <div class="section-title">
-          <h4>References</h4>
-        </div>
-        <div class="section-content section-content--source">
+        <div id='about-references' class="section-content section-content--source hidden">
           <p>Inside Science. (2017, January 30). Ramin Skibba. Astronomers Encourage Cities to Shield Outdoor Lighting.
             Retrieved 11 June 2019, from
             <a

@@ -119,9 +119,14 @@ h4 {
   padding: 0;
   font-family: 'BPDots', 'Roboto', sans-serif;
   text-transform: uppercase;
-  line-height: 35px;
-  font-size: 25px;
+  line-height: 68px;
+  font-size: 70px;
   font-weight: 100;
+  cursor: pointer;
+}
+
+h4.active {
+  font-weight: 600;
 }
 
 h5 {
@@ -615,11 +620,6 @@ a.not-underlined {
 
 .section-container {
   clear: both;
-  padding: 40px 0;
-}
-
-.section-title {
-  margin: 20px 0;
 }
 
 .section-list {
@@ -686,9 +686,15 @@ th:last-child, td:last-child {
 
 /* iPads (portrait and landscape) ----------- */
 @media only screen and (min-width : 768px) {
+  h4 {
+    line-height: 85px;
+    font-size: 90px;
+  }
+
   .content-container {
-    width: 70%;
-    padding-left: 10%;
+    width: 97%;
+    padding: 0 1% 0 1%;
+    margin: 40px auto 40px auto;
   }
 
   .control-details-wrapper {
@@ -704,26 +710,29 @@ th:last-child, td:last-child {
   }
 
   .section-title {
-    width: 30%;
+    width: 55%;
     float: left;
   }
-  .section-content {
+  .section-wrapper {
     float: right;
-    width: 65%;
+    width: 40%;
   }
   
 }
 
 /* desktops ----------- */
-@media only screen and (min-width : 1080px) {
-  .content-container {
-    width: 50%;
-    margin: 5% auto 5% auto;
-    padding-left: 15%;
+@media only screen and (min-width : 1080px) {  
+  h4 {
+    line-height: 105px;
+    font-size: 120px;
   }
-  
+
   .control-container {
     margin: 0 50px 0 50px;
+  }
+
+  .navigate-container--last {
+    margin-right: 70px;
   }
 
   .modal-box {
@@ -734,7 +743,7 @@ th:last-child, td:last-child {
 /* desktops ----------- */
 @media only screen and (min-width : 1280px) {
   .content-container {
-    width: 800px;
-    padding-left: 20%;
+    width: 1000px;
+    padding-left: 15%;
   }
 }

@@ -4,7 +4,7 @@ import {
 import { handleDataLayer, handleNavigateClick } from './footer.js';
 import { toggleAudio } from './audio.js';
 import { resizeVideo } from './video.js';
-import { hideDropdownMenus, showMapInstructions, hideMapInstructions, showAbout, hideAbout } from './utils.js';
+import { hideDropdownMenus, showMapInstructions, hideMapInstructions, showAbout, hideAbout, showAboutSection } from './utils.js';
 import { startStory, startExplore, skipExplore } from './story.js';
 
 window.STATUS = 'down';
@@ -50,5 +50,7 @@ $('#rotating').on('click', (e) => {
   handleDimmedMap();
   handleNavigateClick('rotating');
 });
+
+$('.about-link').on('click', (e) => showAboutSection(e));
 
 $(document).on('click', (e) => hideDropdownMenus(e));
