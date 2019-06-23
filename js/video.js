@@ -6,7 +6,7 @@ import Player from '@vimeo/player';
 let videoPlayer, videoStoryPlayer;
 
 const initPlayer = (id) => {
-  videoPlayer = new Player('player', { autoplay: true, controls: true, id: id });
+  videoPlayer = new Player('player', { autoplay: true, controls: false, id: id });
   videoPlayer.setVolume(1);
   videoPlayer.on('ended', function () {
     closeVideo();
