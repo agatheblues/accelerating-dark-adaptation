@@ -3,30 +3,30 @@ import { showDome } from './dome.js';
 import { show, hide } from './utils.js';
 import Player from '@vimeo/player';
 
-let videoPlayer, videoStoryPlayer;
+let videoPlayer, videoSlidePlayer;
 
 const initPlayer = (id) => {
-  videoPlayer = new Player('player', { autoplay: true, controls: false, id: id });
+  videoPlayer = new Player('player', { autoplay: true, controls: true, id: id, autopause: false });
   videoPlayer.setVolume(1);
   videoPlayer.on('ended', function () {
     closeVideo();
   });
 };
 
-const initStoryPlayer = (id) => {
-  videoStoryPlayer = new Player('slide-player', { autoplay: true, muted: true, controls: false, id: id });
-  videoStoryPlayer.setVolume(0);
+const initSlidePlayer = (id) => {
+  videoSlidePlayer = new Player('slide-player', { autoplay: true, muted: true, controls: true, id: id, autopause: false });
+  videoSlidePlayer.setVolume(0);
 };
 
 const playSlideVideo = id => {
-  if (!videoStoryPlayer) {
-    initStoryPlayer(id);
+  if (!videoSlidePlayer) {
+    initSlidePlayer(id);
     show('#slide-video-wrapper');
-    videoStoryPlayer.play();
+    videoSlidePlayer.play();
   } else {
-    videoStoryPlayer.loadVideo(id).then(() => {
+    videoSlidePlayer.loadVideo(id).then(() => {
+      videoSlidePlayer.play();
       show('#slide-video-wrapper');
-      videoStoryPlayer.play();
     });
   }
 };
@@ -35,10 +35,12 @@ const playSlideVideo = id => {
 const playLargeVideo = id => {
   if (!videoPlayer) {
     initPlayer(id);
+    show('#video-wrapper');
     videoPlayer.play();
   } else {
     videoPlayer.loadVideo(id).then(() => {
       videoPlayer.play();
+      show('#video-wrapper');
     });
   }
 };
@@ -62,4 +64,4 @@ const resizeVideo = () => {
   $('#video-wrapper').css({ 'height': `calc(100vh - ${$('#footer').innerHeight() * window.devicePixelRatio}px)` });
 };
 
-export { playLargeVideo, stopLargeVideo, closeVideo, resizeVideo, videoPlayer, videoStoryPlayer, playSlideVideo };
+export { playLargeVideo, stopLargeVideo, closeVideo, resizeVideo, videoPlayer, videoSlidePlayer, playSlideVideo, initPlayer };

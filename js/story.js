@@ -1,5 +1,5 @@
 import { show, hide } from './utils.js';
-import { playLargeVideo, resizeVideo, videoPlayer, playSlideVideo, videoStoryPlayer } from './video.js';
+import { playLargeVideo, resizeVideo, videoPlayer, playSlideVideo, videoSlidePlayer } from './video.js';
 import { showVideoDetails, toggleLux, toggleNormal, toggleNqm } from './footer.js';
 import { findMarkerById, findIntervieweesById } from './markers.js';
 import { startMapStoryMode, moveTo, mapConfig, dimMap, undimMap, startMapExploreMode } from './map.js';
@@ -23,9 +23,9 @@ const initExploreFooter = () => {
 };
 
 const stopVideoStory = () => {
+  hide('#video-wrapper');
   show('#map');
   hide('.footer');
-  hide('#video-wrapper');
   hide('.footer-tooltip');
   hide('#video-details');
 };
@@ -33,10 +33,8 @@ const stopVideoStory = () => {
 const playVideoStory = (id, video_id, nextState) => {
   const marker = findMarkerById(id);
   const interviewees = findIntervieweesById(id);
-
   dimMap();
   show('.footer');
-  show('#video-wrapper');
   show('.footer-tooltip');
   show('#video-details');
   hide('#nqm-definition');
@@ -46,28 +44,38 @@ const playVideoStory = (id, video_id, nextState) => {
   resizeVideo();
 
   videoPlayer.off('ended');
-  videoPlayer.on('ended', () => playStory(nextState));
+  videoPlayer.on('ended', () => {
+    videoPlayer.pause();
+    videoPlayer.unload().then(() => {
+      stopVideoStory();
+      playStory(nextState);
+    });
+  });
 };
 
 const playSlide = (callback) => (videoId, nextState) => {
   playSlideVideo(videoId);
-  videoStoryPlayer.off('ended');
+  videoSlidePlayer.off('ended');
 
   if (!nextState) return;
-  videoStoryPlayer.on('ended', () => callback(nextState));
+  videoSlidePlayer.on('ended', () => {
+    videoSlidePlayer.pause();
+    videoSlidePlayer.unload().then(() => {
+      hide('#slide-video-wrapper');
+      callback(nextState);
+    })
+  });
 };
 
 const skipExplore = () => {
   SKIP_EXPLORE = true;
-  stopSlideStory();
+  videoSlidePlayer.pause();
+  videoSlidePlayer.unload().then(() => {
+    hide('#slide-video-wrapper');
+  });
   initExploreFooter();
   startMapExploreMode();
 };
-
-const stopSlideStory = () => {
-  videoStoryPlayer.unload();
-  hide('#slide-video-wrapper');
-}
 
 const moveToVideo = (id, nextState) => {
   const marker = findMarkerById(id);
@@ -92,30 +100,14 @@ const playExplore = (state) => {
   if (SKIP_EXPLORE) return;
 
   const playSlideExplore = playSlide(playExplore);
-  console.log('explore', state);
+
   switch (state) {
     case 0:
       hide('#intro');
       initStoryFooter();
-      playSlideExplore(343488449, 2);
+      playSlideExplore(344155271, 1);
       break;
-    case 2:
-      playSlideExplore(343488480, 3);
-      break;
-    case 3:
-      playSlideExplore(343488509, 4);
-      break;
-    case 4:
-      playSlideExplore(343488540, 5);
-      break;
-    case 5:
-      playSlideExplore(343488570, 6);
-      break;
-    case 6:
-      playSlideExplore(343488795, 7);
-      break;
-    case 7:
-      stopSlideStory();
+    case 1:
       initExploreFooter();
       startMapExploreMode();
       break;
@@ -135,15 +127,12 @@ const playStory = (state) => {
       playSlideStory(343763165, 1); // this is a 15 mn
       break;
     case 1:
-      stopSlideStory();
       playVideoStory('33', 339823972, 2); // Achterlaan Tour
       break;
     case 2:
       playSlideStory(343763185, 3); // in the netherlands
-      stopVideoStory();
       break;
     case 3:
-      stopSlideStory();
       startMapStoryMode();
       $('#audio-player')[0].onended = () => playStory(4);
       setTimeout(() => $('#audio-player')[0].play(), 3000);
@@ -156,11 +145,9 @@ const playStory = (state) => {
       playVideoStory('42', 339823739, 6); // Museumplein
       break;
     case 6:
-      stopVideoStory();
       playSlideStory(343763201, 7); // in a study
       break;
     case 7:
-      stopSlideStory();
       undimMap();
       moveToVideo('6', 8);
       break;
@@ -168,11 +155,9 @@ const playStory = (state) => {
       playVideoStory('6', 339823043, 9); // Amstel River
       break;
     case 9:
-      stopVideoStory();
       playSlideStory(343763217, 10); // in the nl
       break;
     case 10:
-      stopSlideStory();
       undimMap();
       moveToVideo('36', 11);
       break;
@@ -185,12 +170,10 @@ const playStory = (state) => {
       playVideoStory('36', 339823923, 12); // North IJ Hallen
       break;
     case 12:
-      stopVideoStory();
       dimMap();
       playSlideStory(343763230, 13); // for nocturnal
       break;
     case 13:
-      stopSlideStory();
       undimMap();
       showDome();
       show('.footer');
@@ -205,11 +188,9 @@ const playStory = (state) => {
       playVideoStory('26', 339824214, 16); // Ziggodome
       break;
     case 16:
-      stopVideoStory();
       playSlideStory(343763239, 17); // billboard
       break;
     case 17:
-      stopSlideStory();
       undimMap();
       show('#lux-definition');
       moveToVideo('32', 18);
@@ -218,11 +199,9 @@ const playStory = (state) => {
       playVideoStory('32', 339824141, 19); // Uithammerdijk
       break;
     case 19:
-      stopVideoStory();
       playSlideStory(343763246, 20); // there is no clear
       break;
     case 20:
-      stopSlideStory();
       undimMap();
       show('#lux-definition');
       setTimeout(() => playStory(21), 2000);
@@ -240,12 +219,10 @@ const playStory = (state) => {
       playVideoStory('18', 339823292, 23); // De dam
       break;
     case 23:
-      stopVideoStory();
       dimMap();
       playSlideStory(343763255, 24); // the impact of
       break;
     case 24:
-      stopSlideStory();
       undimMap();
       showDome();
       show('.footer');
@@ -260,11 +237,9 @@ const playStory = (state) => {
       playVideoStory('24', 339823602, 27); // Blijburg
       break;
     case 27:
-      stopVideoStory();
       playSlideStory(343763263, 28); // the impact of
       break;
     case 28:
-      stopSlideStory();
       undimMap();
       toggleNormal();
       moveToVideo('19', 29);
@@ -279,22 +254,18 @@ const playStory = (state) => {
       playVideoStory('19', 339824071, 30); // Skinny Bridge
       break;
     case 30:
-      stopVideoStory();
       dimMap();
       playSlideStory(343763267, 31); // compared to
       break;
     case 31:
-      stopSlideStory();
       undimMap();
       showDome();
       playVideoStory('23', 341809140, 32); // IJ KNSM
       break;
     case 32:
-      stopVideoStory();
       playSlideStory(343763272, 33); // oldest science
       break;
     case 33:
-      stopSlideStory();
       undimMap();
       moveToVideo('15', 34);
       break;
@@ -302,7 +273,6 @@ const playStory = (state) => {
       playVideoStory('15', 343763285, 35); // Houthavens
       break;
     case 35:
-      stopVideoStory();
       hide('#video-wrapper');
       show('#intro');
       show('.intro-actions');
