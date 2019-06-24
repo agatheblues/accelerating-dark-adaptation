@@ -130,7 +130,7 @@ h4.active {
 }
 
 h5 {
-  margin: 20px 0 0 0;
+  margin: 20px 0 20px 0;
   padding: 0;
   font-size: 13px;
   text-transform: uppercase;
@@ -233,13 +233,18 @@ a.not-underlined {
   height: 100%;
   width: 100vw;
   z-index: 55;
+  overflow: hidden;
   max-width: initial;
   align-items: center;
   justify-content: center;
   display: flex;
   color: rgb(255, 255, 255);
-  /* background: rgba(0, 0, 0, 0.7); */
   animation: 0.5s ease 0s 1 normal none running appear;
+}
+
+.modal-overlay--full {
+  background: #000;
+  display: block;
 }
 
 .modal-overlay.hidden {
@@ -659,8 +664,12 @@ a.not-underlined {
 
 /* About */
 .content-container {
-  width: 90%;
-  margin: 5% auto 10% auto;
+  width: 100%;
+  margin: 0;
+  overflow-y: scroll;
+  padding-right: 20px;
+  height: 100%;
+  margin: 20px;
 }
 
 .content-container p {
@@ -668,8 +677,10 @@ a.not-underlined {
 }
 
 .close-container {
-  padding-bottom: 5%;
   position: relative;
+  width: 35px;
+  margin-top: 10px;
+  margin-left: 20px;
 }
 
 .close-container a:hover {
@@ -677,7 +688,7 @@ a.not-underlined {
 }
 
 .section-container {
-  clear: both;
+  width: 90%;
 }
 
 .section-list {
@@ -692,6 +703,10 @@ a.not-underlined {
 
 #about-references p {
   margin: 20px 0;
+}
+
+#about-references p:first-child {
+  margin: 0 0 20px 0;
 }
 
 .section-content--source p {
@@ -741,24 +756,44 @@ th:last-child, td:last-child {
 
 /* Medium mobile*/
 @media only screen and (min-width : 481px) {
-  .content-container {
-    width: 80%;
+  h4 {
+    line-height: 35px;
+    font-size: 30px;
+  }
+
+  .section-container {
+    display: flex;
+    justify-content: flex-start;
+    width: 97%;
+    padding: 0 1% 0 1%;
+    height: 100vh;
+  }
+
+  .section-wrapper {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    margin: 10px 20px 20px 20px;
+  }
+
+  .section-content {
+    width: 100%;
+    height: 100%;
+    padding-right: 20px;
   }
 }
 
 /* iPads (portrait and landscape) ----------- */
 @media only screen and (min-width : 768px) {
   h4 {
-    line-height: 85px;
-    font-size: 90px;
+    line-height: 65px;
+    font-size: 60px;
   }
 
   .content-container {
-    width: 97%;
-    padding: 0 1% 0 1%;
-    margin: 40px auto 40px auto;
+    margin: 0;
   }
-
+  
   .control-details-wrapper {
     display: flex;
   }
@@ -770,16 +805,15 @@ th:last-child, td:last-child {
   .modal-box {
     width: 80%;
   }
+ 
+}
 
-  .section-title {
-    width: 55%;
-    float: left;
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-width : 768px) {
+  h4 {
+    line-height: 85px;
+    font-size: 90px;
   }
-  .section-wrapper {
-    float: right;
-    width: 40%;
-  }
-
 }
 
 /* desktops ----------- */
@@ -788,12 +822,17 @@ th:last-child, td:last-child {
     line-height: 105px;
     font-size: 120px;
   }
+
+  .section-container {
+    width: 85%;
+  }
+
 }
 
 /* desktops ----------- */
 @media only screen and (min-width : 1280px) {
-  .content-container {
-    width: 1000px;
-    padding-left: 15%;
+  .section-container {
+    width: 1100px;
   }
+
 }

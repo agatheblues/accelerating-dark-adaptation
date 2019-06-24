@@ -25,14 +25,10 @@ const hideMapInstructions = () => {
 }
 
 const showAbout = () => {
-  hide('#footer');
-  hide('#map');
   show('#about-container');
 }
 
 const hideAbout = () => {
-  show('#footer');
-  show('#map');
   hide('#about-container');
 }
 
