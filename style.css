@@ -791,14 +791,6 @@ th:last-child, td:last-child {
     font-size: 120px;
   }
 
-  .control-container {
-    margin: 0 50px 0 50px;
-  }
-
-  .navigate-container--last {
-    margin-right: 70px;
-  }
-
   .modal-box {
     width: 600px;
   }
