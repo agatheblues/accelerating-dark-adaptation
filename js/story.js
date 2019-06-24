@@ -1,9 +1,12 @@
 import { show, hide } from './utils.js';
-import { playLargeVideo, resizeVideo, videoPlayer, playSlideVideo, videoStoryPlayer } from './video.js';
+import { playLargeVideo, resizeVideo, videoPlayer, playSlideVideo, videoSlidePlayer } from './video.js';
 import { showVideoDetails, toggleLux, toggleNormal, toggleNqm } from './footer.js';
 import { findMarkerById, findIntervieweesById } from './markers.js';
 import { startMapStoryMode, moveTo, mapConfig, dimMap, undimMap, startMapExploreMode } from './map.js';
 import { loadAudio } from './audio.js';
+import { hideDome, showDome } from './dome.js';
+
+let SKIP_EXPLORE = false;
 
 const initStoryFooter = () => {
   hide('.dropdown-container');
@@ -20,9 +23,9 @@ const initExploreFooter = () => {
 };
 
 const stopVideoStory = () => {
+  hide('#video-wrapper');
   show('#map');
   hide('.footer');
-  hide('#video-wrapper');
   hide('.footer-tooltip');
   hide('#video-details');
 };
@@ -30,10 +33,8 @@ const stopVideoStory = () => {
 const playVideoStory = (id, video_id, nextState) => {
   const marker = findMarkerById(id);
   const interviewees = findIntervieweesById(id);
-
   dimMap();
   show('.footer');
-  show('#video-wrapper');
   show('.footer-tooltip');
   show('#video-details');
   hide('#nqm-definition');
@@ -43,24 +44,38 @@ const playVideoStory = (id, video_id, nextState) => {
   resizeVideo();
 
   videoPlayer.off('ended');
-  videoPlayer.on('ended', () => playStory(nextState));
+  videoPlayer.on('ended', () => {
+    videoPlayer.pause();
+    videoPlayer.unload().then(() => {
+      stopVideoStory();
+      playStory(nextState);
+    });
+  });
 };
 
 const playSlide = (callback) => (videoId, nextState) => {
   playSlideVideo(videoId);
-  videoStoryPlayer.off('ended');
-  videoStoryPlayer.on('ended', () => callback(nextState));
+  videoSlidePlayer.off('ended');
+
+  if (!nextState) return;
+  videoSlidePlayer.on('ended', () => {
+    videoSlidePlayer.pause();
+    videoSlidePlayer.unload().then(() => {
+      hide('#slide-video-wrapper');
+      callback(nextState);
+    })
+  });
 };
 
 const skipExplore = () => {
-  playExplore(7);
+  SKIP_EXPLORE = true;
+  videoSlidePlayer.pause();
+  videoSlidePlayer.unload().then(() => {
+    hide('#slide-video-wrapper');
+  });
+  initExploreFooter();
+  startMapExploreMode();
 };
-
-const stopSlideStory = () => {
-  videoStoryPlayer.off('ended');
-  videoStoryPlayer.unload();
-  hide('#slide-video-wrapper');
-}
 
 const moveToVideo = (id, nextState) => {
   const marker = findMarkerById(id);
@@ -73,37 +88,26 @@ const moveToVideo = (id, nextState) => {
     pitch: 0
   };
 
+  if (!nextState) {
+    moveTo(position, null);
+    return;
+  }
   moveTo(position, null, () => playStory(nextState));
 };
 
 
 const playExplore = (state) => {
+  if (SKIP_EXPLORE) return;
+
   const playSlideExplore = playSlide(playExplore);
 
-  console.log('explore', state);
   switch (state) {
     case 0:
       hide('#intro');
       initStoryFooter();
-      playSlideExplore(343488449, 2);
+      playSlideExplore(344155271, 1);
       break;
-    case 2:
-      playSlideExplore(343488480, 3);
-      break;
-    case 3:
-      playSlideExplore(343488509, 4);
-      break;
-    case 4:
-      playSlideExplore(343488540, 5);
-      break;
-    case 5:
-      playSlideExplore(343488570, 6);
-      break;
-    case 6:
-      playSlideExplore(343488795, 7);
-      break;
-    case 7:
-      stopSlideStory();
+    case 1:
       initExploreFooter();
       startMapExploreMode();
       break;
@@ -120,241 +124,156 @@ const playStory = (state) => {
       hide('#intro');
       initStoryFooter();
       loadAudio('story');
-      playSlideStory(343487535, 1); // Put sound on
+      playSlideStory(343763165, 1); // this is a 15 mn
       break;
     case 1:
-      playSlideStory(343487595, 2); // Created by
+      playVideoStory('33', 339823972, 2); // Achterlaan Tour
       break;
     case 2:
-      playSlideStory(343487624, 3); // IN collab with
+      playSlideStory(343763185, 3); // in the netherlands
       break;
     case 3:
-      playSlideStory(343487647, 4); // Unpolluted
-      break;
-    case 4:
-      playSlideStory(343487689, 5); // but why
-      break;
-    case 5:
-      playSlideStory(343487731, 6); // while
-      break;
-    case 6:
-      stopSlideStory();
-      playVideoStory('33', 339823972, 7); // Achterlaan Tour
-      break;
-    case 7:
-      playSlideStory(343487775, 8); // in the netherlands
-      stopVideoStory();
-      break;
-    case 8:
-      playSlideStory(343487816, 9); // ams street lights
-      break;
-    case 9:
-      stopSlideStory();
       startMapStoryMode();
-      $('#audio-player')[0].onended = () => playStory(10);
+      $('#audio-player')[0].onended = () => playStory(4);
       setTimeout(() => $('#audio-player')[0].play(), 3000);
       break;
-    case 10:
+    case 4:
       window.STATUS = 'down';
-      moveToVideo('42', 11);
+      moveToVideo('42', 5);
+      break;
+    case 5:
+      playVideoStory('42', 339823739, 6); // Museumplein
+      break;
+    case 6:
+      playSlideStory(343763201, 7); // in a study
+      break;
+    case 7:
+      undimMap();
+      moveToVideo('6', 8);
+      break;
+    case 8:
+      playVideoStory('6', 339823043, 9); // Amstel River
+      break;
+    case 9:
+      playSlideStory(343763217, 10); // in the nl
+      break;
+    case 10:
+      undimMap();
+      moveToVideo('36', 11);
       break;
     case 11:
-      playVideoStory('42', 339823739, 12); // Museumplein
+      setTimeout(() => {
+        hideDome();
+        undimMap();
+        moveTo(mapConfig.side_rotate.position, null, null);
+      }, 50000); // undim map halfway
+      playVideoStory('36', 339823923, 12); // North IJ Hallen
       break;
     case 12:
-      stopVideoStory();
-      playSlideStory(343487864, 13); // in a study
+      dimMap();
+      playSlideStory(343763230, 13); // for nocturnal
       break;
     case 13:
-      playSlideStory(343487899, 14); // they estimate
-      break;
-    case 14:
-      stopSlideStory();
       undimMap();
-      moveToVideo('6', 15);
-      break;
-    case 15:
-      playVideoStory('6', 339823043, 16); // Amstel River
-      break;
-    case 16:
-      stopVideoStory();
-      playSlideStory(343487930, 17); // in the nl
-      break;
-    case 17:
-      playSlideStory(343487967, 18); // if we dont
-      break;
-    case 18:
-      stopSlideStory();
-      undimMap();
-      moveToVideo('36', 19);
-      break;
-    case 19:
-      playVideoStory('36', 339823923, 20); // North IJ Hallen
-      break;
-    case 20:
-      stopVideoStory();
-      playSlideStory(343488001, 21); // for nocturnal
-      break;
-    case 21:
-      stopSlideStory();
-      undimMap();
-      moveTo(mapConfig.side_rotate.position, null, () => {
-        window.STATUS = 'up';
-        playStory(22);
-      });
-      break;
-    case 22:
+      showDome();
       show('.footer');
       toggleLux();
-      setTimeout(() => playStory(23), 5000);
+      setTimeout(() => playStory(14), 5000);
+      break;
+    case 14:
+      window.STATUS = 'down';
+      moveToVideo('26', 15);
+      break;
+    case 15:
+      playVideoStory('26', 339824214, 16); // Ziggodome
+      break;
+    case 16:
+      playSlideStory(343763239, 17); // billboard
+      break;
+    case 17:
+      undimMap();
+      show('#lux-definition');
+      moveToVideo('32', 18);
+      break;
+    case 18:
+      playVideoStory('32', 339824141, 19); // Uithammerdijk
+      break;
+    case 19:
+      playSlideStory(343763246, 20); // there is no clear
+      break;
+    case 20:
+      undimMap();
+      show('#lux-definition');
+      setTimeout(() => playStory(21), 2000);
+      break;
+    case 21:
+      toggleNormal();
+      moveToVideo('18', 22);
+      break;
+    case 22:
+      setTimeout(() => {
+        hideDome();
+        undimMap();
+        moveTo(mapConfig.side_rotate.position, null, null);
+      }, 36000); // undim map halfway
+      playVideoStory('18', 339823292, 23); // De dam
       break;
     case 23:
-      window.STATUS = 'down';
-      moveToVideo('26', 24);
+      dimMap();
+      playSlideStory(343763255, 24); // the impact of
       break;
     case 24:
-      playVideoStory('26', 339824214, 25); // Ziggodome
-      break;
-    case 25:
-      stopVideoStory();
-      playSlideStory(343488032, 26); // billboard
-      break;
-    case 26:
-      playSlideStory(343488060, 27); // they are believed to be harmful
-      break;
-    case 27:
-      stopSlideStory();
       undimMap();
-      show('#lux-definition');
-      moveToVideo('32', 28);
-      break;
-    case 28:
-      playVideoStory('32', 339824141, 29); // Uithammerdijk
-      break;
-    case 29:
-      stopVideoStory();
-      playSlideStory(343488095, 30); // there is no clear
-      break;
-    case 30:
-      playSlideStory(343488111, 31); // it makes
-      break;
-    case 31:
-      stopSlideStory();
-      undimMap();
-      show('#lux-definition');
-      setTimeout(() => playStory(32), 2000);
-      break;
-    case 32:
-      toggleNormal();
-      moveToVideo('18', 33);
-      break;
-    case 33:
-      playVideoStory('18', 339823292, 34); // De dam
-      break;
-    case 34:
-      stopVideoStory();
-      playSlideStory(343488111, 35); // the impact of
-      break;
-    case 35:
-      playSlideStory(343488142, 36); // recent research
-      break;
-    case 36:
-      stopSlideStory();
-      undimMap();
-      moveTo(mapConfig.side_rotate.position, null, () => {
-        window.STATUS = 'up';
-        playStory(37);
-      });
-      break;
-    case 37:
+      showDome();
       show('.footer');
       toggleNqm();
-      setTimeout(() => playStory(38), 5000);
+      setTimeout(() => playStory(25), 5000);
       break;
-    case 38:
+    case 25:
       window.STATUS = 'down';
-      moveToVideo('24', 39);
+      moveToVideo('24', 26);
       break;
-    case 39:
-      playVideoStory('24', 339823602, 40); // Blijburg
+    case 26:
+      playVideoStory('24', 339823602, 27); // Blijburg
       break;
-    case 40:
-      stopVideoStory();
-      playSlideStory(343488142, 41); // the impact of
+    case 27:
+      playSlideStory(343763263, 28); // the impact of
       break;
-    case 41:
-      playSlideStory(343488167, 42); // recent research
-      break;
-    case 42:
-      stopSlideStory();
-      undimMap();
-      show('#nqm-definition');
-      moveToVideo('19', 43);
-      break;
-    case 43:
-      playVideoStory('19', 339824071, 44); // Skinny Bridge
-      break;
-    case 44:
-      stopVideoStory();
-      playSlideStory(343488196, 45); // compared to
-      break;
-    case 45:
-      playSlideStory(343488218, 46); // they can be
-      break;
-    case 46:
-      stopSlideStory();
-      undimMap();
-      show('#nqm-definition');
-      moveTo(mapConfig.side_rotate.position, null, () => {
-        window.STATUS = 'up';
-        playStory(47);
-      });
-      break;
-    case 47:
-      window.STATUS = 'down';
-      moveToVideo('23', 48);
-      break;
-    case 48:
-      playVideoStory('23', 341809140, 49); // IJ KNSM
-      break;
-    case 49:
-      stopVideoStory();
-      playSlideStory(343488249, 50); // oldest science
-      break;
-    case 50:
-      playSlideStory(343510277, 51); // it originated
-      break;
-    case 51:
-      playSlideStory(343488311, 52); // however
-      break;
-    case 52:
-      stopSlideStory();
+    case 28:
       undimMap();
       toggleNormal();
-      setTimeout(() => playStory(53), 4000);
+      moveToVideo('19', 29);
       break;
-    case 53:
-      playSlideStory(343488334, 54); // in april
+    case 29:
+      setTimeout(() => {
+        hideDome();
+        undimMap();
+        window.STATUS = 'down';
+        moveToVideo('23', null);
+      }, 34000); // undim map halfway
+      playVideoStory('19', 339824071, 30); // Skinny Bridge
       break;
-    case 54:
-      playSlideStory(343488374, 54); // signed
+    case 30:
+      dimMap();
+      playSlideStory(343763267, 31); // compared to
       break;
-    case 55:
-      playSlideStory(343488413, 56);
+    case 31:
+      undimMap();
+      showDome();
+      playVideoStory('23', 341809140, 32); // IJ KNSM
       break;
-    case 56:
-      stopSlideStory();
-      moveToVideo('15', 57);
+    case 32:
+      playSlideStory(343763272, 33); // oldest science
       break;
-    case 57:
-      playVideoStory('15', 341571530, 58); // Houthavens
+    case 33:
+      undimMap();
+      moveToVideo('15', 34);
       break;
-    case 58:
-      stopVideoStory();
-      playSlideStory(343494886, 59);
+    case 34:
+      playVideoStory('15', 343763285, 35); // Houthavens
       break;
-    case 60:
-      stopVideoStory();
+    case 35:
+      hide('#video-wrapper');
       show('#intro');
       show('.intro-actions');
       break;

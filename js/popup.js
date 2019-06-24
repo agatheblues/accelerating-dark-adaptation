@@ -108,4 +108,4 @@ const updatePopupContent = () => {
   }
 };
 
-export { initPopups, updatePopupContent };
+export { initPopups, updatePopupContent, showMarkerPopups };

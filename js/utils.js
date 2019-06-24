@@ -36,4 +36,13 @@ const hideAbout = () => {
   hide('#about-container');
 }
 
-export { show, hide, easing, hideDropdownMenus, showMapInstructions, hideMapInstructions, showAbout, hideAbout };
+const showAboutSection = (e) => {
+  e.preventDefault();
+  const action = $(e.target).data('action');
+  $('.about-link').removeClass('active');
+  $(e.target).addClass('active');
+  hide('.section-content');
+  show(`#${action}`);
+}
+
+export { show, hide, easing, hideDropdownMenus, showMapInstructions, hideMapInstructions, showAbout, hideAbout, showAboutSection };

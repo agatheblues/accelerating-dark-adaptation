@@ -605,11 +605,17 @@
       <span class="close close--about"></span>
     </div>
     <section class="section-container">
+      <div class="section-title">
+        <h4 class='about-link active' data-action='about-general'>General</h4>
+        <h4 class='about-link' data-action='about-locations'>Data</h4>
+        <h4 class='about-link' data-action='about-speakers'>Speakers</h4>
+        <h4 class='about-link' data-action='about-credits'>Credits</h4>
+        <h4 class='about-link' data-action='about-references'>Sources</h4>
+        <h4 class='about-link' data-action='about-data'>Code</h4>
+      </div>
+
       <div class="section-wrapper">
-        <div class="section-title">
-          <h4>General Info</h4>
-        </div>
-        <div class="section-content">
+        <div id='about-general' class="section-content">
           <p>Unpolluted dark skies are seen as something <span class="italic">out there</span>, beyond spaces of human
             activity which seem to be
             defined by artificial light. Why is it that darkness in the natural space is perceived as beautiful and
@@ -627,20 +633,54 @@
               there</span>, but also <span class="italic">in here</span>.
           </p>
         </div>
-      </div>
-    </section>
 
-    <section class="section-container">
-      <div class="section-wrapper">
-        <div class="section-title">
-          <h4>Locations</h4>
-        </div>
-        <div class="section-content">
+
+        <div id='about-locations' class="section-content hidden">
           <p>Building up the data set that was used for the project, the aim was to cover the municipality of Amsterdam
             measuring at least one point in each neighbourhood. The idea was to find places of either very high light
             intensity or very dark surroundings. So each of the locations that were chosen were expecting to be
             representative of such contrast.
           </p>
+
+          <h5>Data Measurement Tools</h5>
+          <h6>Light Meter (LUX)</h6>
+          <p>
+            One of the most crucial
+            inputs to measure light pollution on a local scale are the light intensities from the different light
+            emitting sources. This way we can find out, for example, how much light is emitted by a street light in a
+            residential street and how much by a floodlight on a sports pitch. Unless there is exact data provided by
+            the municipality in charge of public lighting, the light intensities can only be found out by measurements
+            in the field.</p>
+          <p>
+            Given the absence of official data for this project, several dozens of measurements of various light sources
+            have been taken in the field with a light meter.This device captures the environmental brightness.
+            Specifically it measures the intensity with which the brightness appears to the human eye. A light meter
+            uses a photo cell to capture the light. The captured light is then converted to an electrical current. This
+            current finally allows the device to calculate the Lux value of the light which has been captured.</p>
+          <p>
+            To give an idea of value: A moonless overcast night sky has a lux of 0.0001 and an office lighting ranges
+            from 320 to 500 lux.
+
+          </p>
+
+          <h6>Sky Quality Meter (SQM)</h6>
+          <p>
+            Measurements with the Lux-meter capture the ambient light at street level. The results
+            normally describe the direct light from street lamps. The concept of measuring the ‘sky brightness’ is
+            somewhat different. It involves the measurement of a very small patch of the sky. Hence, in order to
+            measure the ‘sky brightness’ the device needs to be pointed vertically upwards. For this study several ‘sky
+            brightness’ measurements were taken with a so called ‘Sky Quality Meter’ (SQM). This handheld tool is
+            produced by the Canadian company ‘Unihedron’ (Unihedron, 2014) and is offered in various versions. Its
+            capability and accuracy has been described in a paper by Cinzano (2005), one of the most prominent
+            researchers in the field of light pollution.
+            The sensor of the SQM captures the light via a lens. The measuring unit is ‘mag/arcsec2
+            ’ which represents
+            the surface brightness in magnitude units related to the solar luminosity per square arc second. The scale
+            ranges between 14 (completely polluted sky) to 23 (fully pristine sky).
+
+          </p>
+
+          <h5>Locations</h5>
 
           <table>
             <thead>
@@ -936,15 +976,9 @@
             </tbody>
           </table>
         </div>
-      </div>
-    </section>
-
-    <section class="section-container">
-      <div class="section-wrapper">
-        <div class="section-title">
-          <h4>Speakers</h4>
-        </div>
-        <div class="section-content">
+        <div id='about-speakers' class="section-content hidden">
+          <p>Six speakers have contributed to the project in recorded interviews about the topic of darkness. Each of
+            them specialised in different fields in which darkness has a specific value and meaning. </p>
           <table>
             <col style="width:30%">
             <col style="width:70%">
@@ -976,14 +1010,8 @@
             </tbody>
           </table>
         </div>
-      </div>
-    </section>
-    <section class="section-container">
-      <div class="section-wrapper">
-        <div class="section-title">
-          <h4>Credits</h4>
-        </div>
-        <div class="section-content">
+
+        <div id='about-credits' class="section-content hidden">
           <h5>Creator</h5>
           <ul class="section-list">
             <li>Manon Féval</li>
@@ -996,7 +1024,7 @@
           <h5>With the voices of</h5>
           <ul class="section-list">
             <li>Esther Hanko</li>
-            <li> Diedrick Wilderman</li>
+            <li>Diedrick Wilderman</li>
             <li>Kamiel Spoelstra</li>
             <li>Lothar Schwarte</li>
             <li>Marc Schuilenburg</li>
@@ -1007,33 +1035,23 @@
             <li>Thomas Buxo</li>
             <li>Jan Robert Leegte</li>
             <li>Pierre Van de Velde</li>
+            <li>Mathieu Gellard</li>
+            <li>Malli Yorks</li>
+            <li>Theon Frans</li>
           </ul>
         </div>
-      </div>
-    </section>
-
-    <section class="section-container">
-      <div class="section-wrapper">
-        <div class="section-title">
-          <h4>Data & Technology</h4>
-        </div>
-        <div class="section-content">
+        <div id='about-data' class="section-content hidden">
+          <p>
+            The dotted map of the city has been generated using the public dataset giving the geolocation of each street
+            light in the municipality of Amsterdam. The public lighting dataset, <a
+              href="https://www.dataplatform.nl/dataset/9394fe5f-c0ee-4907-a39e-88b79106642d">Openbare
+              verlichting in de
+              gemeente Amsterdam</a>, is available on the municipality’s data portal.
+          </p>
           <p>This website is built with Mapbox GL JS, JQuery and Three.js. The project codebase is open-source on <a
               href="https://github.com/agatheblues/accelerating-dark-adaptation">Github</a>.</p>
-          <p>The dotted map represents the geolocation of each street light in the municipality of Amsterdam. The public
-            lighting dataset, <a
-              href="https://www.dataplatform.nl/dataset/9394fe5f-c0ee-4907-a39e-88b79106642d">Openbare verlichting in de
-              gemeente Amsterdam</a>, is available on the municipality's data portal.</p>
         </div>
-      </div>
-    </section>
-
-    <section class="section-container">
-      <div class="section-wrapper">
-        <div class="section-title">
-          <h4>References</h4>
-        </div>
-        <div class="section-content section-content--source">
+        <div id='about-references' class="section-content section-content--source hidden">
           <p>Inside Science. (2017, January 30). Ramin Skibba. Astronomers Encourage Cities to Shield Outdoor Lighting.
             Retrieved 11 June 2019, from
             <a
@@ -1178,6 +1196,8 @@
             <a
               href="http://www.celfosc.org/biblio/seguridad/atkins.pdf">http://www.celfosc.org/biblio/seguridad/atkins.pdf</a>
           </p>
+          <p>Measuring and Mapping Light Pollution at a Local Scale. Stefan M. Bruehlmann. Faculty of Earth and Life
+            Sciences Vrije Universiteit Amsterdam. November 2014.</p>
         </div>
       </div>
     </section>
