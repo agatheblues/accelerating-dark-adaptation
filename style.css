@@ -28,55 +28,6 @@ from   { opacity: 0; }
 to  { opacity: 1; }
 }
 
-@-webkit-keyframes TITLE-ANIMATION {
-  0% { r: 3px; opacity: 0; }
-  20% { r: 2.5px; opacity: 1; }
-  100% { r: 0.5px; opacity: 1; }
-}
-@-moz-keyframes TITLE-ANIMATION {
-  0% { r: 3px; opacity: 0; }
-  20% { r: 2.5px; opacity: 1; }
-  100% { r: 0.5px; opacity: 1; }
-}
-@-o-keyframes TITLE-ANIMATION {
-  0% { r: 3px; opacity: 0; }
-  20% { r: 2.5px; opacity: 1; }
-  100% { r: 0.5px; opacity: 1; }
-}
-@keyframes TITLE-ANIMATION {
-  0% { r: 3px; opacity: 0; }
-  20% { r: 2.5px; opacity: 1; }
-  80% { r: 0.5px; opacity: 1; }
-  100% { r: 1.5px; opacity: 1; }
-}
-
-
-@keyframes fadeInAndOut {
-  0% {
-    position: absolute;
-    bottom: 45%;
-    opacity: 0;
-  }
-
-  25% {
-    position: absolute;
-    bottom: 50%;
-    opacity: 1;
-  }
-
-  75% {
-    position: absolute;
-    bottom: 50%;
-    opacity: 1;
-  }
-
-  100% {
-    position: absolute;
-    bottom: 55%;
-    opacity: 0;
-  }
-}
-
 body {
   margin: 0;
   padding: 0;
@@ -199,16 +150,9 @@ a.not-underlined {
   text-align: center;
 }
 
-.intro-title circle {
-  stroke: none;
-  stroke-width: 0;
-  fill: #fff;
-  opacity: 0;
-
-  -webkit-animation: 6s linear forwards TITLE-ANIMATION; /* Safari 4+ */
-  -moz-animation:    6s linear forwards TITLE-ANIMATION; /* Fx 5+ */
-  -o-animation:      6s linear forwards TITLE-ANIMATION; /* Opera 12+ */
-  animation: 6s linear forwards TITLE-ANIMATION;
+.intro-title video {
+  width: 100%; 
+  height: 100%;
 }
 
 .intro-actions {
