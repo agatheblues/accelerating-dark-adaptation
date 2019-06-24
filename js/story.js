@@ -166,7 +166,7 @@ const playStory = (state) => {
         hideDome();
         undimMap();
         moveTo(mapConfig.side_rotate.position, null, null);
-      }, 50000); // undim map halfway
+      }, 65000); // undim map halfway
       playVideoStory('36', 339823923, 12); // North IJ Hallen
       break;
     case 12:
@@ -270,9 +270,12 @@ const playStory = (state) => {
       moveToVideo('15', 34);
       break;
     case 34:
-      playVideoStory('15', 343763285, 35); // Houthavens
+      playVideoStory('15', 341571530, 35); // Houthavens
       break;
     case 35:
+      playSlideStory(343763285, 36); // it proclaims
+      break;
+    case 36:
       hide('#video-wrapper');
       show('#intro');
       show('.intro-actions');
