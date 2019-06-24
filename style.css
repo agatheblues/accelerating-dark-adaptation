@@ -1,14 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,700');
-@font-face {
-  font-family: "BPDots";
-  src: url("fonts/BPDots.eot");
-  src:
-  url("fonts/BPDots.woff") format("woff"),
-  url("fonts/BPDots.otf") format("opentype"),
-  url("fonts/BPDots.ttf") format("truetype"),
-  url("fonts/BPDots.svg#BPdots") format("svg");
-  }
 
+  @font-face {
+    font-family: "BPDotsLight";
+    src: url("fonts/BPDotsLight.eot");
+    src:
+    url("fonts/BPDotsLight.woff") format("woff"),
+    url("fonts/BPDotsLight.otf") format("opentype"),
+    url("fonts/BPDotsLight.ttf") format("truetype"),
+    url("fonts/BPDotsLight.svg#BPDotsLight") format("svg");
+    }
+  
 
 
 @-webkit-keyframes BUTTON-INTRO-ANIMATION {
@@ -68,7 +69,7 @@ h3 {
 h4 {
   margin: 0;
   padding: 0;
-  font-family: 'BPDots', 'Roboto', sans-serif;
+  font-family: 'BPDotsLight', 'Roboto', sans-serif;
   text-transform: uppercase;
   line-height: 68px;
   font-size: 70px;
@@ -86,16 +87,6 @@ h5 {
   font-size: 13px;
   text-transform: uppercase;
   text-decoration: underline;
-  font-weight: 100;
-}
-
-.modal-box p {
-  margin: 0;
-  padding: 0;
-  font-family: 'BPDots', 'Roboto', sans-serif;
-  text-transform: uppercase;
-  line-height: 38px;
-  font-size: 30px;
   font-weight: 100;
 }
 
@@ -610,8 +601,6 @@ a.not-underlined {
 .content-container {
   width: 97%;
   margin: 0;
-  overflow-y: scroll;
-  padding-right: 20px;
   height: 100%;
   margin: 20px;
 }
@@ -677,6 +666,19 @@ a.not-underlined {
   text-align: center;
 }
 
+.section-wrapper {
+  height: 100vh;
+  width: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  -ms-overflow-style: none; 
+      scrollbar-width: none;
+    }
+  
+.section-wrapper::-webkit-scrollbar { 
+      display: none; 
+  }
+
 table, th, td {
   border-collapse: collapse;
   margin-top: 10px;
@@ -698,6 +700,11 @@ th:last-child, td:last-child {
   font-style: italic;
 }
 
+::-webkit-scrollbar {
+  width: 0px;  /* Remove scrollbar space */
+  background: transparent;  /* Optional: just make scrollbar invisible */
+}
+
 /* Medium mobile*/
 @media only screen and (min-width : 481px) {
   h4 {
@@ -710,14 +717,22 @@ th:last-child, td:last-child {
     justify-content: flex-start;
     width: 97%;
     padding: 0 1% 0 1%;
-    height: 100vh;
+    height: calc(100vh - 20px);
   }
 
   .section-wrapper {
     height: 100%;
     width: 100%;
     margin: 10px 20px 20px 20px;
+    overflow-y: scroll;
+overflow-x: hidden;
+-ms-overflow-style: none; 
+    scrollbar-width: none;
   }
+
+  .section-wrapper::-webkit-scrollbar { 
+    display: none; 
+}
 
   .section-content {
     width: 100%;
@@ -725,6 +740,8 @@ th:last-child, td:last-child {
     padding-right: 20px;
   }
 }
+
+
 
 /* iPads (portrait and landscape) ----------- */
 @media only screen and (min-width : 768px) {
