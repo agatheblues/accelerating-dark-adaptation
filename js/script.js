@@ -23,7 +23,7 @@ $('#toggle-audio').on('click', function () { return toggleAudio($(this).data('st
 /* FOOTER EVENTS */
 $('.dropdown-trigger').on('click', (e) => {
   $('.dropdown-menu').hide(300);
-  $('.dropdown-wrapper').css({ 'margin-bottom': `${$('#footer').innerHeight() * window.devicePixelRatio - 10}px` });
+  $('.dropdown-wrapper').css({ 'margin-bottom': `${$('#footer').innerHeight() - 10}px` });
   $(`#${e.target.id}-list`).toggle(300);
 });
 
