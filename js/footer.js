@@ -90,11 +90,11 @@ const toggleNormal = () => {
     ['linear'],
     ['zoom'],
     0,
-    0.5,
-    12.66,
-    0.7,
+    0,
+    13,
+    1,
     22,
-    7
+    5
   ]);
 
   map.setPaintProperty('public_lighting', 'circle-opacity', 1);
