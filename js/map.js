@@ -9,24 +9,59 @@ import { findMarkerById, findIntervieweesById } from './markers.js';
 
 let timer;
 
+/**
+ * Handle rotating on pitch event
+ */
+const handlePitchEnd = () => {
+  if (map.getPitch() === 80) {
+    window.STATUS = 'up';
+    rotateCamera();
+    return;
+  }
+  if (map.getPitch() < 80) window.STATUS = 'down';
+}
+
+/**
+ * Initialize popups, show dome, show intro animation of map
+ */
+const handleLoadedMap = (mode) => {
+  map.addLayer(customLayer);
+  initPopups(mode);
+  showMap();
+  animateMap();
+}
+
 const initMap = (config, mode) => {
+  // Init DOM node
+  $('#map-container').append("<div id='map' class='container invisible'></div>");
+
+  // Init map with config
   map = new mapboxgl.Map(config);
+
+  // For mobile and tablet
   map.doubleClickZoom.disable();
 
-  map.on('load', () => {
-    map.addLayer(customLayer);
-    initPopups();
+  map.off('load');
+  map.on('load', () => handleLoadedMap(mode));
 
-    if (mode === 'explore') $('.popup-wrapper').css({ 'cursor': 'pointer' });
-    animateMap();
-  });
+  map.off('pitchend');
+  map.on('pitchend', () => handlePitchEnd());
+
 };
 
 const showMap = () => {
   $('#map').removeClass('invisible');
 };
 
+const hideMap = () => {
+  $('#map').addClass('invisible');
+};
+
 const animateMap = () => {
+  // Initial position
+  map.jumpTo({ ...mapConfig.intro.position, ...mapConfig.intro.limits });
+
+  // Animation
   setTimeout(() => {
     map.easeTo({
       ...mapConfig.side_rotate.position,
@@ -44,19 +79,8 @@ const animateMap = () => {
 
 const startMapExploreMode = () => {
   hide('.skip-container');
-  showMap();
   loadAudio('explore');
   initMap({ ...mapConfig.default, ...mapConfig.intro.position, ...mapConfig.intro.limits }, 'explore');
-  updatePopupContent();
-
-  map.on('pitchend', () => {
-    if (map.getPitch() === 80) {
-      window.STATUS = 'up';
-      rotateCamera();
-      return;
-    }
-    if (map.getPitch() < 80) window.STATUS = 'down';
-  });
 
   map.on('zoomend', () => updatePopupContent());
 
@@ -98,18 +122,8 @@ const startMapExploreMode = () => {
 };
 
 const startMapStoryMode = () => {
-  $('#map').removeClass('invisible');
   initMap({ ...mapConfig.default, ...mapConfig.intro.position, ...mapConfig.intro.limits, 'interactive': false }, 'story');
   window.STATUS = 'up';
-
-  map.on('pitchend', () => {
-    if (map.getPitch() === 80) {
-      window.STATUS = 'up';
-      rotateCamera();
-      return;
-    }
-    if (map.getPitch() < 80) window.STATUS = 'down';
-  });
 };
 
 const undimMap = () => {
@@ -220,4 +234,4 @@ const mapConfig = {
 
 let map;
 
-export { mapConfig, showMap, handleDimmedMap, dimMap, undimMap, moveTo, rotateCamera, map, startMapExploreMode, startMapStoryMode };
+export { mapConfig, showMap, hideMap, handleDimmedMap, dimMap, undimMap, moveTo, rotateCamera, map, startMapExploreMode, startMapStoryMode };

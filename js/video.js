@@ -6,7 +6,7 @@ import Player from '@vimeo/player';
 let videoPlayer, videoSlidePlayer;
 
 const initPlayer = (id) => {
-  videoPlayer = new Player('player', { autoplay: true, controls: false, id: id, autopause: false });
+  videoPlayer = new Player('player', { autoplay: true, controls: true, id: id, autopause: false });
   videoPlayer.setVolume(1);
   videoPlayer.on('ended', function () {
     closeVideo();
@@ -14,7 +14,7 @@ const initPlayer = (id) => {
 };
 
 const initSlidePlayer = (id) => {
-  videoSlidePlayer = new Player('slide-player', { autoplay: true, muted: true, controls: false, id: id, autopause: false });
+  videoSlidePlayer = new Player('slide-player', { autoplay: true, muted: true, controls: true, id: id, autopause: false });
   videoSlidePlayer.setVolume(0);
 };
 

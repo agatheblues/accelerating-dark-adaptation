@@ -56,7 +56,7 @@ const showMarkerPopups = () => {
   $('.popup-keyword').addClass('centered');
 };
 
-const initPopups = () => {
+const initPopups = (mode) => {
   map.addLayer({
     'id': 'markers',
     'type': 'circle',
@@ -73,6 +73,7 @@ const initPopups = () => {
   let features = getMarkersWithVideo();
   features.forEach(feature => addMarkerPopupToMap(feature));
   hide('.mapboxgl-popup');
+  if (mode === 'explore') $('.popup-wrapper').css({ 'cursor': 'pointer' });
   showShortPopups();
 };
 

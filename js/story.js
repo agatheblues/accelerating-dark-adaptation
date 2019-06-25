@@ -2,7 +2,7 @@ import { show, hide } from './utils.js';
 import { playLargeVideo, resizeVideo, videoPlayer, playSlideVideo, videoSlidePlayer } from './video.js';
 import { showVideoDetails, toggleLux, toggleNormal, toggleNqm } from './footer.js';
 import { findMarkerById, findIntervieweesById } from './markers.js';
-import { startMapStoryMode, moveTo, mapConfig, dimMap, undimMap, startMapExploreMode } from './map.js';
+import { startMapStoryMode, moveTo, mapConfig, dimMap, undimMap, startMapExploreMode, hideMap, showMap } from './map.js';
 import { loadAudio } from './audio.js';
 import { hideDome, showDome } from './dome.js';
 
@@ -24,7 +24,7 @@ const initExploreFooter = () => {
 
 const stopVideoStory = () => {
   hide('#video-wrapper');
-  show('#map');
+  showMap();
   hide('.footer');
   hide('.footer-tooltip');
   hide('#video-details');
@@ -276,9 +276,12 @@ const playStory = (state) => {
       playSlideStory(343763285, 36); // it proclaims
       break;
     case 36:
+      hideMap();
       hide('#video-wrapper');
       show('#intro');
       show('.intro-actions');
+      map.remove();
+      $('#intro-video')[0].play();
       break;
     default:
       console.log('default');

@@ -3,7 +3,6 @@ import {
   moveTo,
   map
 } from './map.js';
-import { playAudio } from './audio.js';
 import { show, hide } from './utils.js';
 import { showMarkerPopups } from './popup.js';
 
@@ -13,7 +12,6 @@ const handleNavigateClick = (action) => {
       moveTo(mapConfig.side_rotate.position, mapConfig.side_rotate.limits);
       showMarkerPopups();
       window.STATUS = 'up';
-      playAudio();
       break;
     case 'top':
       window.STATUS = 'down';
