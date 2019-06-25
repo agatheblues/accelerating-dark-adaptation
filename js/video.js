@@ -7,7 +7,7 @@ import Player from '@vimeo/player';
 let videoPlayer;
 
 const initPlayer = (id) => {
-  videoPlayer = new Player('player', { autoplay: true, muted: true, controls: true, id: id, autopause: false });
+  videoPlayer = new Player('player', { autoplay: true, muted: true, controls: false, id: id, autopause: false });
   videoPlayer.setVolume(0);
 };
 
