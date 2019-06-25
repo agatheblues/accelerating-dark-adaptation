@@ -4,7 +4,7 @@ import { initPopups, updatePopupContent } from './popup.js';
 import { customLayer, hideDome } from './dome.js';
 import { showVideoDetails } from './footer.js';
 import { pauseAudio, loadAudio } from './audio.js';
-import { playLargeVideo, closeVideo, resizeVideo } from './video.js';
+import { playLargeVideo, closeMapVideo, resizeVideo, stopVideo } from './video.js';
 import { findMarkerById, findIntervieweesById } from './markers.js';
 
 let timer;
@@ -108,7 +108,7 @@ const startMapExploreMode = () => {
     show('#video-details');
     hide('#nqm-definition');
     hide('#lux-definition');
-    playLargeVideo(marker.properties.video_id);
+    playLargeVideo(marker.properties.video_id, closeMapVideo);
     showVideoDetails({ ...marker.properties, interviewees });
     resizeVideo();
     hideDome();
@@ -117,7 +117,10 @@ const startMapExploreMode = () => {
   $('body').on('mousemove', () => handleDimmedMap());
   $('body').on('touchstart', () => handleDimmedMap());
 
-  $('#close-video').on('click', e => closeVideo());
+  $('#close-video').on('click', e => {
+    stopVideo();
+    closeMapVideo();
+  });
 
   $('#audio-player')[0].play();
 };
