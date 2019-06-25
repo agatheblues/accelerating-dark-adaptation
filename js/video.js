@@ -1,3 +1,4 @@
+import { playVideoAudio, pauseVideoAudio } from './audio.js';
 import { undimMap } from './map.js';
 import { showDome } from './dome.js';
 import { show, hide } from './utils.js';
@@ -6,15 +7,15 @@ import Player from '@vimeo/player';
 let videoPlayer, videoSlidePlayer;
 
 const initPlayer = (id) => {
-  videoPlayer = new Player('player', { autoplay: true, controls: true, id: id, autopause: false });
-  videoPlayer.setVolume(1);
+  videoPlayer = new Player('player', { autoplay: true, muted: true, controls: false, id: id, autopause: false });
+  videoPlayer.setVolume(0);
   videoPlayer.on('ended', function () {
     closeVideo();
   });
 };
 
 const initSlidePlayer = (id) => {
-  videoSlidePlayer = new Player('slide-player', { autoplay: true, muted: true, controls: true, id: id, autopause: false });
+  videoSlidePlayer = new Player('slide-player', { autoplay: true, muted: true, controls: false, id: id, autopause: false });
   videoSlidePlayer.setVolume(0);
 };
 
@@ -37,15 +38,18 @@ const playLargeVideo = id => {
     initPlayer(id);
     show('#video-wrapper');
     videoPlayer.play();
+    playVideoAudio(id);
   } else {
     videoPlayer.loadVideo(id).then(() => {
       videoPlayer.play();
       show('#video-wrapper');
+      playVideoAudio(id);
     });
   }
 };
 
 const stopLargeVideo = () => {
+  pauseVideoAudio();
   videoPlayer.unload();
 };
 
