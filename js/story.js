@@ -75,8 +75,6 @@ const moveToVideo = (id, nextState) => {
 const playExplore = (state) => {
   if (SKIP_EXPLORE) return;
 
-  const playSlideExplore = playSlide(playExplore);
-
   switch (state) {
     case 0:
       hide('#intro');
@@ -93,8 +91,6 @@ const playExplore = (state) => {
 }
 
 const playStory = (state) => {
-  console.log('story', state);
-  const playSlideStory = playSlide(playStory);
   switch (state) {
     case 0:
       hide('#intro');
@@ -263,6 +259,9 @@ const playStory = (state) => {
       console.log('default');
   }
 };
+
+const playSlideExplore = playSlide(playExplore);
+const playSlideStory = playSlide(playStory);
 
 const startStory = () => {
   playStory(0);
