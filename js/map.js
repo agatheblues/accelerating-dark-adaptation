@@ -47,6 +47,8 @@ const initMap = (config, mode) => {
   map.off('pitchend');
   map.on('pitchend', () => handlePitchEnd());
 
+  map.off('pitchstart');
+  map.on('pitchstart', () => { window.STATUS = 'down'; });
 };
 
 const showMap = () => {
