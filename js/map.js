@@ -59,13 +59,12 @@ const hideMap = () => {
 
 const animateMap = () => {
   // Initial position
-  map.jumpTo({ ...mapConfig.intro.position, ...mapConfig.intro.limits });
+  map.jumpTo(mapConfig.intro.position);
 
   // Animation
   setTimeout(() => {
     map.easeTo({
       ...mapConfig.side_rotate.position,
-      ...mapConfig.side_rotate.limits,
       duration: 3000
     });
 
@@ -80,7 +79,7 @@ const animateMap = () => {
 const startMapExploreMode = () => {
   hide('.skip-container');
   loadAudio('explore');
-  initMap({ ...mapConfig.default, ...mapConfig.intro.position, ...mapConfig.intro.limits }, 'explore');
+  initMap({ ...mapConfig.default, ...mapConfig.intro.position }, 'explore');
 
   map.on('zoomend', () => updatePopupContent());
 
@@ -97,7 +96,7 @@ const startMapExploreMode = () => {
       center: [longitude, latitude],
       bearing: 0,
       pitch: 0
-    }, null, () => dimMap(), 'explore');
+    }, () => dimMap(), 'explore');
 
     pauseAudio(true);
 
@@ -122,7 +121,7 @@ const startMapExploreMode = () => {
 };
 
 const startMapStoryMode = () => {
-  initMap({ ...mapConfig.default, ...mapConfig.intro.position, ...mapConfig.intro.limits, 'interactive': false }, 'story');
+  initMap({ ...mapConfig.default, ...mapConfig.intro.position, 'interactive': false }, 'story');
   window.STATUS = 'up';
 };
 
@@ -145,7 +144,7 @@ const handleDimmedMap = () => {
   dimMapAfterDelay();
 };
 
-const moveTo = (position, limits = null, callback = null, mode = 'story') => {
+const moveTo = (position, callback = null, mode = 'story') => {
   if (mode === 'story') {
     map.flyTo({
       ...position,
@@ -159,11 +158,6 @@ const moveTo = (position, limits = null, callback = null, mode = 'story') => {
       easing,
       duration: 2000
     });
-
-    // if (limits !== null) {
-    //   map.setMinZoom(limits.minZoom);
-    //   map.setMaxZoom(limits.maxZoom);
-    // }
   }
 
   if (callback) map.once('moveend', callback);
@@ -192,7 +186,9 @@ const mapConfig = {
   default: {
     container: 'map',
     maxBounds: bounds,
-    style: 'mapbox://styles/agatheblues/cjwsb96fq9r211cmgdq36xulv?optimize=true'
+    style: 'mapbox://styles/agatheblues/cjwsb96fq9r211cmgdq36xulv?optimize=true',
+    minZoom: 12,
+    maxZoom: 19
   },
   top_distanced: {
     position: {
@@ -200,10 +196,6 @@ const mapConfig = {
       center: [4.892891, 52.370088],
       bearing: 0,
       pitch: 0
-    },
-    limits: {
-      maxZoom: 19,
-      minZoom: 12
     }
   },
   intro: {
@@ -212,10 +204,6 @@ const mapConfig = {
       center: [4.892891, 52.370088],
       bearing: 0,
       pitch: 0
-    },
-    limits: {
-      maxZoom: 19,
-      minZoom: 12
     }
   },
   side_rotate: {
@@ -224,10 +212,6 @@ const mapConfig = {
       zoom: 13,
       pitch: 80,
       bearing: 0
-    },
-    limits: {
-      maxZoom: 16,
-      minZoom: 13
     }
   }
 };

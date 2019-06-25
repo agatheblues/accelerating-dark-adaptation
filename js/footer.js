@@ -9,14 +9,14 @@ import { showMarkerPopups } from './popup.js';
 const handleNavigateClick = (action) => {
   switch (action) {
     case 'rotating':
-      moveTo(mapConfig.side_rotate.position, mapConfig.side_rotate.limits);
+      moveTo(mapConfig.side_rotate.position, null, 'explore');
       showMarkerPopups();
       window.STATUS = 'up';
       break;
     case 'top':
       window.STATUS = 'down';
       showMarkerPopups();
-      moveTo(mapConfig.top_distanced.position, mapConfig.top_distanced.limits);
+      moveTo(mapConfig.top_distanced.position, null, 'explore');
       break;
     default:
       break;
