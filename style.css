@@ -9,7 +9,7 @@
     url("fonts/BPDotsLight.ttf") format("truetype"),
     url("fonts/BPDotsLight.svg#BPDotsLight") format("svg");
     }
-  
+
 
 
 @-webkit-keyframes BUTTON-INTRO-ANIMATION {
@@ -142,7 +142,7 @@ a.not-underlined {
 }
 
 .intro-title video {
-  width: 100%; 
+  width: 100%;
   height: 100%;
 }
 
@@ -321,10 +321,6 @@ a.not-underlined {
   background-color: #000;
   overflow: hidden;
   height: calc(100vh - 60px);
-}
-
-.video-container--slide {
-  height: 100vh;
 }
 
 .video-player {
@@ -671,12 +667,12 @@ a.not-underlined {
   width: 100%;
   overflow-y: scroll;
   overflow-x: hidden;
-  -ms-overflow-style: none; 
+  -ms-overflow-style: none;
       scrollbar-width: none;
     }
-  
-.section-wrapper::-webkit-scrollbar { 
-      display: none; 
+
+.section-wrapper::-webkit-scrollbar {
+      display: none;
   }
 
 table, th, td {
@@ -726,12 +722,12 @@ th:last-child, td:last-child {
     margin: 10px 20px 20px 20px;
     overflow-y: scroll;
 overflow-x: hidden;
--ms-overflow-style: none; 
+-ms-overflow-style: none;
     scrollbar-width: none;
   }
 
-  .section-wrapper::-webkit-scrollbar { 
-    display: none; 
+  .section-wrapper::-webkit-scrollbar {
+    display: none;
 }
 
   .section-content {
@@ -749,7 +745,7 @@ overflow-x: hidden;
     line-height: 65px;
     font-size: 60px;
   }
-  
+
   .control-details-wrapper {
     display: flex;
   }
@@ -761,7 +757,7 @@ overflow-x: hidden;
   .modal-box {
     width: 80%;
   }
- 
+
 }
 
 /* iPads (portrait and landscape) ----------- */
@@ -773,7 +769,7 @@ overflow-x: hidden;
 }
 
 /* desktops ----------- */
-@media only screen and (min-width : 1080px) {  
+@media only screen and (min-width : 1080px) {
   h4 {
     line-height: 105px;
     font-size: 120px;

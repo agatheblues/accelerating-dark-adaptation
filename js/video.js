@@ -1,62 +1,54 @@
 import { playVideoAudio, pauseVideoAudio } from './audio.js';
-import { undimMap } from './map.js';
+import { undimMap, showMap } from './map.js';
 import { showDome } from './dome.js';
 import { show, hide } from './utils.js';
 import Player from '@vimeo/player';
 
-let videoPlayer, videoSlidePlayer;
+let videoPlayer;
 
 const initPlayer = (id) => {
   videoPlayer = new Player('player', { autoplay: true, muted: true, controls: false, id: id, autopause: false });
   videoPlayer.setVolume(0);
-  videoPlayer.on('ended', function () {
-    closeVideo();
+};
+
+const playVideo = (id, callback, audio) => {
+  show('#video-wrapper');
+  videoPlayer.play();
+
+  if (audio) { playVideoAudio(id); }
+
+  // Clean video when ended
+  videoPlayer.off('ended');
+  videoPlayer.on('ended', () => {
+    stopVideo();
+    if (callback !== undefined) { callback(); }
   });
 };
+const initPlayVideo = (id, callback, audio) => {
+  // important: show wrapper asap to avoid BSOD bug
+  show('#video-wrapper');
 
-const initSlidePlayer = (id) => {
-  videoSlidePlayer = new Player('slide-player', { autoplay: true, muted: true, controls: false, id: id, autopause: false });
-  videoSlidePlayer.setVolume(0);
-};
-
-const playSlideVideo = id => {
-  if (!videoSlidePlayer) {
-    initSlidePlayer(id);
-    show('#slide-video-wrapper');
-    videoSlidePlayer.play();
-  } else {
-    videoSlidePlayer.loadVideo(id).then(() => {
-      videoSlidePlayer.play();
-      show('#slide-video-wrapper');
-    });
-  }
-};
-
-
-const playLargeVideo = id => {
   if (!videoPlayer) {
     initPlayer(id);
-    show('#video-wrapper');
-    videoPlayer.play();
-    playVideoAudio(id);
+    playVideo(id, callback, audio);
   } else {
-    videoPlayer.loadVideo(id).then(() => {
-      videoPlayer.play();
-      show('#video-wrapper');
-      playVideoAudio(id);
-    });
+    videoPlayer
+      .loadVideo(id)
+      .then(() => playVideo(id, callback, audio));
   }
 };
 
-const stopLargeVideo = () => {
+const playLargeVideo = (id, callback) => initPlayVideo(id, callback, true);
+const playSlideVideo = (id, callback) => initPlayVideo(id, callback, false);
+
+const stopVideo = () => {
   pauseVideoAudio();
+  hide('#video-wrapper');
   videoPlayer.unload();
 };
 
-const closeVideo = () => {
+const closeMapVideo = () => {
   undimMap();
-  stopLargeVideo();
-  hide('#video-wrapper');
   hide('#close-video');
   hide('.footer-tooltip');
   hide('#video-details');
@@ -64,8 +56,16 @@ const closeVideo = () => {
   showDome();
 };
 
+const stopStoryVideo = () => {
+  hide('#video-wrapper');
+  showMap();
+  hide('.footer');
+  hide('.footer-tooltip');
+  hide('#video-details');
+};
+
 const resizeVideo = () => {
   $('#video-wrapper').css({ 'height': `calc(100vh - ${$('#footer').innerHeight() * window.devicePixelRatio}px)` });
 };
 
-export { playLargeVideo, stopLargeVideo, closeVideo, resizeVideo, videoPlayer, videoSlidePlayer, playSlideVideo, initPlayer };
+export { playLargeVideo, stopVideo, closeMapVideo, resizeVideo, videoPlayer, playSlideVideo, stopStoryVideo };

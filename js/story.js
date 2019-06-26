@@ -1,8 +1,8 @@
 import { show, hide } from './utils.js';
-import { playLargeVideo, resizeVideo, videoPlayer, playSlideVideo, videoSlidePlayer } from './video.js';
+import { playLargeVideo, resizeVideo, playSlideVideo, stopVideo, stopStoryVideo } from './video.js';
 import { showVideoDetails, toggleLux, toggleNormal, toggleNqm } from './footer.js';
 import { findMarkerById, findIntervieweesById } from './markers.js';
-import { startMapStoryMode, moveTo, mapConfig, dimMap, undimMap, startMapExploreMode, hideMap, showMap } from './map.js';
+import { startMapStoryMode, moveTo, mapConfig, dimMap, undimMap, startMapExploreMode, hideMap } from './map.js';
 import { loadAudio } from './audio.js';
 import { hideDome, showDome } from './dome.js';
 
@@ -22,15 +22,7 @@ const initExploreFooter = () => {
   show('#help');
 };
 
-const stopVideoStory = () => {
-  hide('#video-wrapper');
-  showMap();
-  hide('.footer');
-  hide('.footer-tooltip');
-  hide('#video-details');
-};
-
-const playVideoStory = (id, video_id, nextState) => {
+const playVideoStory = (id, videoId, nextState) => {
   const marker = findMarkerById(id);
   const interviewees = findIntervieweesById(id);
   dimMap();
@@ -39,40 +31,24 @@ const playVideoStory = (id, video_id, nextState) => {
   show('#video-details');
   hide('#nqm-definition');
   hide('#lux-definition');
-  playLargeVideo(video_id);
   showVideoDetails({ ...marker.properties, interviewees });
   resizeVideo();
-
-  videoPlayer.off('ended');
-  videoPlayer.on('ended', () => {
-    videoPlayer.pause();
-    videoPlayer.unload().then(() => {
-      stopVideoStory();
-      playStory(nextState);
-    });
+  playLargeVideo(videoId, () => {
+    stopStoryVideo();
+    playStory(nextState);
   });
 };
 
 const playSlide = (callback) => (videoId, nextState) => {
-  playSlideVideo(videoId);
-  videoSlidePlayer.off('ended');
-
-  if (!nextState) return;
-  videoSlidePlayer.on('ended', () => {
-    videoSlidePlayer.pause();
-    videoSlidePlayer.unload().then(() => {
-      hide('#slide-video-wrapper');
-      callback(nextState);
-    })
+  playSlideVideo(videoId, () => {
+    if (!nextState) return;
+    callback(nextState);
   });
 };
 
 const skipExplore = () => {
   SKIP_EXPLORE = true;
-  videoSlidePlayer.pause();
-  videoSlidePlayer.unload().then(() => {
-    hide('#slide-video-wrapper');
-  });
+  stopVideo();
   initExploreFooter();
   startMapExploreMode();
 };
@@ -99,8 +75,6 @@ const moveToVideo = (id, nextState) => {
 const playExplore = (state) => {
   if (SKIP_EXPLORE) return;
 
-  const playSlideExplore = playSlide(playExplore);
-
   switch (state) {
     case 0:
       hide('#intro');
@@ -117,8 +91,6 @@ const playExplore = (state) => {
 }
 
 const playStory = (state) => {
-  console.log('story', state);
-  const playSlideStory = playSlide(playStory);
   switch (state) {
     case 0:
       hide('#intro');
@@ -287,6 +259,9 @@ const playStory = (state) => {
       console.log('default');
   }
 };
+
+const playSlideExplore = playSlide(playExplore);
+const playSlideStory = playSlide(playStory);
 
 const startStory = () => {
   playStory(0);
