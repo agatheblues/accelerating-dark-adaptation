@@ -25,6 +25,7 @@ const initExploreFooter = () => {
 const playVideoStory = (id, videoId, nextState) => {
   const marker = findMarkerById(id);
   const interviewees = findIntervieweesById(id);
+
   dimMap();
   show('.footer');
   show('.footer-tooltip');
@@ -68,7 +69,7 @@ const moveToVideo = (id, nextState) => {
     moveTo(position, null);
     return;
   }
-  moveTo(position, null, () => playStory(nextState));
+  moveTo(position, () => playStory(nextState));
 };
 
 
