@@ -25,6 +25,9 @@ const playVideo = (id, callback, audio) => {
   });
 };
 const initPlayVideo = (id, callback, audio) => {
+  // important: show wrapper asap to avoid BSOD bug
+  show('#video-wrapper');
+
   if (!videoPlayer) {
     initPlayer(id);
     playVideo(id, callback, audio);
