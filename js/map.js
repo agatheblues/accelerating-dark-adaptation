@@ -122,7 +122,14 @@ const startMapExploreMode = () => {
     closeMapVideo();
   });
 
+  // FIXME: use audio.js api!
   $('#audio-player')[0].play();
+  // FIXME: this is an iOS hack to autoplay audio!
+  // An user input is necessary to play audio (specifically a click on button)
+  // Play it now (because it works), then it always works.
+  // No audio is loaded yet, but pause anyway (safer).
+  $('#audio-video-player')[0].play();
+  $('#audio-video-player')[0].pause();
 };
 
 const startMapStoryMode = () => {
