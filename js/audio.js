@@ -1,5 +1,14 @@
 import { findMarkerByVideoId } from './markers.js';
 
+// FIXME: this is an iOS hack to autoplay audio!
+// An user input is necessary to play audio (specifically a click on button)
+// Play it once then it always works.
+// No audio is loaded yet, but pause anyway (safer).
+const authoriseVideoAudio = () => {
+  $('#audio-video-player')[0].play();
+  $('#audio-video-player')[0].pause();
+};
+
 const playVideoAudio = (videoId) => {
   const { audio_url: url } = findMarkerByVideoId(videoId).properties;
   $('#audio-video-player source').attr('src', url);
@@ -47,4 +56,4 @@ const toggleAudio = (status) => {
   }
 };
 
-export { toggleAudio, pauseAudio, playAudio, loadAudio, playVideoAudio, pauseVideoAudio };
+export { toggleAudio, pauseAudio, playAudio, loadAudio, playVideoAudio, pauseVideoAudio, authoriseVideoAudio };
