@@ -3,7 +3,7 @@ import { playLargeVideo, resizeVideo, playSlideVideo, stopVideo, stopStoryVideo 
 import { showVideoDetails, toggleLux, toggleNormal, toggleNqm } from './footer.js';
 import { findMarkerById, findIntervieweesById } from './markers.js';
 import { startMapStoryMode, moveTo, mapConfig, dimMap, undimMap, startMapExploreMode, hideMap } from './map.js';
-import { loadAudio } from './audio.js';
+import { loadAudio, authoriseVideoAudio } from './audio.js';
 import { hideDome, showDome } from './dome.js';
 
 let SKIP_EXPLORE = false;
@@ -265,10 +265,12 @@ const playSlideExplore = playSlide(playExplore);
 const playSlideStory = playSlide(playStory);
 
 const startStory = () => {
+  authoriseVideoAudio();
   playStory(0);
 };
 
 const startExplore = () => {
+  authoriseVideoAudio();
   show('.skip-container');
   playExplore(0);
 };

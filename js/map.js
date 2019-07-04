@@ -122,6 +122,7 @@ const startMapExploreMode = () => {
     closeMapVideo();
   });
 
+  // FIXME: use audio.js api!
   $('#audio-player')[0].play();
 };
 
