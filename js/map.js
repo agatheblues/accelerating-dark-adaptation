@@ -192,7 +192,7 @@ const mapConfig = {
   default: {
     container: 'map',
     maxBounds: bounds,
-    style: 'mapbox://styles/agatheblues/cjwsb96fq9r211cmgdq36xulv?optimize=true',
+    style: 'mapbox://styles/agatheblues/cjwsb96fq9r211cmgdq36xulv',
     minZoom: 12,
     maxZoom: 19
   },
