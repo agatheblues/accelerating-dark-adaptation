@@ -1,6 +1,6 @@
 # Accelerating Dark Adaptation
 
-This is the source code of [Accelerating Dark Adaptation](http://acceleratingdarkadaptation.com/), built with Mapbox GL JS, JQuery and Three.js. Accelerating Dark Adaptation is the graduating project of Manon Feval at the Royal Academy of Art, The Hague ([KABK](https://www.kabk.nl/agenda/graduation-festival-2019)).
+This is the source code of [Accelerating Dark Adaptation](http://acceleratingdarkadaptation.com/), built with Mapbox GL JS, JQuery and Three.js. Accelerating Dark Adaptation is the graduation project of Manon Féval at the Royal Academy of Art, The Hague ([KABK](https://www.kabk.nl/agenda/graduation-festival-2019)).
 
 ## About
 
